@@ -14,7 +14,7 @@ import './Test.css';
 export const Test: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { bank, mode } = useParams<{ bank: QuestionBank; mode: TestMode }>();
+  const { bank, mode } = useParams<{ bank: QuestionBank | string; mode: TestMode }>();
   const { currentUser } = useUserStore();
   const { currentTest, startTest, submitAnswer, goToQuestion, finishTest } = useTestStore();
 

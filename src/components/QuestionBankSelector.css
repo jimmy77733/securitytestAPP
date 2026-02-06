@@ -1,0 +1,183 @@
+.question-bank-selector {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.selector-wrapper {
+  position: relative;
+}
+
+.selector-dropdown {
+  width: 100%;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background-color: var(--color-card);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  font-size: 16px;
+}
+
+.selector-dropdown:hover {
+  border-color: var(--color-primary);
+  background-color: rgba(52, 152, 219, 0.05);
+}
+
+.selector-label {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.dropdown-icon {
+  color: var(--color-text-light);
+  transition: transform var(--transition-normal);
+}
+
+.dropdown-icon.open {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + var(--spacing-xs));
+  left: 0;
+  right: 0;
+  background-color: var(--color-card);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  z-index: 1000;
+  max-height: 300px;
+  overflow-y: auto;
+  margin-top: var(--spacing-xs);
+}
+
+.dropdown-item-wrapper {
+  padding: var(--spacing-xs);
+}
+
+.dropdown-item {
+  padding: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-normal);
+}
+
+.dropdown-item:hover {
+  background-color: var(--color-bg);
+}
+
+.dropdown-item.selected {
+  background-color: rgba(52, 152, 219, 0.1);
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.item-actions {
+  display: flex;
+  gap: var(--spacing-xs);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.dropdown-item:hover .item-actions {
+  opacity: 1;
+}
+
+.icon-btn-small {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background-color: transparent;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  color: var(--color-text-light);
+}
+
+.icon-btn-small:hover {
+  background-color: var(--color-bg);
+  color: var(--color-primary);
+}
+
+.icon-btn-small.icon-btn-danger:hover {
+  background-color: rgba(231, 76, 60, 0.1);
+  color: var(--color-error);
+}
+
+.edit-form {
+  padding: var(--spacing-sm);
+}
+
+.edit-input {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.add-form {
+  padding: var(--spacing-md);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.add-input {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.add-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.add-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-xs);
+}
+
+.add-bank-btn {
+  width: 100%;
+  padding: var(--spacing-md);
+  border: none;
+  background-color: var(--color-bg);
+  color: var(--color-primary);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+}
+
+.add-bank-btn:hover {
+  background-color: rgba(52, 152, 219, 0.1);
+}
+
+.start-test-btn {
+  margin-top: var(--spacing-sm);
+}
+

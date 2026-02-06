@@ -1,25 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { BookOpen, FileText, Clock, User } from 'lucide-react';
+import { FileText, Clock, User } from 'lucide-react';
 import { useUserStore } from '@/store/userStore';
+import { useBankStore } from '@/store/bankStore';
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
-import type { QuestionBank, TestMode } from '@/types';
+import { QuestionBankSelector } from '@/components/QuestionBankSelector';
+import { ImportExportPanel } from '@/components/ImportExportPanel';
+import type { QuestionBank } from '@/types';
 import './Home.css';
 
 export const Home: React.FC = () => {
   const navigate = useNavigate();
   const { currentUser } = useUserStore();
+  const { getBanks, getBankById } = useBankStore();
+  const [selectedBankId, setSelectedBankId] = useState<string>('primary');
 
-  const handleStartTest = (questionBank: QuestionBank, mode: TestMode) => {
-    navigate(`/test/${questionBank}/${mode}`);
+  const handleStartTest = () => {
+    const bank = getBankById(selectedBankId);
+    if (bank) {
+      navigate(`/test-setup/${bank.value}`);
+    }
   };
 
   if (!currentUser) {
     navigate('/');
     return null;
   }
+
+  const selectedBank = getBankById(selectedBankId);
+  const bankValue = selectedBank?.value || selectedBankId;
 
   return (
     <div className="home">
@@ -49,28 +60,15 @@ export const Home: React.FC = () => {
         <div className="mode-selection">
           <Card className="mode-card">
             <h2 className="mode-title">選擇題庫</h2>
-            <div className="question-bank-buttons">
-              <Button
-                variant="primary"
-                size="lg"
-                fullWidth
-                onClick={() => navigate('/test-setup/primary')}
-              >
-                <BookOpen size={24} />
-                初級題庫
-              </Button>
-              <Button
-                variant="primary"
-                size="lg"
-                fullWidth
-                onClick={() => navigate('/test-setup/intermediate')}
-              >
-                <BookOpen size={24} />
-                中級題庫
-              </Button>
-            </div>
+            <QuestionBankSelector
+              value={selectedBankId}
+              onChange={setSelectedBankId}
+              onStartTest={handleStartTest}
+            />
           </Card>
         </div>
+
+        <ImportExportPanel selectedBank={bankValue} />
 
         <div className="quick-actions">
           <Card className="action-card" onClick={() => navigate('/reading')}>

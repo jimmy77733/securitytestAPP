@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { CheckCircle, AlertCircle } from 'lucide-react';
 import { useUserStore } from '@/store/userStore';
 import { useQuestionStore } from '@/store/questionStore';
+import { useBankStore } from '@/store/bankStore';
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
 import type { QuestionBank, TestMode } from '@/types';
@@ -11,9 +12,10 @@ import './TestSetup.css';
 
 export const TestSetup: React.FC = () => {
   const navigate = useNavigate();
-  const { bank } = useParams<{ bank: QuestionBank }>();
+  const { bank } = useParams<{ bank: QuestionBank | string }>();
   const { currentUser } = useUserStore();
   const { getQuestions, getRandomQuestions } = useQuestionStore();
+  const { getBanks } = useBankStore();
 
   if (!currentUser || !bank) {
     navigate('/home');
@@ -39,7 +41,10 @@ export const TestSetup: React.FC = () => {
     });
   };
 
-  const bankName = bank === 'primary' ? '初級題庫' : '中級題庫';
+  // 獲取題庫名稱
+  const banks = getBanks();
+  const bankOption = banks.find((b) => b.value === bank);
+  const bankName = bankOption?.name || (bank === 'primary' ? '初級題庫' : bank === 'intermediate' ? '中級題庫' : bank);
 
   return (
     <div className="test-setup">
