@@ -1,0 +1,68 @@
+.test-setup {
+  min-height: 100vh;
+  padding: var(--spacing-2xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.test-setup-container {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.mode-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+.mode-option-card {
+  padding: var(--spacing-2xl);
+  text-align: center;
+}
+
+.mode-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin: 0 auto var(--spacing-lg);
+}
+
+.mode-icon-training {
+  background: linear-gradient(135deg, var(--color-success), #229954);
+}
+
+.mode-option-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text);
+}
+
+.mode-description {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--color-text);
+  margin-bottom: var(--spacing-md);
+  text-align: left;
+}
+
+.mode-suitable {
+  font-size: 14px;
+  color: var(--color-text-light);
+  font-style: italic;
+  margin-bottom: var(--spacing-xl);
+  text-align: left;
+}
+
+.test-setup-footer {
+  text-align: center;
+}
+

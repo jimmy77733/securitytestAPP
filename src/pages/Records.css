@@ -1,0 +1,126 @@
+.records-page {
+  min-height: 100vh;
+  padding: var(--spacing-xl);
+}
+
+.records-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-xl);
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.records-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.empty-records {
+  padding: var(--spacing-2xl);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+.empty-records svg {
+  margin-bottom: var(--spacing-lg);
+  opacity: 0.5;
+  color: var(--color-text-light);
+}
+
+.empty-records p {
+  font-size: 18px;
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-xl);
+}
+
+.records-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.record-card {
+  padding: var(--spacing-xl);
+}
+
+.record-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-lg);
+  gap: var(--spacing-lg);
+}
+
+.record-info {
+  flex: 1;
+}
+
+.record-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text);
+}
+
+.record-date {
+  font-size: 14px;
+  color: var(--color-text-light);
+}
+
+.record-score {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-xs);
+}
+
+.score-badge {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.score-badge.passed {
+  color: var(--color-success);
+}
+
+.score-badge.failed {
+  color: var(--color-error);
+}
+
+.score-label {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text-light);
+}
+
+.record-stats {
+  display: flex;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.record-stat {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: 14px;
+  color: var(--color-text-light);
+}
+
+.record-stat svg {
+  color: var(--color-primary);
+}
+
+.record-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+

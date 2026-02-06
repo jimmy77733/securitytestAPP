@@ -1,0 +1,145 @@
+.user-selection {
+  min-height: 100vh;
+  padding: var(--spacing-2xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-selection-container {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.page-title {
+  font-size: 48px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text);
+}
+
+.page-subtitle {
+  font-size: 18px;
+  text-align: center;
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.user-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.user-card {
+  min-height: 180px;
+  cursor: pointer;
+}
+
+.user-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  height: 100%;
+}
+
+.user-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-bottom: var(--spacing-sm);
+}
+
+.user-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.user-edit-form {
+  width: 100%;
+}
+
+.user-name-input {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  font-family: inherit;
+}
+
+.user-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: auto;
+}
+
+.icon-btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  background-color: var(--color-bg);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  color: var(--color-text-light);
+}
+
+.icon-btn:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.icon-btn-danger:hover {
+  background-color: var(--color-error);
+  color: white;
+}
+
+.user-card-add-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  color: var(--color-text-light);
+  border: 2px dashed var(--color-border);
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.user-card-add-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background-color: rgba(52, 152, 219, 0.05);
+}
+
+.user-card-add {
+  min-height: 180px;
+}
+
+.user-add-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  width: 100%;
+}
+
+.user-add-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+

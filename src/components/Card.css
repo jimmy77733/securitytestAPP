@@ -1,0 +1,27 @@
+.card {
+  background-color: var(--color-card);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
+}
+
+.card-default {
+  border: 1px solid var(--color-border);
+}
+
+.card-selected {
+  border: 2px solid var(--color-primary);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-correct {
+  border: 2px solid var(--color-success);
+  background-color: rgba(39, 174, 96, 0.05);
+}
+
+.card-incorrect {
+  border: 2px solid var(--color-error);
+  background-color: rgba(231, 76, 60, 0.05);
+}
+
