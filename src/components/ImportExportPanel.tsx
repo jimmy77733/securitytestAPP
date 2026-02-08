@@ -1,15 +1,24 @@
 import React, { useState, useRef } from 'react';
-import { Upload, Download, Info, X, CheckCircle, AlertCircle } from 'lucide-react';
+import { Upload, Download, Info, X, CheckCircle, AlertCircle, AlertTriangle } from 'lucide-react';
 import { useQuestionStore } from '@/store/questionStore';
-import { importQuestions, exportQuestions, readJsonFile } from '@/utils/importExport';
+import {
+  importQuestions,
+  exportQuestions,
+  readJsonFile,
+  validateQuestions,
+  getImportDuplicateInfoByPrefix,
+  type DuplicateInfo,
+} from '@/utils/importExport';
 import { Button } from './Button';
 import { Card } from './Card';
-import type { QuestionBank } from '@/types';
+import type { Question, QuestionBank } from '@/types';
 import './ImportExportPanel.css';
 
 interface ImportExportPanelProps {
   selectedBank: QuestionBank | string;
 }
+
+type OverwriteChoice = 'skip' | 'overwrite';
 
 export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
   selectedBank,
@@ -23,6 +32,18 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
     errors: string[];
   } | null>(null);
   const [showFormatInfo, setShowFormatInfo] = useState(false);
+  const [overwriteModal, setOverwriteModal] = useState<{
+    duplicateInfo: DuplicateInfo;
+    parsedQuestions: Question[];
+  } | null>(null);
+
+  const runImport = (questions: Question[], overwrite: boolean) => {
+    const result = importQuestions(questions, selectedBank, {
+      overwriteDuplicates: overwrite,
+    });
+    setImportResult(result);
+    if (fileInputRef.current) fileInputRef.current.value = '';
+  };
 
   const handleImport = async () => {
     const file = fileInputRef.current?.files?.[0];
@@ -33,28 +54,43 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
 
     try {
       const data = await readJsonFile(file);
-      
-      // 確保是陣列格式
-      const questions = Array.isArray(data) ? data : [data];
-      
-      const result = importQuestions(questions, selectedBank);
-      setImportResult(result);
+      const raw = Array.isArray(data) ? data : [data];
+      const { validated, errors: validateErrors } = validateQuestions(raw, selectedBank);
 
-      if (result.success > 0) {
-        // 重置文件輸入
-        if (fileInputRef.current) {
-          fileInputRef.current.value = '';
-        }
+      if (validated.length === 0) {
+        setImportResult({
+          success: 0,
+          failed: raw.length,
+          duplicates: 0,
+          errors: validateErrors.length ? validateErrors : ['沒有通過驗證的題目'],
+        });
+        if (fileInputRef.current) fileInputRef.current.value = '';
+        return;
       }
-    } catch (error: any) {
-      alert(`匯入失敗: ${error.message}`);
+
+      const duplicateInfo = getImportDuplicateInfoByPrefix(validated, selectedBank);
+      if (duplicateInfo && duplicateInfo.duplicateIds.length > 0) {
+        setOverwriteModal({ duplicateInfo, parsedQuestions: validated });
+        return;
+      }
+
+      runImport(validated, false);
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : String(error);
+      alert(`匯入失敗: ${message}`);
       setImportResult({
         success: 0,
         failed: 0,
         duplicates: 0,
-        errors: [error.message],
+        errors: [message],
       });
     }
+  };
+
+  const handleOverwriteChoice = (choice: OverwriteChoice) => {
+    if (!overwriteModal) return;
+    runImport(overwriteModal.parsedQuestions, choice === 'overwrite');
+    setOverwriteModal(null);
   };
 
   const handleExport = () => {
@@ -140,7 +176,7 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
             <div className="format-example">
               <h5>單選題格式：</h5>
               <pre>{`{
-  "id": "q_1",
+  "id": "q_1"(必填),
   "questionBank": "primary",
   "type": "single",
   "question": "題目內容",
@@ -152,8 +188,8 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
   ],
   "correctAnswers": ["opt_a"],
   "explanation": "解析說明（可選）",
-  "year": "2024",
-  "category": "分類名稱（可選）"
+  "year": "115",
+  "category": "分類名稱（可選，篩選用）"
 }`}</pre>
             </div>
 
@@ -171,7 +207,9 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
     { "id": "opt_d", "text": "選項D" }
   ],
   "correctAnswers": ["opt_a", "opt_b", "opt_c"],
-  "explanation": "多選題解析說明"
+  "explanation": "多選題解析說明",
+  "year": "115",
+  "category": "分類名稱（可選，篩選用）"
 }`}</pre>
             </div>
 
@@ -181,9 +219,71 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
                 <li>文件必須是JSON格式</li>
                 <li>題目必須是陣列格式</li>
                 <li>選項ID必須是 opt_a, opt_b, opt_c, opt_d 格式</li>
-                <li>如果題目ID重複，該題目將不會匯入，其他題目會繼續匯入</li>
+                <li>如果題目ID重複，需確認後才會匯入，其他題目會繼續匯入</li>
                 <li>匯出為JSON檔案，可直接用於備份或分享</li>
               </ul>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {overwriteModal && (
+        <div className="import-modal-overlay" onClick={() => setOverwriteModal(null)}>
+          <div className="import-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="import-modal-header">
+              <AlertTriangle size={24} className="import-modal-icon" />
+              <h4>發現重複的題目 ID</h4>
+              <button type="button" className="close-btn" onClick={() => setOverwriteModal(null)}>
+                <X size={18} />
+              </button>
+            </div>
+            <p className="import-modal-desc">
+              匯入的題目中有 <strong>{overwriteModal.duplicateInfo.duplicateIds.length}</strong> 題與現有題庫 ID 重複。
+              請選擇處理方式，並可參考下方差異判斷是否覆蓋。
+            </p>
+            <div className="import-modal-diff-list">
+              {overwriteModal.duplicateInfo.details.slice(0, 15).map((d) => (
+                <div key={d.id} className="import-modal-diff-item">
+                  <span className="import-modal-diff-id">{d.id}</span>
+                  <span className="import-modal-diff-summary">{d.diffSummary}</span>
+                  <div className="import-modal-diff-preview">
+                    <span className="import-modal-diff-label">現有：</span>
+                    <span className="import-modal-diff-text">
+                      {d.existing.question.slice(0, 50)}
+                      {d.existing.question.length > 50 ? '…' : ''}
+                    </span>
+                  </div>
+                  <div className="import-modal-diff-preview">
+                    <span className="import-modal-diff-label">匯入：</span>
+                    <span className="import-modal-diff-text">
+                      {d.incoming.question.slice(0, 50)}
+                      {d.incoming.question.length > 50 ? '…' : ''}
+                    </span>
+                  </div>
+                </div>
+              ))}
+              {overwriteModal.duplicateInfo.details.length > 15 && (
+                <p className="import-modal-more">
+                  … 尚有 {overwriteModal.duplicateInfo.details.length - 15} 筆重複
+                </p>
+              )}
+            </div>
+            <div className="import-modal-actions">
+              <Button variant="ghost" onClick={() => setOverwriteModal(null)}>
+                取消
+              </Button>
+              <Button
+                variant="secondary"
+                onClick={() => handleOverwriteChoice('skip')}
+              >
+                僅匯入不重複的
+              </Button>
+              <Button
+                variant="primary"
+                onClick={() => handleOverwriteChoice('overwrite')}
+              >
+                覆蓋並匯入
+              </Button>
             </div>
           </div>
         </div>

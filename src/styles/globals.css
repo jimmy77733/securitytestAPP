@@ -4,8 +4,9 @@
   box-sizing: border-box;
 }
 
-:root {
-  /* 顏色定義 */
+:root,
+[data-theme="light"] {
+  /* 明亮風格 */
   --color-bg: #F5F7FA;
   --color-card: #FFFFFF;
   --color-primary: #3498DB;
@@ -15,7 +16,22 @@
   --color-text: #2C3E50;
   --color-text-light: #7F8C8D;
   --color-border: #E1E8ED;
-  
+}
+
+[data-theme="dark"] {
+  /* 黑暗風格 */
+  --color-bg: #1a1d23;
+  --color-card: #252830;
+  --color-primary: #5dade2;
+  --color-primary-dark: #3498db;
+  --color-success: #58d68d;
+  --color-error: #ec7063;
+  --color-text: #e8eaed;
+  --color-text-light: #9aa0a6;
+  --color-border: #3c4043;
+}
+
+:root {
   /* 間距 */
   --spacing-xs: 4px;
   --spacing-sm: 8px;
@@ -39,6 +55,12 @@
   --transition-fast: 150ms ease;
   --transition-normal: 300ms ease;
   --transition-slow: 500ms ease;
+}
+
+[data-theme="dark"] {
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.4);
 }
 
 body {

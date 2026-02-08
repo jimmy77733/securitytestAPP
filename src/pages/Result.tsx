@@ -40,6 +40,10 @@ export const Result: React.FC = () => {
     const question = record.questions.find((q) => q.id === answer.questionId);
     if (!question) return null;
 
+    if (answer.unanswered) {
+      return { type: 'unanswered', message: '未作答' };
+    }
+
     const correctAnswers = question.correctAnswers;
     const selectedAnswers = answer.selectedOptions;
 

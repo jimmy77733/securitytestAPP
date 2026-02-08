@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, X, ChevronLeft, ChevronRight, Flag } from 'lucide-react';
+import { Check, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useUserStore } from '@/store/userStore';
 import { useTestStore } from '@/store/testStore';
 import { Button } from '@/components/Button';
@@ -34,7 +34,7 @@ export const Test: React.FC = () => {
     }
 
     if (!currentTest) {
-      startTest(mode, bank, questions);
+      startTest(mode, bank as QuestionBank, questions);
       return;
     }
 
@@ -86,6 +86,12 @@ export const Test: React.FC = () => {
     }
   };
 
+  const submitCurrentAnswer = () => {
+    const opts = selectedOptions;
+    const correct = opts.length > 0 ? checkAnswer(currentQuestion, opts) : false;
+    submitAnswer(currentQuestion.id, opts, correct);
+  };
+
   const handleConfirmAnswer = () => {
     if (selectedOptions.length === 0) {
       alert('請至少選擇一個答案');
@@ -100,12 +106,14 @@ export const Test: React.FC = () => {
       setShowFeedback(true);
       setHasAnswered(true);
     } else {
-      // 考試模式直接下一題
       handleNext();
     }
   };
 
   const handleNext = () => {
+    if (isExamMode) {
+      submitCurrentAnswer();
+    }
     if (currentIndex < questions.length - 1) {
       goToQuestion(currentIndex + 1);
       setSelectedOptions([]);
@@ -124,11 +132,20 @@ export const Test: React.FC = () => {
 
   const handleFinish = () => {
     if (isExamMode && currentTest.answers.length < questions.length) {
-      if (!confirm('還有未回答的題目，確定要結束測驗嗎？')) {
+      if (!confirm('還有未回答的題目，未作答將計為錯誤。確定要結束測驗嗎？')) {
         return;
       }
     }
+    submitCurrentAnswer();
+    const record = finishTest(currentUser.id);
+    if (record) {
+      navigate('/result', { state: { recordId: record.id } });
+    }
+  };
 
+  const handleEarlySubmit = () => {
+    if (!confirm('確定要提早交卷嗎？未作答的題目將計為錯誤。')) return;
+    submitCurrentAnswer();
     const record = finishTest(currentUser.id);
     if (record) {
       navigate('/result', { state: { recordId: record.id } });
@@ -153,6 +170,11 @@ export const Test: React.FC = () => {
         {isExamMode && (
           <Button variant="ghost" size="sm" onClick={handleFinish}>
             提交問卷
+          </Button>
+        )}
+        {isTrainingMode && (
+          <Button variant="ghost" size="sm" onClick={handleEarlySubmit}>
+            提早交卷
           </Button>
         )}
       </div>
@@ -261,7 +283,6 @@ export const Test: React.FC = () => {
             <Button
               variant="primary"
               onClick={handleNext}
-              disabled={selectedOptions.length === 0}
             >
               {currentIndex === questions.length - 1 ? '完成' : '下一題'}
               <ChevronRight size={20} />

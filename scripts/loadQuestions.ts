@@ -3,42 +3,43 @@ import * as path from 'path';
 import type { Question } from '../src/types';
 
 /**
- * 載入JSON題庫文件並轉換為系統格式
+ * 從題目 id 取得前贅詞（檔案名）
+ * 例：q_primary_108-2_1 → q_primary_108-2
+ */
+function getPrefix(id: string): string {
+  return id.replace(/_(\d+)$/, '');
+}
+
+/**
+ * 載入並驗證 JSON 題目
  */
 function loadQuestionsFromJSON(filePath: string): Question[] {
   try {
     const data = fs.readFileSync(filePath, 'utf-8');
     const questions = JSON.parse(data) as Question[];
-    
-    // 驗證並修正題目格式
-    return questions.map((q, index) => {
-      // 確保所有必要欄位存在
+
+    return (Array.isArray(questions) ? questions : [questions]).map((q, index) => {
       if (!q.id) {
         q.id = `q_${Date.now()}_${index}`;
       }
-      
-      // 確保選項有正確的ID
-      q.options = q.options.map((opt, optIdx) => ({
+
+      q.options = (q.options || []).map((opt: { id?: string; text?: string }, optIdx: number) => ({
         id: opt.id || `opt_${optIdx + 1}`,
         text: opt.text || '',
       }));
-      
-      // 驗證正確答案
+
       if (!q.correctAnswers || q.correctAnswers.length === 0) {
         console.warn(`題目 ${q.id} 缺少正確答案，使用第一個選項作為預設`);
         q.correctAnswers = [q.options[0]?.id || 'opt_1'];
       }
-      
-      // 驗證正確答案是否在選項中
-      q.correctAnswers = q.correctAnswers.filter(answerId => 
-        q.options.some(opt => opt.id === answerId)
+
+      q.correctAnswers = (q.correctAnswers || []).filter((answerId: string) =>
+        q.options.some((opt: { id: string }) => opt.id === answerId)
       );
-      
       if (q.correctAnswers.length === 0) {
-        console.warn(`題目 ${q.id} 正確答案不在選項中，使用第一個選項作為預設`);
         q.correctAnswers = [q.options[0]?.id || 'opt_1'];
       }
-      
+
       return q;
     });
   } catch (error) {
@@ -48,70 +49,80 @@ function loadQuestionsFromJSON(filePath: string): Question[] {
 }
 
 /**
- * 生成題庫載入代碼
+ * 依前贅詞分組題目
  */
-function generateLoaderCode(primaryQuestions: Question[], intermediateQuestions: Question[]): string {
-  return `// 自動生成的題庫載入代碼
-// 此文件由腳本自動生成，請勿手動修改
-
-import { loadQuestionBank } from '@/utils/questionLoader';
-import type { Question } from '@/types';
-
-// 初級題庫
-const primaryQuestions: Question[] = ${JSON.stringify(primaryQuestions, null, 2)};
-
-// 中級題庫
-const intermediateQuestions: Question[] = ${JSON.stringify(intermediateQuestions, null, 2)};
-
-// 載入題庫
-export function loadAllQuestionBanks() {
-  loadQuestionBank('primary', primaryQuestions);
-  loadQuestionBank('intermediate', intermediateQuestions);
-  console.log('題庫載入完成:', {
-    primary: primaryQuestions.length,
-    intermediate: intermediateQuestions.length,
-  });
-}
-
-// 導出題目數據（供開發使用）
-export { primaryQuestions, intermediateQuestions };
-`;
+function groupByPrefix(questions: Question[]): Map<string, Question[]> {
+  const map = new Map<string, Question[]>();
+  for (const q of questions) {
+    if (!q.id) continue;
+    const prefix = getPrefix(q.id);
+    if (!map.has(prefix)) map.set(prefix, []);
+    map.get(prefix)!.push(q);
+  }
+  return map;
 }
 
 /**
- * 主函數
+ * 依題號排序（id 結尾數字）
  */
+function sortByQuestionOrder(questions: Question[]): Question[] {
+  return [...questions].sort((a, b) => {
+    const numA = parseInt(a.id.match(/_(\d+)$/)?.[1] ?? '0', 10);
+    const numB = parseInt(b.id.match(/_(\d+)$/)?.[1] ?? '0', 10);
+    return numA - numB;
+  });
+}
+
 function main() {
   const dataDir = path.join(process.cwd(), 'data');
+  const banksInputDir = path.join(dataDir, 'banks');
   const primaryPath = path.join(dataDir, 'primary-questions.json');
   const intermediatePath = path.join(dataDir, 'intermediate-questions.json');
-  
-  if (!fs.existsSync(primaryPath) || !fs.existsSync(intermediatePath)) {
-    console.error('請先執行 parsePdf.ts 腳本解析PDF文件');
+
+  const allQuestions: Question[] = [];
+
+  if (fs.existsSync(primaryPath)) {
+    const primary = loadQuestionsFromJSON(primaryPath);
+    allQuestions.push(...primary);
+    console.log(`初級題庫: ${primary.length} 題`);
+  }
+
+  if (fs.existsSync(intermediatePath)) {
+    const intermediate = loadQuestionsFromJSON(intermediatePath);
+    allQuestions.push(...intermediate);
+    console.log(`中級題庫: ${intermediate.length} 題`);
+  }
+
+  if (fs.existsSync(banksInputDir)) {
+    const files = fs.readdirSync(banksInputDir).filter((f) => f.endsWith('.json'));
+    for (const f of files) {
+      const fullPath = path.join(banksInputDir, f);
+      const list = loadQuestionsFromJSON(fullPath);
+      allQuestions.push(...list);
+      console.log(`data/banks/${f}: ${list.length} 題`);
+    }
+  }
+
+  if (allQuestions.length === 0) {
+    console.error('請先準備 data/primary-questions.json、data/intermediate-questions.json 或 data/banks/*.json');
     process.exit(1);
   }
-  
-  console.log('載入題庫文件...');
-  const primaryQuestions = loadQuestionsFromJSON(primaryPath);
-  const intermediateQuestions = loadQuestionsFromJSON(intermediatePath);
-  
-  console.log(`初級題庫: ${primaryQuestions.length} 題`);
-  console.log(`中級題庫: ${intermediateQuestions.length} 題`);
-  
-  // 生成載入代碼
-  const loaderCode = generateLoaderCode(primaryQuestions, intermediateQuestions);
-  const loaderPath = path.join(process.cwd(), 'src', 'data', 'questionBanks.ts');
-  
-  // 確保目錄存在
-  const loaderDir = path.dirname(loaderPath);
-  if (!fs.existsSync(loaderDir)) {
-    fs.mkdirSync(loaderDir, { recursive: true });
+
+  const byPrefix = groupByPrefix(allQuestions);
+  const outDir = path.join(process.cwd(), 'src', 'data', 'banks');
+
+  if (!fs.existsSync(outDir)) {
+    fs.mkdirSync(outDir, { recursive: true });
   }
-  
-  fs.writeFileSync(loaderPath, loaderCode, 'utf-8');
-  console.log(`\n題庫載入代碼已生成: ${loaderPath}`);
-  console.log('\n請在 src/utils/initApp.ts 中調用 loadAllQuestionBanks() 來載入題庫');
+
+  for (const [prefix, questions] of byPrefix) {
+    const sorted = sortByQuestionOrder(questions);
+    const filePath = path.join(outDir, `${prefix}.json`);
+    fs.writeFileSync(filePath, JSON.stringify(sorted, null, 2), 'utf-8');
+    console.log(`已寫入: src/data/banks/${prefix}.json (${sorted.length} 題)`);
+  }
+
+  console.log('\n完成。請由 src/data/questionBanks.ts 載入題庫。');
 }
 
 main();
-

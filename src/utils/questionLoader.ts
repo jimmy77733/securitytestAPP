@@ -1,5 +1,4 @@
 import { useQuestionStore } from '@/store/questionStore';
-import { importQuestionsFromJSON } from './pdfParser';
 import type { Question, QuestionBank } from '@/types';
 
 /**
@@ -11,17 +10,6 @@ export function loadQuestionBank(
 ): void {
   const { loadQuestions } = useQuestionStore.getState();
   loadQuestions(bank, questions);
-}
-
-/**
- * 從JSON文件載入題庫
- */
-export function loadQuestionBankFromJSON(
-  bank: QuestionBank,
-  jsonData: any
-): void {
-  const parsedQuestions = importQuestionsFromJSON(jsonData);
-  loadQuestionBank(bank, parsedQuestions as Question[]);
 }
 
 /**

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Heart, HeartOff, BookOpen, Home } from 'lucide-react';
+import { Heart, HeartOff, BookOpen, Home, ArrowLeft } from 'lucide-react';
 import { useUserStore } from '@/store/userStore';
 import { useQuestionStore } from '@/store/questionStore';
 import { useFavoriteStore } from '@/store/favoriteStore';
@@ -13,10 +13,13 @@ import './Reading.css';
 export const Reading: React.FC = () => {
   const navigate = useNavigate();
   const { currentUser } = useUserStore();
-  const { getQuestions } = useQuestionStore();
+  const { getQuestions, getAvailableYears, getAvailableCategories } = useQuestionStore();
   const { isFavorite, addFavorite, removeFavorite, getFavorites } = useFavoriteStore();
 
   const [selectedBank, setSelectedBank] = useState<QuestionBank | 'favorites'>('primary');
+  const [selectedYear, setSelectedYear] = useState<string>('');
+  const [selectedCategory, setSelectedCategory] = useState<string>('');
+  const [hasStartedReading, setHasStartedReading] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
 
   if (!currentUser) {
@@ -24,9 +27,28 @@ export const Reading: React.FC = () => {
     return null;
   }
 
-  const questions = selectedBank === 'favorites'
-    ? getFavorites(currentUser.id).map((f) => f.question)
-    : getQuestions(selectedBank);
+  const availableYears = selectedBank !== 'favorites' ? getAvailableYears(selectedBank) : [];
+  const availableCategories = selectedBank !== 'favorites' ? getAvailableCategories(selectedBank) : [];
+
+  const bankQuestionCount = selectedBank !== 'favorites' ? getQuestions(selectedBank).length : 0;
+  const favoritesCount = getFavorites(currentUser.id).length;
+
+  const questions = useMemo(() => {
+    let list: Question[];
+    if (selectedBank === 'favorites') {
+      list = getFavorites(currentUser.id).map((f) => f.question);
+    } else {
+      list = getQuestions(selectedBank);
+      if (selectedYear) list = list.filter((q) => q.year === selectedYear);
+      if (selectedCategory) list = list.filter((q) => q.category === selectedCategory);
+    }
+    const seen = new Set<string>();
+    return list.filter((q) => {
+      if (seen.has(q.id)) return false;
+      seen.add(q.id);
+      return true;
+    });
+  }, [selectedBank, selectedYear, selectedCategory, currentUser.id, bankQuestionCount, favoritesCount]);
 
   const handleToggleFavorite = (question: Question) => {
     if (isFavorite(currentUser.id, question.id)) {
@@ -40,14 +62,23 @@ export const Reading: React.FC = () => {
     <div className="reading-page">
       <div className="reading-header">
         <h1 className="page-title">閱讀模式</h1>
-        <Button variant="ghost" onClick={() => navigate('/home')}>
-          <Home size={20} />
-          返回首頁
-        </Button>
+        <div className="reading-header-actions">
+          {hasStartedReading ? (
+            <Button variant="ghost" size="sm" onClick={() => setHasStartedReading(false)}>
+              <ArrowLeft size={20} />
+              更換篩選
+            </Button>
+          ) : (
+            <Button variant="ghost" size="sm" onClick={() => navigate('/home')}>
+              <Home size={20} />
+              返回首頁
+            </Button>
+          )}
+        </div>
       </div>
 
-      <div className="reading-container">
-        <div className="reading-sidebar">
+      {!hasStartedReading ? (
+        <div className="reading-setup">
           <Card className="bank-selector">
             <h3 className="sidebar-title">選擇題庫</h3>
             <div className="bank-buttons">
@@ -57,6 +88,8 @@ export const Reading: React.FC = () => {
                 fullWidth
                 onClick={() => {
                   setSelectedBank('primary');
+                  setSelectedYear('');
+                  setSelectedCategory('');
                   setCurrentQuestion(null);
                 }}
               >
@@ -68,6 +101,8 @@ export const Reading: React.FC = () => {
                 fullWidth
                 onClick={() => {
                   setSelectedBank('intermediate');
+                  setSelectedYear('');
+                  setSelectedCategory('');
                   setCurrentQuestion(null);
                 }}
               >
@@ -79,6 +114,9 @@ export const Reading: React.FC = () => {
                 fullWidth
                 onClick={() => {
                   setSelectedBank('favorites');
+                  setSelectedYear('');
+                  setSelectedCategory('');
+                  setHasStartedReading(true);
                   setCurrentQuestion(null);
                 }}
               >
@@ -87,99 +125,165 @@ export const Reading: React.FC = () => {
             </div>
           </Card>
 
-          <Card className="questions-list">
-            <h3 className="sidebar-title">題目列表 ({questions.length})</h3>
-            <div className="questions-scroll">
-              {questions.map((question, index) => (
-                <button
-                  key={question.id}
-                  className={`question-item ${currentQuestion?.id === question.id ? 'active' : ''}`}
-                  onClick={() => setCurrentQuestion(question)}
+          {selectedBank !== 'favorites' && (
+            <Card className="reading-filters">
+              <h3 className="sidebar-title">篩選</h3>
+              <div className="reading-filter-row">
+                {availableYears.length > 0 && (
+                  <div className="reading-filter-group">
+                    <label htmlFor="reading-year-select" className="reading-filter-label">年份</label>
+                    <select
+                      id="reading-year-select"
+                      className="reading-filter-select"
+                      value={selectedYear}
+                      onChange={(e) => {
+                        setSelectedYear(e.target.value);
+                        setCurrentQuestion(null);
+                      }}
+                    >
+                      <option value="">不限制</option>
+                      {availableYears.map((y) => (
+                        <option key={y} value={y}>{y}</option>
+                      ))}
+                    </select>
+                  </div>
+                )}
+                {availableCategories.length > 0 && (
+                  <div className="reading-filter-group">
+                    <label htmlFor="reading-category-select" className="reading-filter-label">類別</label>
+                    <select
+                      id="reading-category-select"
+                      className="reading-filter-select"
+                      value={selectedCategory}
+                      onChange={(e) => {
+                        setSelectedCategory(e.target.value);
+                        setCurrentQuestion(null);
+                      }}
+                    >
+                      <option value="">不限制</option>
+                      {availableCategories.map((c) => (
+                        <option key={c} value={c}>{c}</option>
+                      ))}
+                    </select>
+                  </div>
+                )}
+              </div>
+              <div className="reading-start-btn-wrap">
+                <Button
+                  variant="primary"
+                  size="md"
+                  fullWidth
+                  onClick={() => setHasStartedReading(true)}
                 >
-                  <span className="question-item-number">{index + 1}</span>
-                  <span className="question-item-text">
-                    {question.question.substring(0, 50)}
-                    {question.question.length > 50 ? '...' : ''}
-                  </span>
-                  {question.type === 'multiple' && (
-                    <span className="question-type-badge">[複選]</span>
-                  )}
-                </button>
-              ))}
-            </div>
-          </Card>
-        </div>
-
-        <div className="reading-content">
-          {currentQuestion ? (
-            <motion.div
-              key={currentQuestion.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <Card className="question-detail">
-                <div className="question-detail-header">
-                  <div className="question-detail-title">
-                    {currentQuestion.type === 'multiple' && (
-                      <span className="question-type-badge">[複選]</span>
-                    )}
-                    <h2>{currentQuestion.question}</h2>
-                  </div>
-                  <button
-                    className="favorite-btn"
-                    onClick={() => handleToggleFavorite(currentQuestion)}
-                  >
-                    {isFavorite(currentUser.id, currentQuestion.id) ? (
-                      <Heart size={24} fill="currentColor" />
-                    ) : (
-                      <HeartOff size={24} />
-                    )}
-                  </button>
-                </div>
-
-                <div className="question-detail-options">
-                  {currentQuestion.options.map((option) => {
-                    const isCorrect = currentQuestion.correctAnswers.includes(option.id);
-                    return (
-                      <div
-                        key={option.id}
-                        className={`question-detail-option ${isCorrect ? 'correct' : ''}`}
-                      >
-                        <span className="option-text">{option.text}</span>
-                        {isCorrect && (
-                          <span className="correct-badge">正確答案</span>
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-
-                {currentQuestion.explanation && (
-                  <div className="question-detail-explanation">
-                    <h4>解析：</h4>
-                    <p>{currentQuestion.explanation}</p>
-                  </div>
-                )}
-
-                {currentQuestion.year && (
-                  <div className="question-meta">
-                    <span>年份：{currentQuestion.year}</span>
-                    {currentQuestion.category && (
-                      <span>分類：{currentQuestion.category}</span>
-                    )}
-                  </div>
-                )}
-              </Card>
-            </motion.div>
-          ) : (
-            <Card className="question-placeholder">
-              <BookOpen size={64} />
-              <p>請從左側選擇題目</p>
+                  開始閱讀
+                </Button>
+              </div>
             </Card>
           )}
         </div>
-      </div>
+      ) : (
+        <div className="reading-container">
+          <div className="reading-sidebar">
+            <Card className="questions-list">
+              <h3 className="sidebar-title">題目列表 ({questions.length})</h3>
+              <div className="questions-scroll">
+                {questions.length === 0 ? (
+                  <p className="reading-empty-list">
+                    {selectedBank === 'favorites'
+                      ? '尚無收藏題目'
+                      : '沒有符合篩選條件的題目'}
+                  </p>
+                ) : questions.map((question, index) => (
+                  <button
+                    key={question.id}
+                    className={`question-item ${currentQuestion?.id === question.id ? 'active' : ''}`}
+                    onClick={() => setCurrentQuestion(question)}
+                  >
+                    <span className="question-item-number">{index + 1}</span>
+                    <span className="question-item-text">
+                      {question.question.substring(0, 50)}
+                      {question.question.length > 50 ? '...' : ''}
+                    </span>
+                    {question.type === 'multiple' && (
+                      <span className="question-type-badge">[複選]</span>
+                    )}
+                  </button>
+                ))}
+              </div>
+            </Card>
+          </div>
+
+          <div className="reading-content">
+            {currentQuestion ? (
+              <motion.div
+                key={currentQuestion.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Card className="question-detail">
+                  <div className="question-detail-header">
+                    <div className="question-detail-title">
+                      {currentQuestion.type === 'multiple' && (
+                        <span className="question-type-badge">[複選]</span>
+                      )}
+                      <h2>{currentQuestion.question}</h2>
+                    </div>
+                    <button
+                      className="favorite-btn"
+                      onClick={() => handleToggleFavorite(currentQuestion)}
+                    >
+                      {isFavorite(currentUser.id, currentQuestion.id) ? (
+                        <Heart size={24} fill="currentColor" />
+                      ) : (
+                        <HeartOff size={24} />
+                      )}
+                    </button>
+                  </div>
+
+                  <div className="question-detail-options">
+                    {currentQuestion.options.map((option) => {
+                      const isCorrect = currentQuestion.correctAnswers.includes(option.id);
+                      return (
+                        <div
+                          key={option.id}
+                          className={`question-detail-option ${isCorrect ? 'correct' : ''}`}
+                        >
+                          <span className="option-text">{option.text}</span>
+                          {isCorrect && (
+                            <span className="correct-badge">正確答案</span>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  {currentQuestion.explanation && (
+                    <div className="question-detail-explanation">
+                      <h4>解析：</h4>
+                      <p>{currentQuestion.explanation}</p>
+                    </div>
+                  )}
+
+                  {currentQuestion.year && (
+                    <div className="question-meta">
+                      <span>年份：{currentQuestion.year}</span>
+                      {currentQuestion.category && (
+                        <span>分類：{currentQuestion.category}</span>
+                      )}
+                    </div>
+                  )}
+                </Card>
+              </motion.div>
+            ) : (
+              <Card className="question-placeholder">
+                <BookOpen size={64} />
+                <p>請從左側選擇題目</p>
+              </Card>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

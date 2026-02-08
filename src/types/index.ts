@@ -39,6 +39,8 @@ export interface UserAnswer {
   selectedOptions: string[];
   isCorrect: boolean;
   answeredAt: string;
+  /** 未作答（提早交卷或未選答案） */
+  unanswered?: boolean;
 }
 
 // 測驗記錄

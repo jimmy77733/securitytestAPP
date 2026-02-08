@@ -4,7 +4,6 @@ import type { Question } from '../src/types';
 
 /**
  * 手動匯入題目輔助工具
- * 用於驗證和整理手動輸入的題目
  */
 
 interface ImportStats {

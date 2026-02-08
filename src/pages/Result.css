@@ -163,6 +163,11 @@
   color: #F39C12;
 }
 
+.answer-status.unanswered {
+  background-color: rgba(149, 165, 166, 0.15);
+  color: #7f8c8d;
+}
+
 .answer-question {
   font-size: 18px;
   font-weight: 600;

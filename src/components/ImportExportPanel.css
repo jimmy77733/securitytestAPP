@@ -1,6 +1,7 @@
 .import-export-panel {
   padding: var(--spacing-lg);
   margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-2xl);
 }
 
 .panel-header {
@@ -248,5 +249,116 @@
 
 .result-errors li {
   margin-bottom: var(--spacing-xs);
+}
+
+/* 匯入重複確認視窗 */
+.import-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: var(--spacing-lg);
+}
+
+.import-modal {
+  background: var(--color-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  max-width: 560px;
+  width: 100%;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.import-modal-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.import-modal-header h4 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text);
+  flex: 1;
+}
+
+.import-modal-icon {
+  color: #F39C12;
+  flex-shrink: 0;
+}
+
+.import-modal-desc {
+  padding: var(--spacing-lg);
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.import-modal-diff-list {
+  padding: 0 var(--spacing-lg);
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+  max-height: 280px;
+}
+
+.import-modal-diff-item {
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+  background: var(--color-bg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  font-size: 13px;
+}
+
+.import-modal-diff-id {
+  font-weight: 600;
+  color: var(--color-primary);
+  display: block;
+  margin-bottom: var(--spacing-xs);
+}
+
+.import-modal-diff-summary {
+  display: block;
+  color: #F39C12;
+  margin-bottom: var(--spacing-xs);
+}
+
+.import-modal-diff-preview {
+  margin-top: var(--spacing-xs);
+  color: var(--color-text-light);
+}
+
+.import-modal-diff-label {
+  margin-right: var(--spacing-xs);
+  color: var(--color-text);
+}
+
+.import-modal-diff-text {
+  font-size: 12px;
+}
+
+.import-modal-more {
+  padding: var(--spacing-sm) 0;
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-text-light);
+}
+
+.import-modal-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: flex-end;
+  padding: var(--spacing-lg);
+  border-top: 1px solid var(--color-border);
 }
 

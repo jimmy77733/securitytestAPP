@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { CheckCircle, AlertCircle } from 'lucide-react';
+import { CheckCircle, AlertCircle, AlertTriangle } from 'lucide-react';
 import { useUserStore } from '@/store/userStore';
 import { useQuestionStore } from '@/store/questionStore';
 import { useBankStore } from '@/store/bankStore';
@@ -14,7 +14,7 @@ export const TestSetup: React.FC = () => {
   const navigate = useNavigate();
   const { bank } = useParams<{ bank: QuestionBank | string }>();
   const { currentUser } = useUserStore();
-  const { getQuestions, getRandomQuestions } = useQuestionStore();
+  const { getQuestions, getRandomQuestions, getAvailableYears, getAvailableCategories } = useQuestionStore();
   const { getBanks } = useBankStore();
 
   if (!currentUser || !bank) {
@@ -23,16 +23,24 @@ export const TestSetup: React.FC = () => {
   }
 
   const questions = getQuestions(bank);
+  const availableYears = getAvailableYears(bank);
+  const availableCategories = getAvailableCategories(bank);
+  const [selectedYear, setSelectedYear] = React.useState<string>('');
+  const [selectedCategory, setSelectedCategory] = React.useState<string>('');
+  const [setupMessage, setSetupMessage] = React.useState<string>('');
 
   const handleStartTest = (mode: TestMode) => {
+    setSetupMessage('');
     if (questions.length === 0) {
-      alert('題庫尚未載入，請先匯入題目');
+      setSetupMessage('尚未匯入題目，請先新增或匯入題目後再開始測驗。');
       return;
     }
 
-    const testQuestions = getRandomQuestions(bank, 50);
+    const yearFilter = selectedYear === '' ? undefined : selectedYear;
+    const categoryFilter = selectedCategory === '' ? undefined : selectedCategory;
+    const testQuestions = getRandomQuestions(bank, 50, yearFilter, categoryFilter);
     if (testQuestions.length === 0) {
-      alert('題庫題目不足，無法開始測驗');
+      setSetupMessage('所選年份或類別沒有題目，請改選其他條件或改為「不限制」。');
       return;
     }
 
@@ -56,6 +64,50 @@ export const TestSetup: React.FC = () => {
       >
         <h1 className="page-title">{bankName}</h1>
         <p className="page-subtitle">選擇測驗模式</p>
+
+        {setupMessage && (
+          <div className="test-setup-inline-alert" role="alert">
+            <AlertTriangle size={20} />
+            <span>{setupMessage}</span>
+          </div>
+        )}
+
+        {(availableYears.length > 0 || availableCategories.length > 0) && (
+          <div className="test-setup-filters">
+            {availableYears.length > 0 && (
+              <div className="filter-group">
+                <label htmlFor="year-select" className="filter-label">題目年份</label>
+                <select
+                  id="year-select"
+                  className="filter-select"
+                  value={selectedYear}
+                  onChange={(e) => setSelectedYear(e.target.value)}
+                >
+                  <option value="">不限制（全選隨機）</option>
+                  {availableYears.map((y) => (
+                    <option key={y} value={y}>{y}</option>
+                  ))}
+                </select>
+              </div>
+            )}
+            {availableCategories.length > 0 && (
+              <div className="filter-group">
+                <label htmlFor="category-select" className="filter-label">類別</label>
+                <select
+                  id="category-select"
+                  className="filter-select"
+                  value={selectedCategory}
+                  onChange={(e) => setSelectedCategory(e.target.value)}
+                >
+                  <option value="">不限制（全選隨機）</option>
+                  {availableCategories.map((c) => (
+                    <option key={c} value={c}>{c}</option>
+                  ))}
+                </select>
+              </div>
+            )}
+          </div>
+        )}
 
         <div className="mode-cards">
           <Card className="mode-option-card">

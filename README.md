@@ -1,39 +1,51 @@
 # 題庫練習平台
 
-一個專為高效學習設計的題庫練習平台，平衡「模擬考試的壓力感」與「練習模式的學習效率」。
+專為高效學習設計的題庫練習平台，平衡「模擬考試的壓力感」與「練習模式的學習效率」。
 
 ## 功能特色
 
-### 1. 使用者管理模組
+### 1. 使用者管理
 - 多帳號切換：支援新增、刪除及名稱修改
 - 個人化紀錄：每個使用者獨立的測試紀錄、收藏題目及設定
 
-### 2. 測驗模式模組
+### 2. 測驗模式
 - **標準模擬模式**：填答過程中不顯示對錯，可自由翻閱修改，完成後統一結算
 - **即時檢誤模式**：選取答案後立即給予視覺反饋，幫助立即導正觀念
 
-### 3. 題型判斷邏輯
+### 3. 題目年份篩選
+- 開始測驗前可選擇「題目年份」，僅從該年份出題
+- 預設為「不限制（全選隨機）」，從整個題庫隨機抽題
+
+### 4. 題型支援
 - **單選題**：圓形按鈕，點擊新選項自動取消舊選項
 - **多選題**：方型按鈕，支援多選，檢查答案集合是否完全一致
 
-### 4. 測試紀錄與成績面板
+### 5. 測試紀錄與成績
 - 大尺寸成績顯示、及格狀態、答題耗時及正確率
-- 篩選檢閱：全部/正確/錯誤切換
+- 篩選檢閱：全部 / 正確 / 錯誤切換
 - 歷史清單：記錄模式類型、得分、日期，可回溯查看詳情
 
-### 5. 閱讀模式模組
+### 6. 閱讀模式
 - 列表式呈現所有題目與答案解析
 - 收藏機制：每題可收藏，獨立分頁查看
-- 快速切換：選擇題庫功能，方便在不同專業領域間跳轉
+- 可依題庫切換（初級 / 中級等）
+
+### 7. 題庫管理（匯入 / 匯出）
+- **匯入**：從 JSON 檔案匯入題目至指定題庫
+- **匯出**：將目前題庫匯出為 JSON 備份或分享
+- 題目格式與驗證、載入步驟請見 [題庫匯入指南.md](./題庫匯入指南.md)
+
+### 8. 無題目提醒
+- 若尚未匯入題目即點擊「開始測驗」，會提示「尚未匯入題目，請先新增或匯入題目後再開始測驗。」
 
 ## 技術棧
 
-- **前端框架**：React 18 + TypeScript
+- **前端**：React 18 + TypeScript
 - **狀態管理**：Zustand
 - **路由**：React Router v6
 - **動畫**：Framer Motion
 - **圖標**：Lucide React
-- **建置工具**：Vite
+- **建置**：Vite
 
 ## 安裝與執行
 
@@ -63,37 +75,15 @@ npm run preview
 
 ## 題庫匯入
 
-系統支援從JSON格式匯入題目。題目格式範例：
+題庫以 JSON 格式存放於 `data/` 目錄，透過以下流程載入：
 
-```json
-[
-  {
-    "id": "q_1",
-    "questionBank": "primary",
-    "type": "single",
-    "question": "題目內容",
-    "options": [
-      { "id": "opt_1", "text": "選項1" },
-      { "id": "opt_2", "text": "選項2" },
-      { "id": "opt_3", "text": "選項3" },
-      { "id": "opt_4", "text": "選項4" }
-    ],
-    "correctAnswers": ["opt_1"],
-    "explanation": "解析說明",
-    "year": "2024",
-    "category": "分類名稱"
-  }
-]
-```
+1. 編輯 `data/primary-questions.json`、`data/intermediate-questions.json`
+2. 執行格式驗證：`npm run validate-questions`
+3. 生成載入代碼：`npm run load-questions`（會產生 `src/data/questionBanks.ts`）
+4. 啟動應用後會自動載入題庫
 
-### PDF題庫處理
-
-系統預設支援PDF題庫（位於 `初級題庫` 和 `中級題庫` 資料夾），但需要實作PDF解析功能。建議：
-
-1. 使用 `pdf-parse` 或 `pdfjs-dist` 庫解析PDF
-2. 根據PDF格式實作解析邏輯
-3. 將解析結果轉換為上述JSON格式
-4. 使用 `loadQuestionBankFromJSON` 函數載入題目
+題目格式範例與欄位說明請見 [題庫匯入指南.md](./題庫匯入指南.md)。  
+應用內也可在首頁「題庫管理」透過 JSON 檔案匯入題目，或匯出目前題庫。
 
 ## 專案結構
 
@@ -102,8 +92,10 @@ src/
 ├── components/       # 共用組件
 │   ├── Button.tsx
 │   ├── Card.tsx
-│   └── OptionButton.tsx
-├── pages/           # 頁面組件
+│   ├── OptionButton.tsx
+│   ├── QuestionBankSelector.tsx
+│   └── ImportExportPanel.tsx
+├── pages/           # 頁面
 │   ├── UserSelection.tsx
 │   ├── Home.tsx
 │   ├── TestSetup.tsx
@@ -111,41 +103,37 @@ src/
 │   ├── Result.tsx
 │   ├── Reading.tsx
 │   └── Records.tsx
-├── store/           # 狀態管理
+├── store/           # 狀態（Zustand）
 │   ├── userStore.ts
+│   ├── bankStore.ts
+│   ├── questionStore.ts
 │   ├── testStore.ts
-│   ├── favoriteStore.ts
-│   └── questionStore.ts
-├── types/           # TypeScript 類型定義
+│   └── favoriteStore.ts
+├── types/           # TypeScript 類型
 │   └── index.ts
-├── utils/           # 工具函數
+├── utils/           # 工具
+│   ├── importExport.ts   # 匯入 / 匯出題庫
+│   ├── questionLoader.ts  # 題庫載入
 │   ├── questionUtils.ts
-│   ├── pdfParser.ts
-│   └── questionLoader.ts
-└── styles/          # 樣式文件
+│   └── initApp.ts
+├── data/            # 題庫載入碼（由腳本生成）
+│   └── questionBanks.ts
+└── styles/
     └── globals.css
 ```
 
 ## 設計特色
 
-### 視覺風格
-- 極簡主義、大留白、無邊框設計
-- 中性色背景（#F5F7FA），卡片為純白色
-- 主視覺採用科技藍（#3498DB）
-- 正確使用森林綠（#27AE60），錯誤使用警示紅（#E74C3C）
-
-### 互動效果
-- 正確反饋：題目卡片外框閃爍綠光，確認按鈕轉化為下一題並帶有縮放動畫
-- 錯誤反饋：題目卡片左右水平抖動，選錯的選項變紅，正確答案自動亮起
-- 平滑動畫：題目切換採用平滑推移效果
+- 極簡風格、大留白、無邊框卡片
+- 中性色背景，主色為科技藍；正確為綠、錯誤為紅
+- 正確 / 錯誤即時視覺反饋，題目切換平滑動畫
 
 ## 開發注意事項
 
-1. **PDF解析**：目前PDF解析功能尚未完全實作，需要根據實際PDF格式進行調整
-2. **資料持久化**：使用Zustand的persist中間件，資料儲存在localStorage
-3. **題庫格式**：中級題庫包含複選題，需特別注意判斷邏輯
+1. **資料持久化**：使用 Zustand 的 persist 中間件，資料儲存在 localStorage
+2. **題庫格式**：中級題庫含複選題，需正確設定 `type` 與 `correctAnswers`
+3. **題目年份**：題目可帶 `year` 欄位，測驗時可依年份篩選出題範圍
 
 ## 授權
 
 MIT License
-
