@@ -1,0 +1,1602 @@
+[
+    {
+      "id": "q_primary_112-1_1",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "對於各式網路攻擊之防禦措施，以下敘述何者最正確？",
+      "options": [
+        { "id": "opt_a", "text": "入侵防禦系統（IPS）無法偵測網路攻擊，僅能進行阻擋" },
+        { "id": "opt_b", "text": "使用防火牆能有效阻擋分散式阻斷服務（DDoS）攻擊" },
+        { "id": "opt_c", "text": "透過佈署密罐（Honeypot）服務可偵測異常網路活動" },
+        { "id": "opt_d", "text": "入侵偵測系統（IDS）可偵測網路攻擊，並進行阻擋" }
+      ],
+      "correctAnswers": ["opt_c"],
+      "explanation": "密罐（Honeypot）誘使攻擊者攻擊，藉此收集攻擊行為資訊與偵測異常；IDS 僅偵測不阻擋，傳統防火牆難以完全阻擋 DDoS。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_2",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "以下何者為通用型的弱點掃描工具（Vulnerability Scanner）？",
+      "options": [
+        { "id": "opt_a", "text": "Nmap" },
+        { "id": "opt_b", "text": "OpenVAS" },
+        { "id": "opt_c", "text": "OWASP" },
+        { "id": "opt_d", "text": "SCAP" }
+      ],
+      "correctAnswers": ["opt_b"],
+      "explanation": "OpenVAS 是一套開源的弱點掃描器；Nmap 主要為網路掃描，OWASP 是組織，SCAP 是協定標準。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_3",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "請問在關於開放式系統互聯模型（Open System Interconnection Model, OSI）中，下列哪一層負責 IP 之間的傳輸？",
+      "options": [
+        { "id": "opt_a", "text": "應用層（Application Layer）" },
+        { "id": "opt_b", "text": "表達層（Presentation Layer）" },
+        { "id": "opt_c", "text": "傳輸層（Transport Layer）" },
+        { "id": "opt_d", "text": "網路層（Network Layer）" }
+      ],
+      "correctAnswers": ["opt_d"],
+      "explanation": "網路層（Network Layer）負責邏輯定址（如 IP 位址）與路徑選擇。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_4",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "下列何種攻擊，無法透過主機實體（Physical）或邏輯（Logical）安全機制直接防禦？",
+      "options": [
+        { "id": "opt_a", "text": "暴力攻擊（Brute-Force Attack）" },
+        { "id": "opt_b", "text": "阻斷服務攻擊（Denial-of-Service Attack）" },
+        { "id": "opt_c", "text": "社交工程（Social Engineering）" },
+        { "id": "opt_d", "text": "通訊埠掃描（Port Scan）" }
+      ],
+      "correctAnswers": ["opt_c"],
+      "explanation": "社交工程針對的是「人」的弱點（如欺騙、信任），而非技術層面的漏洞。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_5",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "下列何者「不」是阻斷式服務攻擊（Denial-of-Service Attack）？",
+      "options": [
+        { "id": "opt_a", "text": "持續發送惡意封包，導致主機當機" },
+        { "id": "opt_b", "text": "消耗系統全部的 CPU 運算能力" },
+        { "id": "opt_c", "text": "寄送有惡意連結的郵件給公司所有人員" },
+        { "id": "opt_d", "text": "向特定收件者發送成千上萬封電子郵件" }
+      ],
+      "correctAnswers": ["opt_c"],
+      "explanation": "寄送惡意連結通常是為了釣魚或散播惡意軟體，目標是入侵或竊取資料，而非耗盡系統資源（DoS）。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_6",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "請問下列什麼方式，最適合來確認資料的完整性（Integrity）？",
+      "options": [
+        { "id": "opt_a", "text": "最低權限" },
+        { "id": "opt_b", "text": "設定記憶體的特定資料段「執行禁用位元（NXbit）」" },
+        { "id": "opt_c", "text": "數位簽章" },
+        { "id": "opt_d", "text": "使用 Base64 編碼" }
+      ],
+      "correctAnswers": ["opt_c"],
+      "explanation": "數位簽章利用雜湊與非對稱加密，可確保資料未被竄改（完整性）與不可否認性。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_7",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "下列何者是較安全的密碼設定？",
+      "options": [
+        { "id": "opt_a", "text": "QAZWSXE" },
+        { "id": "opt_b", "text": "uZ@12230bbefffff" },
+        { "id": "opt_c", "text": "1$aZ5" },
+        { "id": "opt_d", "text": "helloworld" }
+      ],
+      "correctAnswers": ["opt_b"],
+      "explanation": "安全的密碼應具備足夠長度（通常建議 8-12 字元以上）並包含大小寫、數字、符號等複雜度。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_8",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "券商集體遭 DDoS（分散式阻斷服務）攻擊勒索信件，其中有多家券商的網站下單系統更實際遭受網路 DDoS 攻擊，造成交易量降低。該案例網站下單系統被攻擊，最直接影響是下列何種資訊安全特性？",
+      "options": [
+        { "id": "opt_a", "text": "機密性" },
+        { "id": "opt_b", "text": "完整性" },
+        { "id": "opt_c", "text": "可用性" },
+        { "id": "opt_d", "text": "不可否認性" }
+      ],
+      "correctAnswers": ["opt_c"],
+      "explanation": "DDoS 攻擊導致系統服務中斷或回應緩慢，使用者無法存取服務，直接影響「可用性」。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_9",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "可以使用下列何者，降低廣播領域（Broadcast Domain）範圍？",
+      "options": [
+        { "id": "opt_a", "text": "Virtual Local Area Network (VLAN)" },
+        { "id": "opt_b", "text": "Network Address Translate (NAT)" },
+        { "id": "opt_c", "text": "Dynamic Trunking Protocol (DTP)" },
+        { "id": "opt_d", "text": "Inter-Switch Link (ISL)" }
+      ],
+      "correctAnswers": ["opt_a"],
+      "explanation": "VLAN 將實體網路邏輯分割為多個廣播網域，限制廣播封包的傳播範圍。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_10",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "以下關於 TCP 與 UDP 協定的特性，下列敘述何者較「不」正確？",
+      "options": [
+        { "id": "opt_a", "text": "兩者均屬於 OSI 模型中的傳輸層" },
+        { "id": "opt_b", "text": "兩者皆需進行三向式的握手程序" },
+        { "id": "opt_c", "text": "TCP 速度較慢、UDP 速度較快" },
+        { "id": "opt_d", "text": "TCP 穩定性高、UDP 穩定性低" }
+      ],
+      "correctAnswers": ["opt_b"],
+      "explanation": "UDP 是非連線導向（Connectionless）協定，發送前不需建立連線（無三向交握）。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_11",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "關於通訊安全的敘述，下列何者錯誤？",
+      "options": [
+        { "id": "opt_a", "text": "當兩個系統進行通訊時，務必確保系統透過安全通道進行通訊，獲授權存取雙方使用共用資源" },
+        { "id": "opt_b", "text": "安全通訊端層（SSL）是對網際網路通訊提供隱私驗證和整合性的安全性通訊協定" },
+        { "id": "opt_c", "text": "SSL 是通道加密，資料也加密保護" },
+        { "id": "opt_d", "text": "傳輸層安全標準（TLS）是標準網際網路通訊協定，可以加密處理電子郵件，確保郵件在傳輸過程中安全不外洩" }
+      ],
+      "correctAnswers": ["opt_c"],
+      "explanation": "SSL 僅加密傳輸通道（Data in transit），不保證資料在端點儲存時（Data at rest）或應用層級的加密保護。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_12",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "有關防火牆功能之敘述，下列何者錯誤？",
+      "options": [
+        { "id": "opt_a", "text": "過濾一般用戶所禁止的網路服務，許可之網路服務則無須過濾" },
+        { "id": "opt_b", "text": "具有內部使用者與外部網站伺服器不會建立雙方之 TCP/IP 連線，而是透過內部防火牆以網頁用戶端的身分向外部網站要求存取網頁資料的應用代理閘道防火牆（Application-Proxy Gateway Firewalls）功能" },
+        { "id": "opt_c", "text": "可以隱藏內部 IP 位址，讓外部無法得知內部網路實際 IP 的網路位址轉譯（NAT）模式" },
+        { "id": "opt_d", "text": "可以在不修改網路設備的設定下，提供動態封包過濾功能的透通橋接模式（Transparent Mode）" }
+      ],
+      "correctAnswers": ["opt_a"],
+      "explanation": "許可的網路服務仍需經過檢查（如狀態檢測、應用層過濾），防止透過合法埠口進行攻擊。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_13",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "企業外部網路可以包含組織的內部網路與外部夥伴組織之間的連結，夥伴可能是供應商或委外廠商等，為了讓互相信任的組織進行連線可以透過專線或架設虛擬私有網路來完成，其技術名稱為下列何項？",
+      "options": [
+        { "id": "opt_a", "text": "VPN" },
+        { "id": "opt_b", "text": "LAN" },
+        { "id": "opt_c", "text": "DMZ" },
+        { "id": "opt_d", "text": "NAT" }
+      ],
+      "correctAnswers": ["opt_a"],
+      "explanation": "VPN（Virtual Private Network）利用加密通道技術在公用網路上建立安全的專用連線。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_14",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "基於安全性考量，管理員需要重檢視一部 Linux 系統的檔案權限，請問下列哪一個命令可以找出 Linux 系統中所有已被設定 SUID 的程式檔案？",
+      "options": [
+        { "id": "opt_a", "text": "find / -perm -4000 -type f" },
+        { "id": "opt_b", "text": "find / -perm -2000 -type f" },
+        { "id": "opt_c", "text": "find / -type +6000 -print" },
+        { "id": "opt_d", "text": "find / -type suid" }
+      ],
+      "correctAnswers": ["opt_a"],
+      "explanation": "在 Linux 權限中，SUID 的八進位數值為 4000，`find -perm -4000` 可尋找設定了 SUID 的檔案。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_15",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "請問在 Linux 環境中十分著名的漏洞（Dirty Cow, CVE 2016-5195），以下針對這個漏洞的描述何者錯誤？",
+      "options": [
+        { "id": "opt_a", "text": "此漏洞是在 Linux PAM (Pluggable Authentication Modules for Linux) 機制上的異常，可以取得使用者的密碼" },
+        { "id": "opt_b", "text": "此漏洞主要是 Linux 核心記憶體處理子程序的異常所產生" },
+        { "id": "opt_c", "text": "利用此漏洞可以進行本地端服務提權" },
+        { "id": "opt_d", "text": "這個漏洞也會影響特定版本之 Android 手機" }
+      ],
+      "correctAnswers": ["opt_a"],
+      "explanation": "Dirty Cow 是 Linux 核心記憶體管理（Copy-on-Write）的競態條件漏洞，與 PAM 認證機制無關。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_16",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "下列何者「不」是微軟 Windows 作業系統中，具特權權限之帳號？",
+      "options": [
+        { "id": "opt_a", "text": "Administrator" },
+        { "id": "opt_b", "text": "root" },
+        { "id": "opt_c", "text": "Administrators 群組中之一般使用者帳號" },
+        { "id": "opt_d", "text": "Local System" }
+      ],
+      "correctAnswers": ["opt_b"],
+      "explanation": "`root` 是 Unix/Linux 系統的最高權限帳號名稱，Windows 系統中對應的是 Administrator。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_17",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "關於作業系統的安全敘述，以下何者較「不」正確？",
+      "options": [
+        { "id": "opt_a", "text": "作業系統可分配與管理系統資源、提供系統服務與保護" },
+        { "id": "opt_b", "text": "Administrator 是微軟 Windows 作業系統中，具特權權限之帳號應妥善管理" },
+        { "id": "opt_c", "text": "定期自動更新、安裝並更新防毒軟體皆屬於作業系統安全預防（Preventive）機制" },
+        { "id": "opt_d", "text": "當作業系統安裝好之後，為了避免因為安全因素導致作業系統遭受駭客入侵，最好直接更新入侵偵測系統" }
+      ],
+      "correctAnswers": ["opt_d"],
+      "explanation": "作業系統安裝後應優先進行更新修補程式（Patching）與系統加固，而非僅更新 IDS（IDS 是偵測工具，非修補工具）。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_18",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "當某 Windows 電腦，想要開放遠端桌面服務供其他電腦連入時，而該服務採用預設設定，請問防火牆應該開放下列哪一個通訊埠（Port）？",
+      "options": [
+        { "id": "opt_a", "text": "53" },
+        { "id": "opt_b", "text": "23" },
+        { "id": "opt_c", "text": "443" },
+        { "id": "opt_d", "text": "3389" }
+      ],
+      "correctAnswers": ["opt_d"],
+      "explanation": "Windows 遠端桌面協定（RDP）預設使用 TCP 3389。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_19",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "請問 Metasploit 是下列何種用途的工具或平台？",
+      "options": [
+        { "id": "opt_a", "text": "SQL Injection 工具" },
+        { "id": "opt_b", "text": "XSS 工具" },
+        { "id": "opt_c", "text": "滲透測試平台" },
+        { "id": "opt_d", "text": "原始碼掃描工具" }
+      ],
+      "correctAnswers": ["opt_c"],
+      "explanation": "Metasploit 是一個開源的滲透測試框架，用於開發、測試和執行漏洞利用程式（Exploits）。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_20",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "請問一般所謂的 Google Hacking 是指下列何項？",
+      "options": [
+        { "id": "opt_a", "text": "遭 Google 公司入侵" },
+        { "id": "opt_b", "text": "Google 公司被入侵" },
+        { "id": "opt_c", "text": "指透過大型搜尋引擎，收集欲入侵（滲透）標的之資訊" },
+        { "id": "opt_d", "text": "指透過 Google，對欲入侵（滲透）之公司直接發動攻擊" }
+      ],
+      "correctAnswers": ["opt_c"],
+      "explanation": "Google Hacking 是利用搜尋引擎的進階搜尋語法，尋找網站外洩的敏感資訊或漏洞。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_21",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "關於憑證填充攻擊（Credential Stuffing）的敘述，下列何者錯誤？",
+      "options": [
+        { "id": "opt_a", "text": "通常使用殭屍網路（Botnet）進行攻擊" },
+        { "id": "opt_b", "text": "會以自動化方式試圖登入網路服務" },
+        { "id": "opt_c", "text": "可使用雙因子認證（two-factor authentication）" },
+        { "id": "opt_d", "text": "會直接造成網路服務中斷，影響可用性" }
+      ],
+      "correctAnswers": ["opt_d"],
+      "explanation": "Credential Stuffing 是利用外洩帳密嘗試登入，主要目的為帳號盜用，而非癱瘓服務（DoS）。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_22",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "如附圖所示，下列何項組合是 XSS（Cross-Site Scripting）攻擊語法？\n(1) <script>alert('abc');</script>\n(2) ' or 1=1--\n(3) <IMG SRC=javascript:alert('lol')>",
+      "options": [
+        { "id": "opt_a", "text": "(1)(2)" },
+        { "id": "opt_b", "text": "(1)(3)" },
+        { "id": "opt_c", "text": "(2)(3)" },
+        { "id": "opt_d", "text": "(1)(2)(3)" }
+      ],
+      "correctAnswers": ["opt_b"],
+      "explanation": "(1) 和 (3) 是典型的 JavaScript 注入語法（XSS）；(2) 是 SQL Injection 語法。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_23",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "下列何者「不」是資料隱碼攻擊（SQL Injection）類型？",
+      "options": [
+        { "id": "opt_a", "text": "Frame-Base SQL injection" },
+        { "id": "opt_b", "text": "Error-Base SQL injection" },
+        { "id": "opt_c", "text": "Time-Base SQL injection" },
+        { "id": "opt_d", "text": "Union-Base SQL injection" }
+      ],
+      "correctAnswers": ["opt_a"],
+      "explanation": "常見 SQL Injection 類型包含 Error-based、Time-based (Blind)、Union-based；Frame-based 非標準分類。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_24",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "為確保應用程式中之資料安全，所需採取的安全措施，下列敘述何者錯誤？",
+      "options": [
+        { "id": "opt_a", "text": "演算法、協議與金鑰即時更新，並有適當金鑰管理機制" },
+        { "id": "opt_b", "text": "確保所有隱私資料於儲存時進行加密" },
+        { "id": "opt_c", "text": "總是使用雜湊函式來代替加密函式" },
+        { "id": "opt_d", "text": "不儲存不必要的隱私資料，或儘速清除" }
+      ],
+      "correctAnswers": ["opt_c"],
+      "explanation": "雜湊（Hash）是單向的，無法還原資料；若資料需被讀取使用（如個資），應使用加密（Encryption）而非雜湊。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_25",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "關於應用程式日誌管理保存的敘述，下列何者最「不」適當？",
+      "options": [
+        { "id": "opt_a", "text": "日誌必須儲存於本機以避免資料外流" },
+        { "id": "opt_b", "text": "日誌格式須確保被能被所使用之日誌管理方案支援" },
+        { "id": "opt_c", "text": "日誌須定期分析與監控，以即時發現可疑活動" },
+        { "id": "opt_d", "text": "日誌須留存足夠資訊以有效識別，如：時間、來源/目的、動作..等" }
+      ],
+      "correctAnswers": ["opt_a"],
+      "explanation": "日誌應集中儲存於獨立的日誌伺服器，避免本機遭入侵後日誌被竄改或刪除。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_26",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "關於軟體測試的敘述，下列何者錯誤？",
+      "options": [
+        { "id": "opt_a", "text": "整合測試可以由程式設計師或軟體品保工程師進行" },
+        { "id": "opt_b", "text": "基本路徑測試是根據程式設計的內部架構產生測試資料" },
+        { "id": "opt_c", "text": "黑箱測試用於測試程式的輸出資料與對應輸入資料之間的正確性，需考慮軟體內部的結構" },
+        { "id": "opt_d", "text": "功能測試指測試系統是否能符合預期的功能需求" }
+      ],
+      "correctAnswers": ["opt_c"],
+      "explanation": "黑箱測試（Black-box testing）不考慮程式內部結構，僅針對功能與介面進行測試。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_27",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "關於程式原碼檢測（Code review）的敘述，下列何者錯誤？",
+      "options": [
+        { "id": "opt_a", "text": "通過檢查軟件程式的源代碼，發現和解決其中存在的潛在問題和漏洞" },
+        { "id": "opt_b", "text": "無助於開發人員在軟體開發及時發現並修復問題，從而提高軟體的質量和可靠性" },
+        { "id": "opt_c", "text": "可以查找內存泄漏、緩衝區溢出、程式碼注入等問題" },
+        { "id": "opt_d", "text": "代碼審查一般會分為三類：正式的代碼審查、結對程式，以及輕量型的非正式代碼審查" }
+      ],
+      "correctAnswers": ["opt_b"],
+      "explanation": "程式碼審查（Code Review）的主要目的就是協助開發人員提早發現並修復問題，提升軟體品質。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_28",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "從 Microsoft 安全性開發週期（Secure Development Life, SDL）的觀點，縮小攻擊面向（Attack Surface Reduction），主要是下列何項階段的考量？",
+      "options": [
+        { "id": "opt_a", "text": "需求階段（Requirements）" },
+        { "id": "opt_b", "text": "設計階段（Design）" },
+        { "id": "opt_c", "text": "實作階段（Implementation）" },
+        { "id": "opt_d", "text": "發佈階段（Release）" }
+      ],
+      "correctAnswers": ["opt_b"],
+      "explanation": "在設計階段定義並縮小攻擊面（如關閉不必要功能、降低權限）是 SDL 的核心原則。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_29",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "請問 CVSS（The Common Vulnerability Scoring System）是指下列何項？",
+      "options": [
+        { "id": "opt_a", "text": "常見漏洞和風險編號" },
+        { "id": "opt_b", "text": "弱點種類" },
+        { "id": "opt_c", "text": "弱點計分系統" },
+        { "id": "opt_d", "text": "漏洞修補建議" }
+      ],
+      "correctAnswers": ["opt_c"],
+      "explanation": "CVSS 是「通用漏洞評分系統」，用於評估漏洞的嚴重程度。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_30",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "網際網路已成為日常生活不可或缺的一部分，但部分使用者對安全防護不足容易受到惡意程式的危害。下列哪一項「不」是惡意程式？",
+      "options": [
+        { "id": "opt_a", "text": "木馬程式" },
+        { "id": "opt_b", "text": "勒索軟體" },
+        { "id": "opt_c", "text": "中間人攻擊" },
+        { "id": "opt_d", "text": "蠕蟲" }
+      ],
+      "correctAnswers": ["opt_c"],
+      "explanation": "中間人攻擊（MITM）是一種攻擊手法（Technique），而非惡意軟體（Malware）本身。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_31",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "請問 DNS 快取污染（DNS Cache Poisoning）是針對開放式系統互聯模型（OSI Model）的哪一層的攻擊？",
+      "options": [
+        { "id": "opt_a", "text": "Layer 2 資料連接層（Data-Link Layer）" },
+        { "id": "opt_b", "text": "Layer 3 網路層（Network Layer）" },
+        { "id": "opt_c", "text": "Layer 4 傳送層（Transport Layer）" },
+        { "id": "opt_d", "text": "Layer 7 應用層（Application Layer）" }
+      ],
+      "correctAnswers": ["opt_d"],
+      "explanation": "DNS 協定運作於 OSI 模型的應用層（Layer 7）。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_32",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "關於病毒（Virus）與蠕蟲（Worm）之比較，下列何者較正確？",
+      "options": [
+        { "id": "opt_a", "text": "蠕蟲通常不具破壞性，病毒則通常為惡意" },
+        { "id": "opt_b", "text": "蠕蟲的檔案，通常比病毒小，不易被偵測" },
+        { "id": "opt_c", "text": "蠕蟲會自行擴散，病毒常透過事件觸發" },
+        { "id": "opt_d", "text": "蠕蟲無法自行存在，但病毒可以" }
+      ],
+      "correctAnswers": ["opt_c"],
+      "explanation": "蠕蟲具備自我複製與傳播能力，病毒則需寄生於宿主檔案並透過執行來觸發。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_33",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "關於「弱點掃描」的描述，下列何者最「不」正確？",
+      "options": [
+        { "id": "opt_a", "text": "此作業可能會觸發入侵偵測系統的警告" },
+        { "id": "opt_b", "text": "可部署 Web 應用程式防火牆，來避免弱點掃描的探測" },
+        { "id": "opt_c", "text": "是滲透測試（Penetration Test）常見的前置作業之一" },
+        { "id": "opt_d", "text": "Ping 工具的使用，是弱點掃描常用前置作業之一" }
+      ],
+      "correctAnswers": ["opt_b"],
+      "explanation": "弱點掃描目的是發現問題以修補，刻意用 WAF 阻擋掃描會導致無法發現真實漏洞（除非是針對外部惡意掃描的防禦）。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_34",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "關於資料安全的敘述，下列何者錯誤？",
+      "options": [
+        { "id": "opt_a", "text": "資料安全性用於保護資料免受未經授權的存取，並保有資料機密性、完整性和可用性的保護措施" },
+        { "id": "opt_b", "text": "資料安全涵蓋內部環境和雲端服務，以降低資料外洩風險，並協助達成法規遵循" },
+        { "id": "opt_c", "text": "歐盟 GDPR 規定，企業資料外洩可處罰該公司全球收益 50%" },
+        { "id": "opt_d", "text": "GDPR 正式制定新的隱私原則，例如問責制度與資料最小化要求" }
+      ],
+      "correctAnswers": ["opt_c"],
+      "explanation": "GDPR 最高罰款為全球年度營業額的 4% 或 2000 萬歐元（取其高者），非 50%。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_35",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "針對資料庫內外威脅所提出保護措施，下列敘述何者正確？",
+      "options": [
+        { "id": "opt_a", "text": "定期對存取資料庫的應用程式，進行源碼檢測以及 Web 黑箱檢測，降低駭客入侵風險" },
+        { "id": "opt_b", "text": "MS-SQL 資料庫其檔案格式一定是.bak 的副檔名" },
+        { "id": "opt_c", "text": "企業資訊系統 MS-SQL 資料庫，可以採用系統管理者帳號進行管理，不需要為個別資料庫獨立帳號密碼" },
+        { "id": "opt_d", "text": "身為多個 MS-SQL 資料庫管理者，可採用同一組密碼，便於管控使用" }
+      ],
+      "correctAnswers": ["opt_a"],
+      "explanation": "針對應用程式進行檢測可防止 SQL Injection 等攻擊威脅資料庫；其他選項皆違反安全原則。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_36",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "關於電腦檔案備份的敘述，下列何者錯誤？",
+      "options": [
+        { "id": "opt_a", "text": "檔案備份首重擬定備份策略，以確實發揮資料還原效果" },
+        { "id": "opt_b", "text": "將資料依重要性程度加以區分，在訂定資料備份策略時，才能掌握真正需要備份的標的" },
+        { "id": "opt_c", "text": "完整備份：備份空間有限的狀況下，十分適合使用完整備份" },
+        { "id": "opt_d", "text": "備份位置主要可分為「本機備份」、「異機備份」及「異地備份」三種不同方式" }
+      ],
+      "correctAnswers": ["opt_c"],
+      "explanation": "完整備份（Full Backup）會備份所有資料，佔用空間最大，不適合空間有限的狀況。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_37",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "請問下列何種備份策略，所需的儲存空間最少？",
+      "options": [
+        { "id": "opt_a", "text": "全備份配合增量備份" },
+        { "id": "opt_b", "text": "全備份配合差異備份" },
+        { "id": "opt_c", "text": "複製" },
+        { "id": "opt_d", "text": "差異備份配合增量備份" }
+      ],
+      "correctAnswers": ["opt_a"],
+      "explanation": "增量備份（Incremental）僅備份自上次（任何）備份後的變更，資料量最小，故總空間需求最少。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_38",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "在「行政院及所屬機關資訊安全管理規範」的日常作業之安全管理中，下列關於「資料備份」的作業原則何者錯誤？",
+      "options": [
+        { "id": "opt_a", "text": "資料應另外存放在離機關近距離的作業場所，以利方便存取" },
+        { "id": "opt_b", "text": "重要資料的備份，以維持三代為原則" },
+        { "id": "opt_c", "text": "備份資料應有適當的實體及環境保護，應以原主要作業場所為標準" },
+        { "id": "opt_d", "text": "資料的保存時間需求，應由資料擁有者研提" }
+      ],
+      "correctAnswers": ["opt_a"],
+      "explanation": "備份資料應存放在「異地」（遠距離），以防止單一災難同時損毀運作點與備份點。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_39",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "在調查使用動態主機設定協定（Dynamic Host Configuration Protocol, DHCP）分配 IP 地址的網路時，應在下列何處查看並確定哪種媒體存取控制位址（MAC）在特定時間具有特定的 IP 位址？",
+      "options": [
+        { "id": "opt_a", "text": "在個人計算機的位址解析協定（ARP）緩存上" },
+        { "id": "opt_b", "text": "在 Web 伺服器日誌文件中" },
+        { "id": "opt_c", "text": "在 DHCP 伺服器日誌文件中" },
+        { "id": "opt_d", "text": "沒有辦法確定具體的 IP 地址" }
+      ],
+      "correctAnswers": ["opt_c"],
+      "explanation": "DHCP 伺服器日誌會記錄 IP 分配的歷程（Lease history），包含 MAC 與 IP 的對應。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_40",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "若某公司以 UDP port 514 的方式，遠端蒐集 Syslog 進行日誌留存，請問下列敘述何者最正確？",
+      "options": [
+        { "id": "opt_a", "text": "遠端蒐集之日誌，無法作為有效證據" },
+        { "id": "opt_b", "text": "網路流量大時，有可能遺失封包（資料）" },
+        { "id": "opt_c", "text": "Syslog 無須考量加密即可保護資料傳輸之安全" },
+        { "id": "opt_d", "text": "遠端蒐集之日誌，存放時不應加密，以免破壞資料的正確性" }
+      ],
+      "correctAnswers": ["opt_b"],
+      "explanation": "UDP 是不可靠傳輸協定，在網路壅塞時會丟棄封包，導致日誌遺失。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_41",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "資料庫類型很多，常見 MS-SQL 資料庫，就有其日誌記錄，下列針對 MS-SQL 資料庫日誌敘述何者錯誤？",
+      "options": [
+        { "id": "opt_a", "text": "錯誤記錄檔是位於 Program Files\\Microsoft SQL Server\\MSSQL.n\\MSSQL\\LOG\\ERRORLOG 和 ERRORLOG" },
+        { "id": "opt_b", "text": "MS-SQL 資料庫仍需要定期 TRANSACT 清除日誌" },
+        { "id": "opt_c", "text": "MS-SQL 交易記錄檔過大，透過 SQL Query 來清除其語法 DBCC SHRINKFILE ('資料庫名稱_log', 0, TRUNCATEONLY)" },
+        { "id": "opt_d", "text": "MS-SQL 記錄檔無法變更位置，因此我們必須預留相關磁碟空間，以及定期清理" }
+      ],
+      "correctAnswers": ["opt_d"],
+      "explanation": "MS-SQL 的記錄檔（LDF）與資料檔（MDF）皆可透過設定變更存放位置。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_42",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "下列何項為應用系統日誌管理的主要目的？",
+      "options": [
+        { "id": "opt_a", "text": "加速系統的運作" },
+        { "id": "opt_b", "text": "用於故障排除、合規性記錄、支援威脅檢測、安全性問題確認等目的" },
+        { "id": "opt_c", "text": "監控系統用戶的操作" },
+        { "id": "opt_d", "text": "監督系統運用的效能" }
+      ],
+      "correctAnswers": ["opt_b"],
+      "explanation": "日誌管理核心目的在於資安合規、除錯與事件調查，而非效能加速。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_43",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "日誌的功能是幫助資訊安全維運人員進行系統除錯、稽核取證與行為歸責的重要依據。請問下列描述何者錯誤？",
+      "options": [
+        { "id": "opt_a", "text": "記錄的內容包括設備的作業系統、發生的日期與時間、資料流量、使用者身份資料等" },
+        { "id": "opt_b", "text": "不同的資安設備可能產生不同的日誌格式，增加即時追蹤的困難度" },
+        { "id": "opt_c", "text": "將日誌存放在公開的儲存空間，可以提高判讀的速度" },
+        { "id": "opt_d", "text": "透過系統設定，系統可以根據日誌得到的資訊向監控者傳送警報訊息" }
+      ],
+      "correctAnswers": ["opt_c"],
+      "explanation": "日誌包含敏感資訊，應存放在受保護的安全空間，公開存放會造成重大資安洩漏。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_44",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "有一項雲端服務是由許多個組織來一起共享，以支援特定的服務，像是目前由相關單位所推動的醫療雲、教育雲等，以共同的訴求和具有相同使命的目的為號召，提供給特定對象使用。以上描述屬於哪一種雲端服務的部署模式？",
+      "options": [
+        { "id": "opt_a", "text": "公有雲（Public）" },
+        { "id": "opt_b", "text": "私有雲（Private）" },
+        { "id": "opt_c", "text": "混合雲（Hybrid）" },
+        { "id": "opt_d", "text": "社群雲（Community）" }
+      ],
+      "correctAnswers": ["opt_d"],
+      "explanation": "由具有共同目標或屬性的特定組織群體共享的雲端，稱為社群雲。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_45",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "下列何者「不」是雲端服務（Cloud Service）的關鍵特徵？",
+      "options": [
+        { "id": "opt_a", "text": "隨需自助服務（On-demand Self-service）" },
+        { "id": "opt_b", "text": "多人共享資源池（Resource Pooling）" },
+        { "id": "opt_c", "text": "情境最佳化（Scenario Optimization）" },
+        { "id": "opt_d", "text": "快速重新部署靈活度（Rapid Elasticity）" }
+      ],
+      "correctAnswers": ["opt_c"],
+      "explanation": "NIST 定義的雲端五大特徵為：隨需自助、廣泛網路存取、資源共享、快速彈性、可量測服務；無「情境最佳化」。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_46",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "關於行動裝置的安全防護，下列敘述何者正確？",
+      "options": [
+        { "id": "opt_a", "text": "iOS 手機才會中毒，Android 手機不會中毒" },
+        { "id": "opt_b", "text": "iOS 手機不會中毒，Android 手機才會中毒" },
+        { "id": "opt_c", "text": "iOS 和 Android 手機都可能會中毒" },
+        { "id": "opt_d", "text": "iOS 和 Android 手機都不會中毒" }
+      ],
+      "correctAnswers": ["opt_c"],
+      "explanation": "任何作業系統皆可能有漏洞或遭惡意軟體攻擊，無絕對免疫的系統。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_47",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "疫情期間，居家上班成為重要防疫處置，某 IC 設計公司，擔心員工在家使用 Smartphone 或 Laptop 收發公司郵件，恐有附件機密資料外洩疑慮，下列哪一個選項，「最不具備」資料保密措施？",
+      "options": [
+        { "id": "opt_a", "text": "手機透過 VPN 登入公司網路，在虛擬化桌面環境（VDI）中收取電子郵件，無法讓附件儲存在個人手機中" },
+        { "id": "opt_b", "text": "讓公司員工直接遠端（RDP）登入到公司配發個人電腦，收發電子郵件" },
+        { "id": "opt_c", "text": "公司配發專用手機，手機充電孔已不具備資料傳輸能力，NFC 也被禁用，必須透過 VPN 才能連線公司郵件伺服器" },
+        { "id": "opt_d", "text": "公司配發專用 Laptop，且安裝資料外洩防護（DLP）進行管控外接儲存裝置、網路傳輸活動，必須透過 VPN 連上公司郵件伺服器" }
+      ],
+      "correctAnswers": ["opt_b"],
+      "explanation": "直接 RDP 回個人電腦若未搭配其他控管（如檔案傳輸限制、MFA），且使用家用網路，資料外洩與入侵風險相對最高。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_48",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "關於行動裝置安全的方案，下列何者較「不」適當？",
+      "options": [
+        { "id": "opt_a", "text": "利用端點安全方案，監控公司每部存取網路行動裝置檔案與程式，透過持續掃描惡意行為，來及早識別威脅" },
+        { "id": "opt_b", "text": "透過 VPN 讓裝置到公司網路加密連線，確保安全傳輸資料，防止未經授權人員竊聽，讓員工安全地進行遠距工作" },
+        { "id": "opt_c", "text": "員工在公司電腦安裝隱匿通道（Tunnel）保護家裡到公司的連線，確保只有自己可以使用，來安全傳輸資料" },
+        { "id": "opt_d", "text": "提升電子郵件安全，透過檔案內容淨化與重組（CDR）進行郵件檔案清洗，阻絕勒索病毒或是惡意檔案，利用行動裝置擴散到公司網路" }
+      ],
+      "correctAnswers": ["opt_c"],
+      "explanation": "私自安裝隱匿通道屬「影子 IT（Shadow IT）」，規避公司監控與管理，是嚴重的內部資安風險。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_49",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "物聯網架構具有三個層次，包含感知層、網路層、應用層，下列哪一個選項的傳輸服務皆屬於網路層？",
+      "options": [
+        { "id": "opt_a", "text": "電信網路（如 3G、4G LTE、5G）、RFID、GPS" },
+        { "id": "opt_b", "text": "電信網路（如 3G、4G LTE、5G）、Wi-Fi、電子羅盤（Electronic Compass）" },
+        { "id": "opt_c", "text": "Wi-Fi、RFID、GPS、Bluetooth" },
+        { "id": "opt_d", "text": "電信網路（如 3G、4G LTE、5G）、Wi-Fi、RFID、Bluetooth" }
+      ],
+      "correctAnswers": ["opt_a", "opt_b", "opt_c", "opt_d"],
+      "explanation": "本題選項組合中，RFID、GPS、電子羅盤等通常歸類為「感知層」技術，無單一選項全為「網路層」，故皆給分（本題送分）。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+      "id": "q_primary_112-1_50",
+      "questionBank": "primary",
+      "type": "single",
+      "question": "請問在物聯網裡，若因為外來超強訊號的干擾而產生「蓋臺」的現象，造成裝置之間互聯時受影響，此為下列何種攻擊手法？",
+      "options": [
+        { "id": "opt_a", "text": "中間人攻擊（Man-In-The-Middle Attack）" },
+        { "id": "opt_b", "text": "資料隱碼攻擊（SQL Injection Attack）" },
+        { "id": "opt_c", "text": "阻斷服務攻擊（Denial-of-Service Attack）" },
+        { "id": "opt_d", "text": "隱藏欄位攻擊（Hidden-Field-Tampering Attack）" }
+      ],
+      "correctAnswers": ["opt_c"],
+      "explanation": "訊號干擾（Jamming）導致通訊中斷，使服務無法使用，屬於實體層或連結層的阻斷服務攻擊。",
+      "year": "112-1",
+      "category": "資訊安全技術概論"
+    },
+    {
+        "id": "q_primary_112-1_1",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "下列何者為資訊安全的「機密性」之定義？",
+        "options": [
+        { "id": "opt_a", "text": "確保資訊不會被揭露或被未經授權的個人、實體和流程所取得" },
+        { "id": "opt_b", "text": "確保資訊的正確和完全性" },
+        { "id": "opt_c", "text": "確保資訊在需要時可被存取和使用" },
+        { "id": "opt_d", "text": "確保資訊在傳輸過程中已確認兩方的身分和合法性" }
+        ],
+        "correctAnswers": ["opt_a"],
+        "explanation": "機密性（Confidentiality）確保資訊僅被授權者存取，不對未授權者揭露。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_2",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "關於文件管制措施，下列敘述何者正確？",
+        "options": [
+        { "id": "opt_a", "text": "所有制定的 SOP 皆須以書面發行" },
+        { "id": "opt_b", "text": "制定的各項管理制度、程序，不宜以電子檔案公佈" },
+        { "id": "opt_c", "text": "所制訂相關作業程序必須以四階文件來發行" },
+        { "id": "opt_d", "text": "文件管制宜制定標準作業核可及發行流程，以利組織成員遵循" }
+        ],
+        "correctAnswers": ["opt_d"],
+        "explanation": "建立標準化的文件核可與發行流程，是文件管制（Document Control）的核心要求。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_3",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "資訊安全政策是資訊安全管理系統中的最高指導原則，有不可缺少的重要性，下列敘述何者正確？",
+        "options": [
+        { "id": "opt_a", "text": "滿足相關的要求事項的承諾後，無需定期審查目前要求" },
+        { "id": "opt_b", "text": "資訊安全政策不一定須由最高管理階層審核" },
+        { "id": "opt_c", "text": "建立的資訊安全政策必須與組織的目的及資安目標相容一致" },
+        { "id": "opt_d", "text": "屬於內部或機密文件，不可對外公告" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "資訊安全政策需支持組織的整體營運目標，確保資安策略與業務方向一致。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_4",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "駭客侵入銀行資料庫竄改存款金額，主要在破壞資訊系統的何種特性？",
+        "options": [
+        { "id": "opt_a", "text": "機密性（Confidentiality）" },
+        { "id": "opt_b", "text": "完整性（Integrity）" },
+        { "id": "opt_c", "text": "可用性（Availability）" },
+        { "id": "opt_d", "text": "可靠性（Accountability）" }
+        ],
+        "correctAnswers": ["opt_b"],
+        "explanation": "資料內容遭未經授權的修改（竄改），即破壞了資訊的完整性。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_5",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "請問在資訊安全管理系統中的風險評鑑（Risk Assessment）作業，是在 Plan（規劃）、Do（執行）、Check（檢查）、Act（改善）循環中的那一部分？",
+        "options": [
+        { "id": "opt_a", "text": "Plan（規劃）" },
+        { "id": "opt_b", "text": "Do（執行）" },
+        { "id": "opt_c", "text": "Check（檢查）" },
+        { "id": "opt_d", "text": "Act（改善）" }
+        ],
+        "correctAnswers": ["opt_b"],
+        "explanation": "依據本試題標準，風險評鑑的實際執行操作屬於 PDCA 的「執行（Do）」階段。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_6",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "關於個人資料蒐集之特定目的消失或期限屆滿時之作為，下列何者錯誤？",
+        "options": [
+        { "id": "opt_a", "text": "應主動停止蒐集該個人資料" },
+        { "id": "opt_b", "text": "應主動停止處理該個人資料" },
+        { "id": "opt_c", "text": "應主動停止利用該個人資料" },
+        { "id": "opt_d", "text": "應主動刪除該個人資料" }
+        ],
+        "correctAnswers": ["opt_a"],
+        "explanation": "特定目的消失後，重點在於處置已蒐集的資料（刪除、停止處理/利用），「停止蒐集」非該條款強調之處置行為（通常目的消失自然不會再蒐集）。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_7",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "關於資通安全管理法所定義「公務機關」的敘述，下列何者正確？",
+        "options": [
+        { "id": "opt_a", "text": "依法行使公權力之軍事機關" },
+        { "id": "opt_b", "text": "依法行使公權力之中央機關、地方機構" },
+        { "id": "opt_c", "text": "依法行使公權力之情報機關" },
+        { "id": "opt_d", "text": "政府捐助並依法行使公權力之財團法人" }
+        ],
+        "correctAnswers": ["opt_b"],
+        "explanation": "資通安全管理法定義之公務機關為：依法行使公權力之中央、地方機關（構）及公法人。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_8",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "立案於我國的 A 公司主要營業活動市場位於中華人民共和國及新加坡並將以 ISO 27001 架構公司之資訊安全管理系統，下列何項要求在其架構資訊安全管理系統時，並非優先考量項目？",
+        "options": [
+        { "id": "opt_a", "text": "ISO 27001:2022" },
+        { "id": "opt_b", "text": "個人資料保護法（中華民國）" },
+        { "id": "opt_c", "text": "歐盟一般資料保護法規（General Data Protection Regulation, GDPR）" },
+        { "id": "opt_d", "text": "網路安全法（中華人民共和國）" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "公司市場主要在中國與新加坡，未涉及歐盟，故 GDPR 非優先考量。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_9",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "依據民國 110 年 12 月發布的「公開發行公司建立內部控制制度處理準則」，附圖中哪些事項的設置，為各類級公開發行公司皆應於所定期限內如實完成的共通事項？\n1. 資訊安全長\n2. 資安專責單位\n3. 資安專責人員（至少 1 名）\n4. 資安專責人員（至少 2 名）\n5. 資安專責單位主管",
+        "options": [
+        { "id": "opt_a", "text": "1、2、4" },
+        { "id": "opt_b", "text": "2、3" },
+        { "id": "opt_c", "text": "3" },
+        { "id": "opt_d", "text": "4" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "依規定，各級公開發行公司至少應配置 1 名資安專責人員（等級越高要求越多，但至少 1 名是共通底線）。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_10",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "下列何者「不」是個人資料保護法中，當事人對於個人資料的權利？",
+        "options": [
+        { "id": "opt_a", "text": "查詢或請求閱覽" },
+        { "id": "opt_b", "text": "請求補充或更正" },
+        { "id": "opt_c", "text": "請求刪除" },
+        { "id": "opt_d", "text": "請求永久保留" }
+        ],
+        "correctAnswers": ["opt_d"],
+        "explanation": "個資法未賦予當事人請求「永久保留」資料的權利，反而是要求目的消失後應刪除。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_11",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "中華民國「營業祕密法」所稱之營業祕密，係指方法、技術、製程、配方、程式、設計或其他可用於生產、銷售或經營之資訊，其所必須符合之要件，下列敘述何項錯誤？",
+        "options": [
+        { "id": "opt_a", "text": "非一般涉及該類資訊之人所知者" },
+        { "id": "opt_b", "text": "因其秘密性而具有實際或潛在之經濟價值者" },
+        { "id": "opt_c", "text": "所有人已採取合理之保密措施者" },
+        { "id": "opt_d", "text": "資訊洩漏將造成公司損失者" }
+        ],
+        "correctAnswers": ["opt_d"],
+        "explanation": "營業秘密三要件為：秘密性、經濟性（價值）、採取合理保密措施；「造成損失」非定義要件。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_12",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "下列何者屬於中華民國「個人資料保護法」第 6 條規範中的「特種個人資料」？",
+        "options": [
+        { "id": "opt_a", "text": "身分證統一編號" },
+        { "id": "opt_b", "text": "基因" },
+        { "id": "opt_c", "text": "生物特徵" },
+        { "id": "opt_d", "text": "血統" }
+        ],
+        "correctAnswers": ["opt_b"],
+        "explanation": "個資法第 6 條明定之特種資料包含：病歷、醫療、基因、性生活、健康檢查及犯罪前科。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_13",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "如附圖所示，依照創用 CC（Creative Commons）授權的規定，下列何種使用方式違反附圖中授權標示的規定？（圖示包含 BY, NC, ND）",
+        "options": [
+        { "id": "opt_a", "text": "使用者必須按照著作人或授權人所指定的方式，表彰其姓名" },
+        { "id": "opt_b", "text": "使用者將該素材用於公益的用途上" },
+        { "id": "opt_c", "text": "使用者將該素材用於商業廣告上" },
+        { "id": "opt_d", "text": "使用者重製、散布、傳輸著作時，亦不得修改該著作" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "NC（Non-Commercial）標示代表禁止商業用途，故用於商業廣告違反規定。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_14",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "在公司資產管理中，為達成識別組織之資產並定義適切之保護責任，應優先建議採取下列何種控制措施？",
+        "options": [
+        { "id": "opt_a", "text": "金鑰管理" },
+        { "id": "opt_b", "text": "懲處過程" },
+        { "id": "opt_c", "text": "變更管理" },
+        { "id": "opt_d", "text": "資產盤點" }
+        ],
+        "correctAnswers": ["opt_d"],
+        "explanation": "資產盤點（Inventory）是識別資產、建立清冊並指派責任的基礎步驟。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_15",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "關於可移除式媒體（如：USB 隨身碟），下列敘述何者較「不」適當？",
+        "options": [
+        { "id": "opt_a", "text": "所有可移除式媒體依製造商的規格要求，儲存於安全的環境" },
+        { "id": "opt_b", "text": "針對儲存於可移除式媒體上的敏感資料進行加密" },
+        { "id": "opt_c", "text": "不再需要使用可移除式媒體時，將所儲存的資料徹底移除" },
+        { "id": "opt_d", "text": "不將可移除式媒體登載於資產清冊上，以減少資料遺失的機會" }
+        ],
+        "correctAnswers": ["opt_d"],
+        "explanation": "可移除式媒體容易遺失，必須登載於資產清冊以利納管與追蹤，不登載反而增加風險。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_16",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "關於紙本類之資訊資產標示原則，下列敘述何者最「不」適當？",
+        "options": [
+        { "id": "opt_a", "text": "內部使用級之紙本類資訊資產標示原則可為無需標示" },
+        { "id": "opt_b", "text": "內部使用級之紙本類資訊資產標示原則可為使用不透明卷宗" },
+        { "id": "opt_c", "text": "密級之紙本類資訊資產標示原則可為文件首頁標明機密等級或使用紅色卷宗" },
+        { "id": "opt_d", "text": "密級之紙本類資訊資產標示原則可為文件封面標明機密等級或使用紅色卷宗" }
+        ],
+        "correctAnswers": ["opt_a"],
+        "explanation": "即便僅供內部使用，仍應有適當標示以與公開資訊區隔，避免誤用或外洩。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_17",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "關於資產盤點之程序，下列敘述何者最適當？",
+        "options": [
+        { "id": "opt_a", "text": "可由組織個別之業務活動流程開始進行盤點" },
+        { "id": "opt_b", "text": "應由資訊類資產開始進行盤點" },
+        { "id": "opt_c", "text": "應由軟體類資產開始進行盤點" },
+        { "id": "opt_d", "text": "應由硬體類資產開始進行盤點" }
+        ],
+        "correctAnswers": ["opt_a"],
+        "explanation": "從業務流程（Business Process）出發進行盤點，較能完整識別支援該業務的所有相關資產。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_18",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "關於資訊資產盤點作業的描述，下列何者「不」最適當？",
+        "options": [
+        { "id": "opt_a", "text": "資訊資產盤點即是資訊設備盤點" },
+        { "id": "opt_b", "text": "資訊資產盤點在確認資產的使用狀況" },
+        { "id": "opt_c", "text": "資訊資產盤點應考量全面性" },
+        { "id": "opt_d", "text": "資訊資產盤點應確認資產的可用性" }
+        ],
+        "correctAnswers": ["opt_a"],
+        "explanation": "資訊資產包含資訊、軟體、實體（設備）、人員、服務等，不等於僅有「設備」盤點。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_19",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "關於資產分類分級的敘述，下列何者錯誤？",
+        "options": [
+        { "id": "opt_a", "text": "建立資訊資產清冊，並定期清查資訊資產" },
+        { "id": "opt_b", "text": "資訊資產不須指派人員負責管理事宜" },
+        { "id": "opt_c", "text": "人員異動或離職前，須確實移交所保管之相關資訊資產" },
+        { "id": "opt_d", "text": "資訊資產報廢時，應依資產類別循相關安全程序辦理銷毀" }
+        ],
+        "correctAnswers": ["opt_b"],
+        "explanation": "所有資訊資產皆須指派擁有者（Owner）負責管理，以確保權責分明。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_20",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "關於實施「資訊分類」作業主要目的之敘述，下列何者最正確？",
+        "options": [
+        { "id": "opt_a", "text": "防止儲存在媒體的資訊被經授權的移除" },
+        { "id": "opt_b", "text": "防止儲存在媒體的資訊被經授權的揭露" },
+        { "id": "opt_c", "text": "確保組織重要的資訊受到適切等級的保護" },
+        { "id": "opt_d", "text": "確保公開的資訊受到適切等級的保護" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "資訊分類旨在區分重要性，以便將有限的保護資源集中在重要的資訊上。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_21",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "當進行風險評估，發現機密資料外洩風險是組織內部最大之風險時，組織進行了相對應之風險處理方法，其中包含了購買資料外洩保險，此為下列何種風險處理方式？",
+        "options": [
+        { "id": "opt_a", "text": "風險保留（Risk Retention）" },
+        { "id": "opt_b", "text": "風險降低（Risk Reduction）" },
+        { "id": "opt_c", "text": "風險轉移（Risk Transfer）" },
+        { "id": "opt_d", "text": "風險避免（Risk Avoidance）" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "購買保險是將風險帶來的財務損失轉嫁給保險公司，屬於風險轉移。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_22",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "風險評鑑（Risk Assessment）後的風險處理方式有以下哪幾種方法？",
+        "options": [
+        { "id": "opt_a", "text": "接受、降低、轉移、避免" },
+        { "id": "opt_b", "text": "規劃、評估、排序、避免" },
+        { "id": "opt_c", "text": "面對、處理、解決、接受" },
+        { "id": "opt_d", "text": "評估、分析、處理、降低" }
+        ],
+        "correctAnswers": ["opt_a"],
+        "explanation": "標準的風險處理選項包括：規避（避免）、降低（緩解）、轉移（分擔）、接受（保留）。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_23",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "關於風險評鑑（Risk Assessment）的敘述，下列何者較正確？",
+        "options": [
+        { "id": "opt_a", "text": "應建立一套適用於全公司（組織）之準則" },
+        { "id": "opt_b", "text": "不同類別被評鑑項目，無須依不同類別區分風險" },
+        { "id": "opt_c", "text": "可接受風險一定要在風險評鑑前先決定" },
+        { "id": "opt_d", "text": "風險改善計畫，執行單位應再選擇是否需執行" }
+        ],
+        "correctAnswers": ["opt_a"],
+        "explanation": "建立統一的風險評鑑準則可確保不同部門與資產的風險評估結果具有一致性與可比較性。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_24",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "關於風險轉移（Risk Transfer）的敘述，下列何者「不」正確？",
+        "options": [
+        { "id": "opt_a", "text": "藉由其他的團體，來承擔或分擔部份的風險" },
+        { "id": "opt_b", "text": "當風險全部或部分被轉移時，可能會遭遇新的風險" },
+        { "id": "opt_c", "text": "將風險轉移給其他團體時，可以降低風險對自身的影響" },
+        { "id": "opt_d", "text": "可以有效減低風險發生的機率" }
+        ],
+        "correctAnswers": ["opt_d"],
+        "explanation": "風險轉移（如保險）僅能減輕風險發生後的「衝擊（財務損失）」，無法降低風險發生的「機率」。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_25",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "下列何者「不」是風險處理的選項？",
+        "options": [
+        { "id": "opt_a", "text": "風險降低（Risk Reduction）" },
+        { "id": "opt_b", "text": "風險轉移（Risk Transfer）" },
+        { "id": "opt_c", "text": "風險忽略（Risk Neglect）" },
+        { "id": "opt_d", "text": "風險保留（Risk Retention）" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "風險處理不包含「忽略」，必須是主動的決策（如接受/保留），而非被動忽視。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_26",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "關於存取控制（Access control）的描述，下列何者錯誤？",
+        "options": [
+        { "id": "opt_a", "text": "存取者向受保護資源進行存取操作的控制管理" },
+        { "id": "opt_b", "text": "未被授權者，可透過系統管理員，取得未被授權的資源" },
+        { "id": "opt_c", "text": "存取控制包含了認證、授權以及稽核" },
+        { "id": "opt_d", "text": "現實生活中門禁系統也是一種存取控制的表現" }
+        ],
+        "correctAnswers": ["opt_b"],
+        "explanation": "未被授權者不應取得資源，系統管理員亦不應違背授權原則提供存取。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_27",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "在自由決定存取控制（Discretionary Access Control, DAC）環境中，以下哪個角色被授權向其他人授予資訊存取權限？",
+        "options": [
+        { "id": "opt_a", "text": "資安經理" },
+        { "id": "opt_b", "text": "部門經理" },
+        { "id": "opt_c", "text": "資料擁有者" },
+        { "id": "opt_d", "text": "執行長（CEO）" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "在 DAC 模式中，資料擁有者（Data Owner）有權決定誰可以存取該資料。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_28",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "最常見的身分驗證方式是「帳號密碼」的驗證，請問下列措施中何者無法提升安全性？",
+        "options": [
+        { "id": "opt_a", "text": "要求定期修改密碼" },
+        { "id": "opt_b", "text": "採用動態密碼" },
+        { "id": "opt_c", "text": "規範高強度密碼長度與複雜度" },
+        { "id": "opt_d", "text": "密碼統一並共用" }
+        ],
+        "correctAnswers": ["opt_d"],
+        "explanation": "密碼統一並共用會導致責任無法釐清，且一旦外洩將影響所有相關人員或系統，嚴重降低安全性。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_29",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "在存取控制（Access Control）中，提到存取控制系統能夠達到的 AAA 機制，請問這 3 個 A「不」包含下列何者？",
+        "options": [
+        { "id": "opt_a", "text": "Availability" },
+        { "id": "opt_b", "text": "Accounting" },
+        { "id": "opt_c", "text": "Authentication" },
+        { "id": "opt_d", "text": "Authorization" }
+        ],
+        "correctAnswers": ["opt_a"],
+        "explanation": "AAA 指 Authentication（認證）、Authorization（授權）、Accounting（紀錄/計費），Availability 是 CIA 要素。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_30",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "下列關於存取控制的作法，何者較「不」正確？",
+        "options": [
+        { "id": "opt_a", "text": "應訂定資訊存取控制政策，並文件化公告" },
+        { "id": "opt_b", "text": "存取控制規範，需符合資料保護法令與契約規定" },
+        { "id": "opt_c", "text": "為了能快速進行除錯，存取記錄應開放給所有工程人員存取" },
+        { "id": "opt_d", "text": "資訊存取控制規範，應依照人員的工作與職務分別訂定" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "存取記錄可能包含敏感資訊，應依最小權限原則限制存取，不應對所有工程人員開放。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_31",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "為避免職務及責任範圍衝突，應採取下列何者控制措施？",
+        "options": [
+        { "id": "opt_a", "text": "強化密碼管理" },
+        { "id": "opt_b", "text": "日誌管理" },
+        { "id": "opt_c", "text": "資訊之分級" },
+        { "id": "opt_d", "text": "職責區隔" }
+        ],
+        "correctAnswers": ["opt_d"],
+        "explanation": "職責區隔（SoD）旨在防止單人擁有過大權限，避免舞弊或錯誤發生。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_32",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "下列何者為使用持有物（Something You Have）進行身分驗證（Authentication）？",
+        "options": [
+        { "id": "opt_a", "text": "密碼" },
+        { "id": "opt_b", "text": "指紋" },
+        { "id": "opt_c", "text": "個人識別證" },
+        { "id": "opt_d", "text": "簽名" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "個人識別證（ID Card）是使用者持有的實體物品；密碼是所知，指紋是所是。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_33",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "關於網路及系統存取管理，下列敘述何者「不」正確？",
+        "options": [
+        { "id": "opt_a", "text": "系統主機應考量保護機制，如設定在一段時間未操作時即會自動登出的機制" },
+        { "id": "opt_b", "text": "若因人為因素誤植帳號及密碼，無需保存紀錄檔" },
+        { "id": "opt_c", "text": "網路存取應設定設備來源位置與目的位置" },
+        { "id": "opt_d", "text": "管理者應依照使用者身份，控制系統應用程式的存取權限" }
+        ],
+        "correctAnswers": ["opt_b"],
+        "explanation": "登入失敗（包含誤植）紀錄是偵測暴力破解攻擊的重要跡證，必須保存。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_34",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "為了防止非授權的存取，企業應根據存取控管政策對使用者（包括內、外部使用者）存取權限進行管理，下列何者最相關？",
+        "options": [
+        { "id": "opt_a", "text": "定期變更密碼" },
+        { "id": "opt_b", "text": "定期審查使用者存取權限" },
+        { "id": "opt_c", "text": "保留存取紀錄" },
+        { "id": "opt_d", "text": "資料備份" }
+        ],
+        "correctAnswers": ["opt_b"],
+        "explanation": "定期審查權限（User Access Review）可確保離職或職務異動人員的權限被及時移除或調整。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_35",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "憑證記載了個人資料、公開金鑰、憑證單位名稱、數位簽章、以及憑證有效期限及用途等資訊，下列何者「不」是憑證的特性？",
+        "options": [
+        { "id": "opt_a", "text": "機密性（Confidentiality）" },
+        { "id": "opt_b", "text": "不可否認性（Non-Repudiation）" },
+        { "id": "opt_c", "text": "身分識別（Authentication）" },
+        { "id": "opt_d", "text": "可用性（Availability）" }
+        ],
+        "correctAnswers": ["opt_d"],
+        "explanation": "數位憑證主要提供完整性、身分驗證與不可否認性，不直接保證系統或服務的「可用性」。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_36",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "關於目前尚未被公開有碰撞攻擊（Collision attack）威脅之雜湊函式（Hash functions）類型，下列敘述何者正確？",
+        "options": [
+        { "id": "opt_a", "text": "SHA-1" },
+        { "id": "opt_b", "text": "SHA-2" },
+        { "id": "opt_c", "text": "MD5" },
+        { "id": "opt_d", "text": "CRC-32" }
+        ],
+        "correctAnswers": ["opt_b"],
+        "explanation": "MD5 與 SHA-1 皆已被證實存在碰撞攻擊弱點，SHA-2 目前仍被視為安全。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_37",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "關於非對稱式密碼學（Asymmetric cryptography）的敘述，下列何項錯誤？",
+        "options": [
+        { "id": "opt_a", "text": "私鑰（Private-key）僅能用於解密訊息" },
+        { "id": "opt_b", "text": "私鑰可用於產生數位簽章（Digital signatures）" },
+        { "id": "opt_c", "text": "公鑰（Public-key）可用於加密訊息" },
+        { "id": "opt_d", "text": "也稱作公鑰密碼學（Public-key cryptography）" }
+        ],
+        "correctAnswers": ["opt_a"],
+        "explanation": "私鑰除了用於解密（對應公鑰加密），也用於數位簽署（對應公鑰驗證）。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_38",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "關於雙重要素驗證（Two-factor authentication, 2FA）的敘述，下列何者錯誤？",
+        "options": [
+        { "id": "opt_a", "text": "指的是登入帳戶時需要提供多個驗證因素，通常是三個或更多。" },
+        { "id": "opt_b", "text": "郵件釣魚攻擊，攻擊者可以進行釣魚攻擊，試圖騙取您的 2FA 代碼，以進入您的帳戶" },
+        { "id": "opt_c", "text": "使用安全性低的第三方服務來實現 2FA 可能會導致安全漏洞，讓攻擊者入侵您的帳戶" },
+        { "id": "opt_d", "text": "當使用第三方應用程式進行 2FA 驗證時，攻擊者可能通過偽造應用程式來竊取您的 2FA 代碼，以進入您的帳戶" }
+        ],
+        "correctAnswers": ["opt_a"],
+        "explanation": "雙重要素驗證（2FA）顧名思義是使用「兩個」驗證因素，而非三個或更多（那是 MFA）。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_39",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "密碼學身分認證的三個因素：所知之事（something you know）、所持之物（something you have）、所具之形（something you are）。下列何項為所持之物認證因素？",
+        "options": [
+        { "id": "opt_a", "text": "指紋" },
+        { "id": "opt_b", "text": "晶片卡" },
+        { "id": "opt_c", "text": "密碼" },
+        { "id": "opt_d", "text": "臉型" }
+        ],
+        "correctAnswers": ["opt_b"],
+        "explanation": "晶片卡（Smart Card）是實體物品，屬於所持之物。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_40",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "假設有兩金鑰，金鑰 A 用來將明文 x 變成密文 y，而金鑰 B 用來將密文 y 變成明文 x，當金鑰 A 與金鑰 B 是同一把金鑰時，請問他最有可能是下列何種加密演算法？",
+        "options": [
+        { "id": "opt_a", "text": "AES" },
+        { "id": "opt_b", "text": "RSA" },
+        { "id": "opt_c", "text": "ECC" },
+        { "id": "opt_d", "text": "SHA" }
+        ],
+        "correctAnswers": ["opt_a"],
+        "explanation": "加解密使用同一把金鑰是「對稱式加密」的特徵，AES 是對稱式演算法（RSA/ECC 是非對稱，SHA 是雜湊）。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_41",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "關於資訊安全事件的通報，下列敘述何者正確？",
+        "options": [
+        { "id": "opt_a", "text": "如果只是觀察到可疑的資訊安全弱點，不須通報，以免耗用太多資源" },
+        { "id": "opt_b", "text": "如果是人為的錯誤，不須即時通報，可再觀察後續結果" },
+        { "id": "opt_c", "text": "如果看到應用系統存取違反的狀況，系統會主動發出通知，可以不用即時通報" },
+        { "id": "opt_d", "text": "除了組織員工，所有與資訊安全有關會接觸到的約聘人員，也需要求如果觀察到可疑事件亦須及時通報" }
+        ],
+        "correctAnswers": ["opt_d"],
+        "explanation": "資安事件通報應涵蓋所有相關人員（含外部人員），及時通報可疑事件是防止災害擴大的關鍵。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_42",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "下列何者較「不」是持續營運資料備份的考量項目？",
+        "options": [
+        { "id": "opt_a", "text": "場地大小" },
+        { "id": "opt_b", "text": "存放位置" },
+        { "id": "opt_c", "text": "成本高低" },
+        { "id": "opt_d", "text": "安全性" }
+        ],
+        "correctAnswers": ["opt_a"],
+        "explanation": "備份考量重點為安全性、異地存放（位置）與成本，場地大小通常非首要關鍵（資料量影響儲存容量而非實體場地大小）。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_43",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "關於營運衝擊分析及災害復原計畫應考慮項目，下列敘述何者最「不」正確？",
+        "options": [
+        { "id": "opt_a", "text": "復原至最小營運水準所需之員工、技術、設施及服務所需之時間" },
+        { "id": "opt_b", "text": "損害程度之等級不包括收入損失、附加成本、商譽損失、喪失競爭優勢等" },
+        { "id": "opt_c", "text": "最小營運水準所需之人員、系統軟體及硬體及交通等，皆為須考量之資源" },
+        { "id": "opt_d", "text": "復原時間是完全復原至原服務水準所需之員工、技術、設施及服務所需之時間" }
+        ],
+        "correctAnswers": ["opt_b"],
+        "explanation": "BIA 必須考量各種損害，包括財務（收入損失）與非財務（商譽）損失。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_44",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "資訊安全事故發生後，證據蒐集的相關敘述，下列何者較正確？",
+        "options": [
+        { "id": "opt_a", "text": "組織可考量與數位證據控管有關的工具導入，以確保對數位證據的有效保存" },
+        { "id": "opt_b", "text": "於資訊安全事故發生後，若需要針對證據予以鑑識，一旦超過組織之權限，即無法提供使用" },
+        { "id": "opt_c", "text": "若資訊安全事故涉及法律議題相關，證據保存存在困難程度，所以無法實施控管" },
+        { "id": "opt_d", "text": "資訊安全事故的發生會揭露內部的問題，所以不適合文件化太過詳細" }
+        ],
+        "correctAnswers": ["opt_a"],
+        "explanation": "導入鑑識與證據控管工具可確保證據的完整性（Integrity）與法律效力（Admissibility）。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_45",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "如附圖所示，資訊安全事件處理的正確步驟順序為下列何項？\nA. 分析問題，設法找出問題發生的根本問題\nB. 以隔離的方式降低問題造成的損失\nC. 偵測問題後，做簡單的分類與報告\nD. 將狀況復原並記錄處理的步驟，做為未來處理類似事件的參考",
+        "options": [
+        { "id": "opt_a", "text": "ABCD" },
+        { "id": "opt_b", "text": "ACBD" },
+        { "id": "opt_c", "text": "CBAD" },
+        { "id": "opt_d", "text": "DBCA" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "標準流程：偵測（C）-> 隔離/止血（B）-> 根因分析（A）-> 復原與檢討（D）。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_46",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "營運持續性計畫（Business Continuity Plan, BCP）實務上通常多久須測試一次？",
+        "options": [
+        { "id": "opt_a", "text": "在所有稽核活動前" },
+        { "id": "opt_b", "text": "執行一次確認有效性即可" },
+        { "id": "opt_c", "text": "至少每年一次" },
+        { "id": "opt_d", "text": "只有當異地備份改變時" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "BCP 應定期（通常至少每年）演練測試，以因應環境變更並維持計畫有效性。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_47",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "營運衝擊分析最主要的目的為何？",
+        "options": [
+        { "id": "opt_a", "text": "進行風險分析" },
+        { "id": "opt_b", "text": "確認重要流程的最大可承受中斷時間" },
+        { "id": "opt_c", "text": "記錄結果，並提出改正措施" },
+        { "id": "opt_d", "text": "確認殘餘風險" }
+        ],
+        "correctAnswers": ["opt_b"],
+        "explanation": "BIA 的核心產出為 MTPD（最大可承受中斷時間）與 RTO，用於定義復原優先順序。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_48",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "關於資料備份的敘述，下列何者正確？",
+        "options": [
+        { "id": "opt_a", "text": "因為資源設備的限制，無須進行回復測試" },
+        { "id": "opt_b", "text": "備份儲存媒體上的資料可永久保存" },
+        { "id": "opt_c", "text": "備份媒體儲存的地點，需考量主要地點發生災難時，不會被波及的場域" },
+        { "id": "opt_d", "text": "因為備份工具每天皆會啟動進行備份，所以若當日無法備份完成，隔日成功即可" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "異地存放（Off-site storage）是避免單一災難同時摧毀主系統與備份資料的關鍵原則。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_49",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "若是 A 公司不能接受重要系統中斷超過 1 小時，下列何項異地備援方式最適合該公司？",
+        "options": [
+        { "id": "opt_a", "text": "冷備援" },
+        { "id": "opt_b", "text": "熱備援" },
+        { "id": "opt_c", "text": "溫備援" },
+        { "id": "opt_d", "text": "機房內自主備援" }
+        ],
+        "correctAnswers": ["opt_b"],
+        "explanation": "熱備援（Hot Site）能提供即時或極短時間（如 < 1 小時）的服務切換與復原。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    },
+    {
+        "id": "q_primary_112-1_50",
+        "questionBank": "primary",
+        "type": "single",
+        "question": "X 公司對於電子郵件系統可用性目標設定為不得中斷超過一天，在制定該系統災害復原計畫時，關於此公司復原時間目標（Recovery Time Objective, RTO）的設定，下列何項最適當？",
+        "options": [
+        { "id": "opt_a", "text": "RTO 設定為二天" },
+        { "id": "opt_b", "text": "RTO 設定為一週" },
+        { "id": "opt_c", "text": "RTO 設定為 20 小時" },
+        { "id": "opt_d", "text": "在制定災害復原計畫時，不需考慮 RTO" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "RTO（20 小時）必須小於最大可容忍中斷時間（MTPD，即一天/24 小時），才能滿足可用性目標。",
+        "year": "112-1",
+        "category": "資訊安全管理概論"
+    }
+    ]
