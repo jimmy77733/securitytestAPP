@@ -63,6 +63,11 @@
   border-color: var(--color-primary);
 }
 
+[data-theme="dark"] .filter-select {
+  color: #ffffff;
+  background: #222121;
+}
+
 .mode-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
