@@ -327,7 +327,7 @@
       "options": [
         { "id": "opt_a", "text": "http://127.0.0.1/delete.php?filename=bob.txt;ls" },
         { "id": "opt_b", "text": "alert(0);" },
-        { "id": "opt_c", "text": "or $1=1$" },
+        { "id": "opt_c", "text": "or 1=1" },
         { "id": "opt_d", "text": "<script>alert(0);</script>" }
       ],
       "correctAnswers": ["opt_a"],
@@ -355,7 +355,7 @@
       "id": "q_primary_109-1_23",
       "questionBank": "primary",
       "type": "single",
-      "question": "系統管理人員於網站日誌中看見大量訊息含有類似字串 %3E%3Cscript%3Ealert% 28document.cookie%29%3C%2Fscript%3E，可能為下列何種攻擊？",
+      "question": "系統管理人員於網站日誌中看見大量訊息含有類似字串「%3E%3Cscript%3Ealert%28document.cookie%29%3C%2Fscript%3E」，可能為下列何種攻擊？",
       "options": [
         { "id": "opt_a", "text": "SQL 資料隱碼攻擊（SQL Injection Attack）" },
         { "id": "opt_b", "text": "阻斷服務攻擊（Denial of Service Attack）" },
@@ -787,7 +787,7 @@
       "id": "q_primary_109-1_50",
       "questionBank": "primary",
       "type": "single",
-      "question": "在附圖中，只有節點 N5 具備有向外連網能力，其他節點皆必須透過節點 N5 才能與外界進行網際網路連結，請問當節點 N5 為絕對安全的情況下，哪個節點消失時對整體網路的影響最大？",
+      "question": "在附圖中，只有節點 N5 具備有向外連網能力，其他節點皆必須透過節點 N5 才能與外界進行網際網路連結，請問當節點 N5 為絕對安全的情況下，哪個節點消失時對整體網路的影響最大？\n(附圖顯示N3橋接N5及N2，N3連接N1及N5，N4連接N5)",
       "options": [
         { "id": "opt_a", "text": "N1" },
         { "id": "opt_b", "text": "N2" },
