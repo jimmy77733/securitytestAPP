@@ -283,6 +283,11 @@ export function exportQuestions(bank: QuestionBank | string): string {
   return JSON.stringify(questions, null, 2);
 }
 
+/*匯出指定題目列表為 JSON 字串（用於依年份/類別篩選後匯出）*/
+export function exportQuestionsFromList(questions: Question[]): string {
+  return JSON.stringify(questions, null, 2);
+}
+
 /**
  * 從文件讀取JSON
  */

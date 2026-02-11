@@ -3,7 +3,7 @@ import { Upload, Download, Info, X, CheckCircle, AlertCircle, AlertTriangle } fr
 import { useQuestionStore } from '@/store/questionStore';
 import {
   importQuestions,
-  exportQuestions,
+  exportQuestionsFromList,
   readJsonFile,
   validateQuestions,
   getImportDuplicateInfoByPrefix,
@@ -23,8 +23,16 @@ type OverwriteChoice = 'skip' | 'overwrite';
 export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
   selectedBank,
 }) => {
-  const { getQuestions } = useQuestionStore();
+  const { getQuestions, getAvailableYears, getAvailableCategories } = useQuestionStore();
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [exportYear, setExportYear] = useState<string>('');
+  const [exportCategory, setExportCategory] = useState<string>('');
+  const [exportConfirm, setExportConfirm] = useState<{
+    count: number;
+    yearLabel: string;
+    categoryLabel: string;
+    filteredQuestions: Question[];
+  } | null>(null);
   const [importResult, setImportResult] = useState<{
     success: number;
     failed: number;
@@ -93,14 +101,8 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
     setOverwriteModal(null);
   };
 
-  const handleExport = () => {
-    const questions = getQuestions(selectedBank);
-    if (questions.length === 0) {
-      alert('此題庫目前沒有題目');
-      return;
-    }
-
-    const json = exportQuestions(selectedBank);
+  const performExport = (questionsToExport: Question[]) => {
+    const json = exportQuestionsFromList(questionsToExport);
     const blob = new Blob([json], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -112,7 +114,46 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
     URL.revokeObjectURL(url);
   };
 
+  const handleExport = () => {
+    const questions = getQuestions(selectedBank);
+    if (questions.length === 0) {
+      alert('此題庫目前沒有題目');
+      return;
+    }
+
+    let filtered = questions;
+    if (exportYear) {
+      filtered = filtered.filter((q) => q.year === exportYear);
+    }
+    if (exportCategory) {
+      filtered = filtered.filter((q) => q.category === exportCategory);
+    }
+
+    if (filtered.length === 0) {
+      alert('所選的年份或類別沒有題目，請改選其他條件或改為「不限制」。');
+      return;
+    }
+
+    const yearLabel = exportYear ? exportYear : '不限制';
+    const categoryLabel = exportCategory ? exportCategory : '不限制';
+    setExportConfirm({
+      count: filtered.length,
+      yearLabel,
+      categoryLabel,
+      filteredQuestions: filtered,
+    });
+  };
+
+  const handleExportConfirm = () => {
+    if (!exportConfirm) return;
+    performExport(exportConfirm.filteredQuestions);
+    setExportConfirm(null);
+  };
+
   const questionCount = getQuestions(selectedBank).length;
+  const availableYears = getAvailableYears(selectedBank);
+  const availableCategories = getAvailableCategories(selectedBank);
+  const hasExportFilters = availableYears.length > 0 || availableCategories.length > 0;
 
   return (
     <Card className="import-export-panel">
@@ -149,6 +190,42 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
             <Download size={18} />
             匯出題庫 (JSON)
           </Button>
+          {hasExportFilters && (
+            <div className="export-filters">
+              {availableYears.length > 0 && (
+                <div className="export-filter-group">
+                  <label htmlFor="export-year-select" className="export-filter-label">匯出年份</label>
+                  <select
+                    id="export-year-select"
+                    className="export-filter-select"
+                    value={exportYear}
+                    onChange={(e) => setExportYear(e.target.value)}
+                  >
+                    <option value="">不限制</option>
+                    {availableYears.map((y) => (
+                      <option key={y} value={y}>{y}</option>
+                    ))}
+                  </select>
+                </div>
+              )}
+              {availableCategories.length > 0 && (
+                <div className="export-filter-group">
+                  <label htmlFor="export-category-select" className="export-filter-label">匯出類別</label>
+                  <select
+                    id="export-category-select"
+                    className="export-filter-select"
+                    value={exportCategory}
+                    onChange={(e) => setExportCategory(e.target.value)}
+                  >
+                    <option value="">不限制</option>
+                    {availableCategories.map((c) => (
+                      <option key={c} value={c}>{c}</option>
+                    ))}
+                  </select>
+                </div>
+              )}
+            </div>
+          )}
         </div>
 
         <button
@@ -222,6 +299,39 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
                 <li>如果題目ID重複，需確認後才會匯入，其他題目會繼續匯入</li>
                 <li>匯出為JSON檔案，可直接用於備份或分享</li>
               </ul>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {exportConfirm && (
+        <div className="import-modal-overlay" onClick={() => setExportConfirm(null)}>
+          <div className="import-modal export-confirm-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="import-modal-header">
+              <Download size={24} className="import-modal-icon export-confirm-icon" />
+              <h4>確認匯出題庫</h4>
+              <button type="button" className="close-btn" onClick={() => setExportConfirm(null)}>
+                <X size={18} />
+              </button>
+            </div>
+            <div className="export-confirm-body">
+              <p className="export-confirm-desc">請確認以下匯出範圍與題數後再匯出。</p>
+              <dl className="export-confirm-summary">
+                <dt>匯出年份</dt>
+                <dd>{exportConfirm.yearLabel}</dd>
+                <dt>匯出類別</dt>
+                <dd>{exportConfirm.categoryLabel}</dd>
+                <dt>總題數</dt>
+                <dd><strong>{exportConfirm.count}</strong> 題</dd>
+              </dl>
+            </div>
+            <div className="import-modal-actions">
+              <Button variant="ghost" onClick={() => setExportConfirm(null)}>
+                取消
+              </Button>
+              <Button variant="primary" onClick={handleExportConfirm}>
+                確認匯出
+              </Button>
             </div>
           </div>
         </div>

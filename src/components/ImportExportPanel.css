@@ -28,6 +28,83 @@
   font-size: 16px;
 }
 
+.export-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.export-filter-group {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.export-filter-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.export-filter-select {
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-card);
+  color: var(--color-text);
+  min-width: 140px;
+}
+
+.export-filter-select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+[data-theme="dark"] .export-filter-select {
+  color: #2C3E50;
+  background: #fff;
+}
+
+.export-confirm-modal .export-confirm-icon {
+  color: var(--color-primary);
+}
+
+.export-confirm-body {
+  padding: var(--spacing-lg);
+}
+
+.export-confirm-desc {
+  margin: 0 0 var(--spacing-md);
+  font-size: 14px;
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.export-confirm-summary {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--spacing-sm) var(--spacing-lg);
+  margin: 0;
+  font-size: 14px;
+}
+
+.export-confirm-summary dt {
+  color: var(--color-text-light);
+  font-weight: 500;
+}
+
+.export-confirm-summary dd {
+  margin: 0;
+  color: var(--color-text);
+}
+
+.export-confirm-summary dd strong {
+  color: var(--color-primary);
+  font-size: 16px;
+}
+
 .panel-actions {
   display: flex;
   flex-direction: column;
@@ -36,6 +113,7 @@
 
 .action-group {
   display: flex;
+  align-items: center;
   gap: var(--spacing-md);
   flex-wrap: wrap;
 }
