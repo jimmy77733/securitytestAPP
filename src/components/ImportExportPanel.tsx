@@ -164,15 +164,33 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
   };
 
   const handleImageSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files ? Array.from(e.target.files).slice(0, MAX_IMAGE_FILES) : [];
+    const files = e.target.files ? Array.from(e.target.files) : [];
     if (files.length === 0) return;
-    const list = files.map((file, index) => ({
+    
+    // 計算還可以新增多少張圖片
+    const currentCount = imageImportList.length;
+    const remainingSlots = MAX_IMAGE_FILES - currentCount;
+    const filesToAdd = files.slice(0, remainingSlots);
+    
+    if (filesToAdd.length === 0) {
+      alert(`已達到最大數量限制（${MAX_IMAGE_FILES} 張）`);
+      e.target.value = '';
+      return;
+    }
+    
+    if (files.length > remainingSlots) {
+      alert(`最多只能再新增 ${remainingSlots} 張圖片（總數限制 ${MAX_IMAGE_FILES} 張）`);
+    }
+    
+    const newItems = filesToAdd.map((file, index) => ({
       id: `${file.name}-${index}-${Date.now()}`,
       file,
       name: file.name,
       overLimit: file.size > MAX_IMAGE_SIZE,
     }));
-    setImageImportList(list);
+    
+    // 追加到現有列表，而不是替換
+    setImageImportList((prev) => [...prev, ...newItems]);
     setShowImageImportModal(true);
     e.target.value = '';
   };
@@ -200,13 +218,13 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
       } else {
         setImageImportResult({
           success: 0,
-          errors: [data.error || '匯入失敗，請確認開發伺服器已啟動（npm run dev）並可寫入 public/question-images'],
+          errors: [data.error || '匯入失敗，請確認伺服器已啟動且可寫入 public/question-images'],
         });
       }
     } catch (err) {
       setImageImportResult({
         success: 0,
-        errors: ['無法連線至伺服器。請使用 npm run dev 啟動開發環境後再匯入圖片。'],
+        errors: ['無法連線至伺服器，請確認應用程式已透過支援匯入圖片的伺服器啟動。'],
       });
     }
   };
@@ -214,7 +232,10 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
   const handleImageImportConfirm = async () => {
     const valid = imageImportList.filter((item) => !item.overLimit);
     if (valid.length === 0) {
-      alert('沒有可匯入的圖片（請移除超過 2MB 的檔案）');
+      setImageImportResult({
+        success: 0,
+        errors: ['沒有可匯入的圖片（請移除超過 2MB 的檔案）'],
+      });
       return;
     }
 
@@ -240,18 +261,19 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
           ...invalidIds.map((n) => `・${n}`),
         ],
       });
+      // 不清空列表，讓用戶可以修正後重試
       return;
     }
 
-    const filesPayload = await Promise.all(
-      valid.map(async (item) => {
-        const buf = await item.file.arrayBuffer();
-        const base64 = btoa(String.fromCharCode(...new Uint8Array(buf)));
-        return { name: item.name, data: base64 };
-      })
-    );
-
     try {
+      const filesPayload = await Promise.all(
+        valid.map(async (item) => {
+          const buf = await item.file.arrayBuffer();
+          const base64 = btoa(String.fromCharCode(...new Uint8Array(buf)));
+          return { name: item.name, data: base64 };
+        })
+      );
+
       const checkRes = await fetch('/api/check-question-images', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -269,7 +291,7 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
     } catch (err) {
       setImageImportResult({
         success: 0,
-        errors: ['無法連線至伺服器。請使用 npm run dev 啟動開發環境後再匯入圖片。'],
+        errors: ['無法連線至伺服器，請確認應用程式已透過支援匯入圖片的伺服器啟動。'],
       });
     }
   };
@@ -520,12 +542,12 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
       )}
 
       {showImageImportModal && (
-        <div className="import-modal-overlay" onClick={() => { setShowImageImportModal(false); setImageImportList([]); }}>
+        <div className="import-modal-overlay" onClick={() => { setShowImageImportModal(false); setImageImportList([]); setImageImportResult(null); }}>
           <div className="import-modal image-import-modal" onClick={(e) => e.stopPropagation()}>
             <div className="import-modal-header">
               <ImagePlus size={24} className="import-modal-icon" />
               <h4>確認匯入圖片</h4>
-              <button type="button" className="close-btn" onClick={() => { setShowImageImportModal(false); setImageImportList([]); }}>
+              <button type="button" className="close-btn" onClick={() => { setShowImageImportModal(false); setImageImportList([]); setImageImportResult(null); }}>
                 <X size={18} />
               </button>
             </div>
@@ -546,8 +568,30 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
                 </li>
               ))}
             </ul>
+            {imageImportList.length < MAX_IMAGE_FILES && (
+              <div className="image-import-add-more">
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  onClick={() => imageInputRef.current?.click()}
+                >
+                  <ImagePlus size={16} />
+                  新增更多圖片 ({imageImportList.length}/{MAX_IMAGE_FILES})
+                </Button>
+              </div>
+            )}
+            {imageImportResult && imageImportResult.success === 0 && imageImportResult.errors && (
+              <div className="image-import-error-preview">
+                <AlertCircle size={16} />
+                <div className="image-import-error-content">
+                  {imageImportResult.errors.map((err, idx) => (
+                    <div key={idx} className="image-import-error-item">{err}</div>
+                  ))}
+                </div>
+              </div>
+            )}
             <div className="import-modal-actions">
-              <Button variant="ghost" onClick={() => { setShowImageImportModal(false); setImageImportList([]); }}>
+              <Button variant="ghost" onClick={() => { setShowImageImportModal(false); setImageImportList([]); setImageImportResult(null); }}>
                 取消
               </Button>
               <Button

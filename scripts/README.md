@@ -24,6 +24,15 @@ npm run load-questions
 
 - `src/data/questionBanks.ts`：題庫載入代碼（由腳本生成）
 
+## 匯入圖片 API
+
+匯入圖片功能在以下兩種方式下皆可使用，不限定開發環境：
+
+- **開發**：`npm run dev`（Vite 內建 API）
+- **生產**：先執行 `npm run build`，再執行 `npm run start`（會啟動靜態伺服器並提供相同 API）
+
+`scripts/server.mjs` 會提供靜態檔與 `/api/check-question-images`、`/api/save-question-images`，圖片會寫入 `public/question-images`。
+
 ## 注意事項
 
 1. 請先準備好 `data/primary-questions.json` 與 `data/intermediate-questions.json`
