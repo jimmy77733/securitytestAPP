@@ -188,6 +188,12 @@
   gap: var(--spacing-md);
 }
 
+.question-detail-header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
 .question-detail-title {
   flex: 1;
   display: flex;

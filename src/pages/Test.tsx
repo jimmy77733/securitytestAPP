@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Check, ChevronLeft, ChevronRight, Image } from 'lucide-react';
 import { useUserStore } from '@/store/userStore';
 import { useTestStore } from '@/store/testStore';
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
 import { OptionButton } from '@/components/OptionButton';
+import { QuestionImageModal } from '@/components/QuestionImageModal';
 import { checkAnswer } from '@/utils/questionUtils';
+import { getQuestionIdsWithImagesSync } from '@/utils/questionImages';
 import type { Question, QuestionBank, TestMode } from '@/types';
 import './Test.css';
 
@@ -22,6 +24,8 @@ export const Test: React.FC = () => {
   const [showFeedback, setShowFeedback] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [hasAnswered, setHasAnswered] = useState(false);
+  const [questionIdsWithImages, setQuestionIdsWithImages] = useState<Set<string>>(new Set());
+  const [showImageModal, setShowImageModal] = useState(false);
 
   const questions = (location.state?.questions as Question[]) || [];
   const isTrainingMode = mode === 'training';
@@ -32,6 +36,10 @@ export const Test: React.FC = () => {
       navigate('/home');
       return;
     }
+
+    // 預先計算哪些題目有圖片（只執行一次，當題目載入時）
+    const idsWithImages = getQuestionIdsWithImagesSync(questions);
+    setQuestionIdsWithImages(idsWithImages);
 
     if (!currentTest) {
       startTest(mode, bank as QuestionBank, questions);
@@ -207,6 +215,19 @@ export const Test: React.FC = () => {
                 <h2 className="question-text">{currentQuestion.question}</h2>
               </div>
 
+              {questionIdsWithImages.has(currentQuestion.id) && (
+                <div className="question-image-button-container">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setShowImageModal(true)}
+                  >
+                    <Image size={18} />
+                    顯示圖片
+                  </Button>
+                </div>
+              )}
+
               <div className="options-container">
                 {currentQuestion.options.map((option) => {
                   const isSelected = selectedOptions.includes(option.id);
@@ -307,6 +328,12 @@ export const Test: React.FC = () => {
           })}
         </div>
       )}
+
+      <QuestionImageModal
+        questionId={currentQuestion.id}
+        isOpen={showImageModal}
+        onClose={() => setShowImageModal(false)}
+      />
     </div>
   );
 };

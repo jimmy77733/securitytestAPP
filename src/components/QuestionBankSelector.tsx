@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronDown, Edit2, Plus, Trash2, X } from 'lucide-react';
+import { ChevronDown, Edit2, Plus, Trash2 } from 'lucide-react';
 import { useBankStore } from '@/store/bankStore';
 import { Button } from './Button';
 import './QuestionBankSelector.css';
@@ -15,7 +15,7 @@ export const QuestionBankSelector: React.FC<QuestionBankSelectorProps> = ({
   onChange,
   onStartTest,
 }) => {
-  const { banks, getBanks, addBank, updateBank, deleteBank } = useBankStore();
+  const { getBanks, addBank, updateBank, deleteBank } = useBankStore();
   const [isOpen, setIsOpen] = useState(false);
   const [isEditing, setIsEditing] = useState<string | null>(null);
   const [editingName, setEditingName] = useState('');

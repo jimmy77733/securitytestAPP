@@ -10,6 +10,7 @@ interface ButtonProps {
   disabled?: boolean;
   fullWidth?: boolean;
   type?: 'button' | 'submit' | 'reset';
+  className?: string;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -20,11 +21,12 @@ export const Button: React.FC<ButtonProps> = ({
   disabled = false,
   fullWidth = false,
   type = 'button',
+  className = '',
 }) => {
   return (
     <motion.button
       type={type}
-      className={`btn btn-${variant} btn-${size} ${fullWidth ? 'btn-full' : ''}`}
+      className={`btn btn-${variant} btn-${size} ${fullWidth ? 'btn-full' : ''} ${className}`.trim()}
       onClick={onClick}
       disabled={disabled}
       whileHover={!disabled ? { scale: 1.02 } : {}}

@@ -8,7 +8,8 @@
     "preview": "vite preview",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "load-questions": "tsx scripts/loadQuestions.ts",
-    "validate-questions": "tsx scripts/manualImportHelper.ts"
+    "validate-questions": "tsx scripts/manualImportHelper.ts",
+    "generate-image-manifest": "node scripts/generate-question-image-manifest.js"
   },
   "dependencies": {
     "react": "^18.2.0",

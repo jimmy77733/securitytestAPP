@@ -1,0 +1,111 @@
+.question-image-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-lg);
+}
+
+.question-image-modal {
+  background: var(--color-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  max-width: 90vw;
+  max-height: 90vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  z-index: 1001;
+  overflow: hidden;
+}
+
+.question-image-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.question-image-modal-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.question-image-modal-close {
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  color: var(--color-text-light);
+}
+
+.question-image-modal-close:hover {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.question-image-modal-content {
+  padding: var(--spacing-lg);
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.question-image {
+  max-width: 100%;
+  max-height: 70vh;
+  height: auto;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  object-fit: contain;
+}
+
+.image-error {
+  text-align: center;
+  padding: var(--spacing-xl);
+  color: var(--color-text-light);
+}
+
+.image-error p {
+  margin: var(--spacing-sm) 0;
+}
+
+.image-error-hint {
+  font-size: 14px;
+  color: var(--color-text-light);
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .question-image-modal {
+    max-width: 95vw;
+    max-height: 95vh;
+  }
+  
+  .question-image-modal-header {
+    padding: var(--spacing-md);
+  }
+  
+  .question-image-modal-content {
+    padding: var(--spacing-md);
+  }
+  
+  .question-image {
+    max-height: 60vh;
+  }
+}

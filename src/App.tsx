@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { UserSelection } from '@/pages/UserSelection';
 import { Home } from '@/pages/Home';
@@ -9,6 +9,7 @@ import { Reading } from '@/pages/Reading';
 import { Records } from '@/pages/Records';
 import { useQuestionStore } from '@/store/questionStore';
 import { useThemeStore } from '@/store/themeStore';
+import { preloadImageManifest } from '@/utils/questionImages';
 import '@/styles/globals.css';
 
 function App() {
@@ -28,6 +29,13 @@ function App() {
       }
     }, 100);
     return () => clearTimeout(timer);
+  }, []);
+
+  // 預載入圖片 manifest（應用啟動時只執行一次）
+  useEffect(() => {
+    preloadImageManifest().catch(() => {
+      // 載入失敗不影響應用運行
+    });
   }, []);
 
   return (

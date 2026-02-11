@@ -1,12 +1,14 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Heart, HeartOff, BookOpen, Home, ArrowLeft } from 'lucide-react';
+import { Heart, HeartOff, BookOpen, Home, ArrowLeft, Image } from 'lucide-react';
 import { useUserStore } from '@/store/userStore';
 import { useQuestionStore } from '@/store/questionStore';
 import { useFavoriteStore } from '@/store/favoriteStore';
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
+import { QuestionImageModal } from '@/components/QuestionImageModal';
+import { getQuestionIdsWithImagesSync } from '@/utils/questionImages';
 import type { QuestionBank, Question } from '@/types';
 import './Reading.css';
 
@@ -21,6 +23,8 @@ export const Reading: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [hasStartedReading, setHasStartedReading] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
+  const [questionIdsWithImages, setQuestionIdsWithImages] = useState<Set<string>>(new Set());
+  const [showImageModal, setShowImageModal] = useState(false);
 
   if (!currentUser) {
     navigate('/');
@@ -49,6 +53,16 @@ export const Reading: React.FC = () => {
       return true;
     });
   }, [selectedBank, selectedYear, selectedCategory, currentUser.id, bankQuestionCount, favoritesCount]);
+
+  // 當題目列表變更時，預先計算哪些題目有圖片
+  useEffect(() => {
+    if (questions.length > 0) {
+      const idsWithImages = getQuestionIdsWithImagesSync(questions);
+      setQuestionIdsWithImages(idsWithImages);
+    } else {
+      setQuestionIdsWithImages(new Set());
+    }
+  }, [questions]);
 
   const handleToggleFavorite = (question: Question) => {
     if (isFavorite(currentUser.id, question.id)) {
@@ -229,16 +243,28 @@ export const Reading: React.FC = () => {
                       )}
                       <h2>{currentQuestion.question}</h2>
                     </div>
-                    <button
-                      className="favorite-btn"
-                      onClick={() => handleToggleFavorite(currentQuestion)}
-                    >
-                      {isFavorite(currentUser.id, currentQuestion.id) ? (
-                        <Heart size={24} fill="currentColor" />
-                      ) : (
-                        <HeartOff size={24} />
+                    <div className="question-detail-header-actions">
+                      {questionIdsWithImages.has(currentQuestion.id) && (
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => setShowImageModal(true)}
+                        >
+                          <Image size={18} />
+                          顯示圖片
+                        </Button>
                       )}
-                    </button>
+                      <button
+                        className="favorite-btn"
+                        onClick={() => handleToggleFavorite(currentQuestion)}
+                      >
+                        {isFavorite(currentUser.id, currentQuestion.id) ? (
+                          <Heart size={24} fill="currentColor" />
+                        ) : (
+                          <HeartOff size={24} />
+                        )}
+                      </button>
+                    </div>
                   </div>
 
                   <div className="question-detail-options">
@@ -283,6 +309,14 @@ export const Reading: React.FC = () => {
             )}
           </div>
         </div>
+      )}
+
+      {currentQuestion && (
+        <QuestionImageModal
+          questionId={currentQuestion.id}
+          isOpen={showImageModal}
+          onClose={() => setShowImageModal(false)}
+        />
       )}
     </div>
   );

@@ -80,6 +80,13 @@
   color: var(--color-text);
 }
 
+.question-image-button-container {
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+  display: flex;
+  justify-content: flex-start;
+}
+
 .options-container {
   display: flex;
   flex-direction: column;

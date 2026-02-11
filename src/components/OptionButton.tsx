@@ -16,7 +16,7 @@ interface OptionButtonProps {
 }
 
 export const OptionButton: React.FC<OptionButtonProps> = ({
-  optionId,
+  optionId: _optionId,
   text,
   isSelected,
   isCorrect,

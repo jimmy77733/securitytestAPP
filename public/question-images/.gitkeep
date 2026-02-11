@@ -1,0 +1,6 @@
+# 此目錄用於存放題目對應的圖片檔案
+# 圖片檔名格式：{題目ID}.png
+# 例如：q_intermediate_s_109_1_1.png
+# 
+# 生成 manifest：npm run generate-image-manifest
+# 或：node scripts/generate-question-image-manifest.js
