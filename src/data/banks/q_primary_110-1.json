@@ -291,11 +291,11 @@
       "id": "q_primary_110-1_19",
       "questionBank": "primary",
       "type": "single",
-      "question": "下列何者可在附圖程式碼中達成 SQL Injection 攻擊？\nString query = \"SELECT * FROM UserData WHERE UID= \" + request.getParameter(\"id\") + \" \";",
+      "question": "下列何者可在附圖程式碼中達成 SQL Injection 攻擊？\nString query = \"SELECT * FROM UserData WHERE uID= \"' + request.getParameter(\"id\") + \" \";",
       "options": [
         { "id": "opt_a", "text": "id = 1 or 1" },
         { "id": "opt_b", "text": "' or '1'='1" },
-        { "id": "opt_c", "text": "$uID=1$ or 1" },
+        { "id": "opt_c", "text": "uID=1 or 1" },
         { "id": "opt_d", "text": "'1'='1 or 1'" }
       ],
       "correctAnswers": ["opt_b"],
@@ -419,7 +419,7 @@
       "id": "q_primary_110-1_27",
       "questionBank": "primary",
       "type": "single",
-      "question": "某網站在設計時進行過安全分析...但佈署時由於管理員將備份存放在 WEB 目錄下導致了攻擊者可直接下載備份...下列何種測試方式是最佳的測試方法？",
+      "question": "某網站在設計時進行過安全分析，也在開發時要求程序員編寫安全的代碼，但佈署時由於管理員將備份存放在 WEB 目錄下導致了攻擊者可直接下載備份...下列何種測試方式是最佳的測試方法？",
       "options": [
         { "id": "opt_a", "text": "模糊測試" },
         { "id": "opt_b", "text": "源碼測試" },
@@ -563,7 +563,7 @@
       "id": "q_primary_110-1_36",
       "questionBank": "primary",
       "type": "single",
-      "question": "某公司將網站伺服器內的五顆硬碟作 RAID5... 若於某週三 23:00 時伺服器其中一顆硬碟發生故障，此時應採取下列何種處理方式？",
+      "question": "某公司將網站伺服器內的五顆硬碟作 RAID5，並且規劃備份機制為每週日 23:30 進行完整備份（Full Backup)，其餘每天 23:30 進行差異備份（Differential Backup)，若於某週三 23:00 時伺服器其中一顆硬碟發生故障，此時應採取下列何種處理方式？",
       "options": [
         { "id": "opt_a", "text": "將上週五的 Full Backup 磁帶回存..." },
         { "id": "opt_b", "text": "將上週五的 Full Backup 磁帶回存..." },
@@ -627,7 +627,7 @@
       "id": "q_primary_110-1_40",
       "questionBank": "primary",
       "type": "single",
-      "question": "若在系統的日誌中看到附圖記錄（GET/process.php/../..////////etc/passwd），最可能為下列何種攻擊手法？",
+      "question": "若在系統的日誌中看到附圖記錄，最可能為下列何種攻擊手法？\nhttp://www.CCCompany.com/GET/process.php/../../../../../../../../../etc/passwd）",
       "options": [
         { "id": "opt_a", "text": "文件注入（Content Injection）" },
         { "id": "opt_b", "text": "目錄遊走（Directory Traversal）" },
@@ -677,9 +677,9 @@
       "type": "single",
       "question": "下列何者「不」是和雲端安全有關的國際標準？",
       "options": [
-        { "id": "opt_a", "text": "ISO/IEC : 27011" },
-        { "id": "opt_b", "text": "ISO/IEC:27017" },
-        { "id": "opt_c", "text": "ISO/IEC:27018" },
+        { "id": "opt_a", "text": "ISO/IEC :27011" },
+        { "id": "opt_b", "text": "ISO/IEC :27017" },
+        { "id": "opt_c", "text": "ISO/IEC :27018" },
         { "id": "opt_d", "text": "CSA STAR" }
       ],
       "correctAnswers": ["opt_a"],
@@ -707,7 +707,7 @@
       "id": "q_primary_110-1_45",
       "questionBank": "primary",
       "type": "single",
-      "question": "有些行動應用程式（App）會要求授權讀取行動裝置上的個人資訊...下列敘述何者「不」正確？",
+      "question": "有些行動應用程式（App）會要求授權讀取行動裝置上的個人資訊，如：聯絡人資料、照片與撥打電話、簡訊等，下列敘述何者「不」正確？",
       "options": [
         { "id": "opt_a", "text": "授權 App 直接用行動裝置撥打電話或簡訊給特定對象可能會需要額外費用" },
         { "id": "opt_b", "text": "行動裝置上的聯絡人資料、照片屬於個人資料，要小心保護" },
