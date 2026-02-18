@@ -147,7 +147,7 @@
       "id": "q_primary_111-1_10",
       "questionBank": "primary",
       "type": "single",
-      "question": "某組織內部新購置了 100 部個人電腦與伺服器...遭受同一支惡意程式植入，請問下列何者為較可能之發生原因？",
+      "question": "某組織內部新購置了 100 部個人電腦與伺服器，為了資訊安全考量，在內部安裝 WSUS（Windows Server Update Services）伺服器，以利管控個人電腦與伺服器的修補更新狀態，另外為了提高防毒效率，也分別為內部個人電腦安裝 A 牌防毒軟體、伺服器安裝 B 牌防毒軟體，內部網路亦加裝了入侵偵測系統。某日 MIS 發現該組織內部敏感資料外洩，經調查分析後發現組織內部之所有個人電腦與伺服器均在短短的 5 分鐘之內，遭受同一支惡意程式植入，請問下列何者為較可能之發生原因？",
       "options": [
         { "id": "opt_a", "text": "入侵偵測系統遭入侵派送惡意程式" },
         { "id": "opt_b", "text": "WSUS（Windows Server Update Services）伺服器遭入侵派送惡意程式" },
@@ -394,8 +394,8 @@
         { "id": "opt_c", "text": "Burp Suite" },
         { "id": "opt_d", "text": "Minikatz" }
       ],
-      "correctAnswers": ["opt_d"],
-      "explanation": "Mimikatz（試卷拼寫為 Minikatz）是知名的 Windows 憑證竊取工具，可從記憶體中提取密碼。",
+      "correctAnswers": ["opt_a","opt_b","opt_c","opt_d"],
+      "explanation": "Mimikatz（試卷拼寫為 Minikatz）是知名的 Windows 憑證竊取工具，可從記憶體中提取密碼。[此題都送分，原答案為D】",
       "year": "111-1",
       "category": "資訊安全技術概論"
     },
@@ -1187,7 +1187,7 @@
         "id": "q_primary_111-1_25",
         "questionBank": "primary",
         "type": "single",
-        "question": "通用漏洞評分系統（Common Vulnerability Scoring System, CVSS）是一個可衡量漏洞嚴重程度的公開標準...關於基本指標群，下列何者「不」是其考量因素？",
+        "question": "通用漏洞評分系統（Common Vulnerability Scoring System, CVSS）是一個可衡量漏洞嚴重程度的公開標準。CVSSv3 以基本指標群（Basemetric group）、暫時指標群（Temporal metric group）及環境指標群（Environmental metric group）等 3 個群組來進行判斷。關於基本指標群，下列何者「不」是其考量因素？",
         "options": [
         { "id": "opt_a", "text": "機密性衝擊（Confidentiality Impact）" },
         { "id": "opt_b", "text": "攻擊途徑（Attack Vector）" },
@@ -1464,7 +1464,7 @@
         { "id": "opt_a", "text": "風險規避" },
         { "id": "opt_b", "text": "風險移轉" },
         { "id": "opt_c", "text": "風險控制" },
-        { "id": "opt_d", "text": "風險評鑑（再）" }
+        { "id": "opt_d", "text": "風險再評鑑" }
         ],
         "correctAnswers": ["opt_d"],
         "explanation": "風險處理（Treatment）選項包含規避、移轉、降低（控制）與接受；「風險評鑑」是處理前的步驟。",

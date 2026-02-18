@@ -3,13 +3,12 @@
   inset: 0;
   background: rgba(0, 0, 0, 0.7);
   z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--spacing-lg);
 }
 
 .question-image-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
   background: var(--color-card);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);

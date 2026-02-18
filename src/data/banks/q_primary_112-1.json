@@ -995,7 +995,7 @@
         "id": "q_primary_112-1_13",
         "questionBank": "primary",
         "type": "single",
-        "question": "如附圖所示，依照創用 CC（Creative Commons）授權的規定，下列何種使用方式違反附圖中授權標示的規定？（圖示包含 BY, NC, ND）",
+        "question": "如附圖所示，依照創用 CC（Creative Commons）授權的規定，下列何種使用方式違反附圖中授權標示的規定？\n（圖示包含 BY(by 姓名標示), NC(Non-Commercial 非商用), ND(No Derivative Works 禁止改作)）",
         "options": [
         { "id": "opt_a", "text": "使用者必須按照著作人或授權人所指定的方式，表彰其姓名" },
         { "id": "opt_b", "text": "使用者將該素材用於公益的用途上" },
@@ -1147,7 +1147,7 @@
         { "id": "opt_d", "text": "評估、分析、處理、降低" }
         ],
         "correctAnswers": ["opt_a"],
-        "explanation": "標準的風險處理選項包括：規避（避免）、降低（緩解）、轉移（分擔）、接受（保留）。",
+        "explanation": "標準的風險處理選項包括：接受（保留）、降低（緩解）、轉移（分擔）、避免（規避）。",
         "year": "112-1",
         "category": "資訊安全管理概論"
     },
