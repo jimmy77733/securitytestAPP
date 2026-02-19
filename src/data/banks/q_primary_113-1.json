@@ -179,7 +179,7 @@
       "id": "q_primary_113-1_12",
       "questionBank": "primary",
       "type": "single",
-      "question": "當企業有大量的內部網址時...但是如果該功能沒有限制存取來源，可能會導致任意使用者都可以透過該功能直接跟企業的 DNS Server 索取該企業全部的 DNS Record...請問下列何項就是上述的特定功能？",
+      "question": "當企業有大量的內部網址時，會自行架設 DNS Server，如果DNS Server 的需求量較高，可能需要建置多台 DNS Server互相備援，並且使用一個特定功能來傳輸各台 DNS Server 彼此的 DNS Record，讓每一台 DNS Server 的紀錄都保持一致。但是如果該功能沒有限制存取來源，可能會導致任意使用者都可以透過該功能直接跟企業的 DNS Server 索取該企業全部的 DNS Record，造成內部的網址外流，請問下列何項就是上述的特定功能？",
       "options": [
         { "id": "opt_a", "text": "DNS Tunneling" },
         { "id": "opt_b", "text": "DNS Amplification" },
@@ -259,7 +259,7 @@
       "id": "q_primary_113-1_17",
       "questionBank": "primary",
       "type": "single",
-      "question": "在攻擊者已經取得系統存取權限之後...請問下列何項「不」是 Windows 或 Linux 作業系統常見用來提升權限的弱點或技巧？",
+      "question": "在攻擊者已經取得系統存取權限之後，除了翻找系統有沒有高權限帳號的密碼或是嘗試破解雜湊之外，也可能會利用已知的提升權限弱點來讓自己變成 root 或 Administrator，以便取得更完整的系統控制權。請問下列何項「不」是 Windows 或 Linux 作業系統常見用來提升權限的弱點或技巧？",
       "options": [
         { "id": "opt_a", "text": "Dirty COW" },
         { "id": "opt_b", "text": "SetUID" },
@@ -547,7 +547,7 @@
       "id": "q_primary_113-1_35",
       "questionBank": "primary",
       "type": "single",
-      "question": "如附圖所示，分析圖中非明文字串，所使用的加密、雜湊或編碼方式，下列敘述何項正確？（字串結尾為 ==）",
+      "question": "如附圖所示，分析圖中非明文字串，所使用的加密、雜湊或編碼方式，下列敘述何項正確？（字串: SG93IGRvIElvdsSBlbmNvZGUgb3IgZGVjb2RliGJhc2U2NCBzdHJpbmc/Cg==）",
       "options": [
         { "id": "opt_a", "text": "SHA3" },
         { "id": "opt_b", "text": "NetNTLMv2" },
@@ -683,7 +683,7 @@
         { "id": "opt_d", "text": "Severity 可能是 Emergency: system is unusable" }
       ],
       "correctAnswers": ["opt_c"],
-      "explanation": "PRI = Facility * 8 + Severity。165 = 20 * 8 + 5。Facility 20 為 local use 4，Severity 5 為 Notice。",
+      "explanation": "PRI = Facility * 8 + Severity；165 = 20 * 8 + 5。Facility 20 為 local use 4，Severity 5 為 Notice。",
       "year": "113-1",
       "category": "資訊安全技術概論"
     },
@@ -883,7 +883,7 @@
         "id": "q_primary_113-1_6",
         "questionBank": "primary",
         "type": "single",
-        "question": "歐盟 NIS 2 Directive 新納管的產業（Sectors）包括哪些？（圖示：1.飲用水 2.ICT服務管理 3.太空 4.健康 5.銀行 6.廢水處理）",
+        "question": "歐盟執委會（European Commission, EC）修正後的 2022/2555 (EU) 指令（即 Security of Network and Information Systems, NIS 2 Directive），已於 112 年 1 月 16 日生效，以改善歐盟現有的資訊安全態勢，本次修正內容包括擴大該指令所適用的類別與規模，附圖中哪些產業是本次新納管的產業（Sectors）？\n圖示：\n1.Drinking water（飲用水） 2.ICT service management（ICT 服務管理） 3.Space（太空） 4.Health（健康） 5.Banking（銀行） 6.Waste water（廢水處理）",
         "options": [
         { "id": "opt_a", "text": "1、2、3、5、6" },
         { "id": "opt_b", "text": "1、4、5、6" },
@@ -954,8 +954,8 @@
         { "id": "opt_c", "text": "一般公務機密、敏感資訊或涉及關鍵基礎設施維運之核心業務資訊遭嚴重洩漏，或國家機密遭洩漏" },
         { "id": "opt_d", "text": "未涉及關鍵基礎設施維運之核心業務資訊遭嚴重洩漏，或一般公務機密、敏感資訊或涉及關鍵基礎設施維運之核心業務資訊遭輕微洩漏" }
         ],
-        "correctAnswers": ["opt_c"],
-        "explanation": "涉及國家機密洩漏或關鍵基礎設施核心業務資訊嚴重洩漏，屬於三級資安事件。",
+        "correctAnswers": ["opt_d"],
+        "explanation": "三級事件主要特徵在於影響到核心業務資訊（輕微洩漏）或非核心業務資訊（嚴重洩漏），但尚未達到國家機密洩漏或關鍵基礎設施停擺的等級。",
         "year": "113-1",
         "category": "資訊安全管理概論"
     },
@@ -1013,10 +1013,10 @@
         "type": "single",
         "question": "關於資產盤點與風險評估的重要性，下列敘述何者錯誤？",
         "options": [
-        { "id": "opt_a", "text": "資產盤點與風險評估可以幫助組織確定其所有的資訊資產，只涵蓋硬體與軟體。" },
-        { "id": "opt_b", "text": "可以幫助組織確定其資訊資產的價值，包括其對業務運營的重要性和價值。" },
-        { "id": "opt_c", "text": "可以幫助組織確定其資訊資產的風險，包括潛在的威脅和弱點。" },
-        { "id": "opt_d", "text": "可以幫助組織對其資訊資產進行管理，包括資產的維護、儲存和刪除等。" }
+        { "id": "opt_a", "text": "資產盤點與風險評估可以幫助組織確定其所有的資訊資產，只涵蓋硬體與軟體。就可以讓組織了解其擁有哪些資產以及這些資產的位置" },
+        { "id": "opt_b", "text": "資產盤點與風險評估可以幫助組織確定其資訊資產的價值，包括其對業務運營的重要性和價值。這可以讓組織確定保護這些資產的重要性和程度" },
+        { "id": "opt_c", "text": "資產盤點與風險評估可以幫助組織確定其資訊資產的風險，包括潛在的威脅和弱點" },
+        { "id": "opt_d", "text": "資產盤點與風險評估可以幫助組織對其資訊資產進行管理，包括資產的維護、儲存和刪除等。這可以確保資產被正確管理和保護" }
         ],
         "correctAnswers": ["opt_a"],
         "explanation": "資產盤點範圍應包含人員、資料、服務等，不應僅限於硬體與軟體。",
@@ -1123,7 +1123,7 @@
         "id": "q_primary_113-1_21",
         "questionBank": "primary",
         "type": "single",
-        "question": "如附圖所示，下列何項內容為風險回應的主要方式？（1.避免 2.接受 3.曝險 4.轉移 5.減緩）",
+        "question": "如附圖所示，下列何項內容為風險回應的主要方式？\n1.風險避免（Risk Avoidance）\n2.風險接受（Risk Acceptance）\n3.風險曝險（Risk Exposure）\n4.風險轉移（Risk Transfer）\n5.風險減緩（Risk Mitigation）",
         "options": [
         { "id": "opt_a", "text": "123" },
         { "id": "opt_b", "text": "12345" },
@@ -1143,7 +1143,7 @@
         "options": [
         { "id": "opt_a", "text": "建立及維持資訊安全風險準則" },
         { "id": "opt_b", "text": "資訊安全風險準則應包含風險接受準則以及執行資訊安全風險評鑑之準則" },
-        { "id": "opt_c", "text": "識別資訊安全風險包含識別...與喪失資訊之機密性、完整性、可用性以及不可否認性相關聯之風險" },
+        { "id": "opt_c", "text": "識別資訊安全風險包含識別資訊安全管理系統範圍內與喪失資訊之機密性、完整性、可用性以及不可否認性相關聯之風險" },
         { "id": "opt_d", "text": "分析資訊安全風險以識別風險實際發生時，應包含可能導致的潛在後果以及風險發生的實際可能性" }
         ],
         "correctAnswers": ["opt_c"],
@@ -1267,7 +1267,7 @@
         "id": "q_primary_113-1_30",
         "questionBank": "primary",
         "type": "single",
-        "question": "如附圖所示，採用生物識別作為身分認證機制時，生物特徵識別系統的辨識精確度會有其誤差值的存在，請問附圖中哪些是「最」常用以評估誤差值的種類？（1.FAR, 2.EER, 3.CER, 4.FRR）",
+        "question": "如附圖所示，採用生物識別作為身分認證機制時，生物特徵識別系統的辨識精確度會有其誤差值的存在，請問附圖中哪些是「最」常用以評估誤差值的種類？\n1.FAR（False Acceptance Rate）\n2.EER（Equal Error Rate）\n3.CER（Crossover Error Rate）\n4.FRR（False Rejected Rate）",
         "options": [
         { "id": "opt_a", "text": "1、2、3" },
         { "id": "opt_b", "text": "1、2" },
@@ -1283,7 +1283,7 @@
         "id": "q_primary_113-1_31",
         "questionBank": "primary",
         "type": "single",
-        "question": "請問附圖中的項目哪些是屬於「技術」類型？（1.策略及規範 2.稽核 3.加密演算 4.網路區段分隔 5.工作區分隔 6.人員管控 7.網路架構）",
+        "question": "關於下列資安作為，包含行政管管理類型、實體類型、技術類型等三項，各有其所相對應的安全控制方式。請問附圖中的項目哪些是屬於「技術」類型？（請選擇最適組合）\n1.策略及規範 \n2.稽核 \n3.加密演算 \n4.網路區段分隔 \n5.工作區分隔 \n6.人員管控 \n7.網路架構",
         "options": [
         { "id": "opt_a", "text": "1、2、3" },
         { "id": "opt_b", "text": "4、5、6" },
@@ -1302,9 +1302,9 @@
         "question": "FIDO 是確保登入流程中伺服器透過與終端裝置協定的安全機制，請問下列何項敘述有誤？",
         "options": [
         { "id": "opt_a", "text": "由 IETF（網際網路工程任務組織）所訂定的一套網路識別標準" },
-        { "id": "opt_b", "text": "這套識別標準透過公開金鑰加密的架構進行多重因素驗證..." },
+        { "id": "opt_b", "text": "這套識別標準透過公開金鑰加密（Public KeyCryptography）的架構進行多重因素驗證（MFA）以及生物辨識登入來強力且嚴密地保護雲端帳號的個資" },
         { "id": "opt_c", "text": "FIDO 是 Fast Identity Online 的縮寫" },
-        { "id": "opt_d", "text": "FIDO 是採用公開金鑰基礎架構的驗證模式..." }
+        { "id": "opt_d", "text": "FIDO 是採用公開金鑰基礎架構的驗證模式，在FIDO 認證伺服器端（FIDO Authentication Server）只保存相對應的公鑰，而私鑰則僅保存在使用者的裝置端，因此使用者在登入時只需提供個資給終端裝置解鎖私鑰，再透過這個步驟解鎖公鑰進行登入" }
         ],
         "correctAnswers": ["opt_a"],
         "explanation": "FIDO 標準是由 FIDO 聯盟（FIDO Alliance）制定，而非 IETF。",
@@ -1315,12 +1315,12 @@
         "id": "q_primary_113-1_33",
         "questionBank": "primary",
         "type": "single",
-        "question": "關於 ZTA（零信任架構）的描述何者較「不」正確？",
+        "question": "零信任架構（ZTA）的假設前提是：在確認可信之前，沒有任何連線、使用者或資產可以信任。主要目的是解決現今網路環境複雜造成信任邊界不明之資安窘境，期望透過對任何資料存取皆永不信任且必須驗證的原則，達成不論在何時何地存取資料皆保證一致安全性之相關技術。請問下列關於ZTA 的描述何者較「不」正確？",
         "options": [
         { "id": "opt_a", "text": "聚焦保護網路存取，非保護資料/應用存取" },
-        { "id": "opt_b", "text": "參考 NIST 零信任架構，採取資源門戶之部署方式..." },
-        { "id": "opt_c", "text": "根據 NIST SP800-207...「資料存取政策」歸類在支援組件中" },
-        { "id": "opt_d", "text": "ZTA 架構中的決策引擎組件是負責接收存取請求..." }
+        { "id": "opt_b", "text": "參考美國國家標準技術研究院（NIST）零信任架構，採取資源門戶之部署方式（Resource PortalBased Deployment），包含 3 大核心機制：身分鑑別、設備鑑別、信任推斷" },
+        { "id": "opt_c", "text": "根據美國國家標準技術研究院（NIST）頒布標準文件 NIST SP800-207 將 ZTA 分成核心組件與支援組件，「資料存取政策」歸類在支援組件中" },
+        { "id": "opt_d", "text": "ZTA 架構中的決策引擎組件是負責接收存取請求、決定允許與否與授予存取憑證" }
         ],
         "correctAnswers": ["opt_a"],
         "explanation": "零信任核心在於保護「資料與應用資源」的存取，而非僅保護網路邊界。",
@@ -1381,10 +1381,10 @@
         "type": "single",
         "question": "關於對稱式加密 (Symmetric Encryption) 與非對稱式加密 (Asymmetric Encryption) 的敘述，下列何者錯誤？",
         "options": [
-        { "id": "opt_a", "text": "非對稱式加密算法包括 DES、3DES、AES 等..." },
-        { "id": "opt_b", "text": "對稱式加密使用相同的密鑰..." },
-        { "id": "opt_c", "text": "非對稱式加密是一種加密技術，使用一對密鑰..." },
-        { "id": "opt_d", "text": "對稱式加密需要發送方和接收方共享相同的密鑰..." }
+        { "id": "opt_a", "text": "非對稱式加密算法包括 DES、3DES、AES 等，這些算法使用相同的密鑰對資料進行加密和解密" },
+        { "id": "opt_b", "text": "對稱式加密使用相同的密鑰（也稱為加密鑰）來加密和解密資料。在對稱式加密中，發送方和接收方必須共享相同的密鑰，並且使用該密鑰對資料進行加密和解密" },
+        { "id": "opt_c", "text": "非對稱式加密是一種加密技術，使用一對密鑰（公鑰和私鑰）來加密和解密資料" },
+        { "id": "opt_d", "text": "對稱式加密需要發送方和接收方共享相同的密鑰，因此密鑰的管理和分發比較困難" }
         ],
         "correctAnswers": ["opt_a"],
         "explanation": "DES、AES 是「對稱式」加密演算法，非對稱式通常指 RSA、ECC 等。",
@@ -1395,7 +1395,7 @@
         "id": "q_primary_113-1_38",
         "questionBank": "primary",
         "type": "single",
-        "question": "數位簽章驗證程序，是執行附圖中的哪些作業行為？（1.簽章產生 2.內容加密 3.內容解密 4.簽章驗證 5.保密傳輸）",
+        "question": "數位簽章驗證程序，是執行附圖中的哪些作業行為？\n1.簽章產生 \n2.內容加密 \n3.內容解密 \n4.簽章驗證 \n5.保密傳輸",
         "options": [
         { "id": "opt_a", "text": "2、4" },
         { "id": "opt_b", "text": "1、4" },
@@ -1446,7 +1446,7 @@
         "question": "當資訊安全事故發生時，下列敘述何者正確？",
         "options": [
         { "id": "opt_a", "text": "資訊安全事故的發生，最好將細節全部記錄下來，以做日後分析使用" },
-        { "id": "opt_b", "text": "因為是資訊安全事故，僅對內部告知..." },
+        { "id": "opt_b", "text": "因為是資訊安全事故，僅對內部告知，細節要求不需告知與資訊處理相關的供應商" },
         { "id": "opt_c", "text": "資訊安全事故發生如果無法找到根本原因，可以先予以結案" },
         { "id": "opt_d", "text": "因為成本資源的限制，增加此資訊安全事故不再重複發生的控制措施，可於日後再實施" }
         ],
@@ -1555,10 +1555,10 @@
         "id": "q_primary_113-1_48",
         "questionBank": "primary",
         "type": "single",
-        "question": "試問有關復原時間目標 (RTO) 與復原點目標 (RPO) 之敘述，下列何者錯誤？",
+        "question": "試問有關復原時間目標（Recovery Time Objective，RTO）與復原點目標（Recovery Point Objective，RPO）之敘述，下列何者錯誤？",
         "options": [
         { "id": "opt_a", "text": "復原點目標是指在組織發生中斷事件後，該組織就業務面衡量其所保存資料與發生中斷前 24 小時之資料，差距有多少" },
-        { "id": "opt_b", "text": "復原點目標主要觀察與評判該機關執行資料備份與備份資料異地存放之頻率..." },
+        { "id": "opt_b", "text": "復原點目標主要觀察與評判該機關執行資料備份與備份資料異地存放之頻率，以做為決定是否實施資料備份與備份頻率" },
         { "id": "opt_c", "text": "復原時間目標是指機關於發生中斷事件後，該機關對於回復其所提供產品或服務之時間性目標" },
         { "id": "opt_d", "text": "主要是做為機關衡量針對該關鍵活動所具備之營運持續能力" }
         ],

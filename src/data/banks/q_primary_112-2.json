@@ -181,7 +181,7 @@
       "type": "single",
       "question": "在我們使用網路掃描工具 nmap 進行網路探勘時，nmap 通常會先透過 ping 來確認目標伺服器是否可以連線，如果目標伺服器關閉 ping 回應功能，可能會導致 nmap 誤判目標伺服器並未上線。請問下列何項 nmap 指令可以跳過 ping 功能直接開始掃 port？",
       "options": [
-        { "id": "opt_a", "text": "-SL" },
+        { "id": "opt_a", "text": "-sL" },
         { "id": "opt_b", "text": "-Pn" },
         { "id": "opt_c", "text": "-p-" },
         { "id": "opt_d", "text": "-sn" }
@@ -451,15 +451,15 @@
       "id": "q_primary_112-2_29",
       "questionBank": "primary",
       "type": "single",
-      "question": "請問 CVSS (The Common Vulnerability Scoring System) 是指下列何項？",
+      "question": "關於電子郵件安全威脅的敘述，下列何者錯誤？",
       "options": [
-        { "id": "opt_a", "text": "常見漏洞和風險編號" },
-        { "id": "opt_b", "text": "弱點種類" },
-        { "id": "opt_c", "text": "弱點計分系統" },
-        { "id": "opt_d", "text": "漏洞修補建議" }
+        { "id": "opt_a", "text": "電子郵件可能會遇到的資安問題，例如：冒名郵件、垃圾郵件、詐騙郵件、黑函郵件、病毒（木馬）郵件、釣魚郵件等" },
+        { "id": "opt_b", "text": "一般詐騙郵件的手法，都會要求收信者點選一個連結網址，並將收信者引導到一個仿冒的假網站，然後再要求他提供、更新或確認機密的個人資料" },
+        { "id": "opt_c", "text": "詐騙郵件通常企圖獲取個人的重要資訊" },
+        { "id": "opt_d", "text": "電子郵件的安全以詐騙為主，未曾發現針對技術性弱點的攻擊" }
       ],
-      "correctAnswers": ["opt_c"],
-      "explanation": "CVSS (Common Vulnerability Scoring System) 即為通用漏洞評分系統。",
+      "correctAnswers": ["opt_d"],
+      "explanation": "電子郵件的安全威脅不僅包括詐騙，也包括技術性弱點的攻擊。",
       "year": "112-2",
       "category": "資訊安全技術概論"
     },
@@ -467,15 +467,15 @@
       "id": "q_primary_112-2_30",
       "questionBank": "primary",
       "type": "single",
-      "question": "網際網路已成為日常生活不可或缺的一部分，但部分使用者對安全防護不足容易受到惡意程式的危害。下列哪一項「不」是惡意程式？",
+      "question": "關於惡意程式的敘述，下列何者錯誤？",
       "options": [
-        { "id": "opt_a", "text": "蠕蟲 (worm)" },
-        { "id": "opt_b", "text": "特洛伊木馬 (Trojan horse)" },
-        { "id": "opt_c", "text": "中間人攻擊" },
-        { "id": "opt_d", "text": "電腦病毒" }
+        { "id": "opt_a", "text": "蠕蟲（worm）是一種獨立的惡意程式，它透過網路主動傳播自身以感染其他系統計算機，可在不感染文件、檔案的情況下複製自己" },
+        { "id": "opt_b", "text": "特洛伊木馬（Trojan horse）是一種有害程式，它會偽裝成普通的良性程式或實用程式，以使受害者安裝它" },
+        { "id": "opt_c", "text": "Rootkit 透過修改作業系統程式取得 Root 權限的惡意程式" },
+        { "id": "opt_d", "text": "電腦病毒是通常隱藏在另一個看似無害的程序中的軟體，它可以生成自身的副本並將其插入到其他程序或文件中，並且通常會執行有害的作業" }
       ],
       "correctAnswers": ["opt_c"],
-      "explanation": "中間人攻擊（MITM）是一種攻擊手法，而非惡意軟體（Malware）本身。",
+      "explanation": "Rootkit 通常是在取得管理員（Root/Admin）權限後植入的工具，它透過篡改作業系統核心，確保攻擊者能持久且隱密地保有對系統的最高控制權。",
       "year": "112-2",
       "category": "資訊安全技術概論"
     },
@@ -602,8 +602,8 @@
         { "id": "opt_c", "text": "熱備援 (Hot Site)" },
         { "id": "opt_d", "text": "全備援 (Mirrored Site)" }
       ],
-      "correctAnswers": ["opt_c"],
-      "explanation": "熱備援（Hot Site）設備與資料皆即時同步，可立即切換，復原速度最快。",
+      "correctAnswers": ["opt_d"],
+      "explanation": "全備援（Mirrored Site）擁有與主中心同步更新的即時資料與設備，當災害發生時可實現零時差的即時接管，因此復原速度最快。",
       "year": "112-2",
       "category": "資訊安全技術概論"
     },
@@ -611,7 +611,7 @@
       "id": "q_primary_112-2_39",
       "questionBank": "primary",
       "type": "single",
-      "question": "企業透過日誌管理，處理大量且複雜的日誌資訊...關於日誌管理的敘述，下列何者錯誤？",
+      "question": "企業透過日誌管理，處理大量且複雜的日誌資訊（例如：logs& events），IT 部門或是資安部門將這些記錄使用在容量監控管制、故障排除、合規性記錄留存、資安威脅檢測與鑑識…等目的，關於日誌管理的敘述，下列何者錯誤？",
       "options": [
         { "id": "opt_a", "text": "可用於事件取證，日誌資訊對於原因的判別是關鍵點，而在還不確定原因之前，則需要全面性的收集日誌資訊" },
         { "id": "opt_b", "text": "為了滿足不同的法規規範，日誌成為稽核重要的參考資料" },
@@ -771,7 +771,7 @@
       "id": "q_primary_112-2_49",
       "questionBank": "primary",
       "type": "single",
-      "question": "開放網路軟體安全計畫 (Open Web Application Security Project, OWASP) 組織針對物聯網裝置安全問題進行統計，歸納出物聯網常見的十項安全性問題 (OWASP IoT TOP 10)。請問下列何項是附圖中物聯網常見的十項安全性問題的前三名 (不分順序)？",
+      "question": "開放網路軟體安全計畫 (Open Web Application Security Project, OWASP) 組織針對物聯網裝置安全問題進行統計，歸納出物聯網常見的十項安全性問題 (OWASP IoT TOP 10)。請問下列何項是附圖中物聯網常見的十項安全性問題的前三名 (不分順序)？\n1.Weak Guessable, or Hardcoded Password(弱密碼、可猜測密碼或裝置預設密碼)\n2.Insecure Default Settings(不安全的預設設定\n3.Insecure Ecosystem Interfaces（不安全的環境設定介面）\n4.Lack of Secure Update Mechanism（缺乏安全的更新機制\n5.Insecure Data Transfer and Storage（不安全的資料傳輸和儲存\n6.Insecure Network Services（不安全的網路服務）",
       "options": [
         { "id": "opt_a", "text": "1、3、5" },
         { "id": "opt_b", "text": "2、4、6" },
@@ -995,7 +995,7 @@
       "id": "q_primary_112-2_13",
       "questionBank": "primary",
       "type": "single",
-      "question": "請問當某公益團體舉辦抽獎活動，而需蒐集參與者個人資料時，下列何種方式最「不」合適？",
+      "question": "當某公益團體舉辦抽獎活動，而需蒐集參與者個人資料時，請問下列何種方式最「不」合適？",
       "options": [
         { "id": "opt_a", "text": "直接保留參與者個人資訊，以供其他用途使用" },
         { "id": "opt_b", "text": "明確告知參與者，所蒐集個人資訊的用途" },

@@ -293,10 +293,10 @@
       "type": "single",
       "question": "OWASP Top 10:2021 是網頁安全領域中經常被拿來參考的弱點種類，請問下列關於 OWASP Top 10:2021 的描述何項錯誤？",
       "options": [
-        { "id": "opt_a", "text": "A01:2021 - Broken Access Control: 這個種類通常發生在程式沒有做好權限控管..." },
-        { "id": "opt_b", "text": "A03:2021 - Injection: 這個種類的弱點風險等級通常偏高..." },
-        { "id": "opt_c", "text": "A06:2021 - Vulnerable and Outdated Components: 這個種類指的是企業...沒有定期檢查...導致使用版本存在弱點" },
-        { "id": "opt_d", "text": "A10:2021 - Server-Side Request Forgery (SSRF): ...威脅性不高，也很難搭配其他弱點一起使用，通常企業不需要優先修補" }
+        { "id": "opt_a", "text": "A01:2021 - Broken Access Control：這個種類通常發生在程式沒有做好權限控管，導致可以讀取到其他使用者的資料，甚至可以切換權限" },
+        { "id": "opt_b", "text": "A03:2021 - Injection: 這個種類的弱點風險等級通常偏高，因為無論是 SQL Injection、Command Injection、Code Injection 都有可能造成伺服器資料外洩或是被取得控制權，必須嚴加防範" },
+        { "id": "opt_c", "text": "A06:2021 - Vulnerable and Outdated Components：這個種類指的是企業的開發人員或系統維運人員沒有定期檢查程式套件、開發框架、作業系統的版本，導致企業使用的版本存在已知的弱點" },
+        { "id": "opt_d", "text": "A10:2021 - Server-Side Request Forgery (SSRF)：這個種類的弱點經常被用在網路探勘或存取內網資料，不過因為這個種類排在 OWASP Top 10 第十名，威脅性不高，也很難搭配其他弱點一起使用，通常企業不需要優先修補" }
       ],
       "correctAnswers": ["opt_d"],
       "explanation": "SSRF 是嚴重漏洞，可導致內網探測或雲端元數據外洩，絕非威脅性不高。",
@@ -357,9 +357,9 @@
       "type": "single",
       "question": "XSS (Cross-Site-Scripting) 與 SQLi (SQL Injection) 兩種攻擊方式均與輸入程式碼有關。請問關於這兩種攻擊的差別，下列敘述何項最為適當？",
       "options": [
-        { "id": "opt_a", "text": "SQLi 是一種用於攻擊 SQL 資料庫的駭客手法，而 XSS 攻擊可以存在於許多不同類型的程式語言..." },
-        { "id": "opt_b", "text": "XSS 攻擊用於從資料庫竊取資料，而 SQLi 攻擊用於將使用者重定向..." },
-        { "id": "opt_c", "text": "XSS 是一種用於攻擊 SQL 資料庫的駭客手法..." },
+        { "id": "opt_a", "text": "SQLi 是一種用於攻擊 SQL 資料庫的駭客手法，而 XSS 攻擊可以存在於許多不同類型的程式語言，如Python" },
+        { "id": "opt_b", "text": "XSS 攻擊用於從資料庫竊取資料，而 SQLi 攻擊用於將使用者重定向到攻擊者可以從中竊取資料的網站" },
+        { "id": "opt_c", "text": "XSS 是一種用於攻擊 SQL 資料庫的駭客手法，而SQLi 攻擊可以存在於許多不同類型的應用程式中" },
         { "id": "opt_d", "text": "SQLi 攻擊用於從資料庫竊取資料，而 XSS 攻擊用於將使用者重定向到攻擊者可以從中竊取資料的網站" }
       ],
       "correctAnswers": ["opt_d"],
@@ -451,11 +451,11 @@
       "id": "q_primary_114-1_29",
       "questionBank": "primary",
       "type": "single",
-      "question": "為了躲避安全研究人員的分析與惡意軟體偵測機制...下列何種方法「不是」惡意程式常見的沙盒偵測技術？",
+      "question": "為了躲避安全研究人員的分析與惡意軟體偵測機制，某些惡意程式會嘗試偵測自己是否執行於沙盒環境（Sandbox）內，並在偵測到時隱藏或延遲執行惡意行為。下列何種方法「不是」惡意程式常見的沙盒偵測技術？",
       "options": [
-        { "id": "opt_a", "text": "檢查系統運行時間是否極短..." },
-        { "id": "opt_b", "text": "嘗試存取特定的虛擬機或沙箱環境特徵..." },
-        { "id": "opt_c", "text": "檢查是否有鍵盤或滑鼠輸入活動..." },
+        { "id": "opt_a", "text": "檢查系統運行時間是否極短，以判斷是否為剛啟動的虛擬環境" },
+        { "id": "opt_b", "text": "嘗試存取特定的虛擬機或沙箱環境特徵，如硬體資訊" },
+        { "id": "opt_c", "text": "檢查是否有鍵盤或滑鼠輸入活動，以確認系統是否由真人操作" },
         { "id": "opt_d", "text": "自動將自身程式碼重新加密以防止靜態分析" }
       ],
       "correctAnswers": ["opt_d"],
@@ -563,7 +563,7 @@
       "id": "q_primary_114-1_36",
       "questionBank": "primary",
       "type": "single",
-      "question": "某公司每次完整備份的資料量約略少於 800GB...請問下列哪種儲存媒介較為合適？",
+      "question": "某公司每次完整備份的資料量約略少於 800GB，公司的顧問建議在備份媒介的選擇上，每一個單一的儲存媒介，需可以完整存放其一次的備份資料，請問下列哪種儲存媒介較為合適？",
       "options": [
         { "id": "opt_a", "text": "BD-R" },
         { "id": "opt_b", "text": "LTO-2" },
@@ -629,7 +629,7 @@
       "type": "single",
       "question": "日誌管理要求應定期執行日誌備分的任務，關於日誌管理的敘述下列何項有誤？",
       "options": [
-        { "id": "opt_a", "text": "定期備份日誌至與原系統外之其他實體系統..." },
+        { "id": "opt_a", "text": "定期備份日誌至與原系統外之其他實體系統，以避免因實體主機損毀而造成原始資料與備份資料一併丟失" },
         { "id": "opt_b", "text": "常見的日誌備份方式有建置日誌伺服器、NAS 及雲端空間等" },
         { "id": "opt_c", "text": "可以利用磁碟與磁帶等儲存媒體存放備份資料" },
         { "id": "opt_d", "text": "為避免備份相關弊端產生，驗證人員於檢視機關日誌紀錄時，不可以訪談相關權責人員" }
