@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import type { Question, QuestionBank } from '@/types';
+import type { Question, QuestionBank, QuestionGroupContent } from '@/types';
 
 interface QuestionState {
   questions: Question[];
@@ -9,10 +9,14 @@ interface QuestionState {
     intermediate: Question[];
     [key: string]: Question[]; // 支援自定義題庫
   };
-  
+  /** 題組內容（依 groupKey 對應），不持久化，由題庫載入時填入 */
+  questionGroupsMap: Record<string, QuestionGroupContent>;
+
   // Actions
   loadQuestions: (bank: QuestionBank | string, questions: Question[]) => void;
+  loadQuestionGroups: (groups: QuestionGroupContent[]) => void;
   getQuestions: (bank: QuestionBank | string) => Question[];
+  getQuestionGroupContent: (groupKey: string) => QuestionGroupContent | undefined;
   getRandomQuestions: (bank: QuestionBank | string, count: number, yearFilter?: string, categoryFilter?: string) => Question[];
   getAvailableYears: (bank: QuestionBank | string) => string[];
   getAvailableCategories: (bank: QuestionBank | string) => string[];
@@ -27,6 +31,7 @@ export const useQuestionStore = create<QuestionState>()(
         primary: [],
         intermediate: [],
       },
+      questionGroupsMap: {},
 
       loadQuestions: (bank, questions) => {
         set((state) => ({
@@ -36,6 +41,21 @@ export const useQuestionStore = create<QuestionState>()(
           },
           questions: [...state.questions, ...questions],
         }));
+      },
+
+      loadQuestionGroups: (groups) => {
+        if (!groups.length) return;
+        set((state) => {
+          const next = { ...state.questionGroupsMap };
+          groups.forEach((g) => {
+            next[g.groupKey] = g;
+          });
+          return { questionGroupsMap: next };
+        });
+      },
+
+      getQuestionGroupContent: (groupKey) => {
+        return get().questionGroupsMap[groupKey];
       },
 
       getQuestions: (bank) => {
@@ -72,6 +92,7 @@ export const useQuestionStore = create<QuestionState>()(
     }),
     {
       name: 'question-storage',
+      partialize: (state) => ({ questionBanks: state.questionBanks }),
     }
   )
 );

@@ -8,8 +8,10 @@ import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
 import { OptionButton } from '@/components/OptionButton';
 import { QuestionImageModal } from '@/components/QuestionImageModal';
+import { QuestionGroupContentModal } from '@/components/QuestionGroupContentModal';
 import { checkAnswer } from '@/utils/questionUtils';
 import { getQuestionIdsWithImagesSync } from '@/utils/questionImages';
+import { getQuestionGroupKey, isQuestionGroupQuestion } from '@/utils/questionGroupUtils';
 import type { Question, QuestionBank, TestMode } from '@/types';
 import './Test.css';
 
@@ -26,6 +28,7 @@ export const Test: React.FC = () => {
   const [hasAnswered, setHasAnswered] = useState(false);
   const [questionIdsWithImages, setQuestionIdsWithImages] = useState<Set<string>>(new Set());
   const [showImageModal, setShowImageModal] = useState(false);
+  const [showGroupContentModal, setShowGroupContentModal] = useState(false);
 
   const questions = (location.state?.questions as Question[]) || [];
   const isTrainingMode = mode === 'training';
@@ -228,6 +231,19 @@ export const Test: React.FC = () => {
                 </div>
               )}
 
+              {isQuestionGroupQuestion(currentQuestion) && (
+                <div className="question-image-button-container">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setShowGroupContentModal(true)}
+                  >
+                    <Image size={18} />
+                    顯示題組題目
+                  </Button>
+                </div>
+              )}
+
               <div className="options-container">
                 {currentQuestion.options.map((option) => {
                   const isSelected = selectedOptions.includes(option.id);
@@ -333,6 +349,12 @@ export const Test: React.FC = () => {
         questionId={currentQuestion.id}
         isOpen={showImageModal}
         onClose={() => setShowImageModal(false)}
+      />
+
+      <QuestionGroupContentModal
+        groupKey={getQuestionGroupKey(currentQuestion)}
+        isOpen={showGroupContentModal}
+        onClose={() => setShowGroupContentModal(false)}
       />
     </div>
   );

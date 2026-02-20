@@ -444,7 +444,7 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
             <div className="format-example">
               <h5>單選題格式：</h5>
               <pre>{`{
-  "id": "q_primary_108-2_1(必填，題目唯一識別碼) ",
+  "id": "q_primary_108-2_s_1(必填，題目唯一識別碼) ",
   "questionBank": "primary",
   "type": "single",
   "question": "題目內容",
@@ -464,7 +464,7 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
             <div className="format-example">
               <h5>複選題格式：</h5>
               <pre>{`{
-  "id": "q_intermediate_s_109_1_1(必填，題目唯一識別碼) ",
+  "id": "q_intermediate_109-1_o_1(必填，題目唯一識別碼) ",
   "questionBank": "intermediate",
   "type": "multiple",
   "question": "多選題題目內容",
@@ -477,7 +477,7 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
   "correctAnswers": ["opt_a", "opt_b", "opt_c"],
   "explanation": "多選題解析說明",
   "year": "109-1",
-  "category": "資訊安全技術概論(可選，篩選用)"
+  "category": "資訊安全規劃實務(可選，篩選用)"
 }`}</pre>
             </div>
 
@@ -502,6 +502,9 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
                 <li>題目 ID 重複時會提示是否覆蓋，其他題目會繼續匯入</li>
                 <li>匯出可依「年份」「類別」篩選範圍，匯出前會顯示確認與總題數</li>
                 <li><strong>題目圖片：</strong>若題目需搭配圖片，請將圖片放入 <code>public/question-images/</code>，檔名為 <code>{"{題目id}"}.png</code>，並執行 <code>npm run generate-image-manifest</code> 更新清單，作答時會顯示「顯示圖片」按鈕</li>
+                <li><strong>題組題：</strong>中級題目可設 <code>questionGroupId</code>（例：<code>"1"</code> 表示題組 1）；同一題庫、科目、年份的題組需在該題庫 JSON 內提供 <code>questionGroups</code> 陣列，每筆含 <code>groupKey</code>（例：<code>intermediate_資訊安全防護實務_108-1</code>）、<code>contentText</code>（選填）、<code>imageIds</code>（題組圖片 ID 清單）。題組圖片檔名為 <code>{"{imageId}"}.png</code>，置於 <code>public/question-images/</code>，作答時會顯示「顯示題組題目」按鈕並可依序查看題組圖片。中級題庫可採「單一物件」格式：<code>{"description":"（選填）","questionGroups":[...],"questions":[...]}</code>，同一檔案內僅能有一組 <code>description</code>／<code>questionGroups</code>／<code>questions</code>，多科目時請合併 <code>questionGroups</code> 與 <code>questions</code> 陣列（參考 <code>src/data/banks/q_intermediate_108-1.json</code>）</li>
+                <li><strong>初階題目 ID 區分科目：</strong>為避免題目圖片錯用，初階題目若 <code>category</code> 為「資訊安全管理概論」請在 id 尾號前加 <code>_m_</code>（例：<code>q_primary_114-1_m_5</code>），若為「資訊安全技術概論」請加 <code>_s_</code>（例：<code>q_primary_113-2_s_1</code>）</li>
+                <li><strong>中級題目 ID 區分科目：</strong>中級題目若 <code>category</code> 為「資訊安全防護實務」請在 id 尾號前加 <code>_p_</code>（例：<code>q_intermediate_108-1_p_1</code>），若為「資訊安全規劃實務」請加 <code>_o_</code>（例：<code>q_intermediate_108-1_o_1</code>）</li>
               </ul>
             </div>
           </div>

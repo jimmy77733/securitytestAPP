@@ -20,6 +20,16 @@ export interface Option {
   text: string;
 }
 
+/** 題組內容（共用情境／圖片，供多道子題參照） */
+export interface QuestionGroupContent {
+  /** 格式建議：questionBank_category_year_groupIndex，例如 intermediate_資訊安全防護實務_108_1 */
+  groupKey: string;
+  /** 題組情境文字（選填） */
+  contentText?: string;
+  /** 題組圖片 ID 列表，順序即顯示順序；圖片檔名為 {imageId}.png，置於 public/question-images/ */
+  imageIds: string[];
+}
+
 // 題目
 export interface Question {
   id: string;
@@ -31,6 +41,8 @@ export interface Question {
   explanation?: string;
   year?: string;
   category?: string;
+  /** 題組題時填寫，與 QuestionGroupContent.groupKey 對應（需搭配同 questionBank、category、year 判定） */
+  questionGroupId?: string;
 }
 
 // 使用者答案

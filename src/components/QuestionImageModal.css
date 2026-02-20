@@ -89,6 +89,64 @@
   color: var(--color-text-light);
 }
 
+/* 題組內容 Modal */
+.question-group-content-modal-body {
+  align-items: stretch;
+  gap: var(--spacing-lg);
+}
+
+.question-group-content-text {
+  width: 100%;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.question-group-content-text p {
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+.question-group-image-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.question-group-image-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-card);
+  color: var(--color-text);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.question-group-image-btn:hover {
+  background: var(--color-bg);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.question-group-image-btn.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+}
+
+.question-group-selected-image-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: var(--spacing-md);
+}
+
 /* 響應式設計 */
 @media (max-width: 768px) {
   .question-image-modal {

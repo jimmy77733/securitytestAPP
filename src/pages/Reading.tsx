@@ -8,7 +8,9 @@ import { useFavoriteStore } from '@/store/favoriteStore';
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
 import { QuestionImageModal } from '@/components/QuestionImageModal';
+import { QuestionGroupContentModal } from '@/components/QuestionGroupContentModal';
 import { getQuestionIdsWithImagesSync } from '@/utils/questionImages';
+import { getQuestionGroupKey, isQuestionGroupQuestion } from '@/utils/questionGroupUtils';
 import type { QuestionBank, Question } from '@/types';
 import './Reading.css';
 
@@ -25,6 +27,7 @@ export const Reading: React.FC = () => {
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
   const [questionIdsWithImages, setQuestionIdsWithImages] = useState<Set<string>>(new Set());
   const [showImageModal, setShowImageModal] = useState(false);
+  const [showGroupContentModal, setShowGroupContentModal] = useState(false);
 
   if (!currentUser) {
     navigate('/');
@@ -254,6 +257,16 @@ export const Reading: React.FC = () => {
                           顯示圖片
                         </Button>
                       )}
+                      {isQuestionGroupQuestion(currentQuestion) && (
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => setShowGroupContentModal(true)}
+                        >
+                          <Image size={18} />
+                          顯示題組題目
+                        </Button>
+                      )}
                       <button
                         className="favorite-btn"
                         onClick={() => handleToggleFavorite(currentQuestion)}
@@ -312,11 +325,18 @@ export const Reading: React.FC = () => {
       )}
 
       {currentQuestion && (
-        <QuestionImageModal
-          questionId={currentQuestion.id}
-          isOpen={showImageModal}
-          onClose={() => setShowImageModal(false)}
-        />
+        <>
+          <QuestionImageModal
+            questionId={currentQuestion.id}
+            isOpen={showImageModal}
+            onClose={() => setShowImageModal(false)}
+          />
+          <QuestionGroupContentModal
+            groupKey={getQuestionGroupKey(currentQuestion)}
+            isOpen={showGroupContentModal}
+            onClose={() => setShowGroupContentModal(false)}
+          />
+        </>
       )}
     </div>
   );

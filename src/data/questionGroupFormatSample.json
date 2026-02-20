@@ -1,0 +1,44 @@
+{
+  "description": "題組題 JSON 格式範例（僅供參考，實際匯入請使用 questions + questionGroups 陣列）",
+  "questionGroups": [
+    {
+      "groupKey": "intermediate_資訊安全防護實務_108_1",
+      "contentText": "某公司資安稽核部門進行年度檢視稽核，抽驗了四類記錄與報告：(1) Web資安黑箱檢測報告 (2) 資料庫記錄 (3) 資訊系統存取記錄 (4) 研發人員端點電腦記錄。請根據下列內容回答問題。",
+      "imageIds": ["g_intermediate_108_1_1", "g_intermediate_108_1_2", "g_intermediate_108_1_3"]
+    }
+  ],
+  "questions": [
+    {
+      "id": "q_intermediate_108_21",
+      "questionBank": "intermediate",
+      "type": "multiple",
+      "question": "上述情境中，關於網站檢測報告分析，下列敘述哪些正確？",
+      "options": [
+        { "id": "opt_a", "text": "藍色燈號資安報告項目，不需要關注處理，並無風險" },
+        { "id": "opt_b", "text": "在網站檢測報告中，本項內容測試，回應結果200表示成功" },
+        { "id": "opt_c", "text": "在解析內容中發現帳號與密碼" },
+        { "id": "opt_d", "text": "在網站檢測報告中發現在傳輸過程中，對敏感資料未作保護" }
+      ],
+      "correctAnswers": ["opt_b", "opt_c", "opt_d"],
+      "year": "108",
+      "category": "資訊安全防護實務",
+      "questionGroupId": "1"
+    },
+    {
+      "id": "q_intermediate_108_22",
+      "questionBank": "intermediate",
+      "type": "single",
+      "question": "上述情境中，關於資料庫交易記錄，下列敘述何者「不」正確？",
+      "options": [
+        { "id": "opt_a", "text": "可以知道這是一個網站系統與資料庫在同一部主機" },
+        { "id": "opt_b", "text": "login.asp 備份後被儲存在IIS 網站目錄下" },
+        { "id": "opt_c", "text": "該交易記錄發現資料庫被備份成為login.asp" },
+        { "id": "opt_d", "text": "所備份的資料庫是全球資訊網" }
+      ],
+      "correctAnswers": ["opt_d"],
+      "year": "108",
+      "category": "資訊安全防護實務",
+      "questionGroupId": "1"
+    }
+  ]
+}

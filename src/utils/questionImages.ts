@@ -89,6 +89,15 @@ export function getQuestionImageUrl(questionId: string): string {
 }
 
 /**
+ * 取得題組圖片的 URL（與題目圖片同目錄，檔名為 {imageId}.png）
+ * @param imageId 題組圖片 ID（來自 QuestionGroupContent.imageIds）
+ * @returns 圖片 URL
+ */
+export function getQuestionGroupImageUrl(imageId: string): string {
+  return `/question-images/${imageId}.png`;
+}
+
+/**
  * 預先載入 manifest（建議在 App 啟動時呼叫）
  */
 export async function preloadImageManifest(): Promise<void> {
