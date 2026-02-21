@@ -90,11 +90,13 @@ export function getQuestionImageUrl(questionId: string): string {
 
 /**
  * 取得題組圖片的 URL（與題目圖片同目錄，檔名為 {imageId}.png）
- * @param imageId 題組圖片 ID（來自 QuestionGroupContent.imageIds）
+ * @param imageId 題組圖片 ID（來自 QuestionGroupContent.imageIds，勿含副檔名）
  * @returns 圖片 URL
  */
 export function getQuestionGroupImageUrl(imageId: string): string {
-  return `/question-images/${imageId}.png`;
+  const base = (imageId || '').trim();
+  if (/\.(png|jpg|jpeg)$/i.test(base)) return `/question-images/${base}`;
+  return `/question-images/${base}.png`;
 }
 
 /**

@@ -96,6 +96,165 @@
   border-color: var(--color-primary);
 }
 
+.reading-frequency-row {
+  margin-top: var(--spacing-sm);
+}
+
+.reading-frequency-option {
+  flex: 1;
+}
+
+.reading-checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: 14px;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.reading-checkbox-label input {
+  width: 16px;
+  height: 16px;
+}
+
+.reading-frequency-sync-btn {
+  flex-shrink: 0;
+}
+
+.reading-frequency-hint {
+  font-size: 12px;
+  color: var(--color-text-light);
+  margin-top: var(--spacing-xs);
+}
+
+.reading-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reading-modal {
+  background: var(--color-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  min-width: 320px;
+  max-width: 90vw;
+}
+
+.reading-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.reading-modal-header h4 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.reading-modal-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-xs);
+  color: var(--color-text-light);
+}
+
+.reading-modal-close:hover {
+  color: var(--color-text);
+}
+
+.reading-modal-body {
+  padding: var(--spacing-lg);
+}
+
+.reading-modal-body p {
+  margin: 0 0 var(--spacing-sm);
+}
+
+.reading-modal-body p:last-child {
+  margin-bottom: 0;
+}
+
+.reading-frequency-sync-success {
+  margin: 0;
+  color: var(--color-success, #27ae60);
+  font-weight: 500;
+}
+
+.reading-frequency-sync-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg) 0;
+}
+
+.reading-frequency-sync-loading p {
+  margin: 0;
+  color: var(--color-text-light);
+}
+
+.reading-frequency-sync-spinner-wrap {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reading-frequency-sync-track {
+  position: absolute;
+  inset: 0;
+  border: 3px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: reading-frequency-spin 0.9s linear infinite;
+}
+
+.reading-frequency-sync-spinner {
+  position: relative;
+  color: var(--color-primary);
+  animation: reading-frequency-spin 1.1s linear infinite reverse;
+  will-change: transform;
+}
+
+.reading-frequency-sync-loading-text {
+  animation: reading-frequency-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes reading-frequency-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes reading-frequency-pulse {
+  0%, 100% { opacity: 0.75; }
+  50% { opacity: 1; }
+}
+
+.reading-frequency-sync-error {
+  margin: 0;
+  color: var(--color-error, #e74c3c);
+  font-weight: 500;
+}
+
+.reading-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-lg);
+  border-top: 1px solid var(--color-border);
+}
+
 .reading-start-btn-wrap {
   margin-top: var(--spacing-lg);
 }
@@ -132,6 +291,7 @@
   cursor: pointer;
   transition: all var(--transition-normal);
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: var(--spacing-sm);
   text-align: left;
@@ -172,6 +332,13 @@
   color: var(--color-text);
 }
 
+.question-item-frequency {
+  flex: 1 1 100%;
+  font-size: 12px;
+  color: var(--color-text-light);
+  margin-top: var(--spacing-xs);
+}
+
 .reading-content {
   min-height: 600px;
 }
@@ -197,6 +364,7 @@
 .question-detail-title {
   flex: 1;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: var(--spacing-md);
 }
@@ -207,6 +375,17 @@
   line-height: 1.6;
   color: var(--color-text);
   margin: 0;
+}
+
+.question-detail-frequency {
+  flex: 1 1 100%;
+  font-size: 14px;
+  color: var(--color-text-light);
+  margin: var(--spacing-xs) 0 0;
+}
+
+.question-detail-frequency strong {
+  color: var(--color-primary);
 }
 
 .favorite-btn {

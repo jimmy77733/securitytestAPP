@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Upload, Download, Info, X, CheckCircle, AlertCircle, AlertTriangle, ImagePlus } from 'lucide-react';
+import { Upload, Download, Info, X, CheckCircle, AlertCircle, AlertTriangle, ImagePlus, RefreshCw, Loader2 } from 'lucide-react';
 import { useQuestionStore } from '@/store/questionStore';
 import {
   importQuestions,
@@ -54,6 +54,10 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
     existing: Array<{ name: string; mtime: string | null }>;
     pendingPayload: Array<{ name: string; data: string }>;
   } | null>(null);
+  const [showImageManifestSyncModal, setShowImageManifestSyncModal] = useState(false);
+  const [imageManifestSyncing, setImageManifestSyncing] = useState(false);
+  const [imageManifestInfo, setImageManifestInfo] = useState<{ generatedAt: string | null; count: number } | null>(null);
+  const [imageManifestSyncResult, setImageManifestSyncResult] = useState<{ success: boolean; count?: number; error?: string } | null>(null);
 
   const MAX_IMAGE_FILES = 15;
   const MAX_IMAGE_SIZE = 2 * 1024 * 1024; // 2MB
@@ -341,6 +345,27 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
             <ImagePlus size={18} />
             匯入圖片
           </Button>
+          <Button
+            variant="ghost"
+            size="md"
+            onClick={async () => {
+              setShowImageManifestSyncModal(true);
+              setImageManifestSyncResult(null);
+              try {
+                const res = await fetch('/api/get-image-manifest');
+                const data = await res.json().catch(() => ({}));
+                setImageManifestInfo({
+                  generatedAt: data.generatedAt ?? null,
+                  count: typeof data.count === 'number' ? data.count : 0,
+                });
+              } catch {
+                setImageManifestInfo({ generatedAt: null, count: 0 });
+              }
+            }}
+            >
+            <RefreshCw size={18} />
+            圖片同步
+          </Button>
           <input
             ref={imageInputRef}
             type="file"
@@ -428,6 +453,96 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
         </div>
       )}
 
+      {showImageManifestSyncModal && (
+        <div className="import-modal-overlay" onClick={() => { if (!imageManifestSyncing) setShowImageManifestSyncModal(false); }}>
+          <div className="import-modal image-manifest-sync-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="import-modal-header">
+              <h4>圖片清單同步</h4>
+              <button type="button" className="close-btn" onClick={() => { if (!imageManifestSyncing) setShowImageManifestSyncModal(false); }}>
+                <X size={18} />
+              </button>
+            </div>
+            <div className="import-modal-desc image-manifest-sync-body">
+              {imageManifestSyncing ? (
+                <div className="image-manifest-sync-loading">
+                  <div className="image-manifest-sync-spinner-wrap">
+                    <span className="image-manifest-sync-track" aria-hidden />
+                    <Loader2 size={32} className="image-manifest-sync-spinner" strokeWidth={2.5} />
+                  </div>
+                  <p className="image-manifest-sync-loading-text">正在同步圖片清單…</p>
+                </div>
+              ) : imageManifestInfo === null ? (
+                <p>讀取中…</p>
+              ) : imageManifestSyncResult ? (
+                <div className="image-manifest-sync-result">
+                  {imageManifestSyncResult.success ? (
+                    <>
+                      <CheckCircle size={24} className="success-icon" />
+                      <p>同步成功。</p>
+                      <p>目前圖片數量：{imageManifestSyncResult.count ?? imageManifestInfo.count}</p>
+                    </>
+                  ) : (
+                    <>
+                      <AlertCircle size={24} className="error-icon" />
+                      <p>同步失敗：{imageManifestSyncResult.error ?? '未知錯誤'}</p>
+                    </>
+                  )}
+                </div>
+              ) : (
+                <>
+                  <p><strong>上次同步時間：</strong>{imageManifestInfo.generatedAt ? new Date(imageManifestInfo.generatedAt).toLocaleString('zh-TW') : '尚未同步'}</p>
+                  <p><strong>目前圖片數量：</strong>{imageManifestInfo.count}</p>
+                  <p className="image-manifest-sync-hint">是否要執行同步？將重新產生 <code>manifest.json</code> 並更新圖片清單。</p>
+                </>
+              )}
+            </div>
+            <div className="import-modal-actions">
+              {imageManifestSyncing ? null : imageManifestSyncResult ? (
+                <Button variant="primary" size="md" onClick={() => { setShowImageManifestSyncModal(false); setImageManifestSyncResult(null); }}>關閉</Button>
+              ) : (
+                <>
+                  <Button variant="secondary" size="md" onClick={() => setShowImageManifestSyncModal(false)}>取消</Button>
+                  <Button
+                    variant="primary"
+                    size="md"
+                    onClick={async () => {
+                      setImageManifestSyncing(true);
+                      setImageManifestSyncResult(null);
+                      await new Promise<void>((r) => {
+                        requestAnimationFrame(() => requestAnimationFrame(() => r()));
+                      });
+                      const minWaitMs = 500;
+                      const start = Date.now();
+                      try {
+                        const res = await fetch('/api/generate-image-manifest', { method: 'POST' });
+                        const data = await res.json().catch(() => ({}));
+                        if (data.success && (data.generatedAt != null || data.count != null)) {
+                          setImageManifestInfo({
+                            generatedAt: data.generatedAt ?? imageManifestInfo?.generatedAt ?? null,
+                            count: typeof data.count === 'number' ? data.count : (imageManifestInfo?.count ?? 0),
+                          });
+                          setImageManifestSyncResult({ success: true, count: data.count });
+                        } else {
+                          setImageManifestSyncResult({ success: false, error: data.error ?? '同步失敗' });
+                        }
+                      } catch (e) {
+                        setImageManifestSyncResult({ success: false, error: (e as Error).message || '請使用支援圖片 API 的環境啟動' });
+                      } finally {
+                        const elapsed = Date.now() - start;
+                        await new Promise((r) => setTimeout(r, Math.max(0, minWaitMs - elapsed)));
+                        setImageManifestSyncing(false);
+                      }
+                    }}
+                  >
+                    確認同步
+                  </Button>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
       {showFormatInfo && (
         <div className="format-info">
           <div className="format-info-header">
@@ -502,7 +617,7 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
                 <li>題目 ID 重複時會提示是否覆蓋，其他題目會繼續匯入</li>
                 <li>匯出可依「年份」「類別」篩選範圍，匯出前會顯示確認與總題數</li>
                 <li><strong>題目圖片：</strong>若題目需搭配圖片，請將圖片放入 <code>public/question-images/</code>，檔名為 <code>{"{題目id}"}.png</code>，並執行 <code>npm run generate-image-manifest</code> 更新清單，作答時會顯示「顯示圖片」按鈕</li>
-                <li><strong>題組題：</strong>中級題目可設 <code>questionGroupId</code>（例：<code>"1"</code> 表示題組 1）；同一題庫、科目、年份的題組需在該題庫 JSON 內提供 <code>questionGroups</code> 陣列，每筆含 <code>groupKey</code>（例：<code>intermediate_資訊安全防護實務_108-1</code>）、<code>contentText</code>（選填）、<code>imageIds</code>（題組圖片 ID 清單）。題組圖片檔名為 <code>{"{imageId}"}.png</code>，置於 <code>public/question-images/</code>，作答時會顯示「顯示題組題目」按鈕並可依序查看題組圖片。中級題庫可採「單一物件」格式：<code>{"description":"（選填）","questionGroups":[...],"questions":[...]}</code>，同一檔案內僅能有一組 <code>description</code>／<code>questionGroups</code>／<code>questions</code>，多科目時請合併 <code>questionGroups</code> 與 <code>questions</code> 陣列（參考 <code>src/data/banks/q_intermediate_108-1.json</code>）</li>
+                <li><strong>題組題：</strong>中級題目可設 <code>questionGroupId</code>（例：<code>&quot;1&quot;</code> 表示題組 1）；同一題庫、科目、年份的題組需在該題庫 JSON 內提供 <code>questionGroups</code> 陣列，每筆含 <code>groupKey</code>（例：<code>intermediate_資訊安全防護實務_108-1</code>）、<code>contentText</code>（選填）、<code>imageIds</code>（題組圖片 ID 清單）。題組圖片檔名為 <code>{"{imageId}"}.png</code>，置於 <code>public/question-images/</code>，作答時會顯示「顯示題組題目」按鈕並可依序查看題組圖片。中級題庫可採「單一物件」格式：<code>{'{"description":"（選填）","questionGroups":[...],"questions":[...]}'}</code>，同一檔案內僅能有一組 <code>description</code>／<code>questionGroups</code>／<code>questions</code>，多科目時請合併 <code>questionGroups</code> 與 <code>questions</code> 陣列（參考 <code>src/data/banks/q_intermediate_108-1.json</code>）</li>
                 <li><strong>初階題目 ID 區分科目：</strong>為避免題目圖片錯用，初階題目若 <code>category</code> 為「資訊安全管理概論」請在 id 尾號前加 <code>_m_</code>（例：<code>q_primary_114-1_m_5</code>），若為「資訊安全技術概論」請加 <code>_s_</code>（例：<code>q_primary_113-2_s_1</code>）</li>
                 <li><strong>中級題目 ID 區分科目：</strong>中級題目若 <code>category</code> 為「資訊安全防護實務」請在 id 尾號前加 <code>_p_</code>（例：<code>q_intermediate_108-1_p_1</code>），若為「資訊安全規劃實務」請加 <code>_o_</code>（例：<code>q_intermediate_108-1_o_1</code>）</li>
               </ul>

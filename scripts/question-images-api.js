@@ -1,4 +1,4 @@
-import { writeFileSync, mkdirSync, existsSync, statSync } from 'fs';
+import { writeFileSync, mkdirSync, existsSync, statSync, readFileSync } from 'fs';
 import { join } from 'path';
 import { execSync } from 'child_process';
 import { fileURLToPath } from 'url';
@@ -136,4 +136,71 @@ export function handleSaveQuestionImages(payload, outDir, projectRoot, res) {
       errors: errors.length ? errors : undefined,
     })
   );
+}
+
+/**
+ * GET /api/get-image-manifest
+ * 回傳目前 manifest 的 generatedAt 與 count（不執行腳本）
+ */
+export function handleGetImageManifest(outDir, res) {
+  const manifestPath = join(outDir, 'manifest.json');
+  res.setHeader('Content-Type', 'application/json');
+  if (!existsSync(manifestPath)) {
+    res.statusCode = 200;
+    res.end(JSON.stringify({ generatedAt: null, count: 0 }));
+    return;
+  }
+  try {
+    const raw = readFileSync(manifestPath, 'utf8');
+    const manifest = JSON.parse(raw);
+    res.statusCode = 200;
+    res.end(
+      JSON.stringify({
+        generatedAt: manifest.generatedAt ?? null,
+        count: Array.isArray(manifest.imageIds) ? manifest.imageIds.length : (manifest.count ?? 0),
+      })
+    );
+  } catch (err) {
+    res.statusCode = 500;
+    res.end(JSON.stringify({ generatedAt: null, count: 0, error: String(err?.message || err) }));
+  }
+}
+
+/**
+ * POST /api/generate-image-manifest
+ * 執行 generate-image-manifest 腳本後回傳新 manifest 的 generatedAt 與 count
+ */
+export function handleGenerateImageManifest(outDir, projectRoot, res) {
+  res.setHeader('Content-Type', 'application/json');
+  try {
+    execSync('node scripts/generate-question-image-manifest.js', {
+      cwd: projectRoot,
+      stdio: 'pipe',
+    });
+  } catch (err) {
+    res.statusCode = 500;
+    res.end(JSON.stringify({ success: false, error: String(err?.message || err) }));
+    return;
+  }
+  const manifestPath = join(outDir, 'manifest.json');
+  if (!existsSync(manifestPath)) {
+    res.statusCode = 200;
+    res.end(JSON.stringify({ success: true, generatedAt: null, count: 0 }));
+    return;
+  }
+  try {
+    const raw = readFileSync(manifestPath, 'utf8');
+    const manifest = JSON.parse(raw);
+    res.statusCode = 200;
+    res.end(
+      JSON.stringify({
+        success: true,
+        generatedAt: manifest.generatedAt ?? null,
+        count: Array.isArray(manifest.imageIds) ? manifest.imageIds.length : (manifest.count ?? 0),
+      })
+    );
+  } catch (err) {
+    res.statusCode = 200;
+    res.end(JSON.stringify({ success: true, generatedAt: null, count: 0 }));
+  }
 }

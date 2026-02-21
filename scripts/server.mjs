@@ -7,6 +7,8 @@ import {
   getProjectRoot,
   handleCheckQuestionImages,
   handleSaveQuestionImages,
+  handleGetImageManifest,
+  handleGenerateImageManifest,
 } from './question-images-api.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -42,9 +44,32 @@ function serveStatic(req, res, filePath) {
 
 const server = http.createServer(async (req, res) => {
   const baseUrl = req.url?.split('?')[0] || '/';
-  const isCheck = req.method === 'POST' && baseUrl === '/api/check-question-images';
-  const isSave = req.method === 'POST' && baseUrl === '/api/save-question-images';
+  const method = req.method;
+  const isGetManifest = method === 'GET' && baseUrl === '/api/get-image-manifest';
+  const isGenerateManifest = method === 'POST' && baseUrl === '/api/generate-image-manifest';
+  const isCheck = method === 'POST' && baseUrl === '/api/check-question-images';
+  const isSave = method === 'POST' && baseUrl === '/api/save-question-images';
 
+  if (isGetManifest) {
+    res.setHeader('Content-Type', 'application/json');
+    try {
+      handleGetImageManifest(outDir, res);
+    } catch (err) {
+      res.statusCode = 500;
+      res.end(JSON.stringify({ success: false, error: String(err?.message || err) }));
+    }
+    return;
+  }
+  if (isGenerateManifest) {
+    res.setHeader('Content-Type', 'application/json');
+    try {
+      handleGenerateImageManifest(outDir, projectRoot, res);
+    } catch (err) {
+      res.statusCode = 500;
+      res.end(JSON.stringify({ success: false, error: String(err?.message || err) }));
+    }
+    return;
+  }
   if (isCheck || isSave) {
     const chunks = [];
     for await (const chunk of req) chunks.push(chunk);

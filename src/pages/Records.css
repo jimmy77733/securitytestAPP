@@ -122,5 +122,14 @@
 .record-actions {
   display: flex;
   justify-content: flex-end;
+  gap: var(--spacing-sm);
+}
+
+.record-delete-btn {
+  color: var(--color-text-light);
+}
+
+.record-delete-btn:hover {
+  color: var(--color-error);
 }
 

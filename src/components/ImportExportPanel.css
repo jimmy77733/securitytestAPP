@@ -605,3 +605,92 @@
   margin-top: var(--spacing-xs);
 }
 
+/* 圖片清單同步彈窗 */
+.image-manifest-sync-modal .import-modal-header {
+  justify-content: space-between;
+}
+
+.image-manifest-sync-modal .import-modal-header .close-btn {
+  margin-left: auto;
+}
+
+.image-manifest-sync-body p {
+  margin: 0 0 var(--spacing-sm);
+}
+
+.image-manifest-sync-body p:last-child {
+  margin-bottom: 0;
+}
+
+.image-manifest-sync-hint {
+  margin-top: var(--spacing-md) !important;
+  color: var(--color-text-light);
+  font-size: 13px;
+}
+
+.image-manifest-sync-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) 0;
+}
+
+.image-manifest-sync-result .success-icon {
+  color: var(--color-success, #27ae60);
+}
+
+.image-manifest-sync-result .error-icon {
+  color: var(--color-error, #e74c3c);
+}
+
+/* 圖片清單同步 - 等待動畫 */
+.image-manifest-sync-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg) 0;
+}
+
+.image-manifest-sync-spinner-wrap {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-manifest-sync-track {
+  position: absolute;
+  inset: 0;
+  border: 3px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: image-manifest-sync-spin 0.9s linear infinite;
+}
+
+.image-manifest-sync-spinner {
+  position: relative;
+  color: var(--color-primary);
+  animation: image-manifest-sync-spin 1.1s linear infinite reverse;
+  will-change: transform;
+}
+
+.image-manifest-sync-loading-text {
+  margin: 0;
+  color: var(--color-text-light);
+  animation: image-manifest-sync-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes image-manifest-sync-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes image-manifest-sync-pulse {
+  0%, 100% { opacity: 0.75; }
+  50% { opacity: 1; }
+}
+

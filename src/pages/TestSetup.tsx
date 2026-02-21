@@ -27,6 +27,7 @@ export const TestSetup: React.FC = () => {
   const availableCategories = getAvailableCategories(bank);
   const [selectedYear, setSelectedYear] = React.useState<string>('');
   const [selectedCategory, setSelectedCategory] = React.useState<string>('');
+  const [orderMode, setOrderMode] = React.useState<'random' | 'sequential'>('random');
   const [setupMessage, setSetupMessage] = React.useState<string>('');
 
   const handleStartTest = (mode: TestMode) => {
@@ -38,7 +39,9 @@ export const TestSetup: React.FC = () => {
 
     const yearFilter = selectedYear === '' ? undefined : selectedYear;
     const categoryFilter = selectedCategory === '' ? undefined : selectedCategory;
-    const testQuestions = getRandomQuestions(bank, 50, yearFilter, categoryFilter);
+    const canUseSequential = selectedYear !== '' && selectedCategory !== '';
+    const shuffle = !canUseSequential || orderMode === 'random';
+    const testQuestions = getRandomQuestions(bank, 50, yearFilter, categoryFilter, shuffle);
     if (testQuestions.length === 0) {
       setSetupMessage('所選年份或類別沒有題目，請改選其他條件或改為「不限制」。');
       return;
@@ -106,6 +109,22 @@ export const TestSetup: React.FC = () => {
                 </select>
               </div>
             )}
+            <div className="filter-group">
+              <label htmlFor="order-select" className="filter-label">題目順序</label>
+              <select
+                id="order-select"
+                className="filter-select"
+                value={selectedYear !== '' && selectedCategory !== '' ? orderMode : 'random'}
+                onChange={(e) => setOrderMode(e.target.value as 'random' | 'sequential')}
+                disabled={selectedYear === '' || selectedCategory === ''}
+              >
+                <option value="random">隨機打亂</option>
+                <option value="sequential">依序作答</option>
+              </select>
+              {(selectedYear === '' || selectedCategory === '') && (
+                <span className="filter-hint">請先選擇年份與類別才能依序作答</span>
+              )}
+            </div>
           </div>
         )}
 

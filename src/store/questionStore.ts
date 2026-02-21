@@ -17,7 +17,7 @@ interface QuestionState {
   loadQuestionGroups: (groups: QuestionGroupContent[]) => void;
   getQuestions: (bank: QuestionBank | string) => Question[];
   getQuestionGroupContent: (groupKey: string) => QuestionGroupContent | undefined;
-  getRandomQuestions: (bank: QuestionBank | string, count: number, yearFilter?: string, categoryFilter?: string) => Question[];
+  getRandomQuestions: (bank: QuestionBank | string, count: number, yearFilter?: string, categoryFilter?: string, shuffle?: boolean) => Question[];
   getAvailableYears: (bank: QuestionBank | string) => string[];
   getAvailableCategories: (bank: QuestionBank | string) => string[];
   getAllBanks: () => string[];
@@ -62,7 +62,7 @@ export const useQuestionStore = create<QuestionState>()(
         return get().questionBanks[bank] || [];
       },
 
-      getRandomQuestions: (bank, count, yearFilter, categoryFilter) => {
+      getRandomQuestions: (bank, count, yearFilter, categoryFilter, shuffle = true) => {
         let questions = get().questionBanks[bank] || [];
         if (yearFilter && yearFilter !== '') {
           questions = questions.filter((q) => q.year === yearFilter);
@@ -70,8 +70,8 @@ export const useQuestionStore = create<QuestionState>()(
         if (categoryFilter && categoryFilter !== '') {
           questions = questions.filter((q) => q.category === categoryFilter);
         }
-        const shuffled = [...questions].sort(() => Math.random() - 0.5);
-        return shuffled.slice(0, Math.min(count, shuffled.length));
+        const list = shuffle ? [...questions].sort(() => Math.random() - 0.5) : [...questions];
+        return list.slice(0, Math.min(count, list.length));
       },
 
       getAvailableYears: (bank) => {

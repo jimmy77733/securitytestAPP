@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Heart, HeartOff, BookOpen, Home, ArrowLeft, Image } from 'lucide-react';
+import { Heart, HeartOff, BookOpen, Home, ArrowLeft, Image, RefreshCw, X, Loader2 } from 'lucide-react';
 import { useUserStore } from '@/store/userStore';
 import { useQuestionStore } from '@/store/questionStore';
 import { useFavoriteStore } from '@/store/favoriteStore';
@@ -11,6 +11,13 @@ import { QuestionImageModal } from '@/components/QuestionImageModal';
 import { QuestionGroupContentModal } from '@/components/QuestionGroupContentModal';
 import { getQuestionIdsWithImagesSync } from '@/utils/questionImages';
 import { getQuestionGroupKey, isQuestionGroupQuestion } from '@/utils/questionGroupUtils';
+import {
+  getStoredFrequency,
+  setStoredFrequency,
+  getHighFrequencyQuestionIds,
+  getFrequencyInfoForQuestion,
+  computeFrequencyByCategory,
+} from '@/utils/questionFrequency';
 import type { QuestionBank, Question } from '@/types';
 import './Reading.css';
 
@@ -28,6 +35,11 @@ export const Reading: React.FC = () => {
   const [questionIdsWithImages, setQuestionIdsWithImages] = useState<Set<string>>(new Set());
   const [showImageModal, setShowImageModal] = useState(false);
   const [showGroupContentModal, setShowGroupContentModal] = useState(false);
+  const [useFrequencyFilter, setUseFrequencyFilter] = useState(false);
+  const [showFrequencySyncModal, setShowFrequencySyncModal] = useState(false);
+  const [frequencySyncing, setFrequencySyncing] = useState(false);
+  const [frequencySyncResult, setFrequencySyncResult] = useState<'success' | { error: string } | null>(null);
+  const [frequencyLastSyncedAt, setFrequencyLastSyncedAt] = useState<string | null>(null);
 
   if (!currentUser) {
     navigate('/');
@@ -40,14 +52,44 @@ export const Reading: React.FC = () => {
   const bankQuestionCount = selectedBank !== 'favorites' ? getQuestions(selectedBank).length : 0;
   const favoritesCount = getFavorites(currentUser.id).length;
 
+  const frequencyData = selectedBank !== 'favorites' ? getStoredFrequency(selectedBank) : null;
+  const frequencyDisplayTime = frequencyData?.lastSyncedAt
+    ? new Date(frequencyData.lastSyncedAt).toLocaleString('zh-TW')
+    : '尚未同步';
+
   const questions = useMemo(() => {
     let list: Question[];
     if (selectedBank === 'favorites') {
       list = getFavorites(currentUser.id).map((f) => f.question);
     } else {
       list = getQuestions(selectedBank);
-      if (selectedYear) list = list.filter((q) => q.year === selectedYear);
+      if (!useFrequencyFilter && selectedYear) list = list.filter((q) => q.year === selectedYear);
       if (selectedCategory) list = list.filter((q) => q.category === selectedCategory);
+      const bankForFreq = selectedBank === 'primary' || selectedBank === 'intermediate' ? selectedBank : null;
+      const storedFreq = bankForFreq ? getStoredFrequency(bankForFreq) : null;
+      if (useFrequencyFilter && storedFreq?.byCategory) {
+        const idSet = new Set<string>();
+        if (selectedCategory && storedFreq.byCategory[selectedCategory]) {
+          getHighFrequencyQuestionIds(storedFreq, selectedCategory).forEach((id) => idSet.add(id));
+        } else {
+          Object.keys(storedFreq.byCategory).forEach((cat) => {
+            getHighFrequencyQuestionIds(storedFreq, cat).forEach((id) => idSet.add(id));
+          });
+        }
+        list = list.filter((q) => idSet.has(q.id));
+        // 出題率篩選：先依出現次數由多到少，相同次數再依年份由早到晚
+        list = [...list].sort((a, b) => {
+          const fa = getFrequencyInfoForQuestion(storedFreq, a.id);
+          const fb = getFrequencyInfoForQuestion(storedFreq, b.id);
+          if (!fa && !fb) return 0;
+          if (!fa) return 1;
+          if (!fb) return -1;
+          if (fb.count !== fa.count) return fb.count - fa.count;
+          const yearA = fa.years[0] ?? a.year ?? '';
+          const yearB = fb.years[0] ?? b.year ?? '';
+          return yearA.localeCompare(yearB);
+        });
+      }
     }
     const seen = new Set<string>();
     return list.filter((q) => {
@@ -55,7 +97,7 @@ export const Reading: React.FC = () => {
       seen.add(q.id);
       return true;
     });
-  }, [selectedBank, selectedYear, selectedCategory, currentUser.id, bankQuestionCount, favoritesCount]);
+  }, [selectedBank, selectedYear, selectedCategory, currentUser.id, bankQuestionCount, favoritesCount, useFrequencyFilter, frequencyLastSyncedAt]);
 
   // 當題目列表變更時，預先計算哪些題目有圖片
   useEffect(() => {
@@ -73,6 +115,41 @@ export const Reading: React.FC = () => {
     } else {
       addFavorite(currentUser.id, question);
     }
+  };
+
+  const handleFrequencySync = async () => {
+    if (selectedBank === 'favorites') return;
+    setFrequencySyncing(true);
+    setFrequencySyncResult(null);
+    // 先讓 React 提交狀態並讓瀏覽器繪製載入畫面，再執行耗時的同步計算
+    await new Promise<void>((r) => {
+      requestAnimationFrame(() => requestAnimationFrame(() => r()));
+    });
+    const minWaitMs = 1000;
+    const start = Date.now();
+    try {
+      const list = getQuestions(selectedBank);
+      if (!Array.isArray(list)) {
+        throw new Error('無法取得題庫資料');
+      }
+      const byCategory = computeFrequencyByCategory(list);
+      setStoredFrequency(selectedBank, byCategory);
+      setFrequencyLastSyncedAt(new Date().toISOString());
+      const elapsed = Date.now() - start;
+      await new Promise((r) => setTimeout(r, Math.max(0, minWaitMs - elapsed)));
+      setFrequencySyncResult('success');
+    } catch (err) {
+      const message = err instanceof Error ? err.message : String(err);
+      setFrequencySyncResult({ error: message || '同步過程發生錯誤' });
+    } finally {
+      setFrequencySyncing(false);
+    }
+  };
+
+  const handleFrequencyFilterChange = (checked: boolean) => {
+    setUseFrequencyFilter(checked);
+    if (checked) setSelectedYear('');
+    setCurrentQuestion(null);
   };
 
   return (
@@ -157,6 +234,7 @@ export const Reading: React.FC = () => {
                         setSelectedYear(e.target.value);
                         setCurrentQuestion(null);
                       }}
+                      disabled={useFrequencyFilter}
                     >
                       <option value="">不限制</option>
                       {availableYears.map((y) => (
@@ -185,6 +263,31 @@ export const Reading: React.FC = () => {
                   </div>
                 )}
               </div>
+              <div className="reading-filter-row reading-frequency-row">
+                <div className="reading-filter-group reading-frequency-option">
+                  <label className="reading-filter-label">出題率</label>
+                  <label className="reading-checkbox-label">
+                    <input
+                      type="checkbox"
+                      checked={useFrequencyFilter}
+                      onChange={(e) => handleFrequencyFilterChange(e.target.checked)}
+                    />
+                    僅顯示最少出現 2 次（含）
+                  </label>
+                </div>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => { setShowFrequencySyncModal(true); setFrequencySyncResult(null); }}
+                  className="reading-frequency-sync-btn"
+                >
+                  <RefreshCw size={16} />
+                  同步
+                </Button>
+              </div>
+              {useFrequencyFilter && (
+                <p className="reading-frequency-hint">選擇出題率時，年份固定為不限制</p>
+              )}
               <div className="reading-start-btn-wrap">
                 <Button
                   variant="primary"
@@ -196,6 +299,49 @@ export const Reading: React.FC = () => {
                 </Button>
               </div>
             </Card>
+          )}
+
+          {showFrequencySyncModal && selectedBank !== 'favorites' && (
+            <div className="reading-modal-overlay" onClick={() => { if (!frequencySyncing) { setShowFrequencySyncModal(false); setFrequencySyncResult(null); } }}>
+              <div className="reading-modal" onClick={(e) => e.stopPropagation()}>
+                <div className="reading-modal-header">
+                  <h4>出題率同步</h4>
+                  <button type="button" className="reading-modal-close" onClick={() => { if (!frequencySyncing) { setShowFrequencySyncModal(false); setFrequencySyncResult(null); } }} aria-label="關閉">
+                    <X size={20} />
+                  </button>
+                </div>
+                <div className="reading-modal-body">
+                  {frequencySyncing ? (
+                    <div className="reading-frequency-sync-loading">
+                      <div className="reading-frequency-sync-spinner-wrap">
+                        <span className="reading-frequency-sync-track" aria-hidden />
+                        <Loader2 size={32} className="reading-frequency-sync-spinner" strokeWidth={2.5} />
+                      </div>
+                      <p className="reading-frequency-sync-loading-text">正在同步出題率資料…</p>
+                    </div>
+                  ) : frequencySyncResult === 'success' ? (
+                    <p className="reading-frequency-sync-success">同步成功，出題率資料已更新。</p>
+                  ) : frequencySyncResult && typeof frequencySyncResult === 'object' && 'error' in frequencySyncResult ? (
+                    <p className="reading-frequency-sync-error">同步失敗：{frequencySyncResult.error}</p>
+                  ) : (
+                    <>
+                      <p>上次同步時間：{frequencyDisplayTime}</p>
+                      <p>是否執行同步？將依題目內容相似度（80%）來分析目前題庫總年度內，重複題目與出現次數。</p>
+                    </>
+                  )}
+                </div>
+                <div className="reading-modal-actions">
+                  {frequencySyncing ? null : frequencySyncResult === 'success' || (frequencySyncResult && typeof frequencySyncResult === 'object') ? (
+                    <Button variant="primary" onClick={() => { setShowFrequencySyncModal(false); setFrequencySyncResult(null); }}>關閉</Button>
+                  ) : (
+                    <>
+                      <Button variant="ghost" onClick={() => { setShowFrequencySyncModal(false); setFrequencySyncResult(null); }}>取消</Button>
+                      <Button variant="primary" onClick={() => void handleFrequencySync()}>確認同步</Button>
+                    </>
+                  )}
+                </div>
+              </div>
+            </div>
           )}
         </div>
       ) : (
@@ -210,22 +356,30 @@ export const Reading: React.FC = () => {
                       ? '尚無收藏題目'
                       : '沒有符合篩選條件的題目'}
                   </p>
-                ) : questions.map((question, index) => (
-                  <button
-                    key={question.id}
-                    className={`question-item ${currentQuestion?.id === question.id ? 'active' : ''}`}
-                    onClick={() => setCurrentQuestion(question)}
-                  >
-                    <span className="question-item-number">{index + 1}</span>
-                    <span className="question-item-text">
-                      {question.question.substring(0, 50)}
-                      {question.question.length > 50 ? '...' : ''}
-                    </span>
-                    {question.type === 'multiple' && (
-                      <span className="question-type-badge">[複選]</span>
-                    )}
-                  </button>
-                ))}
+                ) : questions.map((question, index) => {
+                  const freqInfo = useFrequencyFilter && frequencyData ? getFrequencyInfoForQuestion(frequencyData, question.id) : null;
+                  return (
+                    <button
+                      key={question.id}
+                      className={`question-item ${currentQuestion?.id === question.id ? 'active' : ''}`}
+                      onClick={() => setCurrentQuestion(question)}
+                    >
+                      <span className="question-item-number">{index + 1}</span>
+                      <span className="question-item-text">
+                        {question.question.substring(0, 50)}
+                        {question.question.length > 50 ? '...' : ''}
+                      </span>
+                      {freqInfo && (
+                        <span className="question-item-frequency">
+                          出現 {freqInfo.count} 次 · {freqInfo.years.join('、')}
+                        </span>
+                      )}
+                      {question.type === 'multiple' && (
+                        <span className="question-type-badge">[複選]</span>
+                      )}
+                    </button>
+                  );
+                })}
               </div>
             </Card>
           </div>
@@ -245,6 +399,25 @@ export const Reading: React.FC = () => {
                         <span className="question-type-badge">[複選]</span>
                       )}
                       <h2>{currentQuestion.question}</h2>
+                      {useFrequencyFilter && frequencyData && (() => {
+                        const freqInfo = getFrequencyInfoForQuestion(frequencyData, currentQuestion.id);
+                        if (!freqInfo) return null;
+                        const categoryQuestions = selectedBank === 'primary' || selectedBank === 'intermediate'
+                          ? getQuestions(selectedBank).filter((q) => q.category === currentQuestion.category)
+                          : [];
+                        const totalYearsInCategory = new Set(categoryQuestions.map((q) => q.year).filter(Boolean)).size;
+                        const percentage = totalYearsInCategory > 0
+                          ? Math.round((freqInfo.years.length / totalYearsInCategory) * 100)
+                          : null;
+                        return (
+                          <p className="question-detail-frequency">
+                            出現 <strong>{freqInfo.count}</strong> 次
+                            {percentage != null && ` · ${percentage}% 機率`}
+                            {' · 年份：'}
+                            {freqInfo.years.join('、')}
+                          </p>
+                        );
+                      })()}
                     </div>
                     <div className="question-detail-header-actions">
                       {questionIdsWithImages.has(currentQuestion.id) && (

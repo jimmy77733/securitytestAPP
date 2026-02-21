@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Clock, Award, Home, Eye } from 'lucide-react';
+import { Clock, Award, Home, Eye, Trash2 } from 'lucide-react';
 import { useUserStore } from '@/store/userStore';
 import { useTestStore } from '@/store/testStore';
 import { Button } from '@/components/Button';
@@ -12,7 +12,7 @@ import './Records.css';
 export const Records: React.FC = () => {
   const navigate = useNavigate();
   const { currentUser } = useUserStore();
-  const { getTestRecords } = useTestStore();
+  const { getTestRecords, removeTestRecord } = useTestStore();
 
   if (!currentUser) {
     navigate('/');
@@ -25,6 +25,11 @@ export const Records: React.FC = () => {
 
   const handleViewRecord = (recordId: string) => {
     navigate('/result', { state: { recordId } });
+  };
+
+  const handleDeleteRecord = (recordId: string) => {
+    if (!window.confirm('確定要刪除此筆測試紀錄嗎？')) return;
+    removeTestRecord(recordId);
   };
 
   return (
@@ -93,6 +98,16 @@ export const Records: React.FC = () => {
                     >
                       <Eye size={18} />
                       查看詳情
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => handleDeleteRecord(record.id)}
+                      className="record-delete-btn"
+                      aria-label="刪除此紀錄"
+                    >
+                      <Trash2 size={18} />
+                      刪除
                     </Button>
                   </div>
                 </Card>

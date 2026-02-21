@@ -5,19 +5,17 @@
       "groupKey": "intermediate_資訊安全防護實務_108_1",
       "contentText": "某公司資安稽核部門進行年度檢視稽核，抽驗(1) Web 資安黑箱檢測報告、(2)資料庫紀錄、(3)資訊系統存取紀錄以及(4)研發人員端點電腦記錄，請就下列紀錄與報告內容關連性，回答相關問題",
       "imageIds": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6"
+        "intermediate_資訊安全防護實務_108_1_1",
+        "intermediate_資訊安全防護實務_108_1_2",
+        "intermediate_資訊安全防護實務_108_1_3",
+        "intermediate_資訊安全防護實務_108_1_4"
       ]
     },
     {
       "groupKey": "intermediate_資訊安全防護實務_108_2",
       "contentText": "某公司因資安考量,重新規劃對外網站的連線架構,AP與DB Server放在 Intranet, Reverse proxy (Web)放在DMZ,對外Web連線使用SSL連線,AP 與 Reverse proxy 之間亦使用加密連線,而這幾台主機間的流量,都納入網路型IPS進行監控(該IPS目前僅有攻擊特徵偵測功能),DMZ/Internet/Intranet 間亦有防火牆進行連線控管。某天公司內的資安人員發現有人嘗試在攻擊對外網站,在DMZ Web server 連線日誌中發現以下可疑的連線記錄",
       "imageIds": [
-        ""
+        "intermediate_資訊安全防護實務_108_2_1"
       ]
     },
     {
@@ -28,12 +26,16 @@
     {
       "groupKey": "intermediate_資訊安全防護實務_108_4",
       "contentText": "組織 ABC 為金融監督管理委員會(金管會)管轄的關鍵基礎設施提供者,受到金管會核定為A級特定非公務機關,在一日的維運中,系統管理員 John 在操作核心線上系統時,發現電腦突然重新開機且無法正常啟動 Windows作業系統,並直接即出現下列畫面。\nDoops, your important files are encrypted.\nIf you see this text, then your files are no longer accessible, because they have been encrypted. Perhaps you are busy looking for a way to recover your files, but don't waste your time. Nobody can recover your files without our decryption service.\nWe guarantee that you can recover all your files safely and easily. All you need to do is submit the payment and purchase the decryption key.\nPlease follow the instructions:\n1. Send $300 worth of Bitcoin to following address:\n1Mz7153HMuxXTuR2R1178MGSdzaAtNbBWX\n2. Send your Bitcoin wallet ID and personal installation key to e-mail",
-      "imageIds": []
+      "imageIds": [
+        "intermediate_資訊安全防護實務_108_4_1"
+      ]
     },
     {
       "groupKey": "intermediate_資訊安全防護實務_108_5",
       "contentText": "某日資安人員接獲通報,系統維運人員在某台 windows 主機上找到一個文字檔(acc.txt)內容如下,因為發現文字檔案”Name”欄位的資料與電腦帳號是雷同的,資安人員發現此文字檔中,含有該台主機之 administrator 權限的帳號\nName SID\nXuser S-1-5-21-3912933555-2805578987-3153105539-500\nGuset S-1-5-21-3912933555-2805578987-3153105539-501\nkrbtgt S-1-5-21-3912933555-2805578987-3153105539-502\nS-1-5-21-3912933555-2805578987-3153105539-513\nParis 1-5-21-3912933555-2805578987-3153105539-1001\nJason S-1-5-21-3912933555-2805578987-3153105539-1012\nTom\n\n同一時間,資安人員在該台主機 acc.txt同一目錄,發現另一個檔案\nXuser: 572403BE7D7927FF36FE38A80D08165E::abc123$\nGuset:8846F7EAEE8FB117AD06BDD830B7586C::password\nJason:8895E989934E3B8F39A9F099FD71BFC4::ab1234\nTom: F67F5E3F66EFD7298BE6ACD32EEEB27C::1qaz2wsx",
-      "imageIds": []
+      "imageIds": [
+        "intermediate_資訊安全防護實務_108_5_1"
+      ]
     },
     {
       "groupKey": "intermediate_資訊安全規劃實務_108_1",
@@ -53,7 +55,9 @@
     {
       "groupKey": "intermediate_資訊安全規劃實務_108_4",
       "contentText": "ABC公司為了提高資安防護,全公司通過ISO/IEC 27001 驗證,並「每半年」安排一次後續稽核,以確保證書的有效性。\n此次外部稽核派了稽核員Kelly負責執行三天的稽核。\n受稽的資訊單位主管Tim拿出一份資料表,其中部分資料如下:\n\n資產編號 | 資產名稱 | 最大可以承受中斷時間 (Max. Tolerable Period of Disruption) | 目標回復時間 (Recovery Time Objective) | 可用性等級 (四級:極高、高、中、低)\n---|---|---|---|---\n001 | 線上購務網頁主機(Web Server) | 30分鐘 | 20分鐘 | 極高\n002 | 線上購物資料庫主機(DB Server) | 30分鐘 | 20分鐘 | 極高\n003 | 核心交換器 (Core Switch) | 60分鐘 | 50分鐘 | 高\n004 | 辦公室交換機 (Office Switch) | 4小時 | 3小時 | 低\n005 | 對外防火牆 (Firewall) | 30分鐘 | 20分鐘 | 極高",
-      "imageIds": []
+      "imageIds": [
+        "intermediate_資訊安全規劃實務_108_4_1"
+      ]
     },
     {
       "groupKey": "intermediate_資訊安全規劃實務_108_5",

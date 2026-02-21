@@ -22,6 +22,7 @@ interface TestState {
   addTestRecord: (record: TestRecord) => void;
   getTestRecords: (userId: string) => TestRecord[];
   getTestRecord: (recordId: string) => TestRecord | undefined;
+  removeTestRecord: (recordId: string) => void;
 }
 
 export const useTestStore = create<TestState>()(
@@ -148,6 +149,12 @@ export const useTestStore = create<TestState>()(
 
       getTestRecord: (recordId) => {
         return get().testRecords.find((r) => r.id === recordId);
+      },
+
+      removeTestRecord: (recordId) => {
+        set((state) => ({
+          testRecords: state.testRecords.filter((r) => r.id !== recordId),
+        }));
       },
     }),
     {
