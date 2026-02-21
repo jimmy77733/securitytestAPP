@@ -1683,7 +1683,7 @@
     "id": "q_primary_114-1_m_7",
     "questionBank": "primary",
     "type": "single",
-    "question": "王小明在直轄市政府擔任資安專責人員，為將次年度資訊安全相關演練事宜規劃結果陳報主管核准，請問公文擬稿文字中的A/B/C，所代表的項目為何？（A：法規名稱，B：社交工程演練次數，C：通報應變演練次數）",
+    "question": "如附圖所示。王小明在直轄市政府擔任資安專責人員，為將次年度資訊安全相關演練事宜（如社交工程演練、資通安全事件通報及應變演練）規劃結果陳報主管核准，請問，如附圖公文擬稿文字中的 A／B／C，所代表的項目為何，將可達到合規遵法最基本要求？）",
     "options": [
       {
         "id": "opt_a",
@@ -1923,7 +1923,7 @@
     "id": "q_primary_114-1_m_15",
     "questionBank": "primary",
     "type": "single",
-    "question": "參考 CNS 27002:2023 對資產擁有者的相關職掌項目定義後，請問下列何項最可能「非」屬擁有者必要負責之工作事項？",
+    "question": "某組織在進行資訊資產分類及保護的過程中，會明定不同角色人員以確保其功能與職責，一般常見為稱擁有者（Owner）、保管者（Custodian）、使用者（User）、稽核員（Auditor），參考 CNS 27002:2023 對資產擁有者的相關職掌項目定義後，請問下列何項最可能「非」屬擁有者必要負責之工作事項？",
     "options": [
       {
         "id": "opt_a",
@@ -1983,7 +1983,7 @@
     "id": "q_primary_114-1_m_17",
     "questionBank": "primary",
     "type": "single",
-    "question": "企業為確保資訊資產能獲得適切保護，下列的執行順序何者較為宜？(1.資訊之分類分級 2.編製資訊及其他相關聯資產之清冊 3.資訊的處置 4.資訊之標示)",
+    "question": "企業為確保資訊資產能獲得適切保護而依照CNS 27001:2023 建置資安管理制度，並瞭解 CNS 27002:2023所規定的資訊資產相關控制措施主要有附圖中的 4 項。請問下列的執行順序何者較為適宜？\n1.資訊之分類分級 \n2.編製資訊及其他相關聯資產之清冊 \n3.資訊的處置 \n4.資訊之標示)",
     "options": [
       {
         "id": "opt_a",
@@ -2043,7 +2043,7 @@
     "id": "q_primary_114-1_m_19",
     "questionBank": "primary",
     "type": "single",
-    "question": "有關 NIST 定義資料生命週期的資料運用狀況，當資料在非永久性儲存硬體、應用軟體等情境時，如 RAM、CPU、DLP Agent，可將其歸類於下列何狀態？",
+    "question": "有關 NIST 定義資料生命週期的資料運用狀況，依方式和時間點不同而有不同狀態。請問，當資料在非永久性儲存硬體、應用軟體等情境時，如 RAM、CPU、DLP Agent，可將其歸類於下列何狀態？",
     "options": [
       {
         "id": "opt_a",
@@ -2193,7 +2193,7 @@
     "id": "q_primary_114-1_m_24",
     "questionBank": "primary",
     "type": "single",
-    "question": "目前實務上常見的「系統轉換」方法有下列四種...請問，下列何項系統轉換方式的轉換作業風險是最大的？",
+    "question": "系統在完成測試並確認了變更作業後，就得以開始進行「系統轉換」，以更換至另一個系統或軟體版本，目前實務上常見的「系統轉換」方法有下列四種：並行式（Parallel）轉換、階段式（Phased）轉換、一次性（Abrupt）轉換、引導式（Pilot）轉換。請問，下列何項系統轉換方式的轉換作業風險是最大的？",
     "options": [
       {
         "id": "opt_a",
@@ -2223,7 +2223,7 @@
     "id": "q_primary_114-1_m_25",
     "questionBank": "primary",
     "type": "single",
-    "question": "CNS 31010 提供系統化風險評鑑方法...其中有一項稱之為「企業衝擊分析」(BIA)。請問運用此項方法的最大好處為下列何項？",
+    "question": "CNS 31010 提供系統化風險評鑑方法選擇及應用的指引文件，摘列適用於各個層級的風險評鑑方法，其中有一項稱之為「企業衝擊分析」(BIA)。請問運用此項方法的最大好處為下列何項？",
     "options": [
       {
         "id": "opt_a",
@@ -2231,7 +2231,7 @@
       },
       {
         "id": "opt_b",
-        "text": "無需定期進行重新評估..."
+        "text": "無需定期進行重新評估，不會所受到影響或衝擊不會改變風險值"
       },
       {
         "id": "opt_c",
@@ -2403,23 +2403,23 @@
     "id": "q_primary_114-1_m_31",
     "questionBank": "primary",
     "type": "single",
-    "question": "數位憑證(Digital Certificate)是在網際網路上識別人員和資源的電子檔案...請問下列何項「不」是數位憑證的正確描述？",
+    "question": "數位憑證(Digital Certificate)是在網際網路上識別人員和資源的電子檔案，能夠讓兩個實體之間能夠進行安全、機密的通訊。請問下列何項「不」是數位憑證的正確描述？",
     "options": [
       {
         "id": "opt_a",
-        "text": "使用在伺服器上的數位憑證又稱為「伺服器憑證」..."
+        "text": "使用在伺服器上的數位憑證又稱為「伺服器憑證」、HTTPS/SSL 憑證，SSL 憑證是在網頁伺服器（主機）與網頁瀏覽器（客戶端）之間建立一個密碼連結的標準規範"
       },
       {
         "id": "opt_b",
-        "text": "一般網頁用的 SSL 憑證檔案中包含公鑰資訊...但是不會出現發行憑證日期"
+        "text": "一般網頁用的 SSL 憑證檔案中包含公鑰資訊、擁有者身分資訊、數位憑證發行者、憑證有效到期日，但是不會出現發行憑證日期"
       },
       {
         "id": "opt_c",
-        "text": "大部分的瀏覽器會在網址列裡顯示一個鎖的圖示..."
+        "text": "大部分的瀏覽器會在網址列裡顯示一個鎖的圖示或是其他識別方式，如果要了解 SSL 憑證的細節，只要點擊鎖的圖示即可"
       },
       {
         "id": "opt_d",
-        "text": "憑證用途非常廣泛，像是自然人憑證..."
+        "text": "憑證用途非常廣泛，像是自然人憑證、工商憑證、健保卡等都是屬於數位憑證的用途，幾乎身分與機構識別都有利用到此技術"
       }
     ],
     "correctAnswers": [
@@ -2493,23 +2493,23 @@
     "id": "q_primary_114-1_m_34",
     "questionBank": "primary",
     "type": "single",
-    "question": "常見的身分驗證方法，下列敘述何者最「不」適切？",
+    "question": "當使用者主張自己的身分後，系統應該確認使用者是否為所宣稱的合法身分擁有者，這個證明使用者身分的過程就被稱為「身分驗證」（Authentication），常見的身分驗證方法，下列敘述何者最「不」適切？",
     "options": [
       {
         "id": "opt_a",
-        "text": "所知之事(Something you Know): 密碼..."
+        "text": "所知之事(Something you Know): 密碼、PINCode、安全問答等"
       },
       {
         "id": "opt_b",
-        "text": "所有之物(Something you Have): Token..."
+        "text": "所有之物(Something you Have): Token、USB 金鑰、智慧晶片卡（Smart Cards）"
       },
       {
         "id": "opt_c",
-        "text": "所具之形(Something you Are): 生物特徵..."
+        "text": "所具之形(Something you Are): 生物特徵（指紋、虹膜、聲紋等）"
       },
       {
         "id": "opt_d",
-        "text": "所用之物(Something you Use): 透過使用者所使用的裝置..."
+        "text": "所用之物(Something you Use): 透過使用者所使用的裝置，例如電腦、瀏覽器類型或作業系統來確認身分"
       }
     ],
     "correctAnswers": [
@@ -2523,11 +2523,11 @@
     "id": "q_primary_114-1_m_35",
     "questionBank": "primary",
     "type": "single",
-    "question": "關於 TCB (Trusted Computing Base) 的設計原則，下列敘述何者最「不」適切？",
+    "question": "信任運算基礎（Trusted Computing Base，TCB）是指系統內所有對安全性至關重要的硬體、軟體與控制機制，這些組件的正確性與完整性決定了系統的整體安全性。關於 TCB 的設計原則，下列敘述何者最「不」適切？",
     "options": [
       {
         "id": "opt_a",
-        "text": "完整性保護(Integrity Protection)..."
+        "text": "完整性保護（Integrity Protection）：TCB 內的關鍵組件應該受到完整性驗證（如 TPM、數位簽章），確保未被竄改"
       },
       {
         "id": "opt_b",
@@ -2535,11 +2535,11 @@
       },
       {
         "id": "opt_c",
-        "text": "最小權限原則(Least Privilege)..."
+        "text": "最小權限原則（Least Privilege）：TCB 內的組件應只擁有執行必要功能的最低權限，避免濫用"
       },
       {
         "id": "opt_d",
-        "text": "最小 TCB (Minimization): TCB 應該儘可能小..."
+        "text": "最小 TCB（Minimization）：TCB 應該儘可能小，以降低攻擊面並提升可信度"
       }
     ],
     "correctAnswers": [
@@ -2583,7 +2583,7 @@
     "id": "q_primary_114-1_m_37",
     "questionBank": "primary",
     "type": "single",
-    "question": "假設手上有一組金鑰對...金鑰 A 與金鑰 B 非屬同一把...且運算函數為指數運算(mod)...請問所用的加密演算法較有可能是下列哪一項？",
+    "question": "假設手上有一組金鑰對，其中金鑰 A 能將明文 x 變成密文y；金鑰 B 能將密文 y 變成明文 x，這二把金鑰非屬同一把金鑰，且當加密演算法所用的運算函數為指數運算（mod）時，請問所用的加密演算法較有可能是下列哪一項",
     "options": [
       {
         "id": "opt_a",
@@ -2621,11 +2621,11 @@
       },
       {
         "id": "opt_b",
-        "text": "完整性: 使用數位簽章加密機制於檔案..."
+        "text": "完整性: 使用數位簽章加密機制於檔案，以確保資料完整性傳遞"
       },
       {
         "id": "opt_c",
-        "text": "不可否認性: 對資料使用密碼技術..."
+        "text": "不可否認性: 對資料使用密碼技術，以提供事故發生時存取相關的證據"
       },
       {
         "id": "opt_d",
@@ -2703,7 +2703,7 @@
     "id": "q_primary_114-1_m_41",
     "questionBank": "primary",
     "type": "single",
-    "question": "如某一特定非公務機關判別某一個非核心資通系統之資訊遭受輕微竄改，則該事件之嚴重等級為下列哪一級？",
+    "question": "依據「資通安全事件通報及應變辦法」所訂定的資通安全事件之嚴重等級共有四類，如某一特定非公務機關判別某一個非核心資通系統之資訊遭受輕微竄改，則該事件之嚴重等級為下列哪一級？",
     "options": [
       {
         "id": "opt_a",
@@ -2793,7 +2793,7 @@
     "id": "q_primary_114-1_m_44",
     "questionBank": "primary",
     "type": "single",
-    "question": "其中有關重大事件應通報主管機關的時效規定，請問，下列何者的時間為「最短」？",
+    "question": "美國、歐盟及我國皆有針對該國家的企業組織、關鍵基礎設施等機構，規範於發現或發生資安事件時應辦理的相關事項，其中有關重大事件應通報主管機關的時效規定，請問，下列何者的時間為「最短」？",
     "options": [
       {
         "id": "opt_a",
@@ -2809,7 +2809,7 @@
       },
       {
         "id": "opt_d",
-        "text": "美國《Cyber Incident Reporting for Critical Infrastructure Act"
+        "text": "美國《Cyber Incident Reporting for Critical Infrastructure Act》"
       }
     ],
     "correctAnswers": [
@@ -2951,7 +2951,7 @@
       },
       {
         "id": "opt_b",
-        "text": "每日備份"
+        "text": "2 天"
       },
       {
         "id": "opt_c",
@@ -2965,7 +2965,7 @@
     "correctAnswers": [
       "opt_b"
     ],
-    "explanation": "RPO 為 3 天，表示備份頻率至少需每 3 天一次。每日備份（符合 < 3 天）比 12 小時成本低，且優於 5 天（不符）與每週（不符）。",
+    "explanation": "RPO 為 3 天，表示備份頻率至少需每 3 天一次。2 天備份（符合 < 3 天）比 12 小時成本低，且優於 5 天（不符）與每週（不符）。",
     "year": "114-1",
     "category": "資訊安全管理概論"
   },
@@ -2973,7 +2973,7 @@
     "id": "q_primary_114-1_m_50",
     "questionBank": "primary",
     "type": "single",
-    "question": "某公司遭受勒索軟體攻擊，導致主要系統資料被加密...下列何項措施對於確保營運持續性最為關鍵？",
+    "question": "某公司遭受勒索軟體攻擊，導致主要系統資料被加密，業務運作受到嚴重影響。在這種情況下，下列何項措施對於確保營運持續性最為關鍵？",
     "options": [
       {
         "id": "opt_a",
