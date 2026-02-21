@@ -1,7 +1,7 @@
 import React from 'react';
 import { X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { getQuestionImageUrl } from '@/utils/questionImages';
+import { useImportedImagesStore } from '@/store/importedImagesStore';
 import './QuestionImageModal.css';
 
 interface QuestionImageModalProps {
@@ -15,7 +15,7 @@ export const QuestionImageModal: React.FC<QuestionImageModalProps> = ({
   isOpen,
   onClose,
 }) => {
-  const imageUrl = getQuestionImageUrl(questionId);
+  const imageUrl = useImportedImagesStore((s) => s.getUrl(questionId));
 
   return (
     <AnimatePresence>

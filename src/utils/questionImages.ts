@@ -5,11 +5,10 @@
  * 1. 載入圖片 manifest（有圖片的題目 ID 清單）
  * 2. 提供查詢功能：檢查題目是否有對應圖片
  * 3. 提供圖片 URL 生成功能
- * 
- * 最佳化：
- * - manifest 只在應用啟動時載入一次
- * - 使用 Set 進行 O(1) 查詢
+ * 4. 本機離線匯入圖片（IndexedDB）會一併納入判斷
  */
+
+import { useImportedImagesStore } from '@/store/importedImagesStore';
 
 interface ImageManifest {
   version: string;
@@ -120,13 +119,10 @@ export async function getQuestionIdsWithImages(questions: Array<{ id: string }>)
   }
 
   const result = new Set<string>();
-  if (imageIdSet === null || imageIdSet.size === 0) {
-    return result;
-  }
+  const importedSet = new Set(useImportedImagesStore.getState().ids);
 
-  // 一次遍歷，O(n)
   for (const question of questions) {
-    if (imageIdSet.has(question.id)) {
+    if ((imageIdSet !== null && imageIdSet.has(question.id)) || importedSet.has(question.id)) {
       result.add(question.id);
     }
   }
@@ -135,16 +131,14 @@ export async function getQuestionIdsWithImages(questions: Array<{ id: string }>)
 }
 
 /**
- * 同步版本：從題目陣列中篩選出有圖片的題目 ID（需先確保 manifest 已載入）
+ * 同步版本：從題目陣列中篩選出有圖片的題目 ID（含 manifest 與本機離線匯入）
  */
 export function getQuestionIdsWithImagesSync(questions: Array<{ id: string }>): Set<string> {
   const result = new Set<string>();
-  if (imageIdSet === null || imageIdSet.size === 0) {
-    return result;
-  }
+  const importedSet = new Set(useImportedImagesStore.getState().ids);
 
   for (const question of questions) {
-    if (imageIdSet.has(question.id)) {
+    if ((imageIdSet !== null && imageIdSet.has(question.id)) || importedSet.has(question.id)) {
       result.add(question.id);
     }
   }

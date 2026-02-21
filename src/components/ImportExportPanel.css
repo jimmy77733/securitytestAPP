@@ -484,8 +484,23 @@
 }
 
 /* 匯入圖片確認視窗 */
+.image-import-modal {
+  overflow: hidden;
+}
+
 .image-import-modal .import-modal-icon {
   color: var(--color-primary);
+}
+
+.image-import-modal-body {
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1 1 0;
+  min-height: 200px;
+}
+
+.image-import-modal .import-modal-actions {
+  flex-shrink: 0;
 }
 
 .image-import-desc {
@@ -494,6 +509,44 @@
   font-size: 14px;
   color: var(--color-text-light);
   line-height: 1.5;
+}
+
+.image-import-group-option {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: 0 var(--spacing-lg) var(--spacing-sm);
+  margin: 0;
+  font-size: 14px;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.image-import-group-option input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-primary);
+}
+
+.image-import-group-hint {
+  padding: 0 var(--spacing-lg) var(--spacing-md);
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-text-light);
+  line-height: 1.5;
+  background: var(--color-bg);
+  border-left: 3px solid var(--color-primary);
+  padding-left: var(--spacing-md);
+  margin-left: var(--spacing-lg);
+  margin-right: var(--spacing-lg);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.image-import-group-hint code {
+  font-size: 12px;
+  background: var(--color-bg);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
 }
 
 .image-import-list {

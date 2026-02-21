@@ -9,6 +9,8 @@ import {
   getImportDuplicateInfoByPrefix,
   type DuplicateInfo,
 } from '@/utils/importExport';
+import { saveImportedImage, filenameToId } from '@/utils/importedImagesStorage';
+import { useImportedImagesStore } from '@/store/importedImagesStore';
 import { Button } from './Button';
 import { Card } from './Card';
 import type { Question, QuestionBank } from '@/types';
@@ -47,6 +49,7 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
 
   const imageInputRef = useRef<HTMLInputElement>(null);
   const [imageImportList, setImageImportList] = useState<Array<{ id: string; file: File; name: string; overLimit: boolean }>>([]);
+  const [imageImportAsGroupImages, setImageImportAsGroupImages] = useState(false);
   const [showImageImportModal, setShowImageImportModal] = useState(false);
   const [showImageImportHelp, setShowImageImportHelp] = useState(false);
   const [imageImportResult, setImageImportResult] = useState<{ success: number; errors?: string[] } | null>(null);
@@ -193,7 +196,7 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
       overLimit: file.size > MAX_IMAGE_SIZE,
     }));
     
-    // 追加到現有列表，而不是替換
+    setImageImportResult(null);
     setImageImportList((prev) => [...prev, ...newItems]);
     setShowImageImportModal(true);
     e.target.value = '';
@@ -220,15 +223,38 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
           (window as any).preloadImageManifest();
         }
       } else {
-        setImageImportResult({
-          success: 0,
-          errors: [data.error || '匯入失敗，請確認伺服器已啟動且可寫入 public/question-images'],
-        });
+        await saveToImportedImagesFallback(filesPayload);
       }
     } catch (err) {
       setImageImportResult({
         success: 0,
         errors: ['無法連線至伺服器，請確認應用程式已透過支援匯入圖片的伺服器啟動。'],
+      });
+    }
+  };
+
+  /** 當伺服器不可用時，改存至本機 IndexedDB（離線匯入） */
+  const saveToImportedImagesFallback = async (filesPayload: Array<{ name: string; data: string }>) => {
+    try {
+      for (const f of filesPayload) {
+        const id = filenameToId(f.name);
+        const binary = atob(f.data);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+        await saveImportedImage(id, bytes.buffer);
+      }
+      await useImportedImagesStore.getState().load();
+      setImageImportResult({
+        success: filesPayload.length,
+        errors: ['已改存至本機（離線），僅限此瀏覽器有效。以 npm run dev 或 npm run start 啟動可永久寫入題目圖片目錄。'],
+      });
+      setShowImageImportModal(false);
+      setImageImportList([]);
+      setImageOverwriteModal(null);
+    } catch (_) {
+      setImageImportResult({
+        success: 0,
+        errors: ['無法連線至伺服器，且本機儲存失敗。請以 npm run dev 或 npm run start 啟動後再匯入。'],
       });
     }
   };
@@ -243,30 +269,31 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
       return;
     }
 
-    const banks = getAllBanks();
-    const allQuestionIds = new Set<string>();
-    banks.forEach((bank) => {
-      getQuestions(bank).forEach((q) => allQuestionIds.add(q.id));
-    });
-
-    const invalidIds: string[] = [];
-    valid.forEach((item) => {
-      const questionId = item.name.replace(/\.(png|jpg|jpeg)$/i, '');
-      if (!allQuestionIds.has(questionId)) {
-        invalidIds.push(item.name);
-      }
-    });
-
-    if (invalidIds.length > 0) {
-      setImageImportResult({
-        success: 0,
-        errors: [
-          '以下圖片沒有對應題目，請先匯入題庫後再匯入圖片：',
-          ...invalidIds.map((n) => `・${n}`),
-        ],
+    if (!imageImportAsGroupImages) {
+      const banks = getAllBanks();
+      const allQuestionIds = new Set<string>();
+      banks.forEach((bank) => {
+        getQuestions(bank).forEach((q) => allQuestionIds.add(q.id));
       });
-      // 不清空列表，讓用戶可以修正後重試
-      return;
+
+      const invalidIds: string[] = [];
+      valid.forEach((item) => {
+        const questionId = item.name.replace(/\.(png|jpg|jpeg)$/i, '');
+        if (!allQuestionIds.has(questionId)) {
+          invalidIds.push(item.name);
+        }
+      });
+
+      if (invalidIds.length > 0) {
+        setImageImportResult({
+          success: 0,
+          errors: [
+            '以下圖片沒有對應題目，請先匯入題庫後再匯入圖片：',
+            ...invalidIds.map((n) => `・${n}`),
+          ],
+        });
+        return;
+      }
     }
 
     try {
@@ -293,10 +320,21 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
 
       await performImageSave(filesPayload, []);
     } catch (err) {
-      setImageImportResult({
-        success: 0,
-        errors: ['無法連線至伺服器，請確認應用程式已透過支援匯入圖片的伺服器啟動。'],
-      });
+      try {
+        const fallbackPayload = await Promise.all(
+          valid.map(async (item) => {
+            const buf = await item.file.arrayBuffer();
+            const base64 = btoa(String.fromCharCode(...new Uint8Array(buf)));
+            return { name: item.name, data: base64 };
+          })
+        );
+        await saveToImportedImagesFallback(fallbackPayload);
+      } catch (_) {
+        setImageImportResult({
+          success: 0,
+          errors: ['無法連線至伺服器，請確認應用程式已透過支援匯入圖片的伺服器啟動。'],
+        });
+      }
     }
   };
 
@@ -660,16 +698,30 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
       )}
 
       {showImageImportModal && (
-        <div className="import-modal-overlay" onClick={() => { setShowImageImportModal(false); setImageImportList([]); setImageImportResult(null); }}>
+        <div className="import-modal-overlay" onClick={() => { setShowImageImportModal(false); setImageImportList([]); setImageImportResult(null); setImageImportAsGroupImages(false); }}>
           <div className="import-modal image-import-modal" onClick={(e) => e.stopPropagation()}>
             <div className="import-modal-header">
               <ImagePlus size={24} className="import-modal-icon" />
               <h4>確認匯入圖片</h4>
-              <button type="button" className="close-btn" onClick={() => { setShowImageImportModal(false); setImageImportList([]); setImageImportResult(null); }}>
+              <button type="button" className="close-btn" onClick={() => { setShowImageImportModal(false); setImageImportList([]); setImageImportResult(null); setImageImportAsGroupImages(false); }}>
                 <X size={18} />
               </button>
             </div>
-            <p className="image-import-desc">以下為選取的圖片，可刪除不需匯入的項目。超過 2MB 的檔案將無法匯入。</p>
+            <div className="image-import-modal-body">
+              <p className="image-import-desc">以下為選取的圖片，可刪除不需匯入的項目。超過 2MB 的檔案將無法匯入。</p>
+              <label className="image-import-group-option">
+              <input
+                type="checkbox"
+                checked={imageImportAsGroupImages}
+                onChange={(e) => setImageImportAsGroupImages(e.target.checked)}
+              />
+              <span>題組圖片</span>
+            </label>
+            {imageImportAsGroupImages && (
+              <p className="image-import-group-hint">
+                請確認題庫 JSON 中題組的 <code>imageIds</code> 已正確填入與檔名相符的圖片名稱（不含副檔名），否則題組圖片將無法正常顯示。
+              </p>
+            )}
             <ul className="image-import-list">
               {imageImportList.map((item) => (
                 <li key={item.id} className={`image-import-item ${item.overLimit ? 'over-limit' : ''}`}>
@@ -708,8 +760,9 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
                 </div>
               </div>
             )}
+            </div>
             <div className="import-modal-actions">
-              <Button variant="ghost" onClick={() => { setShowImageImportModal(false); setImageImportList([]); setImageImportResult(null); }}>
+              <Button variant="ghost" onClick={() => { setShowImageImportModal(false); setImageImportList([]); setImageImportResult(null); setImageImportAsGroupImages(false); }}>
                 取消
               </Button>
               <Button

@@ -10,6 +10,7 @@ import { Records } from '@/pages/Records';
 import { useQuestionStore } from '@/store/questionStore';
 import { useThemeStore } from '@/store/themeStore';
 import { preloadImageManifest } from '@/utils/questionImages';
+import { useImportedImagesStore } from '@/store/importedImagesStore';
 import '@/styles/globals.css';
 
 function App() {
@@ -31,11 +32,10 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  // 預載入圖片 manifest（應用啟動時只執行一次）
+  // 預載入圖片 manifest 與本機離線匯入圖片（應用啟動時只執行一次）
   useEffect(() => {
-    preloadImageManifest().catch(() => {
-      // 載入失敗不影響應用運行
-    });
+    preloadImageManifest().catch(() => {});
+    useImportedImagesStore.getState().load().catch(() => {});
   }, []);
 
   return (

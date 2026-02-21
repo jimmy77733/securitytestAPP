@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { X, Image as ImageIcon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useQuestionStore } from '@/store/questionStore';
-import { getQuestionGroupImageUrl } from '@/utils/questionImages';
+import { useImportedImagesStore } from '@/store/importedImagesStore';
 import './QuestionImageModal.css';
 
 interface QuestionGroupContentModalProps {
@@ -28,6 +28,9 @@ export const QuestionGroupContentModal: React.FC<QuestionGroupContentModalProps>
   if (!isOpen) return null;
 
   const imageIds = content?.imageIds ?? [];
+  const selectedImageId = selectedImageIndex !== null ? imageIds[selectedImageIndex] ?? null : null;
+  const groupImageUrl = useImportedImagesStore((s) => (selectedImageId ? s.getGroupImageUrl(selectedImageId) : ''));
+
   const hasContent = (content?.contentText && content.contentText.length > 0) || imageIds.length > 0;
 
   return (
@@ -93,7 +96,7 @@ export const QuestionGroupContentModal: React.FC<QuestionGroupContentModalProps>
                     exit={{ opacity: 0 }}
                   >
                     <img
-                      src={getQuestionGroupImageUrl(imageIds[selectedImageIndex])}
+                      src={groupImageUrl}
                       alt={`題組圖片 ${selectedImageIndex + 1}`}
                       className="question-image"
                       onError={(e) => {
