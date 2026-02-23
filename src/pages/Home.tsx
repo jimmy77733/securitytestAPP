@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FileText, Clock, User, AlertTriangle, Sun, Moon, Monitor } from 'lucide-react';
+import { FileText, Clock, User, AlertTriangle, Sun, Moon, Monitor, RefreshCw } from 'lucide-react';
 import { useUserStore } from '@/store/userStore';
 import { useBankStore } from '@/store/bankStore';
 import { useQuestionStore } from '@/store/questionStore';
@@ -19,7 +19,30 @@ export const Home: React.FC = () => {
   const { getQuestions } = useQuestionStore();
   const [selectedBankId, setSelectedBankId] = useState<string>('primary');
   const [noQuestionsMessage, setNoQuestionsMessage] = useState<string>('');
+  const [buildModalOpen, setBuildModalOpen] = useState(false);
+  const [buildMessage, setBuildMessage] = useState<{ success: boolean; text: string } | null>(null);
+  const [buildLoading, setBuildLoading] = useState(false);
   const { mode: themeMode, cycleTheme } = useThemeStore();
+
+  const handleTriggerBuild = async () => {
+    setBuildLoading(true);
+    setBuildMessage(null);
+    try {
+      const base = typeof window !== 'undefined' && window.location?.origin ? window.location.origin : '';
+      const res = await fetch(`${base}/api/trigger-build`, { method: 'POST' });
+      const data = await res.json().catch(() => ({}));
+      if (data.success) {
+        setBuildMessage({ success: true, text: '已同步建置完成，請重新整理頁面以載入最新版本。' });
+      } else {
+        setBuildMessage({ success: false, text: data.error ? `建置失敗：${data.error}` : '建置失敗，請確認伺服器環境可執行 npm run build。' });
+      }
+    } catch (err) {
+      setBuildMessage({ success: false, text: '無法連線至建置服務，請確認以本機伺服器（或執行檔）方式運行。' });
+    } finally {
+      setBuildLoading(false);
+      setBuildModalOpen(true);
+    }
+  };
 
   const handleStartTest = () => {
     setNoQuestionsMessage('');
@@ -49,6 +72,16 @@ export const Home: React.FC = () => {
           <span>{currentUser.name}</span>
         </div>
         <div className="home-header-actions">
+          <button
+            type="button"
+            className="theme-toggle build-sync-btn"
+            onClick={handleTriggerBuild}
+            disabled={buildLoading}
+            title="同步建置最新版本"
+            aria-label="同步建置最新版本"
+          >
+            <RefreshCw size={20} className={buildLoading ? 'spin' : ''} />
+          </button>
           <button
             type="button"
             className="theme-toggle"
@@ -114,6 +147,17 @@ export const Home: React.FC = () => {
           </Card>
         </div>
       </motion.div>
+
+      {buildModalOpen && buildMessage && (
+        <div className="build-sync-modal-overlay" onClick={() => setBuildModalOpen(false)} role="presentation">
+          <div className="build-sync-modal" onClick={(e) => e.stopPropagation()}>
+            <p className={buildMessage.success ? 'build-sync-success' : 'build-sync-error'}>{buildMessage.text}</p>
+            <button type="button" className="build-sync-modal-btn" onClick={() => setBuildModalOpen(false)}>
+              確定
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

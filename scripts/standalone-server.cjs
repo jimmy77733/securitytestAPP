@@ -7,7 +7,7 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
+const { execSync, spawn } = require('child_process');
 
 const isPkg = typeof process.pkg !== 'undefined';
 const projectRoot = isPkg
@@ -251,6 +251,38 @@ const server = http.createServer(async (req, res) => {
   const isGenerateManifest = method === 'POST' && baseUrl === '/api/generate-image-manifest';
   const isCheck = method === 'POST' && baseUrl === '/api/check-question-images';
   const isSave = method === 'POST' && baseUrl === '/api/save-question-images';
+  const isTriggerBuild = method === 'POST' && baseUrl === '/api/trigger-build';
+
+  if (isTriggerBuild) {
+    res.setHeader('Content-Type', 'application/json');
+    try {
+      const result = await new Promise((resolve) => {
+        const isWin = process.platform === 'win32';
+        const child = spawn(isWin ? 'npm.cmd' : 'npm', ['run', 'build'], {
+          cwd: projectRoot,
+          shell: isWin,
+          stdio: ['ignore', 'pipe', 'pipe'],
+        });
+        let stderr = '';
+        child.stderr && child.stderr.on('data', (d) => { stderr += d.toString(); });
+        const timeout = setTimeout(() => {
+          child.kill('SIGTERM');
+          resolve({ success: false, error: '建置逾時（超過 120 秒）' });
+        }, 120000);
+        child.on('close', (code) => {
+          clearTimeout(timeout);
+          if (code === 0) resolve({ success: true });
+          else resolve({ success: false, error: stderr.slice(-500) || '建置結束碼 ' + code });
+        });
+      });
+      res.statusCode = 200;
+      res.end(JSON.stringify(result.success ? { success: true } : { success: false, error: result.error }));
+    } catch (err) {
+      res.statusCode = 500;
+      res.end(JSON.stringify({ success: false, error: String(err && err.message || err) }));
+    }
+    return;
+  }
 
   if (isGetManifest) {
     try {
