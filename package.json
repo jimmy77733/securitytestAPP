@@ -7,6 +7,9 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "start": "node scripts/server.mjs",
+    "start:standalone": "node scripts/standalone-server.cjs",
+    "pack": "npm run build && pkg scripts/standalone-server.cjs --targets node18-win-x64 --output dist-portable/題庫平台.exe",
+    "pack:full": "npm run pack && node scripts/copy-portable-assets.cjs",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "load-questions": "tsx scripts/loadQuestions.ts",
     "validate-questions": "tsx scripts/manualImportHelper.ts",
@@ -33,6 +36,7 @@
     "eslint-plugin-react-refresh": "^0.4.5",
     "tsx": "^4.7.0",
     "typescript": "^5.2.2",
-    "vite": "^5.0.8"
+    "vite": "^5.0.8",
+    "pkg": "^5.8.1"
   }
 }

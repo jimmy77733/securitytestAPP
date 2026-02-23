@@ -74,6 +74,44 @@ npm run build
 npm run preview
 ```
 
+### 打包成執行檔（可攜式發佈）
+
+專案可建置為 **Windows 單一執行檔**，只要把執行檔與必要檔案放在同一資料夾，即可在未安裝 Node.js 的電腦上執行。
+
+1. **安裝依賴並建置執行檔**（需先安裝 [pkg](https://www.npmjs.com/package/pkg)，
+   已列在 `devDependencies`）：
+
+   ```bash
+   npm install
+   npm run pack:full
+   ```
+
+   - `pack`：只建置前端並用 pkg 產生 `dist-portable/題庫平台.exe`
+   - `pack:full`：建置執行檔後，再將 `dist/` 與 `public/` 複製到 `dist-portable/`，形成完整可攜包
+
+2. **發佈資料夾結構**（整個 `dist-portable` 資料夾即為可攜包）：
+
+   ```
+   dist-portable/
+   ├── 題庫平台.exe    # 雙擊執行，會自動開啟瀏覽器
+   ├── dist/           # 前端靜態檔（由 pack:full 複製）
+   └── public/         # 題組圖片等（由 pack:full 複製）
+       └── question-images/
+   ```
+
+3. **使用方式**：將 `dist-portable` 整個資料夾複製到任意位置（或壓縮成 zip 分享），在該資料夾內雙擊 `題庫平台.exe`，程式會啟動本機伺服器並自動開啟瀏覽器至 `http://localhost:4173`。關閉主控台視窗即停止伺服器。
+
+4. **僅用 Node 執行（不打包）**：若已建置過 `dist`，可直接用獨立伺服器啟動，行為與執行檔相同：
+
+   ```bash
+   npm run build
+   npm run start:standalone
+   ```
+
+   環境變數：`PORT` 可指定埠號（預設 4173）；`OPEN_BROWSER=0` 可關閉自動開瀏覽器。
+
+**關於「單一程式檔案」**：目前做法是「一個執行檔 + 同資料夾的 `dist`、`public`」，整包以一個資料夾形式發佈。若需要真正單一 .exe（內嵌前端與圖片），可考慮使用 Electron 或 Tauri 將整個應用包成桌面程式，或使用 pkg 的 assets 將靜態檔內嵌進 exe（需額外設定與解壓邏輯）。
+
 ## 題庫匯入
 
 題庫以 JSON 格式存放於 `data/` 目錄，透過以下流程載入：
