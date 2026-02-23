@@ -4,7 +4,7 @@
     {
       "groupKey": "intermediate_資訊安全防護實務_108_1",
       "contentText": "某公司資安稽核部門進行年度檢視稽核，抽驗了四類記錄與報告：(1) Web資安黑箱檢測報告 (2) 資料庫記錄 (3) 資訊系統存取記錄 (4) 研發人員端點電腦記錄。請根據下列內容回答問題。",
-      "imageIds": ["g_intermediate_108_1_1", "g_intermediate_108_1_2", "g_intermediate_108_1_3"]
+      "imageIds": ["intermediate_108_1_1", "intermediate_108_1_2", "intermediate_108_1_3"]
     }
   ],
   "questions": [

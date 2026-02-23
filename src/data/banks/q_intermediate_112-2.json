@@ -1,0 +1,1382 @@
+{
+    "description": "112年度中級資訊安全工程師能力鑑定試題 - 科目2:資訊安全防護實務；112年度中級資訊安全工程師能力鑑定試題 - 科目1:資訊安全規劃實務",
+    "questionGroups": [
+      {
+        "groupKey": "intermediate_資訊安全防護實務_112-2_1",
+        "contentText": "現在你是一間企業的資安專責人員。最近,你發現一個未被掌握的內部系統漏洞,而且發現了來自不明來源的異常網路流量。你的任務是分析這個威脅,並提出適當的回應策略。",
+        "imageIds": []
+      },
+      {
+        "groupKey": "intermediate_資訊安全防護實務_112-2_2",
+        "contentText": "你是公司資安當責人員,今年度開始公司執行導入 ISO 27001的管理制度,預計於今年12月通過認證,目前已經擬定了相關的政策、程序書,正在執行資產盤點及風險評估的階段。在資源有限的前提下,你發現了多個內部議題,而相關議題的提出者是公司內部主要的利害關係人,身為資安當責人員的你身兼多職,你必須以符合ISO 27001的分工組織來進行工作分配,在剛完成第二階文件的你,面對的挑戰有……",
+        "imageIds": []
+      },
+      {
+        "groupKey": "intermediate_資訊安全防護實務_112-2_3",
+        "contentText": "關於NIST SP 800-61 資安事故處理指引(Computer Security Incident Handling Guide)其事故處置生命週期(Incident Response Life Cycle)如下圖：",
+        "imageIds": [
+          "intermediate_112-2_防護_3_1"
+        ]
+      },
+      {
+        "groupKey": "intermediate_資訊安全防護實務_112-2_4",
+        "contentText": "A企業推出長照媒合線上服務,其資訊架構包含Web及mobile app等,後端採用MySQL 資料庫。其架構有切割出API伺服器及資料庫伺服器。",
+        "imageIds": []
+      },
+      {
+        "groupKey": "intermediate_資訊安全防護實務_112-2_5",
+        "contentText": "您是XYZ公司的資訊安全負責人,公司正在進行滲透測試。在測試過程中,滲透測試者通報了一些嚴重的Web安全弱點,包括可以遠端執行指令的弱點和能夠讀取本地文件的弱點，並且成功的利用 auth.log 檔案的本地讀取及透過SSH 驗證注入網站的應用程式達成遠端執行指令稿,使用測試人員可以透過GitHub 下載 Reverse Shell 和各種編碼或編譯套件,透過這台主機上,發現了管理人員在 root 目錄下放置了帳號密碼檔,且這組帳號密碼經過測試,有大量的使用者可以用相同密碼登入",
+        "imageIds": []
+      },
+      {
+        "groupKey": "intermediate_資訊安全規劃實務_112-2_1",
+        "contentText": "有一個在我國立案的公司,以下簡稱廠商A,其主要營業範圍為生產某零組件,銷售予下游廠商,經其加工形成產品,才銷售予最終使用者。廠商A非常重視環境保護及生產品質,本身已具備ISO 9001、ISO 14001及ISO 27001等認證。廠商A其主要的客戶(下游廠商B)因其主要產品銷往歐洲,故其在供應商合約中要求,除ISO生產品質及環保的相關認證外,供應商亦需符合GDPR 的法律規定及通過BS10012的驗證。",
+        "imageIds": []
+      },
+      {
+        "groupKey": "intermediate_資訊安全規劃實務_112-2_2",
+        "contentText": "某公司資訊系統管理人員發現該公司 SQL Server 有些異常現象發生,經檢視相關 SQL Server 之紀錄檔之後,並未發現足以支撐該管理人員對此異常現象發生原因之推論,惟該管理人員可以判斷的是,這個異常現象應該是人為的因素比較大,因此,管理人員為了確認 SQL Server 異常現象的發生是其所判斷的「人為因素」所產生。該管理人員安裝網路封包側錄器後,對該SQL Server 持續側錄了一整晚的網路封包,隔天進公司針對所側錄下來的網路封包進行分析...",
+        "imageIds": []
+      },
+      {
+        "groupKey": "intermediate_資訊安全規劃實務_112-2_3",
+        "contentText": "某醫療機構日前發生多起駭客入侵事件,經查發現其行動式醫療車及行動加護病房的雲端即時監護系統皆遭到駭客入侵,駭客並且透過遠端設定改變點滴流速超出原本設定的50倍。為了解決行動式醫療設備及雲端監護系統的安全,該機構規劃導入零信任架構(Zero Trust Architecture)強化存取控制,解決行動式醫療車及行動加護病房的雲端即時監護系統。",
+        "imageIds": [
+          "intermediate_112-2_規劃_3_1"
+        ]
+      },
+      {
+        "groupKey": "intermediate_資訊安全規劃實務_112-2_4",
+        "contentText": "A 公司主要業務係為客戶提供客製化軟體系統之開發、維護以及主機代管服務,因為甲客戶(資通安全管理法規範對象)要求A公司於承接委託方所委託之系統平台開發業務(委託業務費用為新台幣一仟萬元整,部分系統係利用第三方公司所開發之系統)時,公司應有ISO 27001 資訊安全管理制度之導入並適用於全公司人員,以確保委託方所委託業務之資訊安全獲得保障。",
+        "imageIds": []
+      },
+      {
+        "groupKey": "intermediate_資訊安全規劃實務_112-2_5",
+        "contentText": "T公司為資本額超過百億以上之股票上市電子公司,日前剛完成風險評估作業,發現5個高風險事項、10個中風險事項,以及多個低風險事項。依照公司所訂定之風險管理辦法,高風險事項必須規劃風險改善對策,並具以執行",
+        "imageIds": []
+      }
+    ],
+    "questions": [
+      {
+        "id": "q_intermediate_112-2_p_1",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "關於MITRE ATT&CK中的橫向移動(Lateral Movement)戰術(Tactic),下列何項錯誤?",
+        "options": [
+          { "id": "opt_a", "text": "遠端服務破解(Exploitation of Remote Services)屬於此類戰術" },
+          { "id": "opt_b", "text": "內部魚叉釣魚(Internal Spearphishing)屬於此類戰術" },
+          { "id": "opt_c", "text": "橫移工具傳輸(Lateral Tool Transfer)屬於此類戰術" },
+          { "id": "opt_d", "text": "本地資料取得(Data from Local System)屬於此類戰術" }
+        ],
+        "correctAnswers": ["opt_d"],
+        "explanation": "本地資料取得 (Data from Local System) 屬於「資料蒐集 (Collection)」戰術，而非用於在網路內部移動的「橫向移動 (Lateral Movement)」。",
+        "year": "112-2",
+        "category": "資訊安全防護實務"
+      },
+      {
+        "id": "q_intermediate_112-2_p_2",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "2022年8月美國眾議院議長裴洛西(Nancy Pelosi)日前來台訪問,造成台灣有些公私部門遭受分散式阻斷服務攻擊(Distributed Denial-of-Service Attack,DDoS)。關於DDOS攻擊與當時事件的敘述,下列何者錯誤?",
+        "options": [
+          { "id": "opt_a", "text": "當時我國行政院數位發展部部長唐鳳提出的防禦方式是採取以 Web3為主的不對稱防禦架構" },
+          { "id": "opt_b", "text": "當時我國政府為了解決此問題,利用「流量清洗」的方式去對抗,投入大量資源與成本多設專線去阻擋" },
+          { "id": "opt_c", "text": "DDoS 攻擊可以分成消耗網路頻寬與擷取網路上傳輸封包資訊兩種動作" },
+          { "id": "opt_d", "text": "目前市面上有販售 DDoS攻擊的服務,更加難以有效偵查 DDoS 攻擊" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "DDoS 攻擊的主要目的是「耗盡資源（頻寬、運算能力、連線數）」，以造成服務阻斷，並不包含「擷取網路上傳輸封包資訊」（這是嗅探/竊聽的目的）。",
+        "year": "112-2",
+        "category": "資訊安全防護實務"
+      },
+      {
+        "id": "q_intermediate_112-2_p_3",
+        "questionBank": "intermediate",
+        "type": "multiple",
+        "question": "下列哪些攻擊手法可以透過遠端攻擊網路伺服器?(複選)",
+        "options": [
+          { "id": "opt_a", "text": "Ping Flooding" },
+          { "id": "opt_b", "text": "DDoS" },
+          { "id": "opt_c", "text": "簡單配對攻擊(Secure Simple Pairing Attacks)" },
+          { "id": "opt_d", "text": "Wi-Fi MITM" }
+        ],
+        "correctAnswers": ["opt_a", "opt_b"],
+        "explanation": "Ping Flooding 與 DDoS 都是典型的遠端網路攻擊手法；而簡單配對攻擊（藍牙）與 Wi-Fi MITM 通常需要攻擊者在物理距離（近端）內才能發動。",
+        "year": "112-2",
+        "category": "資訊安全防護實務"
+      },
+      {
+        "id": "q_intermediate_112-2_p_4",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "【題組1】情境如附圖所示。針對這個不明的異常流量,第一步你該如何確認本項威脅來源?",
+        "options": [
+          { "id": "opt_a", "text": "關閉所有的內部網路" },
+          { "id": "opt_b", "text": "通知所有員工有潛在的威脅" },
+          { "id": "opt_c", "text": "進行詳細的威脅與風險分析" },
+          { "id": "opt_d", "text": "立即去法院按鈴申告" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "發現異常流量時，首要步驟是進行調查與分析（威脅與風險分析），以確認是否真為攻擊、影響範圍及攻擊來源，盲目關網或通報會引起恐慌。",
+        "year": "112-2",
+        "category": "資訊安全防護實務",
+        "questionGroupId": "1"
+      },
+      {
+        "id": "q_intermediate_112-2_p_5",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "【題組1】情境如附圖所示。在瞭解詳細的威脅情況後,第一步你需要與哪一個組織內部團隊合作?",
+        "options": [
+          { "id": "opt_a", "text": "市場行銷團隊" },
+          { "id": "opt_b", "text": "事件回應團隊" },
+          { "id": "opt_c", "text": "威脅分析團隊" },
+          { "id": "opt_d", "text": "行銷風險評估團隊" }
+        ],
+        "correctAnswers": ["opt_b"],
+        "explanation": "確認威脅後，應立即與「事件回應團隊 (Incident Response Team, IRT)」合作，啟動應變程序以遏制威脅並進行修復。",
+        "year": "112-2",
+        "category": "資訊安全防護實務",
+        "questionGroupId": "1"
+      },
+      {
+        "id": "q_intermediate_112-2_p_6",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "【題組1】情境如附圖所示。經過分析這個威脅來源是透過郵件附件進行攻擊的,這個攻擊手法對應到 Cyber Kill Chain 的哪一個階段?",
+        "options": [
+          { "id": "opt_a", "text": "Weaponization" },
+          { "id": "opt_b", "text": "Installation" },
+          { "id": "opt_c", "text": "Delivery" },
+          { "id": "opt_d", "text": "Exploitation" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "在洛克希德馬丁的 Cyber Kill Chain 模型中，透過電子郵件附件將惡意負載發送給目標的過程屬於「投遞 (Delivery)」階段。",
+        "year": "112-2",
+        "category": "資訊安全防護實務",
+        "questionGroupId": "1"
+      },
+      {
+        "id": "q_intermediate_112-2_p_7",
+        "questionBank": "intermediate",
+        "type": "multiple",
+        "question": "【題組1】情境如附圖所示。承上題,在這樣的情況下,為了提高你的資訊安全防護並防止未來的攻擊,你可以採取下列哪些措施?(複選)",
+        "options": [
+          { "id": "opt_a", "text": "增強員工的資訊安全意識,如定期的資訊安全訓練" },
+          { "id": "opt_b", "text": "強化網路監控以偵測不尋常的活動" },
+          { "id": "opt_c", "text": "建立並維護一個更新的災難恢復計畫" },
+          { "id": "opt_d", "text": "不斷地升級電腦硬體,即使沒有發現任何威脅" }
+        ],
+        "correctAnswers": ["opt_a", "opt_b", "opt_c"],
+        "explanation": "防範釣魚郵件需強化員工意識 (A)；防範異常流量需網路監控 (B)；面對潛在破壞需災難恢復計畫 (C)。單純盲目升級硬體 (D) 無法直接防禦網路攻擊。",
+        "year": "112-2",
+        "category": "資訊安全防護實務",
+        "questionGroupId": "1"
+      },
+      {
+        "id": "q_intermediate_112-2_p_8",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "當使用者利用帳號密碼登入系統時,密碼的儲存基本原則是不可以直接用明文方式存放於資料庫中,因此密碼通常利用加密(Encryption)或是雜湊(Hash)的方式進行編碼轉換。關於雜湊函數的敘述,下列何者錯誤?",
+        "options": [
+          { "id": "opt_a", "text": "雜湊原理是限制輸入長度為8字元以上並透過雜湊函數進行計算,計算後會得到一樣長度的密文" },
+          { "id": "opt_b", "text": "常見的雜湊函數有MD5、SHA-1及SHA-2等" },
+          { "id": "opt_c", "text": "輸入的原始字串只差一個字元,透過雜湊函數得到的結果會差異很大" },
+          { "id": "opt_d", "text": "雜湊函數具有不可逆的特性,無法利用雜湊值計算取得原始資料" }
+        ],
+        "correctAnswers": ["opt_a"],
+        "explanation": "雜湊函數的特性是接受「任意長度」的輸入，並產生「固定長度」的輸出（如 MD5 永遠是 128-bit），而非限制輸入長度為 8 字元以上。",
+        "year": "112-2",
+        "category": "資訊安全防護實務"
+      },
+      {
+        "id": "q_intermediate_112-2_p_9",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "根據常見的弱點類型,下列何種是 Web 應用程式最常見的安全弱點?",
+        "options": [
+          { "id": "opt_a", "text": "SQL Injection: SQL注入攻擊" },
+          { "id": "opt_b", "text": "Distributed Denial-Of-Service: DDoS 攻擊" },
+          { "id": "opt_c", "text": "Local File Inclusion: LFI 本地端檔案內容揭露" },
+          { "id": "opt_d", "text": "Cross Site Request Forgery: CSRF 跨站請求偽造" }
+        ],
+        "correctAnswers": ["opt_a"],
+        "explanation": "SQL Injection 長期以來一直是 Web 應用程式中最常見且破壞力最大的安全弱點之一（常居 OWASP Top 10 前列）。DDoS 是網路層攻擊為主，不完全算 Web 應用程式「弱點」。",
+        "year": "112-2",
+        "category": "資訊安全防護實務"
+      },
+      {
+        "id": "q_intermediate_112-2_p_10",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "關於 MITRE ATT&CK中的輸入擷取(Input Capture)技術,下列何項錯誤?",
+        "options": [
+          { "id": "opt_a", "text": "無法使用預防控制(Preventive Controls)輕易緩解此技術" },
+          { "id": "opt_b", "text": "無法透過觀察驅動程式載入(DriverLoad)活動來偵測此技術" },
+          { "id": "opt_c", "text": "可觀察系統註冊機碼(Windows Registry)活動來偵測此技術" },
+          { "id": "opt_d", "text": "可觀察程序建立(Process Creation)活動與元資料(Process Metadata)來偵測此技術" }
+        ],
+        "correctAnswers": ["opt_b"],
+        "explanation": "輸入擷取（如鍵盤側錄 Keylogging）常透過載入惡意的核心驅動程式 (Driver) 達成，因此「觀察驅動程式載入活動」是偵測此技術的重要方法之一，說無法透過此方法偵測是錯誤的。",
+        "year": "112-2",
+        "category": "資訊安全防護實務"
+      },
+      {
+        "id": "q_intermediate_112-2_p_11",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "關於進行網路架構設計的敘述,下列何者較「不」適當?",
+        "options": [
+          { "id": "opt_a", "text": "應區分內外網" },
+          { "id": "opt_b", "text": "網站跟資料庫最好在不同網段" },
+          { "id": "opt_c", "text": "目錄伺服器AD 應該放在辦公網段" },
+          { "id": "opt_d", "text": "可以VLAN切割網段" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "目錄伺服器（AD）是企業核心認證中心，極為機敏，應放置於受嚴格保護的伺服器網段（Server Farm），絕不應與一般使用者的「辦公網段」混在一起。",
+        "year": "112-2",
+        "category": "資訊安全防護實務"
+      },
+      {
+        "id": "q_intermediate_112-2_p_12",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "在Cyber Kill Chain 模型中,Delivery 階段通常包括下列何項攻擊手法?",
+        "options": [
+          { "id": "opt_a", "text": "惡意軟體安裝" },
+          { "id": "opt_b", "text": "網站水坑攻擊" },
+          { "id": "opt_c", "text": "透過電子郵件附件或內文 URL 連結" },
+          { "id": "opt_d", "text": "帳號密碼填充攻擊" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "在網路殺傷鏈 (Cyber Kill Chain) 中，投遞 (Delivery) 階段是將武器化的惡意負載傳送給目標，最常見的手法即是透過釣魚郵件發送附件或惡意連結。",
+        "year": "112-2",
+        "category": "資訊安全防護實務"
+      },
+      {
+        "id": "q_intermediate_112-2_p_13",
+        "questionBank": "intermediate",
+        "type": "multiple",
+        "question": "為了進行有效的弱點管理並減少組織風險,下列哪些是必要的措施?(複選)",
+        "options": [
+          { "id": "opt_a", "text": "定期進行弱點掃描" },
+          { "id": "opt_b", "text": "使用最新的防毒軟體" },
+          { "id": "opt_c", "text": "仔細研讀所有的軟體使用條款" },
+          { "id": "opt_d", "text": "實施弱點修補管理流程" }
+        ],
+        "correctAnswers": ["opt_a", "opt_b", "opt_d"],
+        "explanation": "弱點掃描、防毒軟體以及修補流程皆為直接降低系統漏洞與風險的技術及管理措施。研讀軟體使用條款偏向法務智財合規，對直接的技術「弱點管理」助益不大。",
+        "year": "112-2",
+        "category": "資訊安全防護實務"
+      },
+      {
+        "id": "q_intermediate_112-2_p_14",
+        "questionBank": "intermediate",
+        "type": "multiple",
+        "question": "關於 MITRE ATT&CK中的瀏覽器會話劫持(Browser Session Hijacking)技術,下列哪些正確?(複選)",
+        "options": [
+          { "id": "opt_a", "text": "可透過資安認知訓練(Awareness Training)來緩解此技術" },
+          { "id": "opt_b", "text": "可分析登入會話(Logon Session)的產生狀態來偵測此技術" },
+          { "id": "opt_c", "text": "可透過使用者帳戶管理(User Account Management)來緩解此技術" },
+          { "id": "opt_d", "text": "僅能透過分析程序存取(Process Access)與程序修改(Process Modification) 狀態來偵測此技術" }
+        ],
+        "correctAnswers": ["opt_a", "opt_b"],
+        "explanation": "這題答案依據官方給出的為 AB 或 BC (題庫答案可能不一，但較合理的是 AB)。此技術通常利用惡意軟體或釣魚竊取 token，故資安認知(A)與監控異常會話(B)是正確的。D 的「僅能」過於絕對是錯誤的。",
+        "year": "112-2",
+        "category": "資訊安全防護實務"
+      },
+      {
+        "id": "q_intermediate_112-2_p_15",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "【題組2】情境如附圖所示,總經理提出當公司的核心資訊系統受到攻擊時,首先執行的步驟是下列何項?",
+        "options": [
+          { "id": "opt_a", "text": "修復受影響的系統" },
+          { "id": "opt_b", "text": "報告給執法機關" },
+          { "id": "opt_c", "text": "確認並評估攻擊的範圍和影響" },
+          { "id": "opt_d", "text": "通知所有受影響的客戶和使用者" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "在事故處理程序中，發現疑似攻擊時，首要之務是「確認事件是否成立」並「評估影響範圍」，才能決定後續的應變、通報與修復策略。",
+        "year": "112-2",
+        "category": "資訊安全防護實務",
+        "questionGroupId": "2"
+      },
+      {
+        "id": "q_intermediate_112-2_p_16",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "【題組2】情境如附圖所示,承上題,資訊室同仁在導入 ISO 27001的過程中,目前已經完成「風險評估」,而同仁正在啟動「實施控制」施行對策,你發現同仁跳過了一個管理流程,這個流程是下列何項?",
+        "options": [
+          { "id": "opt_a", "text": "建立風險接受準則" },
+          { "id": "opt_b", "text": "訂定資訊安全政策" },
+          { "id": "opt_c", "text": "建立風險處理框架" },
+          { "id": "opt_d", "text": "監控和檢查控制效果" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "在 ISO 27001 風險管理流程中，完成「風險評估」後，必須先制定「風險處理計畫（建立風險處理框架）」，選擇對策（規避、降低、接受、轉移），才能進入「實施控制措施」階段。",
+        "year": "112-2",
+        "category": "資訊安全防護實務",
+        "questionGroupId": "2"
+      },
+      {
+        "id": "q_intermediate_112-2_p_17",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "【題組2】情境如附圖所示,承上題,負責作業安全的同事(OP),在實施資訊安全防護機制時,下列何項你必須提醒該同仁考慮的因素?",
+        "options": [
+          { "id": "opt_a", "text": "組織的業務需求和目標" },
+          { "id": "opt_b", "text": "組織的市場競爭優勢" },
+          { "id": "opt_c", "text": "組織的企業形象" },
+          { "id": "opt_d", "text": "組織的投資組合" }
+        ],
+        "correctAnswers": ["opt_a"],
+        "explanation": "資訊安全的實施不能脫離業務運作，必須以支持「組織的業務需求和目標」為前提，確保資安控制與營運目標一致。",
+        "year": "112-2",
+        "category": "資訊安全防護實務",
+        "questionGroupId": "2"
+      },
+      {
+        "id": "q_intermediate_112-2_p_18",
+        "questionBank": "intermediate",
+        "type": "multiple",
+        "question": "【題組2】情境如附圖所示,承上題,資安小組在設定災難恢復目標時,負責資料備份與事件回應小組無法正確的擬定 RTO(Recovery Time Objective),看來是負責資料備份的同仁誤解了RTO的定義,下列哪些是正確的?(複選)",
+        "options": [
+          { "id": "opt_a", "text": "RTO 決定了備份政策" },
+          { "id": "opt_b", "text": "RTO 決定了復原政策" },
+          { "id": "opt_c", "text": "業務流程中斷到恢復到可接受的服務水平所需要的最大時間" },
+          { "id": "opt_d", "text": "資料備份從啟動到備份完成所需要的最短時間" }
+        ],
+        "correctAnswers": ["opt_b"],
+        "explanation": "RTO（復原時間目標）是指從災難發生到服務恢復所需的時間，因此它主導了「復原政策」與備援架構的選擇。備份政策（備份頻率）主要是由 RPO 決定。",
+        "year": "112-2",
+        "category": "資訊安全防護實務",
+        "questionGroupId": "2"
+      },
+      {
+        "id": "q_intermediate_112-2_p_19",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "某廠商其日誌服務採用syslog,該伺服器A另有透過防火牆強化保護,公司的伺服器B要傳輸日誌給伺服器A時,發現無法正常傳輸,但伺服器B透過ping 確認其與伺服器A可以正常連線並取得回應,請問下列那項方案最合適解決此項狀況?",
+        "options": [
+          { "id": "opt_a", "text": "重新安裝伺服器A的syslog" },
+          { "id": "opt_b", "text": "於該防火牆放行目的埠號514的UDP流量" },
+          { "id": "opt_c", "text": "移除保護伺服器A的防火牆設備" },
+          { "id": "opt_d", "text": "將伺服器B移至與伺服器A相同的網段" }
+        ],
+        "correctAnswers": ["opt_b"],
+        "explanation": "Syslog 服務預設使用 UDP port 514。Ping (ICMP) 能通代表網路可達，但應用層日誌傳不過通常是因為防火牆阻擋了特定的通訊埠，故應放行 UDP 514。",
+        "year": "112-2",
+        "category": "資訊安全防護實務"
+      },
+      {
+        "id": "q_intermediate_112-2_p_20",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "依照我國「資通安全事件通報及應變辦法」的規定,當發現一般公務機密、敏感資訊、涉及關鍵基礎設施維運之核心業務資訊或核心資通系統遭輕微竄改之情事時,公務機關知悉資通安全事件後,應依規定在多少時間之內完成損害控制或復原作業,並依主管機關指定之方式及對象辦理通知事宜?",
+        "options": [
+          { "id": "opt_a", "text": "12小時" },
+          { "id": "opt_b", "text": "24小時" },
+          { "id": "opt_c", "text": "36小時" },
+          { "id": "opt_d", "text": "72小時" }
+        ],
+        "correctAnswers": ["opt_d"],
+        "explanation": "依據事件定義，此屬「第二級」資通安全事件。法規規定第二級事件應於 72 小時內完成損害控制或復原作業。",
+        "year": "112-2",
+        "category": "資訊安全防護實務"
+      },
+      {
+        "id": "q_intermediate_112-2_p_21",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "就勒索軟體事件而言,最有可能降低事件衝擊的控制措施為下列何項?",
+        "options": [
+          { "id": "opt_a", "text": "原始碼檢測" },
+          { "id": "opt_b", "text": "日誌分析" },
+          { "id": "opt_c", "text": "社交工程演練" },
+          { "id": "opt_d", "text": "離線資料備份" }
+        ],
+        "correctAnswers": ["opt_d"],
+        "explanation": "勒索軟體的主要衝擊是資料遭到加密無法使用。擁有「離線資料備份」能讓企業在不支付贖金的情況下復原資料，是最有效降低衝擊的措施。",
+        "year": "112-2",
+        "category": "資訊安全防護實務"
+      },
+      {
+        "id": "q_intermediate_112-2_p_22",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "請問 Windows 作業系統中,若需記錄使用者於本機登入失敗的相關記錄,下項描述何者正確?",
+        "options": [
+          { "id": "opt_a", "text": "無需設定可以直接透過事件檢視器(Windows Event Viewer)查看" },
+          { "id": "opt_b", "text": "需要事先透過稽核原則(登出/登入)設定確認啟用" },
+          { "id": "opt_c", "text": "當使用者輸入不正確的密碼時,會在金鑰發佈中心(KDC)上產生672事件" },
+          { "id": "opt_d", "text": "可以透用事件4634來查看登入失敗的事件" }
+        ],
+        "correctAnswers": ["opt_b"],
+        "explanation": "Windows 預設不一定會開啟所有詳細的稽核日誌，若要明確紀錄本機登入失敗事件，必須確保在「本機安全性原則」中啟用了「稽核登入事件」的失敗選項。登入失敗事件 ID 通常為 4625，而非 4634（登出）。",
+        "year": "112-2",
+        "category": "資訊安全防護實務"
+      },
+      {
+        "id": "q_intermediate_112-2_p_23",
+        "questionBank": "intermediate",
+        "type": "multiple",
+        "question": "請問關於「安全性資訊與事件管理」(簡稱SIEM)的描述,下列哪些較正確?(複選)",
+        "options": [
+          { "id": "opt_a", "text": "可協助組織在威脅傷害企業營運之前,先進行偵測分析和回應安全性威脅" },
+          { "id": "opt_b", "text": "缺乏記錄管理的功能" },
+          { "id": "opt_c", "text": "讓組織就可以迅速回應潛在的網路攻擊,並滿足合規性要求" },
+          { "id": "opt_d", "text": "結合了安全性資訊管理(SIM)和安全性事件管理(SEM)" }
+        ],
+        "correctAnswers": ["opt_a", "opt_c", "opt_d"],
+        "explanation": "SIEM 系統強項就是日誌集中與記錄管理，故 (B) 錯誤。其餘描述皆為 SIEM 的標準功能與效益。",
+        "year": "112-2",
+        "category": "資訊安全防護實務"
+      },
+      {
+        "id": "q_intermediate_112-2_p_24",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "【題組3】情境如附圖所示,關於NIST SP 800-61 資安事故處理指引(Computer Security Incident Handling Guide)其事故處置生命週期(Incident Response Life Cycle),而偵測與分析(Detection & Analysis)中事故優先序(Incident Prioritization)所需考量的因素,下列哪一項最「不」合適?",
+        "options": [
+          { "id": "opt_a", "text": "資安事故的可稽核性(Auditability)" },
+          { "id": "opt_b", "text": "資安事故的可復原性(Recoverability)" },
+          { "id": "opt_c", "text": "資安事故造成的功能影響(Functional Impact)" },
+          { "id": "opt_d", "text": "資安事故造成的資訊影響(Information Impact)" }
+        ],
+        "correctAnswers": ["opt_a"],
+        "explanation": "依據 NIST SP 800-61，評估事故優先順序的考量因素為：業務功能影響 (Functional Impact)、資訊影響 (Information Impact) 以及復原能力 (Recoverability)。可稽核性 (Auditability) 並非優先序評估的標準項目。",
+        "year": "112-2",
+        "category": "資訊安全防護實務",
+        "questionGroupId": "3"
+      },
+      {
+        "id": "q_intermediate_112-2_p_25",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "【題組3】情境如附圖所示,關於NIST SP 800-61 資安事故處理指引(Computer Security Incident Handling Guide)其事故處置生命週期(Incident Response Life Cycle),而控制、清除與復原(Containment, Eradication & Recovery)中最常被用於識別來源攻擊主機之方法,下列哪一項最「不」正確?",
+        "options": [
+          { "id": "opt_a", "text": "驗證來源攻擊主機是否偽造IP位置(IP Address)" },
+          { "id": "opt_b", "text": "使用搜尋引擎(Search Engine)調查來源攻擊主機" },
+          { "id": "opt_c", "text": "以服務阻斷攻擊(Deny of Service)觀察來源攻擊主機反應" },
+          { "id": "opt_d", "text": "觀察攻擊者所可能使用的通信管道(Communication Channels)" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "在資安事故處理中，絕不應對外部攻擊主機進行「反向攻擊」（如 DDoS），因為這可能觸法，且來源 IP 通常是被挾持的跳板機，反擊會傷及無辜。",
+        "year": "112-2",
+        "category": "資訊安全防護實務",
+        "questionGroupId": "3"
+      },
+      {
+        "id": "q_intermediate_112-2_p_26",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "【題組3】情境如附圖所示,關於NIST SP 800-61 資安事故處理指引(Computer Security Incident Handling Guide)其事故處置生命週期(Incident Response Life Cycle),而事故後活動(Post-Incident Activity)的證據留存(Evidence Retention)程序所需考量的因素,下列哪一項最「不」正確?",
+        "options": [
+          { "id": "opt_a", "text": "訴訟(Prosecution)" },
+          { "id": "opt_b", "text": "資料保留(Data Retention)" },
+          { "id": "opt_c", "text": "費用(Cost)" },
+          { "id": "opt_d", "text": "效率(Efficiency)" }
+        ],
+        "correctAnswers": ["opt_d"],
+        "explanation": "NIST 指南中關於證據保留政策的考量主要基於起訴/訴訟需求、資料保留法規要求以及儲存成本(Cost)。單純追求儲存「效率」並非決定證據是否留存的正規判斷依據。",
+        "year": "112-2",
+        "category": "資訊安全防護實務",
+        "questionGroupId": "3"
+      },
+      {
+        "id": "q_intermediate_112-2_p_27",
+        "questionBank": "intermediate",
+        "type": "multiple",
+        "question": "【題組3】情境如附圖所示,關於NIST SP 800-61 資安事故處理指引(Computer Security Incident Handling Guide)其事故處置生命週期(Incident Response Life Cycle)之敘述,下列何項正確?(複選)",
+        "options": [
+          { "id": "opt_a", "text": "準備(Preparation)階段:確保事故處置生命週期其所需資源皆已完備,但不包含事前降低資安事故發生機率或避免其產生" },
+          { "id": "opt_b", "text": "偵測與分析(Detection & Analysis)階段:準確偵測和評估所可能發生的資安事故為其此階段最具挑戰性之工作,若發生還須確認其類型、範圍與嚴重程度" },
+          { "id": "opt_c", "text": "控制、清除與復原(Containment, Eradication & Recovery)階段:若有預先定義用於控制事件之策略與程序,會更容易決策所需採取的行動" },
+          { "id": "opt_d", "text": "事故後活動(Post-Incident Activity)階段:包含整個事故處置生命週期中,最重要也最常被忽略的項目 - 案例分析(Case Study)和改進" }
+        ],
+        "correctAnswers": ["opt_b", "opt_c", "opt_d"],
+        "explanation": "準備階段 (Preparation) 不僅是準備應變資源，同時也極度強調實施控制措施以「預防」或「降低」事故發生機率，故 (A) 敘述錯誤。",
+        "year": "112-2",
+        "category": "資訊安全防護實務",
+        "questionGroupId": "3"
+      },
+      {
+        "id": "q_intermediate_112-2_p_28",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "與滲透測試及弱點掃描相關議題的敘述,下列何者較為正確?",
+        "options": [
+          { "id": "opt_a", "text": "若使用滲透測試工具來測試系統安全性,測試期間宜謹慎規劃不要危及系統運作" },
+          { "id": "opt_b", "text": "滲透測試會影響系統可用性之稽核測試,宜於正常營運時間執行,可確認實際結果" },
+          { "id": "opt_c", "text": "ISO 27005為提供關於技術遵循性審查之特定國際指引" },
+          { "id": "opt_d", "text": "滲透測試或源碼檢測之結果,若有風險需判斷修補,可於下次再檢測時,確認實施結果" }
+        ],
+        "correctAnswers": ["opt_a"],
+        "explanation": "滲透測試具侵入性，必須謹慎規劃以避免導致服務中斷 (A)。故通常建議在離峰時間進行，而非正常營運尖峰時間 (B 錯)。ISO 27005 是風險管理指引，非專注於技術審查 (C 錯)。有風險需立即修補並複測，不可拖到「下次定期檢測」才確認 (D 錯)。",
+        "year": "112-2",
+        "category": "資訊安全防護實務"
+      },
+      {
+        "id": "q_intermediate_112-2_p_29",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "關於網路安全滲透測試的敘述,下列何者錯誤?",
+        "options": [
+          { "id": "opt_a", "text": "網路安全滲透測試是找出駭客實現攻擊目的的所有途徑,而駭客入侵只是要實現某一特地目的" },
+          { "id": "opt_b", "text": "逆向工程是網路安全滲透測試的一部分,目的是發掘系統的漏洞" },
+          { "id": "opt_c", "text": "網路安全滲透測試就是一般普遍認知的漏洞掃描" },
+          { "id": "opt_d", "text": "網路安全滲透測試方法可以分成黑盒測試、灰盒測試、白盒測試等三種" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "滲透測試（PT）是人工模擬駭客攻擊以驗證漏洞可利用性與影響，而漏洞掃描（VA）僅是利用工具自動比對已知特徵碼找出可能弱點，兩者本質完全不同。",
+        "year": "112-2",
+        "category": "資訊安全防護實務"
+      },
+      {
+        "id": "q_intermediate_112-2_p_30",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "關於源碼檢測的敘述,下列何者錯誤?",
+        "options": [
+          { "id": "opt_a", "text": "又稱靜態應用程式安全測試(Static Application Security Testing, SAST)" },
+          { "id": "opt_b", "text": "在安全系統發展生命週期(SSDLC)中,源碼檢測也是其中一項重要安全設計流程之一" },
+          { "id": "opt_c", "text": "主要目的是找出軟體程式碼中的安全問題或漏洞,這種測試通常在軟體的開發和維護階段進行" },
+          { "id": "opt_d", "text": "OWASP ZAP是常見源碼檢測工具之一" }
+        ],
+        "correctAnswers": ["opt_d"],
+        "explanation": "OWASP ZAP 是一套動態應用程式安全測試 (DAST) 及網頁掃描工具，並不是靜態的「源碼檢測 (SAST)」工具。",
+        "year": "112-2",
+        "category": "資訊安全防護實務"
+      },
+      {
+        "id": "q_intermediate_112-2_p_31",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "關於資安健診的敘述,下列何者較「不」正確?",
+        "options": [
+          { "id": "opt_a", "text": "一種對組織的資訊系統與網路環境進行全面普查的過程,以評估其對各種威脅的抵禦能力" },
+          { "id": "opt_b", "text": "可以幫助企業或組織發現安全漏洞,增強企業對內外部威脅的抵禦能力" },
+          { "id": "opt_c", "text": "國際知名的SecurityScorecard公司,通過完成對網路威脅情報探測的評分分析來評估公司實體的網絡安全狀況,也是一種資安健診" },
+          { "id": "opt_d", "text": "僅透過弱點掃描手法完成資安健檢" }
+        ],
+        "correctAnswers": ["opt_d"],
+        "explanation": "資安健檢涵蓋面廣泛，除弱掃外還包含網路架構檢視、目錄伺服器設定檢視、惡意活動檢視等，絕非「僅」靠弱點掃描即可完成。",
+        "year": "112-2",
+        "category": "資訊安全防護實務"
+      },
+      {
+        "id": "q_intermediate_112-2_p_32",
+        "questionBank": "intermediate",
+        "type": "multiple",
+        "question": "關於源碼檢測分析的敘述,下列何者正確?(複選)",
+        "options": [
+          { "id": "opt_a", "text": "在PHP 源碼中...存在Cookies安全性問題,即便設置Secure和HttpOnly標籤,Cookies還是會被竊取或被JavaScript存取" },
+          { "id": "opt_b", "text": "在JAVA程式語言中...此範例中的程式碼存在路徑穿透風險,提供輸入被用作文件路徑的一部分,如果攻擊者提供包含 ../ 的輸入,可能導致應用程式讀取到應該被保護的系统文件。" },
+          { "id": "opt_c", "text": "JavaScript 範例中...存在跨站脚本攻擊(XSS)的風險,用戶提供的輸入直接被插入到網頁中,如果攻擊者提供包含惡意 JavaScript 的輸入。" },
+          { "id": "opt_d", "text": "在python 範例中...代碼存在SQL注入的風險。用戶提供的輸入直接被拼接到SQL 查詢中,如果攻擊者提供包含惡意 SQL語句的輸入,可能導致資料庫被攻擊者控制。" }
+        ],
+        "correctAnswers": ["opt_b", "opt_c", "opt_d"],
+        "explanation": "選項 A 錯誤在於：若正確設置 HttpOnly 標籤，JavaScript 就「無法」存取該 Cookie。其餘 B (Path Traversal)、C (XSS)、D (SQLi) 的代碼分析敘述皆正確。",
+        "year": "112-2",
+        "category": "資訊安全防護實務"
+      },
+      {
+        "id": "q_intermediate_112-2_p_33",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "【題組4】情境如附圖所示。上線前可以進行滲透測試、弱點掃描、源碼檢測,三者發現的弱點數量與誤判率比較的敘述,下列何者較為正確?",
+        "options": [
+          { "id": "opt_a", "text": "發現率最高的是滲透測試" },
+          { "id": "opt_b", "text": "誤判率最高的是滲透測試" },
+          { "id": "opt_c", "text": "通常發現數量以原始碼檢測最高" },
+          { "id": "opt_d", "text": "原始碼檢測可以找出商業邏輯問題" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "原始碼檢測 (SAST) 通常會窮舉掃描所有程式碼路徑，回報的弱點數量（包含大量誤判，False Positives）往往是三者中最高的；滲透測試則依賴人工驗證，誤判率最低但難以窮盡所有數量。",
+        "year": "112-2",
+        "category": "資訊安全防護實務",
+        "questionGroupId": "4"
+      },
+      {
+        "id": "q_intermediate_112-2_p_34",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "【題組4】情境如附圖所示。API伺服器上線前可以進行滲透測試弱點掃描、源碼檢測的敘述,下列何者正確?",
+        "options": [
+          { "id": "opt_a", "text": "原始碼檢測應該每季執行" },
+          { "id": "opt_b", "text": "滲透測試有機會找出商業邏輯漏洞" },
+          { "id": "opt_c", "text": "弱點掃描應該在開發階段進行" },
+          { "id": "opt_d", "text": "弱點掃描不應定期執行" }
+        ],
+        "correctAnswers": ["opt_b"],
+        "explanation": "商業邏輯漏洞（如權限繞過、交易金額篡改）難以透過自動化工具（SAST/弱掃）發現，通常需要透過人工參與的滲透測試才能找出來。",
+        "year": "112-2",
+        "category": "資訊安全防護實務",
+        "questionGroupId": "4"
+      },
+      {
+        "id": "q_intermediate_112-2_p_35",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "【題組4】情境如附圖所示。在檢測後發現命令注入弱點Command Injection),請問應採用下列何項進行修復?",
+        "options": [
+          { "id": "opt_a", "text": "過濾特殊字元及允許命令之白名單" },
+          { "id": "opt_b", "text": "不允許大寫字元" },
+          { "id": "opt_c", "text": "過濾 Unicode字元" },
+          { "id": "opt_d", "text": "使用防毒軟體" }
+        ],
+        "correctAnswers": ["opt_a"],
+        "explanation": "修復指令注入 (Command Injection) 最有效的防禦是避免直接將使用者輸入傳入系統指令，若必須使用，則需採用「白名單」嚴格限制輸入格式與允許的指令，並過濾 `|`、`;` 等特殊串接字元。",
+        "year": "112-2",
+        "category": "資訊安全防護實務",
+        "questionGroupId": "4"
+      },
+      {
+        "id": "q_intermediate_112-2_p_36",
+        "questionBank": "intermediate",
+        "type": "multiple",
+        "question": "【題組4】情境如附圖所示。資通安全健診除了網路架構檢視外,還包含下列哪些項目?(複選)",
+        "options": [
+          { "id": "opt_a", "text": "網路惡意活動檢視(有線)封包監聽分析" },
+          { "id": "opt_b", "text": "使用者電腦更新檢視" },
+          { "id": "opt_c", "text": "外部廠商資安稽核" },
+          { "id": "opt_d", "text": "目錄伺服器(AD)組態設定檢視" }
+        ],
+        "correctAnswers": ["opt_a", "opt_b", "opt_d"],
+        "explanation": "依據我國資通安全健診規範，標準作業項目包含：網路架構檢視、網路惡意活動檢視、使用者電腦惡意程式檢視、目錄伺服器設定檢視、伺服器主機惡意程式檢視等。「外部廠商資安稽核」屬供應鏈管理範疇，不屬於技術性「健診」標準項目。",
+        "year": "112-2",
+        "category": "資訊安全防護實務",
+        "questionGroupId": "4"
+      },
+      {
+        "id": "q_intermediate_112-2_p_37",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "【題組5】情境如附圖所示。當滲透測試者通報可以遠端執行指令的弱點時,尚在內部封閉測試期間,您應該首先採取的行動是下列何項?",
+        "options": [
+          { "id": "opt_a", "text": "關閉受影響的web應用程式" },
+          { "id": "opt_b", "text": "馬上通知公司的所有員工" },
+          { "id": "opt_c", "text": "聯繫滲透測試者進行進一步的詳情討論" },
+          { "id": "opt_d", "text": "通報網路安全當局" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "在內部測試階段發現重大漏洞，首要之務是與測試團隊確認弱點細節（重現步驟、影響範圍），才能針對性地進行修補。因為尚未上線，不需急著關站或通報當局。",
+        "year": "112-2",
+        "category": "資訊安全防護實務",
+        "questionGroupId": "5"
+      },
+      {
+        "id": "q_intermediate_112-2_p_38",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "【題組5】情境如附圖所示。滲透測試者在報告中提及的本地文件讀取弱點,可能導致下列何項的安全風險?",
+        "options": [
+          { "id": "opt_a", "text": "使攻擊者可以讀取到機密資訊" },
+          { "id": "opt_b", "text": "使攻擊者可以關閉系統" },
+          { "id": "opt_c", "text": "使攻擊者可以獲得系統管理員的權限" },
+          { "id": "opt_d", "text": "使攻擊者可以對網路流量進行監控" }
+        ],
+        "correctAnswers": ["opt_a"],
+        "explanation": "本地文件讀取漏洞 (LFI / Path Traversal) 允許攻擊者讀取伺服器上的檔案（如 `/etc/passwd` 或題幹提到的 `auth.log`），最直接的風險是造成機密資訊外洩。",
+        "year": "112-2",
+        "category": "資訊安全防護實務",
+        "questionGroupId": "5"
+      },
+      {
+        "id": "q_intermediate_112-2_p_39",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "【題組5】情境如附圖所示。這個網站是第三方開源套件,以下哪種策略能最有效地防止遠端執行指令的攻擊?",
+        "options": [
+          { "id": "opt_a", "text": "定期更新應用程式功能組件(Plug-in)" },
+          { "id": "opt_b", "text": "轉為使用客製開發軟體" },
+          { "id": "opt_c", "text": "定期檢查並安裝安全更新和修補程式" },
+          { "id": "opt_d", "text": "總是使用最新的軟體版本" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "第三方開源套件常被發現漏洞，防禦 RCE 最根本有效的策略是持續關注漏洞通報，並定期安裝官方釋出的安全更新修補程式。",
+        "year": "112-2",
+        "category": "資訊安全防護實務",
+        "questionGroupId": "5"
+      },
+      {
+        "id": "q_intermediate_112-2_p_40",
+        "questionBank": "intermediate",
+        "type": "multiple",
+        "question": "【題組5】情境如附圖所示。以下哪些安全實踐可以避免當開源的第三方套件存在遠端執行指令稿攻擊?(複選)",
+        "options": [
+          { "id": "opt_a", "text": "回收一般使用者權限" },
+          { "id": "opt_b", "text": "禁用不必要的服務連出" },
+          { "id": "opt_c", "text": "定期更新軟體和作業系統" },
+          { "id": "opt_d", "text": "實施最小權限原則" }
+        ],
+        "correctAnswers": ["opt_b", "opt_c", "opt_d"],
+        "explanation": "防範並減輕 RCE 影響的作法包含：(C) 更新修補漏洞；(B) 阻擋對外連線以防止攻擊者建立 Reverse Shell 下載工具；(D) 最小權限可限制程式被入侵後能執行的破壞程度。",
+        "year": "112-2",
+        "category": "資訊安全防護實務",
+        "questionGroupId": "5"
+      },
+      {
+        "id": "q_intermediate_112-2_o_1",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "下列何項系統建置規劃並「不」是以可用性作為主要之考量基準?",
+        "options": [
+          { "id": "opt_a", "text": "建置伺服器負載平衡系統" },
+          { "id": "opt_b", "text": "重要資料導入高可用性(High Availability)系統" },
+          { "id": "opt_c", "text": "建置資料加密管理系統" },
+          { "id": "opt_d", "text": "使用針對重要系統建置即時備援機制" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "資料加密管理系統主要保護資料的「機密性(Confidentiality)」，而非可用性；負載平衡、HA、備援機制皆為提升可用性之設計。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務"
+      },
+      {
+        "id": "q_intermediate_112-2_o_2",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "下列何者「不」是ISO/IEC 27001:2013標準中「資訊安全風險評鑑」所要求組織應進行的事項?",
+        "options": [
+          { "id": "opt_a", "text": "建立風險接受準則" },
+          { "id": "opt_b", "text": "識別資訊安全風險" },
+          { "id": "opt_c", "text": "評估資訊安全風險" },
+          { "id": "opt_d", "text": "以最高標準處理資訊安全風險" }
+        ],
+        "correctAnswers": ["opt_d"],
+        "explanation": "風險處理應考量成本效益及組織的風險胃納（Risk Appetite），而非盲目「以最高標準處理」所有風險。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務"
+      },
+      {
+        "id": "q_intermediate_112-2_o_3",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "近年來,民間企業數位網通服務應用加驟,讓企業的資安單位從原本的支援角色轉變為重要的策略單位,而資訊安全「管理」更拉高至「治理」位階,下列哪一項可以作為企業治理資訊安全的框架及指引?",
+        "options": [
+          { "id": "opt_a", "text": "ISO/IEC 27004" },
+          { "id": "opt_b", "text": "ISO/IEC 27011" },
+          { "id": "opt_c", "text": "ISO/IEC 27014" },
+          { "id": "opt_d", "text": "ISO/IEC 27017" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "ISO/IEC 27014 是專門針對「資訊安全治理 (Governance of Information Security)」提供指引的國際標準。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務"
+      },
+      {
+        "id": "q_intermediate_112-2_o_4",
+        "questionBank": "intermediate",
+        "type": "multiple",
+        "question": "Z公司為台灣上市櫃公司,主要營業項目 3C消費性用品零售商並於實體店面及網路直接銷售給一般消費者,公司營運據點遍及歐洲及台灣。該公司並已通過ISO27001驗證,請問下列哪些法規為該公司目前所必須遵守之法令規範?(複選)",
+        "options": [
+          { "id": "opt_a", "text": "個人資料保護法(中華民國)" },
+          { "id": "opt_b", "text": "上市上櫃公司資通安全管控指引(中華民國)" },
+          { "id": "opt_c", "text": "資通安全管理法(中華民國)" },
+          { "id": "opt_d", "text": "歐盟一般資料保護規則(General Data Protection Regulation, GDPR)" }
+        ],
+        "correctAnswers": ["opt_a", "opt_b", "opt_d"],
+        "explanation": "Z公司在台灣營業且涉及個資，需遵守個資法(A)；是上市櫃公司，需遵守上市上櫃資通安全管控指引(B)；據點及銷售及於歐洲，需遵守 GDPR(D)。一般民間企業（非公務機關或關鍵基礎設施）不直接受《資通安全管理法》(C) 規範。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務"
+      },
+      {
+        "id": "q_intermediate_112-2_o_5",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "【題組1】情境如附圖所示,請問廠商在要符合廠商B合約要求的前提下,下列相關認證「不」是其需優先考慮具備的項目?",
+        "options": [
+          { "id": "opt_a", "text": "ISO 9001" },
+          { "id": "opt_b", "text": "ISO 14001" },
+          { "id": "opt_c", "text": "ISO 27017" },
+          { "id": "opt_d", "text": "BS 10012" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "依據題意合約要求，廠商需具備生產品質(ISO 9001)、環保(ISO 14001)及符合個資要求(BS 10012/ISO 27001)。ISO 27017 是針對「雲端服務」的資安控制指引，並非製造業代工廠必須優先考量的基礎要求。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務",
+        "questionGroupId": "1"
+      },
+      {
+        "id": "q_intermediate_112-2_o_6",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "【題組1】情境如附圖所示,請問廠商已於2年前取得ISO 27001:2013 的認證,在保持認證資格的前提下,請問下列措施何者「不」合適?",
+        "options": [
+          { "id": "opt_a", "text": "定期實施內部稽核" },
+          { "id": "opt_b", "text": "每3年更新證照" },
+          { "id": "opt_c", "text": "因應新版本 ISO 27001:2022推出,規劃相關升級(轉版)事宜" },
+          { "id": "opt_d", "text": "於明年認證期滿後,再重新驗證" }
+        ],
+        "correctAnswers": ["opt_d"],
+        "explanation": "ISO 27001 證書效期通常為 3 年，期間需每年進行「續評（Surveillance Audit）」，期滿前需辦理「重新驗證（Re-certification）」。若「期滿『後』才重新驗證」，會導致證書失效中斷，無法「保持」認證資格。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務",
+        "questionGroupId": "1"
+      },
+      {
+        "id": "q_intermediate_112-2_o_7",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "【題組1】情境如附圖所示,請問廠商A在上個月進行例行的ISO 27001內部稽核時,發現員工缺乏對社交攻擊的認知,下列措施何者「不」合適?",
+        "options": [
+          { "id": "opt_a", "text": "員工缺乏對社交攻擊的認知」為可接受之風險" },
+          { "id": "opt_b", "text": "進行相關員工教育訓練,讓員工了解社交攻擊" },
+          { "id": "opt_c", "text": "以模擬釣魚郵件對內部員工進行點擊測試用來評估教育訓練後的成效" },
+          { "id": "opt_d", "text": "重新評估「員工缺乏對社交攻擊的認知」可能產生的影響" }
+        ],
+        "correctAnswers": ["opt_a"],
+        "explanation": "員工資安意識薄弱是企業最大的漏洞之一，不應輕易視為「可接受的風險」，而必須積極採取教育訓練與演練等矯正與預防措施。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務",
+        "questionGroupId": "1"
+      },
+      {
+        "id": "q_intermediate_112-2_o_8",
+        "questionBank": "intermediate",
+        "type": "multiple",
+        "question": "【題組1】情境如附圖所示,廠商A在規畫新的客戶資料系統時,基於資安及個資等法規、認證之要求,請問應採取下項那些措施?(複選)",
+        "options": [
+          { "id": "opt_a", "text": "儘可能蒐集客戶所有的資料項目作為行銷使用" },
+          { "id": "opt_b", "text": "系統流程中納入取得當事人同意確認" },
+          { "id": "opt_c", "text": "僅蒐集必要的最小資料集合" },
+          { "id": "opt_d", "text": "提供當事人修正的管道" }
+        ],
+        "correctAnswers": ["opt_b", "opt_c", "opt_d"],
+        "explanation": "依據 GDPR 與個資法精神，個資蒐集應符合「最小化原則（Data Minimization）」，故選項 A 「儘可能蒐集」是違法的。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務",
+        "questionGroupId": "1"
+      },
+      {
+        "id": "q_intermediate_112-2_o_9",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "如要實施多層次防禦,下列何種措施最為合適?",
+        "options": [
+          { "id": "opt_a", "text": "在個人電腦安裝防毒軟體" },
+          { "id": "opt_b", "text": "運用不同網路區段,隔離不同用途的設備,並分別進行相關流量過濾措施" },
+          { "id": "opt_c", "text": "依照各別使用者,建立各自的電腦帳號" },
+          { "id": "opt_d", "text": "於作業系統中啟用檔案存取記錄,保留資料存取的相關記錄" }
+        ],
+        "correctAnswers": ["opt_b"],
+        "explanation": "多層次防禦（Defense in Depth）強調在不同防護層（網路、主機、資料）部署控制。運用不同網段隔離並過濾流量，正是實踐網路層面縱深防禦的具體表現。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務"
+      },
+      {
+        "id": "q_intermediate_112-2_o_10",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "關於身分識別與存取管理(Identity and Access Management, IAM)的敘述,下列何者正確?",
+        "options": [
+          { "id": "opt_a", "text": "管理網路防火牆的設定" },
+          { "id": "opt_b", "text": "控制使用者對系統或資源的存取權限" },
+          { "id": "opt_c", "text": "監控網路流量與入侵偵測" },
+          { "id": "opt_d", "text": "保護敏感資料的傳輸" }
+        ],
+        "correctAnswers": ["opt_b"],
+        "explanation": "IAM 的核心目的在於確保「正確的人，在正確的時間，以正確的權限，存取正確的資源」。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務"
+      },
+      {
+        "id": "q_intermediate_112-2_o_11",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "關於職務區隔(Segregation of Duties,SOD)的說明,下列何者正確?",
+        "options": [
+          { "id": "opt_a", "text": "可以促進內部員工合作和溝通" },
+          { "id": "opt_b", "text": "可以確保資訊系統的可用性" },
+          { "id": "opt_c", "text": "可以減少內部詐欺行為或誤用之風險" },
+          { "id": "opt_d", "text": "可以簡化組織的工作流程" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "職務區隔要求一項重要工作必須由兩個或兩個以上的人員共同完成，目的是防止單一人員擁有過大權力而進行並掩飾內部詐欺。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務"
+      },
+      {
+        "id": "q_intermediate_112-2_o_12",
+        "questionBank": "intermediate",
+        "type": "multiple",
+        "question": "關於權限管理的說明,下列哪些正確?(複選)",
+        "options": [
+          { "id": "opt_a", "text": "一旦使用者通過身份驗證後,系統會根據其授權層級與角色來分配相應的權限" },
+          { "id": "opt_b", "text": "可以確保每個使用者僅能存取其需要的資源或功能" },
+          { "id": "opt_c", "text": "能夠防止越權存取" },
+          { "id": "opt_d", "text": "可以透過以角色為基礎的存取控制(Role-based access control,RBAC)實作" }
+        ],
+        "correctAnswers": ["opt_a", "opt_b", "opt_c", "opt_d"],
+        "explanation": "A描述了授權過程；B與C是權限管理落實「最小權限原則」與安全保護的目的；D為常見的管理實作模型，四者皆為正確描述。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務"
+      },
+      {
+        "id": "q_intermediate_112-2_o_13",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "【題組2】情境如附圖所示,請問醫事人員經過讀取虛擬健保卡QR碼,再由醫事人員在HIS系統透過虛擬健保卡系統至健保署系統查詢資料,主要在強化下列何項程序?",
+        "options": [
+          { "id": "opt_a", "text": "識別(Identification)" },
+          { "id": "opt_b", "text": "驗證(Authentication)" },
+          { "id": "opt_c", "text": "授權(Authorization)" },
+          { "id": "opt_d", "text": "稽核(Audit)" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "讀取 QR Code 取得就醫序號，代表病人「同意並授權」醫師透過 HIS 系統向健保署請求讀取其就醫與處方資料，這是授權（Authorization）的過程。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務",
+        "questionGroupId": "2"
+      },
+      {
+        "id": "q_intermediate_112-2_o_14",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "【題組2】情境如附圖所示,請問下列何者「不」是採用虛擬健康保卡的優點?",
+        "options": [
+          { "id": "opt_a", "text": "強化遠距醫療的安全與認證機制" },
+          { "id": "opt_b", "text": "避免未經授權的資料存取" },
+          { "id": "opt_c", "text": "強化實體健保卡的安全" },
+          { "id": "opt_d", "text": "落實健保資料使用的可歸責性" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "虛擬健保卡是取代實體卡片運作的一套新機制，它並無法改變或強化「現有實體健保卡本身」的晶片安全性。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務",
+        "questionGroupId": "2"
+      },
+      {
+        "id": "q_intermediate_112-2_o_15",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "【題組2】情境如附圖所示,請問虛擬健保卡手機端 QR碼的內容可能包含下列何項?",
+        "options": [
+          { "id": "opt_a", "text": "存取資料的符記(Token)" },
+          { "id": "opt_b", "text": "持卡人的照片" },
+          { "id": "opt_c", "text": "持卡人的帳號及密碼" },
+          { "id": "opt_d", "text": "持卡人的生日" }
+        ],
+        "correctAnswers": ["opt_a"],
+        "explanation": "為避免個資洩漏，動態產生的 QR Code 內含的通常是時效性的授權符記 (Token)，而非明文個資或密碼。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務",
+        "questionGroupId": "2"
+      },
+      {
+        "id": "q_intermediate_112-2_o_16",
+        "questionBank": "intermediate",
+        "type": "multiple",
+        "question": "【題組2】情境如附圖所示,請問透過虛擬健保卡機制的建置與運用,可能有的風險/問題有下列哪些?(複選)",
+        "options": [
+          { "id": "opt_a", "text": "增加攻擊向量" },
+          { "id": "opt_b", "text": "與實體卡片資料同步的問題" },
+          { "id": "opt_c", "text": "帳號密碼的濫用" },
+          { "id": "opt_d", "text": "使實體健保卡的安全機制更容易被破解" }
+        ],
+        "correctAnswers": ["opt_a", "opt_b"],
+        "explanation": "導入行動App與雲端架構會「增加攻擊面與攻擊向量(A)」；而線上虛擬授權與實體卡片的異動如何保持一致會產生「同步問題(B)」。實體卡的晶片安全為獨立設計，不會因為虛擬卡而更容易被硬體破解(D)。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務",
+        "questionGroupId": "2"
+      },
+      {
+        "id": "q_intermediate_112-2_o_17",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "如附圖所示,關於NIST SP 800-207零信任架構(Zero Trust Architecture)的抽象模型敘述,下列何項錯誤?",
+        "options": [
+          { "id": "opt_a", "text": "政策決策點(Policy Decision Point, PDP)/政策落實點(Policy Enforcement Point,PEP)須適當判斷主體是否可存取資源" },
+          { "id": "opt_b", "text": "零信任(Zero Trust)提供準則與概念,可使PDP/PEP 移動並貼近資源" },
+          { "id": "opt_c", "text": "PDP/PEP已提供一系列控制,因此通過PEP的流量便能取得最高層級信任" },
+          { "id": "opt_d", "text": "隱式信任區(Implicit Trust Zone):區域中實體至少達到最後 PDP/PEP的信任等級" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "零信任架構的核心原則是「永不信任，始終驗證」，即使流量通過了 PEP，也不代表取得「最高層級信任」，系統仍會持續監控並動態評估信任程度。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務",
+        "questionGroupId": "3"
+      },
+      {
+        "id": "q_intermediate_112-2_o_18",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "關於網路規劃的敘述,下列何項較「不」安全?",
+        "options": [
+          { "id": "opt_a", "text": "對外服務的伺服器,設置於防火牆的DMZ區" },
+          { "id": "opt_b", "text": "外部分支機構須以VPN連入公司內網" },
+          { "id": "opt_c", "text": "將所有使用者與伺服器置於同一網段" },
+          { "id": "opt_d", "text": "使用入侵防護系統(IPS)協助維護內部網路安全" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "將使用者（高風險端點）與伺服器（機敏資源）置於同一網段，違反了網路隔離原則，若使用者電腦染毒將直接威脅伺服器，極不安全。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務"
+      },
+      {
+        "id": "q_intermediate_112-2_o_19",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "關於系統災害復原規劃的敘述,下列何項錯誤?",
+        "options": [
+          { "id": "opt_a", "text": "恢復點目標(RPO)的設定應考量資料備份頻率" },
+          { "id": "opt_b", "text": "最大可中斷時間(MTD)的設定,應符合組織所訂定之可用性的資安目標" },
+          { "id": "opt_c", "text": "恢復時間目標(RTO)之設定與最大可中斷時間(MTD)無關" },
+          { "id": "opt_d", "text": "營運衝擊分析(BIA)可協助評估各個系統的重要性" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "恢復時間目標 (RTO) 必須設定為「小於或等於」最大可容忍中斷時間 (MTD / MTPD)，否則復原不及將對企業造成致命打擊，兩者具強烈關聯。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務"
+      },
+      {
+        "id": "q_intermediate_112-2_o_20",
+        "questionBank": "intermediate",
+        "type": "multiple",
+        "question": "端點偵測與回應(Endpoint Detection and Response, EDR)係指可偵測並調查主機以及端點上的一些可疑活動,並透過自動化方式通知資安團隊進行快速回應的資安措施,關於EDR 所提供的主要功能的敘述,下列哪些正確?(複選)",
+        "options": [
+          { "id": "opt_a", "text": "主動監控端點,並針對具有威脅跡象的活動收集資料" },
+          { "id": "opt_b", "text": "對蒐集的主機弱點執行分析,以識別是否有任何未知的威脅模式" },
+          { "id": "opt_c", "text": "針對所有已識別威脅產生自動回應,以移除或遏止威脅" },
+          { "id": "opt_d", "text": "利用分析和鑑識工具,針對可能導致其他可疑活動的已識別威脅執行研究" }
+        ],
+        "correctAnswers": ["opt_a", "opt_c", "opt_d"],
+        "explanation": "EDR 的核心功能為監控行為活動並收集資料(A)、提供回應機制遏止威脅(C)、及提供分析鑑識工具(D)。(B) 掃描與分析「主機弱點」偏向於弱點管理(VM)工具的功能，非 EDR 主力。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務"
+      },
+      {
+        "id": "q_intermediate_112-2_o_21",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "【題組3】情境如附圖所示,請問避免因 ISP 業者之網路可用性遭受破壞,造成該公司對外業務運作遭受影響,下列改善方式何者正確?",
+        "options": [
+          { "id": "opt_a", "text": "總公司網路架構已區分為內部網路與DMZ區,甚為妥適亦無任何改善空間" },
+          { "id": "opt_b", "text": "可增購另一路由器當做備援設備" },
+          { "id": "opt_c", "text": "可增購另一ISP業者之備援網路" },
+          { "id": "opt_d", "text": "可增購另一網路交換器當作備援設備" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "針對 ISP (網際網路服務提供商) 端線路中斷的風險，最直接的改善方式是尋求第二家不同的 ISP 建立雙線路備援（Multi-homing），以消弭單一 ISP 造成的單點故障。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務",
+        "questionGroupId": "3"
+      },
+      {
+        "id": "q_intermediate_112-2_o_22",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "【題組3】情境如附圖所示,請問若要避免遭受勒索軟體病毒大規模攻擊的事件發生在公司內部網路的資訊設備上,下列何項控制措施錯誤?",
+        "options": [
+          { "id": "opt_a", "text": "內部網路增購L3交換器" },
+          { "id": "opt_b", "text": "安裝防毒軟體" },
+          { "id": "opt_c", "text": "定期更新病毒碼" },
+          { "id": "opt_d", "text": "實施內部網路之網路區隔,例如依據內部組織別或功能別切分 VLAN" }
+        ],
+        "correctAnswers": ["opt_a"],
+        "explanation": "單純增購 L3 交換器若未配合設定防火牆 ACL 或網段隔離政策，並無法自動阻擋勒索軟體橫向擴散。必須搭配選項 (D) 的網路區隔與 (B)(C) 的端點防護。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務",
+        "questionGroupId": "3"
+      },
+      {
+        "id": "q_intermediate_112-2_o_23",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "【題組3】情境如附圖所示,公司因某業務委外作業,必須允許委外駐點人員可以攜帶資訊設備至總公司內部進行作業。請問資訊人員對於此委外廠商主機攜入總公司內部之風險控管,下列敘述何者較為「不妥」?",
+        "options": [
+          { "id": "opt_a", "text": "要求僅能於總公司DMZ 區作業" },
+          { "id": "opt_b", "text": "要求僅能於分公司內部網路作業" },
+          { "id": "opt_c", "text": "要求該委外廠商主機應安裝防毒軟體並更新病毒碼至最新" },
+          { "id": "opt_d", "text": "要求該委外廠商主機應將系統修補更新至最新狀態" }
+        ],
+        "correctAnswers": ["opt_b"],
+        "explanation": "委外人員在總公司駐點作業，卻要求其「僅能於分公司內部網路作業」在邏輯與物理實行上不合理，且將不受控的外部設備接入分公司內網風險極高。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務",
+        "questionGroupId": "3"
+      },
+      {
+        "id": "q_intermediate_112-2_o_24",
+        "questionBank": "intermediate",
+        "type": "multiple",
+        "question": "【題組3】情境如附圖所示,有關存取控制面向之風險,下列敘述哪些正確?(複選)",
+        "options": [
+          { "id": "opt_a", "text": "AD Server 配置於DMZ區,容易導致公司重要網域資訊遭受來自外部之攻擊" },
+          { "id": "opt_b", "text": "分公司內部網路 User 電腦連接未納管的無線AP使用,容易導致外部未經授權存取內部網路資源之風險" },
+          { "id": "opt_c", "text": "總公司內部網路 User 電腦連接DMZ區 Switch 使用,可能遭受來自於DMZ區未經授權存取內部網路資源之風險" },
+          { "id": "opt_d", "text": "總公司內部網路之 Server 以及 User 端並未進行網路切割,容易導致因 User 端所產生之風險直接影響Server 端" }
+        ],
+        "correctAnswers": ["opt_a", "opt_b", "opt_c", "opt_d"],
+        "explanation": "圖中顯示 AD 暴露於 DMZ (A)、分公司有不明 AP (B)、總公司 User 跨區接 Switch (C)、內部 Server 與 User 在同一網段 (D)，皆為架構設計上嚴重的存取控制風險。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務",
+        "questionGroupId": "3"
+      },
+      {
+        "id": "q_intermediate_112-2_o_25",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "與資訊安全風險評估相關議題的敘述,下列何者較為正確?",
+        "options": [
+          { "id": "opt_a", "text": "需先進行風險評估,再將風險評鑑適用的準則予以建立" },
+          { "id": "opt_b", "text": "風險評估會依照風險分析的結果,安排其風險處理的優先順序" },
+          { "id": "opt_c", "text": "風險評鑑的順序,是先執行風險識別、再進行風險評估、風險分析" },
+          { "id": "opt_d", "text": "在風險評估的過程中,無需識別風險的擁有者" }
+        ],
+        "correctAnswers": ["opt_b"],
+        "explanation": "風險評估（Risk Evaluation）是將風險分析（Risk Analysis）算出的風險值與可接受風險準則進行比較，藉此排定風險處理的優先順序。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務"
+      },
+      {
+        "id": "q_intermediate_112-2_o_26",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "下列何者「不」屬風險管理架構的參考指引?",
+        "options": [
+          { "id": "opt_a", "text": "NIST Cybersecurity Framework (CSF)" },
+          { "id": "opt_b", "text": "ISO/IEC 27035" },
+          { "id": "opt_c", "text": "ISO/IEC 31000" },
+          { "id": "opt_d", "text": "NIST SP 800-37" }
+        ],
+        "correctAnswers": ["opt_b"],
+        "explanation": "ISO/IEC 27035 是專注於「資訊安全事故管理 (Incident Management)」的標準，非整體風險管理架構指引（如 ISO 31000 或 NIST 相關文件）。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務"
+      },
+      {
+        "id": "q_intermediate_112-2_o_27",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "關於資訊資產價值計算之因子,下列敘述何者錯誤?",
+        "options": [
+          { "id": "opt_a", "text": "包含該資產之機密性因子在內" },
+          { "id": "opt_b", "text": "包含該資產之完整性因子在內" },
+          { "id": "opt_c", "text": "包含該資產之可用性因子在內" },
+          { "id": "opt_d", "text": "包含該資產之購買金額因子在內" }
+        ],
+        "correctAnswers": ["opt_d"],
+        "explanation": "在資安風險評估中，資產價值通常依據該資產在 CIA（機密性、完整性、可用性）受損時對營運造成的衝擊來決定，而非單純的硬體「購買金額」。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務"
+      },
+      {
+        "id": "q_intermediate_112-2_o_28",
+        "questionBank": "intermediate",
+        "type": "multiple",
+        "question": "依照我國《行政院及所屬各機關風險管理及危機處理作業原則》之規定,下列哪些作業事項屬於風險辦識(Identification)及評估(Evaluation) 階段?(複選)",
+        "options": [
+          { "id": "opt_a", "text": "建立、審視風險圖像(Profile)" },
+          { "id": "opt_b", "text": "發掘相關風險資料" },
+          { "id": "opt_c", "text": "分析風險" },
+          { "id": "opt_d", "text": "布建控制措施(Controls)" }
+        ],
+        "correctAnswers": ["opt_a", "opt_b", "opt_c"],
+        "explanation": "佈建控制措施（D）屬於風險對策的「處理與執行階段」，不屬於前期的風險辨識與評估階段。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務"
+      },
+      {
+        "id": "q_intermediate_112-2_o_29",
+        "questionBank": "intermediate",
+        "type": "multiple",
+        "question": "【題組4】情境如附圖所示,A公司為滿足甲客戶要求,正評估導入ISO 27001 資訊安全管理制度之範圍。試問A公司針對導入範圍評估過程與結果之敘述,下列哪些正確?(複選)",
+        "options": [
+          { "id": "opt_a", "text": "將甲客戶的需求與期望納入利害關係方議題調查過程" },
+          { "id": "opt_b", "text": "將A公司高層對於組織內部資訊安全的需求與期望納入利害關係方議題調查過程" },
+          { "id": "opt_c", "text": "將A公司軟體系統之開發、維護之業務活動納入ISO 27001 資訊安全管理制度之導入範圍" },
+          { "id": "opt_d", "text": "將A公司主機代管服務之業務活動排除納入 ISO 27001 資訊安全管理制度之導入範圍" }
+        ],
+        "correctAnswers": ["opt_a", "opt_b", "opt_c"],
+        "explanation": "題幹指出甲客戶要求 ISO 27001 需「適用於全公司人員」，因此 A 公司的主要業務（包含開發、維護與主機代管）皆應納入評估範圍，將代管服務排除 (D) 違反了全公司的導入要求。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務",
+        "questionGroupId": "4"
+      },
+      {
+        "id": "q_intermediate_112-2_o_30",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "【題組4】情境如附圖所示,A公司為了執行軟體系統之開發、維護業務活動內有關資訊資產的風險管理事項,因此實施了一系列的有關作為。試問有關作為之敘述,下列何者錯誤?",
+        "options": [
+          { "id": "opt_a", "text": "針對軟體系統之開發、維護業務活動內包含人員、軟體、硬體、服務與資訊類的資訊資產實施盤點,並計算其資產價值" },
+          { "id": "opt_b", "text": "針對每一資訊資產識別出該資產的弱點與面臨之威脅,並考量風險發生後對組織造成之衝擊以計算該資訊資產之風險值" },
+          { "id": "opt_c", "text": "對於不可接受之風險採取相應之控制措施進行處理,以降低其風險至可接受程度" },
+          { "id": "opt_d", "text": "依據所採取之控制措施結果,於適用性聲明排除資訊系統獲取、開發及維護之適用" }
+        ],
+        "correctAnswers": ["opt_d"],
+        "explanation": "A 公司的核心業務即為軟體系統的開發與維護，因此在適用性聲明 (SoA) 中絕對不可將「系統獲取、開發及維護」排除適用。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務",
+        "questionGroupId": "4"
+      },
+      {
+        "id": "q_intermediate_112-2_o_31",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "【題組4】情境如附圖所示,為了滿足資通安全管理法有關公務機關或特定非公務機關,於資通安全管理法適用範圍內,委外辦理資通系統之建置、維運或資通服務之提供,應考量受託者之專業能力與經驗、委外項目之性質及資通安全需求,選任適當之受託者,並監督其資通安全維護情形之要求,因此A公司與甲客戶均實施了一系列有委外選任與監督責任之要求作為。試問有關A公司與甲客戶所實施之作為,下列何者較「不」適當?",
+        "options": [
+          { "id": "opt_a", "text": "A公司實施包含受託業務相關活動在內之有關資訊資產進行風險評鑑" },
+          { "id": "opt_b", "text": "甲客戶定期以稽核方式確認A公司對於受託業務之執行情形" },
+          { "id": "opt_c", "text": "甲客戶委託A公司對該委託業務之資通系統實施安全性檢測" },
+          { "id": "opt_d", "text": "A公司標示非自行開發之內容與其來源及提供授權證明" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "基於利益迴避與獨立性原則，甲客戶不應委託「系統開發商 (A公司)」來對「自己開發的系統」進行最終的安全性檢測，應委由獨立的第三方資安公司執行。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務",
+        "questionGroupId": "4"
+      },
+      {
+        "id": "q_intermediate_112-2_o_32",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "【題組4】情境如附圖所示,近期A公司為了確保能如期如質的完成受託業務,增設系統開發人員的職缺並導入系統開發的安全控制措施。試問有關A公司所實施之作為,下列何者較「不」適宜?",
+        "options": [
+          { "id": "opt_a", "text": "針對A公司軟體系統之開發、維護業務活動實施風險評鑑" },
+          { "id": "opt_b", "text": "針對新進系統開發人員實施資通安全教育訓練" },
+          { "id": "opt_c", "text": "採用未驗證的第三方套件" },
+          { "id": "opt_d", "text": "導入安全軟體發展生命週期(Secure Software Development Life Cycle,SSDLC)" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "採用未經驗證的第三方開源套件，容易引入惡意後門或已知安全漏洞，是極具風險且不適宜的作法。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務",
+        "questionGroupId": "4"
+      },
+      {
+        "id": "q_intermediate_112-2_o_33",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "關於風險處理的敘述,下列何者正確?",
+        "options": [
+          { "id": "opt_a", "text": "風險可接受準則需先定義清楚,風險評鑑結果超過此準則就必須進行風險處理,以降低風險" },
+          { "id": "opt_b", "text": "風險處理須實施的控制措施,皆必須參考 ISO 27001的附錄A" },
+          { "id": "opt_c", "text": "風險處理計畫及殘餘風險的結果,須由資產擁有者確認" },
+          { "id": "opt_d", "text": "風險處理後所剩餘的風險必須為零" }
+        ],
+        "correctAnswers": ["opt_a"],
+        "explanation": "風險評鑑的核心目的即在找出高於「可接受準則」的風險，並對其啟動處置對策以降低風險至可容忍水準。風險不可能降為零(D)；控制措施不限於附錄A(B)；殘餘風險須由高階管理階層/風險擁有者確認(C 雖部分正確，但 A 為最佳定義)。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務"
+      },
+      {
+        "id": "q_intermediate_112-2_o_34",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "關於必須進行風險評估的狀況,下列敘述何者錯誤?",
+        "options": [
+          { "id": "opt_a", "text": "依據 ISMS (Information Security Management System)要求,必須定期施行風險評估" },
+          { "id": "opt_b", "text": "決定到美國設立新的工廠,將公司研發團隊遷往美國" },
+          { "id": "opt_c", "text": "一般員工國外旅遊" },
+          { "id": "opt_d", "text": "將本地端所有資訊系統密遷到 Azure 雲端服務" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "一般員工的私人國外旅遊，並未對組織的整體資訊系統架構或核心業務營運產生重大變更，無需為此啟動全公司的資訊安全風險評估。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務"
+      },
+      {
+        "id": "q_intermediate_112-2_o_35",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "某作業流程經過風險評估(Assessment)後的固有風險值,遠低於所設定的可接受風險水準時,下一步行動方案,下列何者較「不」適當?",
+        "options": [
+          { "id": "opt_a", "text": "檢視剩餘風險的水準" },
+          { "id": "opt_b", "text": "向管理階層報告合規結果" },
+          { "id": "opt_c", "text": "實施控制措施再降低風險" },
+          { "id": "opt_d", "text": "持續監控作業流程的變化" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "當風險值已「遠低於」可接受風險水準時，再投入資源實施控制措施是不具備成本效益的（過度防護），應採取風險接受並持續監控即可。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務"
+      },
+      {
+        "id": "q_intermediate_112-2_o_36",
+        "questionBank": "intermediate",
+        "type": "multiple",
+        "question": "X 公司與Y公司進行網路服務業務合作之風險超過公司所設定之風險胃納(Risk appetite)。X公司最後決定與Y公司進行合作,下列哪些項目是合適的風險回應選擇?(複選)",
+        "options": [
+          { "id": "opt_a", "text": "風險規避(Risk avoidance)" },
+          { "id": "opt_b", "text": "風險保留(Risk retention)" },
+          { "id": "opt_c", "text": "風險緩解(Risk mitigation)" },
+          { "id": "opt_d", "text": "風險分擔(Risk sharing)" }
+        ],
+        "correctAnswers": ["opt_c", "opt_d"],
+        "explanation": "既然決定「進行合作」，便不能選擇風險規避 (A)。由於風險「超過」胃納，不能直接保留接受 (B)。必須採取控制措施緩解風險 (C) 或將風險轉移分擔 (D)，將其降至胃納範圍內。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務"
+      },
+      {
+        "id": "q_intermediate_112-2_o_37",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "【題組5】情境如附圖所示,T公司未聘雇資安長亦無專責資安管理單位,初步評估為中風險事項。後來經過內部討論時,公司治理主管要求將其調整為高風險事項,請問此項調整「最」可能的原因為何?",
+        "options": [
+          { "id": "opt_a", "text": "資訊安全為各界重視項目,各項資安措施皆應以最高標準要求" },
+          { "id": "opt_b", "text": "公司人員編制設有資安長之職位,但尚未招聘專業主管" },
+          { "id": "opt_c", "text": "法令法規要求" },
+          { "id": "opt_d", "text": "去年執行風險評鑑時,此項目亦列為中風險事項" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "題幹指出 T 公司為「資本額百億以上之股票上市電子公司」，依法規（公開發行公司建立內部控制制度處理準則），必須設置資安長與專責單位，違法則面臨嚴重裁罰，因此屬高風險的合規問題。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務",
+        "questionGroupId": "5"
+      },
+      {
+        "id": "q_intermediate_112-2_o_38",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "【題組5】情境如附圖所示,風險評鑑發現的5個高風險事項,皆與公司目前最主要之業務或主要作業流程相關,請問下列何項風險回應是公司最「不」可能選擇執行的項目?",
+        "options": [
+          { "id": "opt_a", "text": "增加相關控制作業以降低風險" },
+          { "id": "opt_b", "text": "購置保險,降低公司可能的損失" },
+          { "id": "opt_c", "text": "尋求合格之外部合作廠商,將風險降低至可接受水準" },
+          { "id": "opt_d", "text": "結束該項業務,避免承擔風險" }
+        ],
+        "correctAnswers": ["opt_d"],
+        "explanation": "因為這些高風險事項與公司「最主要之業務」相關，結束該業務等同公司關門，因此「規避風險（結束業務）」是最不可能且不具商業合理性的選擇。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務",
+        "questionGroupId": "5"
+      },
+      {
+        "id": "q_intermediate_112-2_o_39",
+        "questionBank": "intermediate",
+        "type": "single",
+        "question": "【題組5】情境如附圖所示,公司風險評鑑後發現,其中一個高險事項去年度亦列為高風險事項。請問發生此現象最可能的原因為下列何項?\n1. 風險項目所處環境發生變動\n2. 遵循之相關法規今年已有更新\n3. 去年度選擇接受風險,故次一年度風險評鑑時會再次出現\n4. 執行風險回應後,未確認風險已有效改善",
+        "options": [
+          { "id": "opt_a", "text": "123" },
+          { "id": "opt_b", "text": "234" },
+          { "id": "opt_c", "text": "124" },
+          { "id": "opt_d", "text": "12" }
+        ],
+        "correctAnswers": ["opt_c"],
+        "explanation": "高風險事項在正常情況下不應被直接「接受(3)」，必須提出改善計畫。再次出現高風險可能因為環境變動(1)、法規趨嚴(2)或去年處理後未確認殘餘風險(4)。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務",
+        "questionGroupId": "5"
+      },
+      {
+        "id": "q_intermediate_112-2_o_40",
+        "questionBank": "intermediate",
+        "type": "multiple",
+        "question": "【題組5】情境如附圖所示,公司高層評估未來業務模式後,已決定將主要營運系統架設置雲端以利各地公司協同作業,並已編列預算執行此項。此次風險評估亦將公司內部缺乏建置雲端系統之軟硬體列為高風險事項。請問下列哪些內容是公司可能的風險回應?(複選)",
+        "options": [
+          { "id": "opt_a", "text": "尋找符合公司要求之雲端服務廠商,共同合作完成公司要求" },
+          { "id": "opt_b", "text": "尋找專業SI廠商,由其協助規劃系統轉移至雲端提供服務" },
+          { "id": "opt_c", "text": "增聘相關專業人員、購買相關軟體及硬體設施,並規劃增設合格機房,自行完成公司要求" },
+          { "id": "opt_d", "text": "由於初步估計所需經費約超過已編列預算5%,因此將要求公司停止此項變更" }
+        ],
+        "correctAnswers": ["opt_a", "opt_b", "opt_c"],
+        "explanation": "公司可選擇租用公有雲(A)、委託系統整合商(B)或自建私有雲(C)作為處置對策。僅因預算微幅超支 5% 就推翻高層已決定的重大戰略轉型(D)是不合常理的。",
+        "year": "112-2",
+        "category": "資訊安全規劃實務",
+        "questionGroupId": "5"
+      }
+    ]
+  }
