@@ -20,16 +20,17 @@ export const QuestionGroupContentModal: React.FC<QuestionGroupContentModalProps>
   const content = groupKey ? getQuestionGroupContent(groupKey) : undefined;
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
+  // 所有 Hooks 必須在條件 return 之前呼叫，否則會違反 Rules of Hooks
+  const imageIds = content?.imageIds ?? [];
+  const selectedImageId = selectedImageIndex !== null ? imageIds[selectedImageIndex] ?? null : null;
+  const groupImageUrl = useImportedImagesStore((s) => (selectedImageId ? s.getGroupImageUrl(selectedImageId) : ''));
+
   const handleClose = () => {
     setSelectedImageIndex(null);
     onClose();
   };
 
   if (!isOpen) return null;
-
-  const imageIds = content?.imageIds ?? [];
-  const selectedImageId = selectedImageIndex !== null ? imageIds[selectedImageIndex] ?? null : null;
-  const groupImageUrl = useImportedImagesStore((s) => (selectedImageId ? s.getGroupImageUrl(selectedImageId) : ''));
 
   const hasContent = (content?.contentText && content.contentText.length > 0) || imageIds.length > 0;
 
