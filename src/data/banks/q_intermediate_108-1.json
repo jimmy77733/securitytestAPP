@@ -13,7 +13,7 @@
     },
     {
       "groupKey": "intermediate_資訊安全防護實務_108_2",
-      "contentText": "某公司因資安考量,重新規劃對外網站的連線架構,AP與DB Server放在 Intranet, Reverse proxy (Web)放在DMZ,對外Web連線使用SSL連線,AP 與 Reverse proxy 之間亦使用加密連線,而這幾台主機間的流量,都納入網路型IPS進行監控(該IPS目前僅有攻擊特徵偵測功能),DMZ/Internet/Intranet 間亦有防火牆進行連線控管。某天公司內的資安人員發現有人嘗試在攻擊對外網站,在DMZ Web server 連線日誌中發現以下可疑的連線記錄",
+      "contentText": "某公司因資安考量,重新規劃對外網站的連線架構,AP與DB Server放在 Intranet, Reverse proxy (Web)放在DMZ,對外Web連線使用SSL連線,AP 與 Reverse proxy 之間亦使用加密連線,而這幾台主機間的流量,都納入網路型IPS進行監控(該IPS目前僅有攻擊特徵偵測功能),DMZ/Internet/Intranet 間亦有防火牆進行連線控管。某天公司內的資安人員發現有人嘗試在攻擊對外網站,在DMZ Web server 連線日誌中發現以下可疑的連線記錄(請看附圖)",
       "imageIds": [
         "intermediate_資訊安全防護實務_108_2_1"
       ]
@@ -25,14 +25,14 @@
     },
     {
       "groupKey": "intermediate_資訊安全防護實務_108_4",
-      "contentText": "組織 ABC 為金融監督管理委員會(金管會)管轄的關鍵基礎設施提供者,受到金管會核定為A級特定非公務機關,在一日的維運中,系統管理員 John 在操作核心線上系統時,發現電腦突然重新開機且無法正常啟動 Windows作業系統,並直接即出現下列畫面。\nDoops, your important files are encrypted.\nIf you see this text, then your files are no longer accessible, because they have been encrypted. Perhaps you are busy looking for a way to recover your files, but don't waste your time. Nobody can recover your files without our decryption service.\nWe guarantee that you can recover all your files safely and easily. All you need to do is submit the payment and purchase the decryption key.\nPlease follow the instructions:\n1. Send $300 worth of Bitcoin to following address:\n1Mz7153HMuxXTuR2R1178MGSdzaAtNbBWX\n2. Send your Bitcoin wallet ID and personal installation key to e-mail",
+      "contentText": "組織 ABC 為金融監督管理委員會(金管會)管轄的關鍵基礎設施提供者,受到金管會核定為A級特定非公務機關,在一日的維運中,系統管理員 John 在操作核心線上系統時,發現電腦突然重新開機且無法正常啟動 Windows作業系統,並直接即出現下列畫面。(請看附圖)",
       "imageIds": [
         "intermediate_資訊安全防護實務_108_4_1"
       ]
     },
     {
       "groupKey": "intermediate_資訊安全防護實務_108_5",
-      "contentText": "某日資安人員接獲通報,系統維運人員在某台 windows 主機上找到一個文字檔(acc.txt)內容如下,因為發現文字檔案”Name”欄位的資料與電腦帳號是雷同的,資安人員發現此文字檔中,含有該台主機之 administrator 權限的帳號\nName SID\nXuser S-1-5-21-3912933555-2805578987-3153105539-500\nGuset S-1-5-21-3912933555-2805578987-3153105539-501\nkrbtgt S-1-5-21-3912933555-2805578987-3153105539-502\nS-1-5-21-3912933555-2805578987-3153105539-513\nParis 1-5-21-3912933555-2805578987-3153105539-1001\nJason S-1-5-21-3912933555-2805578987-3153105539-1012\nTom\n\n同一時間,資安人員在該台主機 acc.txt同一目錄,發現另一個檔案\nXuser: 572403BE7D7927FF36FE38A80D08165E::abc123$\nGuset:8846F7EAEE8FB117AD06BDD830B7586C::password\nJason:8895E989934E3B8F39A9F099FD71BFC4::ab1234\nTom: F67F5E3F66EFD7298BE6ACD32EEEB27C::1qaz2wsx",
+      "contentText": "某日資安人員接獲通報,系統維運人員在某台 windows 主機上找到一個文字檔(acc.txt)內容如下,因為發現文字檔案”Name”欄位的資料與電腦帳號是雷同的,資安人員發現此文字檔中,含有該台主機之 administrator 權限的帳號(請看附圖)",
       "imageIds": [
         "intermediate_資訊安全防護實務_108_5_1"
       ]
@@ -54,7 +54,7 @@
     },
     {
       "groupKey": "intermediate_資訊安全規劃實務_108_4",
-      "contentText": "ABC公司為了提高資安防護,全公司通過ISO/IEC 27001 驗證,並「每半年」安排一次後續稽核,以確保證書的有效性。\n此次外部稽核派了稽核員Kelly負責執行三天的稽核。\n受稽的資訊單位主管Tim拿出一份資料表,其中部分資料如下:\n\n資產編號 | 資產名稱 | 最大可以承受中斷時間 (Max. Tolerable Period of Disruption) | 目標回復時間 (Recovery Time Objective) | 可用性等級 (四級:極高、高、中、低)\n---|---|---|---|---\n001 | 線上購務網頁主機(Web Server) | 30分鐘 | 20分鐘 | 極高\n002 | 線上購物資料庫主機(DB Server) | 30分鐘 | 20分鐘 | 極高\n003 | 核心交換器 (Core Switch) | 60分鐘 | 50分鐘 | 高\n004 | 辦公室交換機 (Office Switch) | 4小時 | 3小時 | 低\n005 | 對外防火牆 (Firewall) | 30分鐘 | 20分鐘 | 極高",
+      "contentText": "ABC公司為了提高資安防護,全公司通過ISO/IEC 27001 驗證,並「每半年」安排一次後續稽核,以確保證書的有效性。\n此次外部稽核派了稽核員Kelly負責執行三天的稽核。\n受稽的資訊單位主管Tim拿出一份資料表,其中部分資料如下:(請看附圖)",
       "imageIds": [
         "intermediate_資訊安全規劃實務_108_4_1"
       ]
@@ -1010,7 +1010,8 @@
       ],
       "correctAnswers": [
         "opt_b",
-        "opt_c"
+        "opt_c",
+        "opt_d"
       ],
       "explanation": "透過 UTM 提供 VPN 功能建立安全連線，以及建置網路管理系統主動監控與告警，是遠端維運安全且有效的方案。",
       "year": "108",
@@ -1021,7 +1022,7 @@
       "id": "q_intermediate_108-1_p_32",
       "questionBank": "intermediate",
       "type": "single",
-      "question": "(題組題3-4,單選題)上述情境中,為統一網路資安防護管理,新廠網路必須經由總廠才能上網,且新產線不能由工廠外部直接連接,並依作業需求將內網分為2個安全管理區域(Security Zone)...請問這幾項防火牆安全政策排列次序由左到右何者為最佳?",
+      "question": "(題組題3-4,單選題)上述情境中,為統一網路資安防護管理,新廠網路必須經由總廠才能上網,且新產線不能由工廠外部直接連接,並依作業需求將內網分為2個安全管理區域(Security Zone)，），LAN1為生產三課、品管部門與客服部門使用的辦公室子網段，LAN2為新產線SCADA系統設備使用的子網段，並且只限使用TCP 1499 Port與總廠MES（Manufacturing Execution System）製造執行管理系統連接，與使用TCP 1599 port來操作新廠HMI（Human Machine Interface）人機界面。在新廠閘道端的UTM設備考量規劃將設定下列防火牆安全政策：請問這幾項防火牆安全政策排列次序由左到右何者為最佳?",
       "options": [
         {
           "id": "opt_a",
@@ -1207,7 +1208,7 @@
       "id": "q_intermediate_108-1_p_38",
       "questionBank": "intermediate",
       "type": "single",
-      "question": "(題組題5-2,單選題)上述情境中,若該電腦主機作業系統為Win7,同一時間,資安人員在該台主機 acc.txt同一目錄,發現另一個檔案... (A)由這個檔案可以得知Jason 為這台電腦具 administrator 權限的帳戶 (B)這看起來像是這台電腦的用戶與密碼hash,其中密碼hash為kerberos 格式 (C)這看起來像是這台電腦的用戶與密碼hash,其中密碼hash為NTLM格式 (D)這看起來像是這台電腦的用戶與密碼hash,其中密碼hash為SHA512格式",
+      "question": "(題組題5-2,單選題)上述情境中,若該電腦主機作業系統為Win7,同一時間,資安人員在該台主機 acc.txt同一目錄,發現另一個檔案(如附圖) 哪一項描述最為正確?",
       "options": [
         {
           "id": "opt_a",
@@ -1460,7 +1461,7 @@
         },
         {
           "id": "opt_b",
-          "text": "比特幣的Hash Chain 符合我國電子簽章法中數位簽章的描述"
+          "text": "比特幣的 Hash Chain 符合我國電子簽章法中數位簽章的描述"
         },
         {
           "id": "opt_c",
@@ -1837,9 +1838,10 @@
       ],
       "correctAnswers": [
         "opt_a",
-        "opt_b"
+        "opt_b",
+        "opt_c"
       ],
-      "explanation": "依 GDPR 規定，大規模處理個資的企業需指派 DPO (A)，且蒐集同意需以淺顯易懂方式取得 (B)。(C) 撤銷同意應與給予同意一樣簡單；(D) 發生外洩時，依規定期限為 72 小時內通報，而非 36 小時。",
+      "explanation": "依 GDPR 規定，大規模處理個資的企業需指派 DPO (A)，且蒐集同意需以淺顯易懂方式取得 (B)。(C) 撤銷同意需要用複雜的法律文書來限制撤銷個資程序；(D) 發生外洩時，依規定期限為 72 小時內通報，而非 36 小時。",
       "year": "108",
       "category": "資訊安全規劃實務"
     },
@@ -1867,10 +1869,10 @@
         }
       ],
       "correctAnswers": [
-        "opt_b",
-        "opt_c"
+        "opt_a",
+        "opt_b"
       ],
-      "explanation": "GRS 確保跨區域異地備援以降低風險 (B)，RA-GRS 則進一步提供次要區域的唯讀權限，滿足隨時讀取或驗證的需求 (C)。",
+      "explanation": "LRS 屬於即時同步備份機制，備份成三份資料(A)；GRS 確保跨區域異地備援以降低風險 (B)。",
       "year": "108",
       "category": "資訊安全規劃實務"
     },
@@ -2523,9 +2525,9 @@
         }
       ],
       "correctAnswers": [
-        "opt_a"
+        "opt_b"
       ],
-      "explanation": "區域醫院等提供關鍵醫療服務的基礎設施提供者，因涉及民眾生命安全與重大公共利益，依《資通安全責任等級分級辦法》被歸類為要求最高的 A 級機關。",
+      "explanation": "區域醫院等提供關鍵醫療服務的基礎設施提供者，因涉及民眾生命安全與重大公共利益，依《資通安全責任等級分級辦法》被歸類為 B 級機關。",
       "year": "108",
       "category": "資訊安全規劃實務",
       "questionGroupId": "5"

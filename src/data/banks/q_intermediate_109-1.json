@@ -8,8 +8,10 @@
       },
       {
         "groupKey": "intermediate_資訊安全防護實務_109_2",
-        "contentText": "一位資安專家正在對內部網站進行連接埠掃描,使用工具為Nmap,伺服器IP為10.0.1.1,掃描後看到的結果如下:\n\nPORT STATE SERVICE VERSION\n21/tcp open ftp vsftpd 2.2.6\n110/tcp open pop3 courier pop3d\n123/tcp closed ntp\n\nDevice type: general purpose\nRunning: Linux 4.1.x\nOS details: Linux 4.1.18\nUptime: 215 days (since Thu Jan 4 15:30:20 2018)\nNetwork Distance: 0 hops\nServer Info: OS: Unix\n\n根據上列資訊,請回答下列問題:",
-        "imageIds": []
+        "contentText": "一位資安專家正在對內部網站進行連接埠掃描,使用工具為Nmap,伺服器IP為10.0.1.1,掃描後看到的結果如下:(參考附圖)\n\n根據上列資訊,請回答下列問題:",
+        "imageIds": [
+          "intermediate_資訊安全防護實務_109_2_1"
+        ]
       },
       {
         "groupKey": "intermediate_資訊安全防護實務_109_3",
@@ -53,8 +55,10 @@
       },
       {
         "groupKey": "intermediate_資訊安全規劃實務_109_5",
-        "contentText": "ABC公司導入ISO/IEC 27001 資訊安全管理系統,並透過第三方稽核單位執行部分單位驗證。\n\n內部公告且遵循之資安事件(故)通報與處理規範如下:\n\n等級 | 定義 | 更新時效 | 通報層級 | 處理時效\n---|---|---|---|---\n1 | 內部系統功能異常 | 72小時 | 單位主管 | 24小時\n2 | 內部系統無法使用或受駭 | 48小時 | 部門主管 | 12小時\n3 | 外部服務功能異常 | 8小時 | 事業體主管 | 36小時\n4 | 外部服務無法使用或受駭 | 24小時 | 總經理 | 4小時",
-        "imageIds": []
+        "contentText": "ABC公司導入ISO/IEC 27001 資訊安全管理系統,並透過第三方稽核單位執行部分單位驗證。\n\n內部公告且遵循之資安事件(故)通報與處理規範如下:(參考附圖)",
+        "imageIds": [
+          "intermediate_資訊安全規劃實務_109_5_1"
+        ]
       }
     ],
     "questions": [
@@ -450,7 +454,7 @@
         "id": "q_intermediate_109-1_p_25",
         "questionBank": "intermediate",
         "type": "single",
-        "question": "題組背景描述如附圖。上述掃描結果是Namp的哪個完整指令?",
+        "question": "題組背景描述如附圖。上述掃描結果是 Namp 的哪個完整指令?",
         "options": [
           { "id": "opt_a", "text": "Nmap-A-sV-p21,110,123 10.0.1.1" },
           { "id": "opt_b", "text": "Nmap -O-sV -p21,110,123 10.0.1.1" },
@@ -474,8 +478,8 @@
           { "id": "opt_c", "text": "vsftpd over SSL/TLS, TLS v1.1以上" },
           { "id": "opt_d", "text": "vsftpd over SSL/TLS, TLS v1.2以上" }
         ],
-        "correctAnswers": ["opt_d"],
-        "explanation": "現代加密通訊標準建議使用 TLS v1.2 或更高版本，以確保資料傳輸的安全性並防禦已知協定漏洞。",
+        "correctAnswers": ["opt_a", "opt_d"],
+        "explanation": "vsftpd over SSH 可以提供更高的安全性，因為SSH 協定本身就具有加密功能，可以保護資料在傳輸過程中的安全性。而TLS v1.2 或更高版本可以提供更高的加密強度，以確保資料傳輸的安全性並防禦已知協定漏洞。",
         "year": "109",
         "category": "資訊安全防護實務",
         "questionGroupId": "2"
@@ -1049,8 +1053,8 @@
           { "id": "opt_c", "text": "自行架設郵件伺服器安全性不足" },
           { "id": "opt_d", "text": "印表機應該使用無線分享以增加便利性" }
         ],
-        "correctAnswers": ["opt_b"],
-        "explanation": "將 Web Server (IIS) 與 DB Server (MS-SQL) 放置於同一台實體或虛擬主機上，一旦 Web 遭駭，資料庫會直接暴露，為高風險之架構設計。圖示中 OFFICE 與 DMZ 已分別接在防火牆不同 Port 進行區隔。",
+        "correctAnswers": ["opt_a","opt_b"],
+        "explanation": "將 Web Server (IIS) 與 DB Server (MS-SQL) 放置於同一台實體或虛擬主機上，一旦 Web 遭駭，資料庫會直接暴露，為高風險之架構設計。圖示中 OFFICE 與 DMZ 已分別接在防火牆不同 Port 進行區隔，但是沒有區分在不同網段。",
         "year": "109",
         "category": "資訊安全規劃實務",
         "questionGroupId": "1"
@@ -1181,8 +1185,8 @@
         "question": "題組背景描述如附圖。請問該異地辦公的規劃與營運持續管理有下列何種關聯?",
         "options": [
           { "id": "opt_a", "text": "與營運持續管理無關,應屬於職業衛生安全管理(Occupational Health and Safety Assessment Series, OHSAS)的議題" },
-          { "id": "opt_b", "text": "的達成較有關與資料復原目標(Recovery Point Objective, RPO)" },
-          { "id": "opt_c", "text": "的達成較有關與復原目標時間(Recovery Time Objective, RTO)" },
+          { "id": "opt_b", "text": "與達成較有關與資料復原目標(Recovery Point Objective, RPO)的達成較有關" },
+          { "id": "opt_c", "text": "與達成較有關與復原目標時間(Recovery Time Objective, RTO)的達成較有關" },
           { "id": "opt_d", "text": "屬於政治因應,配合主管機關要求" }
         ],
         "correctAnswers": ["opt_c"],
@@ -1347,7 +1351,7 @@
       {
         "id": "q_intermediate_109-1_o_39",
         "questionBank": "intermediate",
-        "type": "multiple",
+        "type": "single",
         "question": "題組背景描述如附圖。ABC公司已於規範之時間內進行資料採證、分析、弱點修正與資料還原後,目前服務已恢復正常運作,下列敘述何者正確?",
         "options": [
           { "id": "opt_a", "text": "服務恢復後應立即針對此事故執行風險評鑑,擬定資訊安全風險處理計畫並執行之" },
@@ -1355,8 +1359,8 @@
           { "id": "opt_c", "text": "服務雖已恢復但無法確保未來不再受駭,應立即招開管理審查會議,討論與爭取改善措施所需資源" },
           { "id": "opt_d", "text": "縱使服務恢復,但仍導致資訊安全關鍵績效指標無法達成,需立調整關鍵績效指標項目以確保合規性" }
         ],
-        "correctAnswers": ["opt_b", "opt_c"],
-        "explanation": "事件復原後應進行事後檢討（Post-Incident Review），分析成因以防止再發(B)，並透過管理階層審查會議討論長期改善資源與對策(C)。(D)修改 KPI 以掩飾未達標是違反管理精神的。",
+        "correctAnswers": ["opt_b"],
+        "explanation": "事件復原後應進行事後檢討（Post-Incident Review），分析成因以防止再發(B)，透過管理階層審查會議討論長期改善資源與對策(C)。修改 KPI 以掩飾未達標是違反管理精神的(D)。",
         "year": "109",
         "category": "資訊安全規劃實務",
         "questionGroupId": "5"
@@ -1372,8 +1376,8 @@
           { "id": "opt_c", "text": "為第三級資通安全事件,應於知悉事件後36小時內完成損害控制或復原作業,並於指定時間內送交改善報告" },
           { "id": "opt_d", "text": "為第四級資通安全事件,應於知悉事件後24小時內完成損害控制或復原作業,並於指定時間內送交改善報告" }
         ],
-        "correctAnswers": ["opt_b"],
-        "explanation": "依據《資通安全事件通報及應變辦法》，未涉及關鍵基礎設施之核心系統遭受「輕微」竄改，屬第二級資安事件，依法應於 72 小時內（選項中 48 小時在其規範內，且該法規特定情況下要求復原時效）完成復原作業（依據官方公告答案為 B）。",
+        "correctAnswers": ["opt_c"],
+        "explanation": "依據《資通安全事件通報及應變辦法》，未涉及關鍵基礎設施之核心系統遭受「輕微」竄改，屬第二級資安事件，依法應於 72 小時內（選項中 36 小時在其規範內，且該法規特定情況下要求復原時效）完成復原作業。",
         "year": "109",
         "category": "資訊安全規劃實務",
         "questionGroupId": "5"

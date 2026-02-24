@@ -100,14 +100,15 @@ npm run preview
    - `pack`：建置前端並用 pkg 產生 `dist-portable/題庫平台.exe`，並套用隱藏主控台
    - `pack:full`：建置 Windows 執行檔後，再將 `dist/` 與 `public/` 複製到 `dist-portable/`，形成完整可攜包
 
-3. **建置 macOS 版**（於 Mac、Windows 或 Linux 皆可建置，產出給 Mac 使用）：
+3. **建置 macOS 版**（**請在 Mac 上執行**，pkg 無法在 Windows 上穩定產出 macOS 執行檔）：
 
    ```bash
    npm run pack:full:mac
    ```
 
    - `pack:mac`：建置前端並用 pkg 產生 Mac 執行檔（Intel：`題庫平台-macos-x64`、Apple Silicon：`題庫平台-macos-arm64`）
-   - `pack:full:mac`：建置 Mac 執行檔後，再將 `dist/` 與 `public/` 複製到 `dist-portable/`，形成完整可攜包
+   - `pack:full:mac`：建置 Mac 執行檔後，再將 `dist/` 與 `public/` 複製到 `dist-portable/`，形成完整可攜包  
+   - 若在 **Windows** 執行 `pack:full:mac` 會出現 `Error: spawn UNKNOWN`，屬 pkg 交叉編譯限制，請改在 Mac 上執行此指令。
 
 4. **發佈資料夾結構**（整個 `dist-portable` 資料夾即為可攜包）：
 
