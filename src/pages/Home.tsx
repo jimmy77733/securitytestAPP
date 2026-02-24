@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FileText, Clock, User, AlertTriangle, Sun, Moon, Monitor, RefreshCw } from 'lucide-react';
@@ -12,6 +12,16 @@ import { QuestionBankSelector } from '@/components/QuestionBankSelector';
 import { ImportExportPanel } from '@/components/ImportExportPanel';
 import './Home.css';
 
+const BUILD_PROGRESS_MAX = 92;
+const BUILD_PROGRESS_INTERVAL_MS = 800;
+const BUILD_PROGRESS_STEP = 4;
+const BUILD_PROGRESS_COMPLETE_DURATION_MS = 550;
+
+/** easeOutCubic: 緩和加速感，由快漸慢到 100% */
+function easeOutCubic(t: number): number {
+  return 1 - (1 - t) ** 3;
+}
+
 export const Home: React.FC = () => {
   const navigate = useNavigate();
   const { currentUser } = useUserStore();
@@ -22,17 +32,71 @@ export const Home: React.FC = () => {
   const [buildModalOpen, setBuildModalOpen] = useState(false);
   const [buildMessage, setBuildMessage] = useState<{ success: boolean; text: string } | null>(null);
   const [buildLoading, setBuildLoading] = useState(false);
+  const [buildProgress, setBuildProgress] = useState(0);
+  const progressTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const completeAnimationRef = useRef<number | null>(null);
+  const progressRef = useRef(0);
+  progressRef.current = buildProgress;
   const { mode: themeMode, cycleTheme } = useThemeStore();
+
+  useEffect(() => {
+    if (!buildLoading) return;
+    setBuildProgress(0);
+    progressTimerRef.current = setInterval(() => {
+      setBuildProgress((p) => {
+        const next = Math.min(p + BUILD_PROGRESS_STEP, BUILD_PROGRESS_MAX);
+        if (next >= BUILD_PROGRESS_MAX && progressTimerRef.current) {
+          clearInterval(progressTimerRef.current);
+          progressTimerRef.current = null;
+        }
+        return next;
+      });
+    }, BUILD_PROGRESS_INTERVAL_MS);
+    return () => {
+      if (progressTimerRef.current) {
+        clearInterval(progressTimerRef.current);
+        progressTimerRef.current = null;
+      }
+    };
+  }, [buildLoading]);
+
+  useEffect(() => {
+    if (buildLoading || !buildMessage) return;
+    const startValue = progressRef.current;
+    if (startValue >= 100) return;
+    const startTime = performance.now();
+    const animate = () => {
+      const elapsed = performance.now() - startTime;
+      const ratio = Math.min(1, elapsed / BUILD_PROGRESS_COMPLETE_DURATION_MS);
+      const eased = easeOutCubic(ratio);
+      const value = startValue + (100 - startValue) * eased;
+      setBuildProgress(value);
+      if (ratio < 1) {
+        completeAnimationRef.current = requestAnimationFrame(animate);
+      } else {
+        completeAnimationRef.current = null;
+      }
+    };
+    completeAnimationRef.current = requestAnimationFrame(animate);
+    return () => {
+      if (completeAnimationRef.current != null) {
+        cancelAnimationFrame(completeAnimationRef.current);
+        completeAnimationRef.current = null;
+      }
+    };
+  }, [buildLoading, buildMessage]);
 
   const handleTriggerBuild = async () => {
     setBuildLoading(true);
     setBuildMessage(null);
+    setBuildProgress(0);
+    setBuildModalOpen(true);
     try {
       const base = typeof window !== 'undefined' && window.location?.origin ? window.location.origin : '';
       const res = await fetch(`${base}/api/trigger-build`, { method: 'POST' });
       const data = await res.json().catch(() => ({}));
       if (data.success) {
-        setBuildMessage({ success: true, text: '已同步建置完成，請重新整理頁面以載入最新版本。' });
+        setBuildMessage({ success: true, text: '已同步建置完成。' });
       } else {
         setBuildMessage({ success: false, text: data.error ? `建置失敗：${data.error}` : '建置失敗，請確認伺服器環境可執行 npm run build。' });
       }
@@ -40,8 +104,17 @@ export const Home: React.FC = () => {
       setBuildMessage({ success: false, text: '無法連線至建置服務，請確認以本機伺服器（或執行檔）方式運行。' });
     } finally {
       setBuildLoading(false);
-      setBuildModalOpen(true);
     }
+  };
+
+  const handleCloseBuildModal = () => {
+    setBuildModalOpen(false);
+    setBuildMessage(null);
+    setBuildProgress(0);
+  };
+
+  const handleConfirmRefresh = () => {
+    window.location.reload();
   };
 
   const handleStartTest = () => {
@@ -148,13 +221,58 @@ export const Home: React.FC = () => {
         </div>
       </motion.div>
 
-      {buildModalOpen && buildMessage && (
-        <div className="build-sync-modal-overlay" onClick={() => setBuildModalOpen(false)} role="presentation">
+      {buildModalOpen && (
+        <div
+          className="build-sync-modal-overlay"
+          onClick={() => { if (!buildLoading && buildMessage && !buildMessage.success) handleCloseBuildModal(); }}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="build-sync-modal-title"
+        >
           <div className="build-sync-modal" onClick={(e) => e.stopPropagation()}>
-            <p className={buildMessage.success ? 'build-sync-success' : 'build-sync-error'}>{buildMessage.text}</p>
-            <button type="button" className="build-sync-modal-btn" onClick={() => setBuildModalOpen(false)}>
-              確定
-            </button>
+            <h3 id="build-sync-modal-title" className="build-sync-modal-title">
+              同步建置
+            </h3>
+            {buildLoading || !buildMessage ? (
+              <>
+                <p className="build-sync-modal-status">正在同步建置系統資料中，請稍候…</p>
+                <div className="build-sync-progress-wrap">
+                  <div className="build-sync-progress-track">
+                    <motion.div
+                      className="build-sync-progress-fill"
+                      initial={{ width: 0 }}
+                      animate={{ width: `${buildProgress}%` }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </div>
+                  <span className="build-sync-progress-pct" aria-live="polite">
+                    {Math.round(buildProgress)}%
+                  </span>
+                </div>
+              </>
+            ) : (
+              <>
+                <p className={buildMessage.success ? 'build-sync-success' : 'build-sync-error'}>{buildMessage.text}</p>
+                <div className="build-sync-progress-wrap build-sync-progress-done">
+                  <div className="build-sync-progress-track">
+                    <div className="build-sync-progress-fill" style={{ width: `${buildProgress}%` }} />
+                  </div>
+                  <span className="build-sync-progress-pct" aria-live="polite">{Math.round(buildProgress)}%</span>
+                </div>
+                {buildMessage.success ? (
+                  <>
+                    <p className="build-sync-refresh-hint">點擊下方按鈕將主動刷新頁面以使用最新版本內容。</p>
+                    <button type="button" className="build-sync-modal-btn build-sync-confirm-btn" onClick={handleConfirmRefresh}>
+                      確認並刷新頁面
+                    </button>
+                  </>
+                ) : (
+                  <button type="button" className="build-sync-modal-btn" onClick={() => handleCloseBuildModal()}>
+                    關閉
+                  </button>
+                )}
+              </>
+            )}
           </div>
         </div>
       )}

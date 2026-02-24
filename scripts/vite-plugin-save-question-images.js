@@ -6,6 +6,7 @@ import {
   handleGetImageManifest,
   handleGenerateImageManifest,
 } from './question-images-api.js';
+import { runTriggerBuild } from './trigger-build-handler.js';
 
 export function saveQuestionImagesPlugin() {
   return {
@@ -13,11 +14,25 @@ export function saveQuestionImagesPlugin() {
     configureServer(server) {
       server.middlewares.use(async (req, res, next) => {
         const url = req.url?.split('?')[0];
+        const isTriggerBuild = req.method === 'POST' && url === '/api/trigger-build';
         const isImageApi =
           url === '/api/check-question-images' ||
           url === '/api/save-question-images' ||
           url === '/api/get-image-manifest' ||
           url === '/api/generate-image-manifest';
+        if (isTriggerBuild) {
+          res.setHeader('Content-Type', 'application/json');
+          try {
+            const projectRoot = getProjectRoot();
+            const result = await runTriggerBuild(projectRoot);
+            res.statusCode = 200;
+            res.end(JSON.stringify(result.success ? { success: true } : { success: false, error: result.error }));
+          } catch (err) {
+            res.statusCode = 500;
+            res.end(JSON.stringify({ success: false, error: String(err?.message || err) }));
+          }
+          return;
+        }
         if (!isImageApi) return next();
 
         const method = req.method;

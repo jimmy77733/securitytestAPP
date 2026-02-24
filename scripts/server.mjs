@@ -2,7 +2,6 @@ import http from 'http';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { spawn } from 'child_process';
 import {
   getOutDir,
   getProjectRoot,
@@ -11,6 +10,7 @@ import {
   handleGetImageManifest,
   handleGenerateImageManifest,
 } from './question-images-api.js';
+import { runTriggerBuild } from './trigger-build-handler.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.join(__dirname, '..');
@@ -55,25 +55,7 @@ const server = http.createServer(async (req, res) => {
   if (isTriggerBuild) {
     res.setHeader('Content-Type', 'application/json');
     try {
-      const result = await new Promise((resolve) => {
-        const isWin = process.platform === 'win32';
-        const child = spawn(isWin ? 'npm.cmd' : 'npm', ['run', 'build'], {
-          cwd: projectRoot,
-          shell: isWin,
-          stdio: ['ignore', 'pipe', 'pipe'],
-        });
-        let stderr = '';
-        child.stderr?.on('data', (d) => { stderr += d.toString(); });
-        const timeout = setTimeout(() => {
-          child.kill('SIGTERM');
-          resolve({ success: false, error: '建置逾時（超過 120 秒）' });
-        }, 120000);
-        child.on('close', (code) => {
-          clearTimeout(timeout);
-          if (code === 0) resolve({ success: true });
-          else resolve({ success: false, error: stderr.slice(-500) || `建置結束碼 ${code}` });
-        });
-      });
+      const result = await runTriggerBuild(projectRoot);
       res.statusCode = 200;
       res.end(JSON.stringify(result.success ? { success: true } : { success: false, error: result.error }));
     } catch (err) {

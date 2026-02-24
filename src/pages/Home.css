@@ -65,19 +65,79 @@
   background: var(--color-bg);
   border-radius: var(--radius-lg);
   padding: var(--spacing-xl);
-  max-width: 400px;
+  max-width: 420px;
+  width: 90%;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.build-sync-modal-title {
+  margin: 0 0 var(--spacing-lg);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.build-sync-modal-status {
+  color: var(--color-text-light);
+  margin: 0 0 var(--spacing-md);
+  font-size: 0.95rem;
+}
+
+.build-sync-progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.build-sync-progress-wrap.build-sync-progress-done {
+  margin-bottom: var(--spacing-md);
+}
+
+.build-sync-progress-wrap.build-sync-progress-done .build-sync-progress-fill {
+  transition: none;
+}
+
+.build-sync-progress-track {
+  flex: 1;
+  height: 10px;
+  background: var(--color-border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.build-sync-progress-fill {
+  height: 100%;
+  background: var(--color-primary);
+  border-radius: 999px;
+  transition: width 0.25s ease-out;
+}
+
+.build-sync-progress-pct {
+  flex-shrink: 0;
+  min-width: 3em;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--color-text);
+  text-align: right;
 }
 
 .build-sync-success {
   color: var(--color-text);
-  margin: 0 0 var(--spacing-md);
+  margin: 0 0 var(--spacing-sm);
+  font-size: 1rem;
 }
 
 .build-sync-error {
   color: var(--color-error, #c62828);
-  margin: 0 0 var(--spacing-md);
+  margin: 0 0 var(--spacing-sm);
   font-size: 0.95em;
+}
+
+.build-sync-refresh-hint {
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+  margin: 0 0 var(--spacing-lg);
 }
 
 .build-sync-modal-btn {
@@ -94,6 +154,18 @@
 
 .build-sync-modal-btn:hover {
   background: var(--color-border);
+}
+
+.build-sync-confirm-btn {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
+.build-sync-confirm-btn:hover {
+  filter: brightness(1.05);
+  background: var(--color-primary);
+  color: #fff;
 }
 
 .user-info {

@@ -256,25 +256,8 @@ const server = http.createServer(async (req, res) => {
   if (isTriggerBuild) {
     res.setHeader('Content-Type', 'application/json');
     try {
-      const result = await new Promise((resolve) => {
-        const isWin = process.platform === 'win32';
-        const child = spawn(isWin ? 'npm.cmd' : 'npm', ['run', 'build'], {
-          cwd: projectRoot,
-          shell: isWin,
-          stdio: ['ignore', 'pipe', 'pipe'],
-        });
-        let stderr = '';
-        child.stderr && child.stderr.on('data', (d) => { stderr += d.toString(); });
-        const timeout = setTimeout(() => {
-          child.kill('SIGTERM');
-          resolve({ success: false, error: '建置逾時（超過 120 秒）' });
-        }, 120000);
-        child.on('close', (code) => {
-          clearTimeout(timeout);
-          if (code === 0) resolve({ success: true });
-          else resolve({ success: false, error: stderr.slice(-500) || '建置結束碼 ' + code });
-        });
-      });
+      const { runTriggerBuild } = await import('./trigger-build-handler.js');
+      const result = await runTriggerBuild(projectRoot);
       res.statusCode = 200;
       res.end(JSON.stringify(result.success ? { success: true } : { success: false, error: result.error }));
     } catch (err) {
@@ -348,11 +331,38 @@ const server = http.createServer(async (req, res) => {
 
 const port = Number(process.env.PORT) || 4173;
 const openOnStart = process.env.OPEN_BROWSER !== '0';
+const url = `http://localhost:${port}`;
+
+function shutdown() {
+  server.close(() => {
+    process.exit(0);
+  });
+  setTimeout(() => process.exit(1), 5000);
+}
+
+server.on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    if (openOnStart && isPkg) openBrowser(url);
+    process.exit(0);
+  }
+});
+
+process.on('SIGINT', shutdown);
+process.on('SIGTERM', shutdown);
+process.on('uncaughtException', (err) => {
+  console.error('uncaughtException', err);
+  shutdown();
+});
+process.on('unhandledRejection', (reason) => {
+  console.error('unhandledRejection', reason);
+  shutdown();
+});
 
 server.listen(port, () => {
-  const url = `http://localhost:${port}`;
-  console.log(`Server running at ${url}`);
-  console.log('Image import API: POST /api/check-question-images, /api/save-question-images');
+  if (!isPkg) {
+    console.log(`Server running at ${url}`);
+    console.log('Image import API: POST /api/check-question-images, /api/save-question-images');
+  }
   if (openOnStart && isPkg) {
     openBrowser(url);
   }
