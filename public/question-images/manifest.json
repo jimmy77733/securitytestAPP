@@ -1,8 +1,14 @@
 {
   "version": "1.0.0",
-  "generatedAt": "2026-02-23T09:29:47.057Z",
+  "generatedAt": "2026-04-08T13:50:48.486Z",
   "imageIds": [
+    "g_intermediate_114-2_規劃_1_1",
+    "g_intermediate_114-2_規劃_2_1",
     "intermediate_資訊安全規劃實務_108_4_1",
+    "intermediate_資訊安全規劃實務_109_1_1",
+    "intermediate_資訊安全規劃實務_109_5_1",
+    "intermediate_資訊安全規劃實務_114-2_4_1",
+    "intermediate_資訊安全規劃實務_114-2_4_2",
     "intermediate_資訊安全防護實務_108_1_1",
     "intermediate_資訊安全防護實務_108_1_2",
     "intermediate_資訊安全防護實務_108_1_3",
@@ -10,7 +16,14 @@
     "intermediate_資訊安全防護實務_108_2_1",
     "intermediate_資訊安全防護實務_108_4_1",
     "intermediate_資訊安全防護實務_108_5_1",
+    "intermediate_資訊安全防護實務_109_2_1",
+    "intermediate_資訊安全防護實務_109_4_1",
+    "intermediate_資訊安全防護實務_109_4_2",
     "q_intermediate_108-1_p_12",
+    "q_intermediate_108-1_p_32",
+    "q_intermediate_108-1_p_38",
+    "q_intermediate_109-1_p_33",
+    "q_intermediate_109-1_p_35",
     "q_primary_111-1_s_18",
     "q_primary_111-1_s_23",
     "q_primary_111-2_m_39",
@@ -28,5 +41,5 @@
     "q_primary_114-2_m_45",
     "q_primary_114-2_s_15"
   ],
-  "count": 25
+  "count": 38
 }
